@@ -10,7 +10,5 @@ package it.unitn.disi;
  * @author root
  */
 public class Prova {
-    public Prova() {
-        int a;
-    }
+    
 }
