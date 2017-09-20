@@ -67,7 +67,7 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
     @Override
     public User getByPrimaryKey(Integer primaryKey) throws DAOException {
         if (primaryKey == null) {
-            throw new DAOException("primaryKey is null");
+            throw new DAOException("primaryKey is null forse");
         }
         try (PreparedStatement stm = CON.prepareStatement("SELECT * FROM users WHERE id = ?")) {
             stm.setInt(1, primaryKey);
