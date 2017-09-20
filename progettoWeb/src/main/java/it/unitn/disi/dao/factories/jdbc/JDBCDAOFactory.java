@@ -40,9 +40,9 @@ public class JDBCDAOFactory implements DAOFactory {
      * @author Stefano Chirico
      * @since 1.0.170417
      */
-    public static void configure(String dbUrl) throws DAOFactoryException {
+    public static void configure(String dbUrl, String username, String password) throws DAOFactoryException {
         if (instance == null) {
-            instance = new JDBCDAOFactory(dbUrl);
+            instance = new JDBCDAOFactory(dbUrl, username, password);
         } else {
             throw new DAOFactoryException("DAOFactory already configured. You can call configure only one time");
         }
@@ -74,17 +74,17 @@ public class JDBCDAOFactory implements DAOFactory {
      * @author Stefano Chirico
      * @since 1.0.170417
      */
-    private JDBCDAOFactory(String dbUrl) throws DAOFactoryException {
+    private JDBCDAOFactory(String dbUrl, String username, String password) throws DAOFactoryException {
         super();
 
         try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver", true, getClass().getClassLoader());
+            Class.forName("org.postgresql.Driver", true, getClass().getClassLoader());
         } catch (ClassNotFoundException cnfe) {
             throw new RuntimeException(cnfe.getMessage(), cnfe.getCause());
         }
 
         try {
-            CON = DriverManager.getConnection(dbUrl);
+            CON = DriverManager.getConnection(dbUrl, username, password);
         } catch (SQLException sqle) {
             throw new DAOFactoryException("Cannot create connection", sqle);
         }
@@ -101,7 +101,8 @@ public class JDBCDAOFactory implements DAOFactory {
     @Override
     public void shutdown() {
         try {
-            DriverManager.getConnection("jdbc:derby:;shutdown=true");
+            //DriverManager.getConnection("jdbc:derby:;shutdown=true");
+            CON.close();
         } catch (SQLException sqle) {
             Logger.getLogger(JDBCDAOFactory.class.getName()).info(sqle.getMessage());
         }
