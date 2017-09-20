@@ -20,16 +20,16 @@
     <body>
         <h1>Hello World!</h1>
         <%
-            Class.forName("org.postgresql.Driver");
+            /*Class.forName("org.postgresql.Driver");
             Connection connection = null;
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/prova","postgres", "marco");
-            //PreparedStatement p = connection.prepareStatement("SELECT * FROM test");
-            Statement p = connection.createStatement();
-            ResultSet rs = p.executeQuery("SELECT * FROM test");
+            PreparedStatement p = connection.prepareStatement("SELECT * FROM test");
+            ResultSet rs = p.executeQuery();
             
-            connection.close();
+            connection.close();*/
         
         %>
-        <h5><%rs.toString();%></h5>
+        
+        <h5></h5>
     </body>
 </html>
