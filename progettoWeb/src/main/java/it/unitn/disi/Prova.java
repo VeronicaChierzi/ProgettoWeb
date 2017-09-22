@@ -13,7 +13,10 @@ public class Prova {
 
     
     public Prova(){
+
         int a;
+        System.out.println("ciao"); 
+
     }
     
 
