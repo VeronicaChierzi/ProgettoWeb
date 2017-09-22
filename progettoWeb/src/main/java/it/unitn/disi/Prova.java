@@ -11,4 +11,8 @@ package it.unitn.disi;
  */
 public class Prova {
     
+    public Prova(){
+        
+    }
+    
 }
