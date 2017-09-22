@@ -10,9 +10,15 @@ package it.unitn.disi;
  * @author root
  */
 public class Prova {
+
     
     public Prova(){
         
     }
     
+
+    public Prova(String a) {
+        
+    }
+
 }
