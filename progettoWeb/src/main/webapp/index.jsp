@@ -18,6 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+		<jsp:include page="/navbar.jsp" />
         <h1>Hello World!</h1>
         <%
             /*Class.forName("org.postgresql.Driver");

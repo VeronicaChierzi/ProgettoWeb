@@ -1,9 +1,3 @@
-<%-- 
-    Document   : profilo
-    Created on : Sep 20, 2017, 1:48:23 PM
-    Author     : root
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +7,6 @@
     </head>
     <body>
 		<jsp:include page="/navbar.jsp" />
-		<h1>Profilo utente</h1>
-        Se la vedi dovresti essere loggato
+        <h1>Carrello</h1>
     </body>
 </html>
