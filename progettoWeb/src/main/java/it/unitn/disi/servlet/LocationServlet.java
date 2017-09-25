@@ -10,57 +10,34 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "LocationServlet", urlPatterns = {"/LocationServlet"})
 public class LocationServlet extends MyServlet {
 
 	private LocationDAO locationDao;
-	private Location location;
 
 	@Override
 	public void init() throws ServletException {
 		locationDao = (LocationDAO) initDao(LocationDAO.class);
 	}
 
-	/**
-	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-	 * methods.
-	 *
-	 * @param request servlet request
-	 * @param response servlet response
-	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
-	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		try (PrintWriter out = response.getWriter()) {
-			out.println("Richiamata Servlet LocationServlet at " + request.getContextPath() + "<br/>");
-
-			ServletContext sc = request.getServletContext();
-			if (sc.getAttribute("location") == null) {
-				System.err.println("load loca");
-				out.println("Caricamento Location dal database. Dovrebbe comparire solo la prima volta!!!<br/>");
-				System.err.println("ok4");
-				try {
-					location = locationDao.getLocation();
-					System.err.println("ok5");
-					sc.setAttribute("location", location);
-					System.err.println("ok6");
-				} catch (DAOException ex) {
-					System.err.println("not ok");
-					out.println("Errore nel caricamento di Location dal database<br/>");
-				}
-			} else {
-				System.err.println("not load loca");
-				out.println("Location già caricata<br/>");
+		HttpSession session = request.getSession(true);
+		ServletContext sc = request.getServletContext();
+		if (sc.getAttribute("location") == null) {
+			try {
+				Location location = locationDao.getLocation();
+				sc.setAttribute("location", location);
+				session.setAttribute("locationMessage", "Location è stato caricato dal database. Dovrebbe comparire solo la prima volta!!!");
+			} catch (DAOException ex) {
+				System.err.println("Errore nel caricamento di Location");
+				session.setAttribute("locationMessage", "Errore nel caricamento di Location");
 			}
-			System.err.println("finished servlet");
-			System.err.println("SI");
-			//forward(request, response, "index.jsp");
-			System.err.println("NO");
-			//forward(request, response, "location.jsp");
-			redirect(response, "diocane.jsp");
+		} else {
+			System.err.println("Location gia caricate");
+			session.setAttribute("locationMessage", "Location gia caricate");
 		}
 	}
 
@@ -76,6 +53,7 @@ public class LocationServlet extends MyServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.err.println("get");
 		processRequest(request, response);
 	}
 
@@ -90,6 +68,7 @@ public class LocationServlet extends MyServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.err.println("post");
 		processRequest(request, response);
 	}
 	// </editor-fold>

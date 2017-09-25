@@ -6,9 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import it.unitn.disi.dao.AProductDAO;
+import it.unitn.disi.dao.ProductDAO;
 
-public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements AProductDAO {
+public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements ProductDAO {
 
 	public JDBCProductDAO(Connection con) {
 		super(con);
@@ -26,30 +26,32 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements AProduc
 							rs.getString("name"),
 							rs.getString("description")
 					);
-
-					//calcola il prezzo minimo
-					try (PreparedStatement stmUserAdmin = CON.prepareStatement("SELECT MIN(price) AS price_min FROM shops_products WHERE id_product = ?")) {
-						stmUserAdmin.setInt(1, product.getId());
-						ResultSet rsPrice = stmUserAdmin.executeQuery();
-						if (rsPrice.next()) {
-							Float priceMin = rsPrice.getFloat("price_min");
-							product.setPriceMin(priceMin);
-							if (rsPrice.next()) {
-								throw new DAOException("Errore: ci sono più priceMin per lo stesso prodotto(?)");
-							}
-						}
-					}
+					product.setPriceMin(getMinPrice(product.getId()));
 				}
 				if (rs.next()) {
 					throw new DAOException("Errore: ci sono più prodotti con lo stesso id");
 				}
-				if (product == null) {
-					throw new DAOException("Prodotto non trovato");
-				}
 				return product;
 			}
 		} catch (SQLException ex) {
-			throw new DAOException("Errore preparedStatement/sintassi query prodotto", ex);
+			throw new DAOException("Errore SQLException query prodotto", ex);
+		}
+	}
+
+	private float getMinPrice(int idProduct) throws DAOException {
+		try (PreparedStatement ps = CON.prepareStatement("SELECT MIN(price) AS price_min FROM shops_products WHERE id_product = ?")) {
+			ps.setInt(1, idProduct);
+			ResultSet rs = ps.executeQuery();
+			float priceMin = -1;
+			if (rs.next()) {
+				priceMin = rs.getFloat("price_min");
+			}
+			if (rs.next()) {
+				throw new DAOException("Errore: ci sono più priceMin per lo stesso prodotto(?)");
+			}
+			return priceMin;
+		} catch (SQLException ex) {
+			throw new DAOException("Errore SQLException query prezzoMin", ex);
 		}
 	}
 

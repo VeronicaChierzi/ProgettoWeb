@@ -12,6 +12,7 @@ public class Regione {
 
 	public Regione(int id, String name) {
 		this.id = id;
+		this.name = name;
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">

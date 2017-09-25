@@ -28,19 +28,20 @@ public class Location {
 	public Comune getComune(int idComune) {
 		return comuniHash.get(idComune);
 	}
-	
+
 	public Regione[] getRegioni() {
 		return regioni;
 	}
 
-	public Provincia[] getProvinceByIdRegione(int idRegione){
+	public Provincia[] getProvinceByIdRegione(int idRegione) {
 		return getRegione(idRegione).getProvince();
 	}
-	
-	public Comune[] getComuniByIdProvincia(int idProvincia){
+
+	public Comune[] getComuniByIdProvincia(int idProvincia) {
 		return getProvincia(idProvincia).getComuni();
 	}
 	// </editor-fold>
+
 }
 
 /*

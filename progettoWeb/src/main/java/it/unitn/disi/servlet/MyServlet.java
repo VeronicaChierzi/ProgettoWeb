@@ -40,4 +40,11 @@ public abstract class MyServlet extends HttpServlet {
 		RequestDispatcher rd = sc.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
+	
+	protected void include(HttpServletRequest request, HttpServletResponse response, String page)
+			throws ServletException, IOException {
+		ServletContext sc = getServletContext();
+		RequestDispatcher rd = sc.getRequestDispatcher(page);
+		rd.include(request, response);
+	}
 }
