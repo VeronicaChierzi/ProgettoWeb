@@ -1,9 +1,3 @@
-<%-- 
-    Document   : prova
-    Created on : 25-set-2017, 15.13.52
-    Author     : Marco
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : May 23, 2017, 4:03:19 PM
-    Author     : 
---%>
-
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>

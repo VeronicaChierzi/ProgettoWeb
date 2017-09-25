@@ -1,9 +1,3 @@
-<%-- 
-    Document   : newjsp
-    Created on : 25-set-2017, 15.13.45
-    Author     : Marco
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

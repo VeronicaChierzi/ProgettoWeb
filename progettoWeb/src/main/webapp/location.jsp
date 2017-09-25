@@ -1,3 +1,6 @@
+<%@page import="it.unitn.disi.entities.locations.Provincia"%>
+<%@page import="it.unitn.disi.entities.locations.Location" %>
+<%@page import="it.unitn.disi.entities.locations.Regione"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,19 +9,63 @@
         <title>JSP Page</title>
     </head>
     <body>
+		<jsp:include page="/navbar.jsp" />
         <h1>Location</h1>
-		<jsp:include page="/LocationServlet" flush="true" />
 
+		<br/>
+		location è una variabile di scope application<br/>
+		l'oggetto viene letto solo la prima volta dal database, poi resta in ram<br/>
+		<br/>
+
+		chiama servlet<br/>
+		<jsp:include page="/LocationServlet" />
 		ricomincia jsp<br/>
 		
-		<%--
-		<%@page session="true" %>
-		<%@page import="it.unitn.disi.entities.locations.Location" %>
-		<% Location location = (Location) application.getAttribute("location"); %>
-		<%=location.getRegione(3).getName() %>
-		--%>
+		<%= session.getAttribute("locationMessage") %>
+		<% session.removeAttribute("locationMessage"); %>
+		<br/><br/>
 		
-		asddsfsadfsd
+		<% Location location = (Location) application.getAttribute("location"); %>
+		<%=location %><br/>
+		<%=location.getRegione(1) %><br/>
+		<%=location.getRegione(1).getName() %><br/>
+		
+		<h2>Regioni</h2>
+		<table>
+		<%
+			for (Regione r : location.getRegioni()) {
+				out.print("<tr>");
+				out.print("<td>id: " + r.getId() + "</td>");
+				out.print("<td>name: " + r.getName() + "</td>");
+				out.print("</tr>");
+			}
+		%>
+		</table>
+		<br/><br/><br/>
+		<h2>Province</h2>
+		<table>
+		<%
+			for (Regione r : location.getRegioni()) {
+				out.print("<tr>");
+				out.print("<td><h4>" + r.getName() + "</h4></td>");
+				out.print("</tr>");
+				for (Provincia p : r.getProvince()) {
+					out.print("<tr>");
+					out.print("<td>id: " + p.getId() + "</td>");
+					out.print("<td>name: " + p.getName() + "</td>");
+					out.print("</tr>");
+				}
+			}
+		%>
+		</table>
+		
+		<!--
+		<table>
+			<c:forEach items="${applicationScope['attributeNames'].regioni}" var="r">
+				<c:out value="r.name"/>
+			</c:forEach>
+		</table>
+		-->
 		
     </body>
 </html>

@@ -13,4 +13,7 @@
 	<li><a href="/progettoWeb/user/ordini.jsp">ordini</a></li>
 	<li><a href="/progettoWeb/LogoutServlet">Logout</a></li>
 		<% }%>
+	<li><a href="/progettoWeb/location.jsp">location(test)</a></li>
+	<li><a href="/progettoWeb/ProductServlet?id=1">product1(test)</a></li>
+	<li><a href="/progettoWeb/product.jsp?id=2">product2(test)</a></li>
 </ul>
