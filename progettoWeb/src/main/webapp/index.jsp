@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : May 23, 2017, 4:03:19 PM
-    Author     : 
---%>
-
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
@@ -18,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+		<jsp:include page="/navbar.jsp" />
         <h1>Hello World!</h1>
         <%
             /*Class.forName("org.postgresql.Driver");
