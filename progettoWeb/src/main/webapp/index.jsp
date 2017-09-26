@@ -8,12 +8,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home Page</title>
     </head>
-    <body>
+    <body > <!--da sistemare con cicli per cambio immagini-->
+        <div class="sfondo">
 		<jsp:include page="/navbar.jsp" />
-        <h1>Hello World!</h1>
+        <div>
+            <div class="centerImg">
+                <img class="centerImg" src="img/logo/logoFinale.png" height="365" width="365">
+            </div>
+            <br>
+            <br>
+            <div class="header-content">
+                <div class="header-content-inner">
+                    <form action="risultatiricerca">
+                    <div class="input-group resizeSearch">
+                        <input id="testoRicerca" type="text" class="form-control" placeholder="Cerca..." />
+                        <span class="input-group-btn">
+                      		<button class="btn btn-default" type="button">
+                      			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                        </span>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+        
         <%
             /*Class.forName("org.postgresql.Driver");
             Connection connection = null;
@@ -26,5 +51,6 @@
         %>
         
         <h5></h5>
+        </div>
     </body>
 </html>
