@@ -7,11 +7,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import it.unitn.disi.dao.ProductDAO;
+import java.util.ArrayList;
 
 public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements ProductDAO {
 
 	public JDBCProductDAO(Connection con) {
 		super(con);
+	}
+
+	@Override
+	public Product[] getProducts() throws DAOException {
+		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM products")) {
+			try (ResultSet rs = ps.executeQuery()) {
+				ArrayList<Product> products_temp = new ArrayList<>(); //uso ArrayList perchè non posso ricavare direttamente la lunghezza da ResultSet
+				while (rs.next()) {
+					Product p = new Product(
+							rs.getInt("id"),
+							rs.getString("name"),
+							rs.getString("description"),
+							rs.getInt("id_subcategory")
+					);
+					p.setPriceMin(getMinPrice(p.getId()));
+					products_temp.add(p);
+				}
+				Product[] products = new Product[products_temp.size()];
+				products = products_temp.toArray(products); //trasforma arrayList in un array statico
+				return products;
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Errore SQLException query getProducts", ex);
+		}
 	}
 
 	@Override
@@ -24,7 +49,8 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 					product = new Product(
 							rs.getInt("id"),
 							rs.getString("name"),
-							rs.getString("description")
+							rs.getString("description"),
+							rs.getInt("id_subcategory")
 					);
 					product.setPriceMin(getMinPrice(product.getId()));
 				}
@@ -34,7 +60,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 				return product;
 			}
 		} catch (SQLException ex) {
-			throw new DAOException("Errore SQLException query prodotto", ex);
+			throw new DAOException("Errore SQLException query getProductByID", ex);
 		}
 	}
 
@@ -51,7 +77,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 			}
 			return priceMin;
 		} catch (SQLException ex) {
-			throw new DAOException("Errore SQLException query prezzoMin", ex);
+			throw new DAOException("Errore SQLException query getMinPrice", ex);
 		}
 	}
 
@@ -85,4 +111,5 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 	public boolean insertProduct(int name, int description) throws DAOException {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
+
 }
