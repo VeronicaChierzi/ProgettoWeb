@@ -1,9 +1,3 @@
-<%-- 
-    Document   : risultatiRicerca
-    Created on : Sep 26, 2017, 12:06:13 PM
-    Author     : root
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

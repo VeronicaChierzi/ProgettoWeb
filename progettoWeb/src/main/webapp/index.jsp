@@ -23,7 +23,7 @@
             <br>
             <div class="header-content">
                 <div class="header-content-inner">
-                    <form action="risultatiricerca">
+                    <form action="/progettoWeb/ProductListServlet">
                     <div class="input-group resizeSearch">
                         <input id="testoRicerca" type="text" class="form-control" placeholder="Cerca..." />
                         <span class="input-group-btn">

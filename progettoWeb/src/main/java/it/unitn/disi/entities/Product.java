@@ -5,18 +5,19 @@ public class Product {
 	private int id;
 	private String name;
 	private String description;
-	
+	private int idSubcategory;
+
 	private float priceMin;
 	// categoria ???
 
 	public Product() {
 	}
 
-	public Product(int id, String name, String description) {
+	public Product(int id, String name, String description, int idSubcategory) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		//this.price = price;
+		this.idSubcategory = idSubcategory;
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
@@ -61,7 +62,22 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-		/**
+
+	/**
+	 * @return the idSubcategory
+	 */
+	public int getIdSubcategory() {
+		return idSubcategory;
+	}
+
+	/**
+	 * @param idSubcategory the idSubcategory to set
+	 */
+	public void setIdSubcategory(int idSubcategory) {
+		this.idSubcategory = idSubcategory;
+	}
+
+	/**
 	 * @return the priceMin
 	 */
 	public float getPriceMin() {
