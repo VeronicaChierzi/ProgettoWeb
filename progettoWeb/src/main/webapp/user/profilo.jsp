@@ -29,7 +29,9 @@
 		id: <%=user.getUserSeller().getId()%><br/>
 		name: <%=user.getUserSeller().getName()%><br/>
 		partita iva: <%=user.getUserSeller().getPartitaIva()%><br/>
-		<% }%>
+		<% } else {%>
+	    <a href="/progettoWeb/registerSeller.jsp">Registrati come venditore</a><br/>
+		<% } %>
 		<br/>
 		
 		isAdmin: <%=user.isAdmin()%><br/>
