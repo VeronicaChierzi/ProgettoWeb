@@ -13,7 +13,7 @@
     <context-param>
         <description>Database psw</description>
         <param-name>dbpassword</param-name>
-        <param-value>marco</param-value>
+        <param-value>sette</param-value>
     </context-param>
     <listener>
         <description>ServletContextListener</description>
