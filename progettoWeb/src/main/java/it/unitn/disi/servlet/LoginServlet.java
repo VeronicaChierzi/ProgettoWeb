@@ -5,43 +5,53 @@ import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends MyServlet {
 
-	private UserDAO userDao;
+    private UserDAO userDao;
 
-	@Override
-	public void init() throws ServletException {
-		userDao = (UserDAO) initDao(UserDAO.class);
-	}
+    @Override
+    public void init() throws ServletException {
+        userDao = (UserDAO) initDao(UserDAO.class);
+    }
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		HttpSession session = request.getSession(true);
-		try {
-			User user = userDao.getByUsernameAndPassword(username, password);
-			if (user != null) {
-				//utente loggato
-				session.setAttribute("user", user);
-				redirect(response, "user/profilo.jsp");
-			} else {
-				//query eseguita senza errori, ma che non ha dato nessun risultato
-				//utente non loggato. impostare messaggio di login fallito da visualizzare
-				session.setAttribute("loginFallito", "Login fallito: username o password errati");
-				redirect(response, "login.jsp");
-			}
-		} catch (DAOException ex) {
-			//la query ha generato un errore
-			//utente non loggato. impostare messaggio di login fallito da visualizzare
-			session.setAttribute("loginFallito", "Login fallito: " + ex.getMessage());
-			redirect(response, "login.jsp");
-		}
-	}
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String usernameEmail = request.getParameter("username");
+        String password = request.getParameter("password");
+        HttpSession session = request.getSession(true);
+        try {
+            User user1 = userDao.getByUsernameAndPassword(usernameEmail, password);
+            User user2 = userDao.getByEmailAndPassword(usernameEmail, password);
+            if ((user1 != null) ) {
+                //utente loggato con username
+                session.setAttribute("user", user1);
+                redirect(response, "user/profilo.jsp");
+                System.out.println("username");
+            } else  if (user2!=null){
+                //utente loggato con email
+                session.setAttribute("user", user2);
+                redirect(response, "user/profilo.jsp");
+                System.out.println("email");
+            } else {
+                //query eseguita senza errori, ma che non ha dato nessun risultato
+                //utente non loggato. impostare messaggio di login fallito da visualizzare
+                session.setAttribute("loginFallito", "Login fallito: username o password errati");
+                redirect(response, "login.jsp");
+                System.out.println("errato");
+            }
+        } catch (DAOException ex) {
+            //la query ha generato un errore
+            //utente non loggato. impostare messaggio di login fallito da visualizzare
+            session.setAttribute("loginFallito", "Login fallito: " + ex.getMessage());
+            redirect(response, "login.jsp");
+        }
+    }
 
 }

@@ -24,14 +24,14 @@ public class RegistrationSellerServlet extends MyServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = (String) request.getParameter("name");
+		String nomeNeg = (String) request.getParameter("nomeNeg");
 		String partitaIva = (String) request.getParameter("partita_iva");
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("user");	// L'utente deve essere loggato!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		int idUser = user.getId();
 		//user.isSeller() deve essere false!!!!!! se è già un venditore, la query dovrebbe crashare
 		try {
-			boolean b = userDao.insertUserSeller(idUser, name, partitaIva);
+			boolean b = userDao.insertUserSeller(idUser, nomeNeg, partitaIva);
 			if (b) { //utente inserito nel database
 				//getUserSeller();
 				UserSeller userSeller = userDao.getUserSeller(user.getId());
@@ -40,7 +40,7 @@ public class RegistrationSellerServlet extends MyServlet {
 				forward(request, response, "/index.jsp");
 			} else { //utente non registrato. impostare messaggio di registrazione fallita da visualizzare
 				System.err.println("a");
-				//session.setAttribute("registrazioneVenditoreFallita", true);
+				session.setAttribute("registrazioneVenditoreFallita", true);
 				redirect(response, "registerSeller.jsp");
 			}
 		} catch (DAOException ex) {

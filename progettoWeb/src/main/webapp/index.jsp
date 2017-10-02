@@ -8,19 +8,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/navbarHead.jsp" />
+        <jsp:include page="/navbarHead.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Page</title>
     </head>
     <body > <!--da sistemare con cicli per cambio immagini-->
-        <div class="sfondo">
+        <div class="sfondoHome">
 		<jsp:include page="/navbar.jsp" />
+                <br><br><br>
         <div>
-            <div class="centerImg">
-                <img class="centerImg" src="img/logo/logoFinale.png" height="365" width="365">
+            <div class="centerImg resizeImgHome">
+                <img class="centerImg resizeImgHome" src="/progettoWeb/img/logo/logoFinale.png">
             </div>
             <br>
-            <br>
+           
             <div class="header-content">
                 <div class="header-content-inner">
                     <form action="risultatiricerca">

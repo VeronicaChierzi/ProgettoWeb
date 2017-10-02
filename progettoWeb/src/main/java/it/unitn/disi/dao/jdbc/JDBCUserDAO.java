@@ -50,6 +50,39 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
 			throw new DAOException("Errore query getByUsernameAndPassword", ex);
 		}
 	}
+        public User getByEmailAndPassword(String username, String password) throws DAOException {
+		if ((username == null) || (password == null)) {
+			throw new DAOException("Username e password sono campi obbligatori", new NullPointerException("username or password are null"));
+		}
+		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?")) {
+			ps.setString(1, username);
+			ps.setString(2, password);
+			try (ResultSet rsUser = ps.executeQuery()) {
+				User user = null;
+				if (rsUser.next()) {
+					user = new User(
+							rsUser.getInt("id"),
+							rsUser.getString("username"),
+							rsUser.getString("email"),
+							rsUser.getString("password"),
+							rsUser.getString("first_name"),
+							rsUser.getString("last_name")
+					);
+
+					//controlla se l'utente è anche un venditore
+					user.setUserSeller(getUserSeller(user.getId()));
+					//controlla se l'utente è anche un admin
+					user.setUserAdmin(getUserAdmin(user.getId()));
+				}
+				if (rsUser.next()) {
+					throw new DAOException("Errore: ci sono più utenti con lo stesso username");
+				}
+				return user;
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Errore query getByUsernameAndPassword", ex);
+		}
+	}
 
 	@Override
 	public UserSeller getUserSeller(int id) throws DAOException {
