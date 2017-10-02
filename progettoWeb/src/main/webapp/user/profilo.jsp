@@ -6,12 +6,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/navbarHead.jsp" />
+        <jsp:include page="../navbarHead.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Profilo Utente</title>
     </head>
     <body class="sfondo"> <!--da sistemare con cicli per cambio immagini-->
 		<jsp:include page="/navbar.jsp" />
+                
+                <br><br><br>
+                
 		<h1>Profilo utente</h1>
         Se la vedi dovresti essere loggato<br/>
 		<br/>

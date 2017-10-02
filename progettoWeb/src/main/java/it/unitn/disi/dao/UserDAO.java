@@ -8,6 +8,9 @@ public interface UserDAO extends DAO<User, Integer> {
 
 	public User getByUsernameAndPassword(String username, String password) throws DAOException;
 
+        	public User getByEmailAndPassword(String username, String password) throws DAOException;
+
+        
 	public boolean insertUser(String username, String email, String password, String firstName, String lastName) throws DAOException;
 
 	public boolean insertUserSeller(int idUser, String name, String partitaIva) throws DAOException;
