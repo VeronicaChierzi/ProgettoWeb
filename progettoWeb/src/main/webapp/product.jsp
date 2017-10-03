@@ -1,4 +1,5 @@
 <%@page import="it.unitn.disi.entities.Product"%>
+<%@page import="it.unitn.disi.entities.ShopProduct"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,15 +13,29 @@
         <h1>Product</h1>
 		
 		<% Product product = (Product) request.getAttribute("product"); %>
-		<%=product %><br/>
-		<br/>
-		
+		product: <%=product %><br/>
 		<% if(product!=null) { %>
 		id: <%=product.getId()%><br/>
 		name: <%=product.getName()%><br/>
 		description: <%=product.getDescription()%><br/>
-		price min: <%=product.getPriceMin()%><br/>
 		<br/>
+			<% ShopProduct shopProduct = (ShopProduct) product.getShopProduct(); %>
+			shopProduct: <%=shopProduct %><br/>
+			<% if(shopProduct!=null) { %>
+			idProduct: <%=shopProduct.getIdProduct()%><br/>
+			idShop: <%=shopProduct.getIdShop()%><br/>
+			price: <%=shopProduct.getPrice()%><br/>
+			quantity: <%=shopProduct.getQuantity()%><br/>
+			<form method="get" action="AddToCartServlet">
+				<input type="hidden" name="id_product" value="<%=product.getId() %>" />
+				<input type="hidden" name="id_shop" value="<%=shopProduct.getIdShop() %>" />
+				<%--<input type="hidden" name="price" value="<%=shopProduct.getPrice()%>" />--%>
+				<td><input type="submit" value="add to cart" /></td>
+			</form>
+			<% } else { %>
+			il prodotto non è disponibile<br/>
+			<% } %>
+			<br/>
 		<% } %>
 		
 		product è una variabile di scope request<br/>

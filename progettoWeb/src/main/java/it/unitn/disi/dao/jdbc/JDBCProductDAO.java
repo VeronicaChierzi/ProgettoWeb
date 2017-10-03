@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import it.unitn.disi.dao.ProductDAO;
+import it.unitn.disi.entities.ShopProduct;
 import java.util.ArrayList;
 
 public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements ProductDAO {
@@ -27,7 +28,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 							rs.getString("description"),
 							rs.getInt("id_subcategory")
 					);
-					p.setPriceMin(getMinPrice(p.getId()));
+					p.setShopProduct(getMinShopProduct(p.getId()));
 					products_temp.add(p);
 				}
 				Product[] products = new Product[products_temp.size()];
@@ -52,7 +53,12 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 							rs.getString("description"),
 							rs.getInt("id_subcategory")
 					);
-					product.setPriceMin(getMinPrice(product.getId()));
+					product.setShopProduct(getMinShopProduct(product.getId()));
+				}
+				System.out.println(product);
+				System.out.println(product.getShopProduct());
+				if(product.getShopProduct()!=null){
+					System.out.println(product.getShopProduct().getPrice());
 				}
 				if (rs.next()) {
 					throw new DAOException("Errore: ci sono più prodotti con lo stesso id");
@@ -64,46 +70,26 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 		}
 	}
 
-	private float getMinPrice(int idProduct) throws DAOException {
-		try (PreparedStatement ps = CON.prepareStatement("SELECT MIN(price) AS price_min FROM shops_products WHERE id_product = ?")) {
+	private ShopProduct getMinShopProduct(int idProduct) throws DAOException {
+		String query = "SELECT DISTINCT ON (id_product) * FROM shops_products WHERE id_product=? AND (quantity > 0) ORDER BY id_product, price";
+		try (PreparedStatement ps = CON.prepareStatement(query)) {
 			ps.setInt(1, idProduct);
 			ResultSet rs = ps.executeQuery();
-			float priceMin = -1;
+			ShopProduct sp = null;
 			if (rs.next()) {
-				priceMin = rs.getFloat("price_min");
+				sp = new ShopProduct(
+						rs.getInt("id_product"),
+						rs.getInt("id_shop"),
+						rs.getFloat("price"),
+						rs.getInt("quantity")
+				);
 			}
 			if (rs.next()) {
-				throw new DAOException("Errore: ci sono più priceMin per lo stesso prodotto(?)");
+				throw new DAOException("Errore: ci sono più ShopProduct minimi con lo stesso idProduct (impossibile)(?)");
 			}
-			return priceMin;
+			return sp;
 		} catch (SQLException ex) {
-			throw new DAOException("Errore SQLException query getMinPrice", ex);
-		}
-	}
-
-	public boolean insertUser(String username, String email, String password, String firstName, String lastName) throws DAOException {
-		if ((username == null) || (email == null) || (password == null) || (firstName == null) || (lastName == null)) {
-			throw new DAOException("Username, email, password, firstName e lastName sono campi obbligatori", new NullPointerException("Username, email, password, firstName o lastName sono null"));
-		}
-		String query = "INSERT INTO users(username, email, password, first_name, last_name) VALUES (?, ?, ?, ?, ?)";
-		try (PreparedStatement ps = CON.prepareStatement(query)) {
-			ps.setString(1, username);
-			ps.setString(2, email);
-			ps.setString(3, password);
-			ps.setString(4, firstName);
-			ps.setString(5, lastName);
-
-			int result = -1; //quantità di righe modificate dalla query insert
-			try {
-				result = ps.executeUpdate();
-			} catch (SQLException ex) {
-				//System.err.println("Impossibile eseguire query: " + ex.getMessage());
-				throw new DAOException("Errore esecuzione query: " + ex);
-			}
-			boolean b = (result > 0); //se ha modificato almeno 1 riga, restituisce true
-			return b;
-		} catch (SQLException ex) {
-			throw new DAOException("Errore preparedStatement o sintassi query: " + ex);
+			throw new DAOException("Errore SQLException query getMinShopProduct: "+ex.getMessage(), ex);
 		}
 	}
 
