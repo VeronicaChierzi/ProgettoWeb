@@ -39,6 +39,7 @@ public class WebAppContextListener implements ServletContextListener {
             DAOFactory daoFactory = JDBCDAOFactory.getInstance();
 
             sce.getServletContext().setAttribute("daoFactory", daoFactory);
+            
 
         } catch (DAOFactoryException ex) {
             Logger.getLogger(getClass().getName()).severe(ex.toString());
