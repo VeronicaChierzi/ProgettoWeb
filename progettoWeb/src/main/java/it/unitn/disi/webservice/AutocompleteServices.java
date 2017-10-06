@@ -41,26 +41,6 @@ import org.unbescape.html.HtmlEscape;
 @Path("products")
 public class AutocompleteServices {
 
-    private static final List<String> LANGUAGES = new ArrayList<>();
-
-    static {
-        LANGUAGES.add("ActionScript");
-        LANGUAGES.add("Boostrap");
-        LANGUAGES.add("C");
-        LANGUAGES.add("C++");
-        LANGUAGES.add("Ecommerce");
-        LANGUAGES.add("Jquery");
-        LANGUAGES.add("Groovy");
-        LANGUAGES.add("Java");
-        LANGUAGES.add("JavaScript");
-        LANGUAGES.add("Lua");
-        LANGUAGES.add("Perl");
-        LANGUAGES.add("Ruby");
-        LANGUAGES.add("Scala");
-        LANGUAGES.add("Swing");
-        LANGUAGES.add("XHTML");
-    }
-
     @Context
     private UriInfo ctx;
 
@@ -138,13 +118,12 @@ public class AutocompleteServices {
         }
 
         return gson.toJson(prodotti);
-        //return gson.toJson(results);
     }
 
     @GET
     @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
     public String getProducts() {
         Gson gson = new Gson();
-        return gson.toJson(LANGUAGES);
+        return gson.toJson(new ArrayList());
     }
 }
