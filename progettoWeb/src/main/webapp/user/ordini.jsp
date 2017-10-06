@@ -2,13 +2,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/navbarHead.jsp" />
+        <jsp:include page="../navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ordine</title>
     </head>
-    <body>
-		<jsp:include page="/navbar.jsp" />
+    <body class="sfondo">
+         <ul id="paginazione">
+            <li>
+        <jsp:include page="../navbar.jsp" />
+            </li>
+            <li>
+                <jsp:include page = "../barraRicerca.jsp"/>
+            </li>
+            <li>
         <h1>Ordini effetuati</h1>
+            </li>
+         </ul>
 		
     </body>
 </html>

@@ -9,9 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Errore</title>
     </head>
-    <body>
+    <body class="sfondo">
+        <ul id="paginazione">
+            <li>
+        <jsp:include page="/navbar.jsp" />
+            </li>
+            <li>
+                <jsp:include page = "barraRicerca.jsp"/>
+            </li>
+            <li>
         <h1>Password merda</h1>
+            </li>
+        </ul>
     </body>
 </html>

@@ -5,10 +5,17 @@
     <head>
         <jsp:include page="/navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Prodotto</title>
     </head>
-    <body>
-		<jsp:include page="/navbar.jsp" />
+    <body class="sfondo">
+        <ul id="paginazione">
+            <li>
+        <jsp:include page="/navbar.jsp" />
+            </li>
+            <li>
+                <jsp:include page = "/barraRicerca.jsp"/>
+            </li>
+            <li>
         <h1>Product</h1>
 		
 		<% Product product = (Product) request.getAttribute("product"); %>
@@ -37,6 +44,9 @@
 		<a href="/progettoWeb/product.jsp?id=2">product.jsp?id=2</a><br/>
 		<a href="/progettoWeb/product.jsp?id=3">product.jsp?id=3</a><br/>
 		<br/>
+            </li>
+        </ul>
+                
 		
     </body>
 </html>

@@ -5,10 +5,17 @@
     <head>
         <jsp:include page="/navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Lista Prodotti</title>
     </head>
-    <body>
-		<jsp:include page="/navbar.jsp" />
+    <body class="sfondo">
+        <ul id="paginazione">
+            <li>
+        <jsp:include page="/navbar.jsp" />
+            </li>
+            <li>
+                <jsp:include page = "/barraRicerca.jsp"/>
+            </li>
+            <li>
         <h1>Product list</h1>
 		
 		<% Product[] products = (Product[]) request.getAttribute("products"); %>
@@ -30,6 +37,7 @@
 			}
 		%>
 		</table>
-		
+            </li>
+        </ul>
     </body>
 </html>
