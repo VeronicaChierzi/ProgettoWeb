@@ -5,7 +5,7 @@
  */
 
 
-$("#autocompleteSearch").autocomplete({
+$("#testoRicerca").autocomplete({
     source: function (request, response) {
         $.ajax({
             contentType: "application/json",
