@@ -63,6 +63,8 @@ public class RegistrationServlet extends MyServlet {
             } else { //utente non registrato. impostare messaggio di registrazione fallita da visualizzare
                 redirect(response, "register.jsp");
             }
+            
+            
         } catch (DAOException ex) {
             //impossibile inserire nuovo utente
             System.err.println(ex.getMessage());
