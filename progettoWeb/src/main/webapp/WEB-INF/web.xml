@@ -35,6 +35,18 @@
         <servlet-name>NotificationServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InserisciCategorieServlet</servlet-name>
+        <servlet-class>it.unitn.disi.debug.InserisciCategorieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InserisciSottocategorieServlet</servlet-name>
+        <servlet-class>it.unitn.disi.debug.InserisciSottocategorieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InserisciProdottiServlet</servlet-name>
+        <servlet-class>it.unitn.disi.debug.InserisciProdottiServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -50,6 +62,18 @@
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserisciCategorieServlet</servlet-name>
+        <url-pattern>/debug/InserisciCategorieServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserisciSottocategorieServlet</servlet-name>
+        <url-pattern>/debug/InserisciSottocategorieServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserisciProdottiServlet</servlet-name>
+        <url-pattern>/debug/InserisciProdottiServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

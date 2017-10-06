@@ -148,4 +148,8 @@ public class JDBCDAOFactory implements DAOFactory {
 			throw new DAOFactoryException("Impossible to return the DAO", ex);
 		}
 	}
+        //TODO: rimuovere, solo per debug
+        public Connection getConnection() {
+            return CON; 
+        }
 }
