@@ -7,8 +7,13 @@
         <title>Accedi</title>
     </head>
     <body class="sfondo">
+        
+        <ul id="paginazione">
+            <li>
         <jsp:include page="/navbar.jsp" />
-        <br><br><br>
+            </li>
+            
+            <li>
             <div class="header-content">
                 <div class="header-content-inner">
                     <!--form di login-->
@@ -51,7 +56,8 @@
                     </div>
                 </div>
             </div>
-     
+            </li>
+        </ul>
 
 
 
@@ -80,11 +86,11 @@
                 </tr>
             </table>
         </form>
-        <%
+        <%/*
             if (session.getAttribute("loginFallito") != null) {
                 out.print(session.getAttribute("loginFallito"));
                 session.removeAttribute("loginFallito");
-            }
+            }*/
         %>
     </div>-->
 

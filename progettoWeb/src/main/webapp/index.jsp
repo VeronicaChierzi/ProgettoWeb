@@ -24,7 +24,7 @@
            
             <div class="header-content">
                 <div class="header-content-inner">
-                    <form action="/progettoWeb/ProductListServlet">
+                    <form action="/progettoWeb/ProductListServlet" method="post">
                     <div class="input-group resizeSearch">
                         <input id="testoRicerca" type="text" class="form-control" placeholder="Cerca..." />
                         <span class="input-group-btn">

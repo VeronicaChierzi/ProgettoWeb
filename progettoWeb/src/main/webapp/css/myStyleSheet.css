@@ -5,12 +5,14 @@ and open the template in the editor.
 */
 /* 
     Created on : Sep 19, 2017, 6:47:58 PM
-    Author     : root
+    Author     : Veronica Chierzi
 */
-/*ciao*/
 
 button-center {
     text-align: center;
+}
+.centraTesto{
+    margin:auto;
 }
 body, html{
     width: 100%;
@@ -182,6 +184,9 @@ header.masthead .header-content .header-content-inner p {
     }
 }
 
+.white{
+    color: white;
+}
 a {
     color: #000;
     text-decoration: none;
@@ -205,16 +210,16 @@ h1 {
 }
 @media (min-width: 500px){
     h1 {
-    font-family: Quicksand, sans-serif;
-    font-size: 30px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 26.4px;
-    color: black;
-    margin-top: 10px;
-    padding-bottom: 10px;
-}
+        font-family: Quicksand, sans-serif;
+        font-size: 30px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        line-height: 26.4px;
+        color: black;
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }
 }
 
 .border{
@@ -318,6 +323,88 @@ a:hover {
 }
 @media (min-width: 500px){
     .showLogo{
-    display: block;
+        display: block;
+    }
 }
+
+
+/*per footer*/
+.footer-basic-centered{
+    text-align: center;
+}
+
+.footer-basic-centered .footer-company-motto{
+    color:  #8d9093;
+    font-size: 24px;
+    margin: 0;
+}
+
+.footer-basic-centered .footer-company-name{
+    color:  #8f9296;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-basic-centered .footer-links{
+    font-family: inherit;
+    color:  black;
+    margin-top: 10px;
+}
+
+.footer-basic-centered .footer-links a{
+    display:inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+.showFoot{
+    display: none
+}
+@media (min-width: 800px){
+    .showFoot{
+        display: block
+    }
+}
+
+.footer {
+    /*position: absolute;*/
+    margin-right: 0;
+    bottom: 0;
+    margin-left: 0;
+    width: 100%;
+    background-color: #bcb7ad;
+    text-align: center;
+}
+.resizeImgFooter{
+    height: 40%;
+    width: 40%;
+    margin: 10px;
+}
+.search {
+    width: 100%;
+    position: relative
+}
+/*Resize the wrap to see the search bar change!*/
+
+.wrap {
+    width: 100%;
+    left: 50%;
+}
+.borderBarra{
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    padding-right: 10px;
+    border-color: #8f9296;
+    background: #8f9296;
+}
+.bgBarraRicerca{
+    background-color: #8f9296;
+}
+
+ul#paginazione {
+    font-family: Quicksand, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
