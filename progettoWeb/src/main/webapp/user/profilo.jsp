@@ -1,4 +1,4 @@
-<%@page session="true" %>
+<%@page session="false" %>
 <%@page import="it.unitn.disi.entities.User" %>
 <% User user = (User) session.getAttribute("user");%>
 
