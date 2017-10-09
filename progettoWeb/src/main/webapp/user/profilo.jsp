@@ -32,6 +32,8 @@
         password: <%=user.getPassword()%><br/>
         first name: <%=user.getFirstName()%><br/>
         last name: <%=user.getLastName()%><br/>
+        hash: <%=user.getHash()%><br/>
+        verificato: <%=user.isVerificato()%><br/>
         <br/>
 
         isSeller: <%=user.isSeller()%><br/>

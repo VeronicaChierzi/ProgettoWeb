@@ -15,6 +15,16 @@
         <param-name>dbpassword</param-name>
         <param-value>marco</param-value>
     </context-param>
+    <context-param>
+        <description>Email username</description>
+        <param-name>usnemail</param-name>
+        <param-value>noreply.ksmr@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <description>Email psw</description>
+        <param-name>pswemail</param-name>
+        <param-value>bcycxkwctewgazfw</param-value>
+    </context-param>
     <listener>
         <description>ServletContextListener</description>
         <listener-class>it.unitn.disi.listeners.WebAppContextListener</listener-class>
@@ -47,6 +57,10 @@
         <servlet-name>InserisciProdottiServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.InserisciProdottiServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmUserServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -74,6 +88,10 @@
     <servlet-mapping>
         <servlet-name>InserisciProdottiServlet</servlet-name>
         <url-pattern>/debug/InserisciProdottiServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmUserServlet</servlet-name>
+        <url-pattern>/ConfirmUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

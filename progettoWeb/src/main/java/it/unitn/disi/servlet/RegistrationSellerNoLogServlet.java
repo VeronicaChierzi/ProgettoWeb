@@ -10,6 +10,9 @@ import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.utils.PasswordValidator;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -69,7 +72,11 @@ public class RegistrationSellerNoLogServlet extends MyServlet {
         }
         
         try {
-            boolean b = userDao.insertUser(username, email, password, firstName, lastName);
+            
+            int IV = ThreadLocalRandom.current().nextInt(0, 9000000 + 1);
+            String user_hash = MD5(username+IV);
+            
+            boolean b = userDao.insertUser(username, email, password, firstName, lastName, user_hash);
             
             if (b) { //utente inserito nel database
                 System.out.println("utente nel db");
@@ -90,6 +97,22 @@ public class RegistrationSellerNoLogServlet extends MyServlet {
             redirect(response, "registerSellerNoLog.jsp");
         }
 
+    }
+    
+    
+    private String MD5(String md5) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes(Charset.forName("UTF-8")));
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1, 3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
