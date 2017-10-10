@@ -1,4 +1,4 @@
-<%@page session="true" %>
+<%@page session="false" %>
 <%@page import="it.unitn.disi.entities.User" %>
 <% User user = (User) session.getAttribute("user");%>
 
@@ -32,6 +32,8 @@
         password: <%=user.getPassword()%><br/>
         first name: <%=user.getFirstName()%><br/>
         last name: <%=user.getLastName()%><br/>
+        hash: <%=user.getHash()%><br/>
+        verificato: <%=user.isVerificato()%><br/>
         <br/>
 
         isSeller: <%=user.isSeller()%><br/>

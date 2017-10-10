@@ -8,6 +8,29 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
+	private String hash;
+	private boolean verificato;
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", hash=" + hash + ", verificato=" + verificato + ", userSeller=" + userSeller + ", userAdmin=" + userAdmin + '}';
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public boolean isVerificato() {
+        return verificato;
+    }
+
+    public void setVerificato(boolean verificato) {
+        this.verificato = verificato;
+    }
 
 	private UserSeller userSeller;
 	private UserAdmin userAdmin;
@@ -15,13 +38,15 @@ public class User {
 	public User() {
 	}
 
-	public User(int id, String username, String email, String password, String firstName, String lastName) {
+	public User(int id, String username, String email, String password, String firstName, String lastName,String hash, boolean verificato) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+                this.hash = hash;
+                this.verificato = verificato;
 	}
 
 	public boolean isSeller() {
