@@ -17,6 +17,7 @@ button-center {
 body, html{
     width: 100%;
     height: 100%;
+    cursor:default;
 }
 html .sfondoHome {
     background-image: url("../img/bg/img0.jpg");/* no-repeat center center fixed; */
@@ -85,9 +86,10 @@ header.masthead .header-content .header-content-inner p {
 
 .navbar {
     position: relative;
-    min-height: 50px;
+    min-height: 40px;
     margin-bottom: 0px;
     border: 1px solid transparent;
+    height: 55px;
 }
 @media (min-width: 768px) {
     header.masthead {
@@ -126,16 +128,17 @@ header.masthead .header-content .header-content-inner p {
     width: auto;
 }
 
-.resizeSearch {
-    width: 70%;
-    margin-right: auto;
-    margin-left: auto;
-}
+/*.resizeSearch {
+    width: 60%;
+    margin-right: 10px;
+    margin-left: 10px;
+}*/
+
 @media (min-width: 1100px){
     .resizeSearch {
-        width: 40%;
-        margin-right: auto;
-        margin-left: auto;
+        width: 60%;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 }
 
@@ -380,14 +383,14 @@ a:hover {
     margin: 10px;
 }
 .search {
-    width: 100%;
+    width: auto;
     position: relative
 }
 /*Resize the wrap to see the search bar change!*/
 
 .wrap {
-    width: 100%;
-    left: 50%;
+    width: auto;
+    left: auto;
 }
 .borderBarra{
     border-style: solid;
@@ -403,8 +406,55 @@ a:hover {
 
 ul#paginazione {
     font-family: Quicksand, sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
+
+ul#barra{
+    font-family: Quicksand, sans-serif;
+    font-size: 16px;
+    color: #F7F7F7;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+li#barra {
+    display: inline-table;
+}
+
+div#esternoBarra{
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+}
+ul#categorie {
+    font-family: Quicksand, sans-serif;
+    font-size: 19px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.subcat {
+    font-family: Quicksand, sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-left: 15px;
+    padding: 0;
+    display:none;
+    list-style: none;
+}
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

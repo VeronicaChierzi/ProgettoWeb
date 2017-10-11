@@ -37,7 +37,7 @@
                             </div>
                             <br>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-default btn-secondary" value="Registrati"></input>
+                                <button class="btn btn-default btn-secondary" href="/index.jsp">Annulla</button>
                                 <input type="submit" class="btn btn-danger btn-primary" value="Accedi"></input>
                             </div>
                             <br>
