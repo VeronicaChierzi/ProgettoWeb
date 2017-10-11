@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Page</title>
     </head>
+
     <body class="sfondoHome"> <!--da sistemare con cicli per cambio immagini-->
         <ul id="paginazione">
             <li>
@@ -25,11 +26,11 @@
             </li>
             <li>
                 
-                        <form action="/progettoWeb/ProductListServlet" method="post">
+                        <form action="/progettoWeb/ProductListServlet" method="get">
                             <div class="container">
                             <div class="input-group resizeSearch">
-                                <input id="testoRicerca" type="text" class="form-control" placeholder="Cerca..." />
-                                <span class="input-group-btn">
+                              <input id="testoRicerca" name="textSearch" type="text" class="form-control" placeholder="Cerca..." />                                
+                              <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
                                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                     </button>
