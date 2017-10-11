@@ -51,7 +51,7 @@ public class AuthenticationFilter implements Filter {
             if (session != null) {
                 user = (User) session.getAttribute("user");
             }
-            if (user == null) {
+            if (user == null || session == null) {
                 String contextPath = servletContext.getContextPath();
                 if (!contextPath.endsWith("/")) {
                     contextPath += "/";
@@ -60,6 +60,8 @@ public class AuthenticationFilter implements Filter {
                 return;
             }
         }
+        
+        
     }
 
     /**
@@ -81,6 +83,9 @@ public class AuthenticationFilter implements Filter {
         
         
         doBeforeProcessing(request, response);
+        
+        chain.doFilter(request, response);
+
         
         
     }
