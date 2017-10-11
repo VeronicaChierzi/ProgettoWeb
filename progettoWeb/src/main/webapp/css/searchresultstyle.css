@@ -1,0 +1,42 @@
+
+img { border: 0; }
+
+p { font-size: 1.2em; line-height: 1.3em; margin-bottom: 10px; }
+
+h1 { font-weight: normal; font-size: 1.9em; line-height: 2.0em; color: #545454; letter-spacing: -0.04em; }
+
+/** containers **/
+#wrap { width: 700px; margin: 0 auto; background: #d7dfe0; border-radius: 7px; margin-top: 55px; }
+#wrap header { border-bottom: 1px solid #b6bdbe; margin: 15px 22px; margin-bottom: 35px; padding-top: 20px; position: relative;  }
+
+#wrap footer { border-top: 1px solid #b6bdbe; padding-bottom: 40px; margin: 15px 22px;  }
+
+#wrap header .list-style-buttons { position: absolute; right: 0; }
+
+/** list view **/
+ul.list { list-style: none; width: 100%; padding-left: 0px;}
+ul.list li { display: block; padding: 10px 15px; }
+
+ul.list li.alt { background: #d7dfe0; }
+
+ul.list li section.left { display: block; float: left; width: 200px; position: relative; padding-left: 20px; margin-right: 40px}
+ul.list li section.right { display: block; float: right; margin-right: 10px; width: 250px; text-align: right; }
+
+ul.list li section.left img.thumb { float: left; margin-right: 10px; }
+ul.list li section.left img.featured-banner { position: absolute; left: -18px; top: 35px; }
+
+ul.list li section.left h3 { font-weight: bold; text-transform: uppercase; color: #707375; font-size: 1.4em; line-height: 1.6em; } 
+ul.list li section.left span.meta { color: #93989b; font-weight: normal; font-size: 1.1em; }
+
+
+ul.list li section span.price { font-weight: bold; display: block; margin-bottom: 15px; color: #8f9296; font-size: 1.6em; margin-top: 15px;}
+
+ul.list li section.right a.firstbtn { margin-right: 7px; }
+
+
+/** clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
