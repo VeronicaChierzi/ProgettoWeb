@@ -437,7 +437,7 @@ div#esternoBarra{
 ul#categorie {
     font-family: Quicksand, sans-serif;
     font-size: 19px;
-    margin: 0;
+    margin-left: 15px;
     padding: 0;
     list-style: none;
 }
@@ -445,7 +445,7 @@ ul#categorie {
     font-family: Quicksand, sans-serif;
     font-size: 16px;
     font-weight: lighter;
-    margin-left: 15px;
+    margin-left: 30px;
     padding: 0;
     display:none;
     list-style: none;
@@ -455,6 +455,67 @@ ul#categorie {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: inline-table;
 }
 
+/*cose per prodotti*/
+ul#risRicerca{
+    font-family: Quicksand, sans-serif;
+    font-size: 16px;
+    color: #000;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    display: inline-table;
+}
+li#risRicerca.categorie{
+    display:inline-table;
+    width:10%;
+}
+li#risRicerca.prodotti{
+    display:inline-table;
+    width:90%;
+}
+ul#product{
+    display: block;
+    width: 100%;
+}
+li#product{
+    display:block;
+    width: 100%
+}
+ul#products { 
+    list-style: none; 
+    width: 100%; 
+    padding-left: 0px;
+}
+ul#products li { 
+    display: inline-table;
+    margin-left: 10px;
+    margin-top:0;
+}
+
+ul#products li span.price { 
+    font-weight: bold; 
+    display: block; 
+    margin-bottom: 15px; 
+    color: #8f9296; 
+    font-size: 15px; 
+    margin-top: 15px;
+}
+ul#products li span a{
+    margin-right: 100px;
+    float:right;
+    text-align: right;
+    margin-top: 50%;
+    margin-bottom:50%;
+} 
+ul#products li#products.carrello { 
+    margin-right: 30px;
+    float:right;
+    text-align: right;
+    /*transform: translateY(100px);*/
+}
 

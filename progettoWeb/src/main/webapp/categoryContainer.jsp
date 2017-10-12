@@ -3,46 +3,16 @@
 <%@page import="it.unitn.disi.entities.categories.Subcategory" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <jsp:include page="/navbarHead.jsp" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%
-        
-        
-        
-        %>
-    </head>
-    <body class="sfondo">
-       <ul id="paginazione">
-            <li>
-        <jsp:include page="/navbar.jsp" />
-            </li>
-            <li>
-                <jsp:include page = "/barraRicerca.jsp"/>
-            </li>
-            <li>
-                <!--
-        <h1>CategoryContainer</h1>
 
-		<br/>
-		CategoryContainer è una variabile di scope application<br/>
-		l'oggetto viene letto solo la prima volta dal database, poi resta in ram<br/>
-		<br/>
-
-		chiama servlet<br/>
 		<jsp:include page="/CategoryContainerServlet" />
-		ricomincia jsp<br/>
 		
-		<%= session.getAttribute("categoryContainerMessage") %>
-		<% session.removeAttribute("categoryContainerMessage"); %>
-		<br/><br/>
-		
+                <%//= session.getAttribute("categoryContainerMessage") %>
+		<%session.removeAttribute("categoryContainerMessage"); %>
 		<% CategoryContainer categoryContainer = (CategoryContainer) application.getAttribute("categoryContainer"); %>
-		<%=categoryContainer %><br/>
-		<%=categoryContainer.getCategory(1) %><br/>
-		<%=categoryContainer.getCategory(1).getName() %><br/>
-		-->
+		<%//=categoryContainer %>
+		<%//=categoryContainer.getCategory(1) %>
+		<%//=categoryContainer.getCategory(1).getName() %>
+		
                 <script>
                     function mostra(id){
                         var elements = document.getElementsByClassName("subcat");
@@ -61,8 +31,6 @@
                         }
                     }
                 </script>
-
-                
                 
                 <h2>Categorie</h2>
                 <div class="resizeCat">
@@ -134,9 +102,6 @@
 				<c:out value="r.name"/>
 			</c:forEach>
 		</table>-->
+	
 		
-            </li>
-        </ul>
-		
-    </body>
-</html>
+   
