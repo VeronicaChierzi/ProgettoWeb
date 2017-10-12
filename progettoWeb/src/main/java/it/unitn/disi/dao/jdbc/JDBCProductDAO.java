@@ -57,7 +57,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 				}
 				System.out.println(product);
 				System.out.println(product.getShopProduct());
-				if(product.getShopProduct()!=null){
+				if (product.getShopProduct() != null) {
 					System.out.println(product.getShopProduct().getPrice());
 				}
 				if (rs.next()) {
@@ -89,13 +89,39 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 			}
 			return sp;
 		} catch (SQLException ex) {
-			throw new DAOException("Errore SQLException query getMinShopProduct: "+ex.getMessage(), ex);
+			throw new DAOException("Errore SQLException query getMinShopProduct: " + ex.getMessage(), ex);
 		}
 	}
 
 	@Override
 	public boolean insertProduct(int name, int description) throws DAOException {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public ShopProduct getShopProduct(int idProduct, int idShop) throws DAOException {
+		String query = "SELECT * FROM shops_products WHERE id_product=? AND id_shop=?";
+		try (PreparedStatement ps = CON.prepareStatement(query)) {
+			ps.setInt(1, idProduct);
+			ps.setInt(2, idShop);
+			try (ResultSet rs = ps.executeQuery()) {
+				ShopProduct sp = null;
+				if (rs.next()) {
+					sp = new ShopProduct(
+							rs.getInt("id_product"),
+							rs.getInt("id_shop"),
+							rs.getFloat("price"),
+							rs.getInt("quantity")
+					);
+				}
+				if (rs.next()) {
+					throw new DAOException("Errore: ci sono più shopProduct con stesso idProduct e idShop");
+				}
+				return sp;
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Errore SQLException query getShopProduct", ex);
+		}
 	}
 
 }

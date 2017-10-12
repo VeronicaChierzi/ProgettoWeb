@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-		<jsp:include page="/navbar.jsp" />
-        <h1>Carrello</h1>
+        <h1>Hello World!</h1>
+		<a href='/progettoWeb/index.jsp'>continua lo shopping</a><br/>
+		<a href='/progettoWeb/cart.jsp'>carrello</a>
     </body>
 </html>
