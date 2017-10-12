@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Lista Prodotti</title>
     </head>
-    <body class="sfondo">
+    <body class="sfondoP">
         <ul id="paginazione">
             <li>
                 <jsp:include page="/navbar.jsp" />
@@ -41,13 +41,13 @@
                             <li id="product">
                                 <ul id="products">
                                     <li id="products">
-                                        <img heigth="200px" width="200px" src="<%=i.getPath()%>" alt="<%=i.getAlt()%>" class="thumb">
+                                        <img class="imgProdotto" src="<%=i.getPath()%>" alt="<%=i.getAlt()%>" class="thumb">
                                     </li>
-                                    <li id="products" >                                    
+                                    <li id="products" class="descrizione" >                                    
                                         <h3><%=p.getName()%></h3>
                                         <span class="meta">Product ID: 543J423 </span><br>
                                         <span class="meta"> <%=p.getDescription()%></span>
-                                        <span class="price"> <%=p.getPriceMin()%></span>
+                                        <span class="price"> <%=p.getPriceMin()%> &euro;</span>
                                     </li>
                                     <li id="products" class="carrello">                                    
                                         <span>
