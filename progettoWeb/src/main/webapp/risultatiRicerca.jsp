@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html> <!--CHE FARE CON STA PAGINA? CANCELLIAMO!-->
     <head>
         <jsp:include page="/navbarHead.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,7 +15,17 @@
                 <jsp:include page = "/barraRicerca.jsp"/>
             </li>
             <li>
-        <h1>Hello World!</h1>
+                <ul id="risRicerca">
+                    <li>
+                        <jsp:include page="categoryContainer.jsp"/>
+                    </li>
+                    <li>
+                        <jsp:include page="/ProductListServlet"/>
+                    </li>
+                    
+                </ul>
+                
+                
             </li>
          </ul>
     </body>
