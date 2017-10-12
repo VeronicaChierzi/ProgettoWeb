@@ -1,5 +1,6 @@
 package it.unitn.disi.servlet;
 
+import it.unitn.disi.dao.ImageDAO;
 import it.unitn.disi.dao.ProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.Product;
@@ -14,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductListServlet extends MyServlet {
 
     private ProductDAO productDAO;
+    private ImageDAO imageDAO;
 
     @Override
     public void init() throws ServletException {
         productDAO = (ProductDAO) initDao(ProductDAO.class);
+        imageDAO = (ImageDAO) initDao(ImageDAO.class);
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -31,6 +34,7 @@ public class ProductListServlet extends MyServlet {
             if (products != null) {
                 request.setAttribute("products", products);
                 request.setAttribute("searchQuery", search);
+                request.setAttribute("imageDAO", imageDAO);
                 forward(request, response, "/productList.jsp");
             }
         } catch (DAOException ex) {

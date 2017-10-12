@@ -13,7 +13,7 @@
     <context-param>
         <description>Database psw</description>
         <param-name>dbpassword</param-name>
-        <param-value>sette</param-value>
+        <param-value>marco</param-value>
     </context-param>
     <context-param>
         <description>Email username</description>

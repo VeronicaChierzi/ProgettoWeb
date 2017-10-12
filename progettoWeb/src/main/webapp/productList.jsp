@@ -1,3 +1,5 @@
+<%@page import="it.unitn.disi.entities.Image"%>
+<%@page import="it.unitn.disi.dao.ImageDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.unitn.disi.entities.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,6 +24,7 @@
 
             <%ArrayList<Product> products = (ArrayList<Product>) request.getAttribute("products");%>
             <%String searchQuery = (String) request.getAttribute("searchQuery");%>
+            <%ImageDAO imageDAO = (ImageDAO) request.getAttribute("imageDAO");%>
             <%//=products%>
 
             <li>
@@ -33,10 +36,11 @@
                     <li id="risRicerca" class="prodotti">
                         <ul id="product">
                             <%for (Product p : products) {%>
+                            <% Image i = imageDAO.getProductImage(p.getId());%>
                             <li id="product">
                                 <ul id="products">
                                     <li id="products">
-                                        <img heigth="200px" width="200px" src="img/bagno/accappatoi/2382014811_1_1_3.jpg" alt="default thumb" class="thumb">
+                                        <img heigth="200px" width="200px" src="<%=i.getPath()%>" alt="<%=i.getAlt()%>" class="thumb">
                                     </li>
                                     <li id="products" >                                    
                                         <h3><%=p.getName()%></h3>
