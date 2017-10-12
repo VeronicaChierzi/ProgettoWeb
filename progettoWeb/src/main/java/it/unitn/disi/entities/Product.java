@@ -7,8 +7,7 @@ public class Product {
 	private String description;
 	private int idSubcategory;
 
-	private float priceMin;
-	// categoria ???
+	private ShopProduct shopProduct; //negozio che vende al prezzo minimo
 
 	public Product() {
 	}
@@ -78,17 +77,17 @@ public class Product {
 	}
 
 	/**
-	 * @return the priceMin
+	 * @return the shopProduct
 	 */
-	public float getPriceMin() {
-		return priceMin;
+	public ShopProduct getShopProduct() {
+		return shopProduct;
 	}
 
 	/**
-	 * @param priceMin the priceMin to set
+	 * @param shopProduct the shopProduct to set
 	 */
-	public void setPriceMin(float priceMin) {
-		this.priceMin = priceMin;
+	public void setShopProduct(ShopProduct shopProduct) {
+		this.shopProduct = shopProduct;
 	}
 	// </editor-fold>
 

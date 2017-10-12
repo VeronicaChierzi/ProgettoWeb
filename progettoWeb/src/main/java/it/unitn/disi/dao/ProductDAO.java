@@ -3,6 +3,7 @@ package it.unitn.disi.dao;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.Product;
 import java.util.List;
+import it.unitn.disi.entities.ShopProduct;
 
 public interface ProductDAO extends DAO<Product, Integer> {
 
@@ -14,4 +15,5 @@ public interface ProductDAO extends DAO<Product, Integer> {
 	
         public List<Product> searchProducts(String text) throws DAOException;
         
+	public ShopProduct getShopProduct(int idProduct, int idShop) throws DAOException;
 }

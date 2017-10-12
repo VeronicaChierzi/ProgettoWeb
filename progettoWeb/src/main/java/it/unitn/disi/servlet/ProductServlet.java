@@ -31,6 +31,7 @@ public class ProductServlet extends MyServlet {
 				forward(request, response, "/product.jsp");
 			}
 		} catch (DAOException ex) {
+			System.out.println(ex.getMessage());
 			forward(request, response, "/product.jsp");
 		}
 	}
