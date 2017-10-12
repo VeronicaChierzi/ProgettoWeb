@@ -37,7 +37,7 @@ public class JDBCImageDAO extends JDBCDAO<Image, Integer> implements ImageDAO {
                             rs.getString("path"),
                             rs.getString("alt")
                     );
-                    image.setPath(image.getPath().substring(0, 12) + "/img/" + image.getPath().substring(13).toLowerCase());
+                    image.setPath(image.getPath().substring(0, 12) + "/img/" + image.getPath().substring(13).toLowerCase().replace(" ", "_"));
                 }
                 return image;
             }

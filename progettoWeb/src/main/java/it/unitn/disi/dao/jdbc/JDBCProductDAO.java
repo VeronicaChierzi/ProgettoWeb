@@ -117,7 +117,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
     @Override
     public List<Product> searchProducts(String text) throws DAOException {
 
-        String querySelectProdotto = "select * from\n"
+        String querySelectProdotto = "select distinct on (\"name\") * from\n"
                 + "((SELECT * FROM products WHERE to_tsvector(\"name\") @@ plainto_tsquery(?))\n"
                 + "UNION\n"
                 + "(select * from products where \"name\" ilike ? or \"name\" ilike ? order by \"name\" asc)) as ris\n"
@@ -128,6 +128,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
             ps.setString(1, HtmlEscape.escapeHtml5(text));
             ps.setString(2, HtmlEscape.escapeHtml5(text) + "%");
             ps.setString(3, "%" + HtmlEscape.escapeHtml5(text) + "%");
+            System.out.println(ps);
             try (ResultSet rs = ps.executeQuery()) {
                 ArrayList<Product> products_temp = new ArrayList<>(); //uso ArrayList perchè non posso ricavare direttamente la lunghezza da ResultSet
                 while (rs.next()) {
