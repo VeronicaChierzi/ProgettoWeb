@@ -462,12 +462,14 @@ ul#categorie {
     display:none;
     list-style: none;
 }
-.containerA {
+form .containerA {
     height: 100%;
     justify-content: center;
     align-items: center;
     display: inline-table;
-    width:100%;
+    margin: 0 auto;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 /*cose per prodotti*/

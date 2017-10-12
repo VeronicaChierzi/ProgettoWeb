@@ -26,7 +26,7 @@
             </li>
             <li>
                 <form action="/progettoWeb/ProductListServlet" method="get">
-                    <div class="input-group resizeSearch">
+                    <div class="input-group resizeSearch containerA">
                         <input id="testoRicerca" name="textSearch" type="text" class="form-control" placeholder="Cerca..." />                                
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">
