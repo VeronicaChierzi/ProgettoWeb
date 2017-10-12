@@ -61,7 +61,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
                             rs.getInt("id_subcategory")
                     );
                     //p.setPriceMin(getMinPrice(p.getId()));
-                    p.setPriceMin(rs.getFloat("price_standard"));
+                    p.setShopProduct(getMinShopProduct(p.getId()));
                     products_temp.add(p);
                 }
                 return products_temp;
