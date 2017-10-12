@@ -25,20 +25,17 @@
                 <br/>
             </li>
             <li>
-                
-                        <form action="/progettoWeb/ProductListServlet" method="get">
-                            <div class="container">
-                            <div class="input-group resizeSearch">
-                              <input id="testoRicerca" name="textSearch" type="text" class="form-control" placeholder="Cerca..." />                                
-                              <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">
-                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                    </button>
-                                </span>
-                            </div>
-                                </div>
-                        </form>
-                
+                <form action="/progettoWeb/ProductListServlet" method="get">
+                    <div class="input-group resizeSearch">
+                        <input id="testoRicerca" name="textSearch" type="text" class="form-control" placeholder="Cerca..." />                                
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+
+                </form>
             </li>
         </ul>
 
