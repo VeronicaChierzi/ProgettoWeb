@@ -28,6 +28,7 @@ public class ProductListServlet extends MyServlet {
 
         //cercare prodotti
         String search = request.getParameter("textSearch");
+        System.out.println("CIAO BELLO LUCA" + request == null);
         try {
             List<Product> products = productDAO.searchProducts(search);
             
