@@ -45,6 +45,18 @@ html .sfondo {
     background-attachment: fixed;
 
 }
+html .sfondoP {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    /*position: absolute; non va una sega non metterlo*/
+    height: 100%;
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-color: #FBFBFB;
+    background-attachment: fixed;
+
+}
 
 header.masthead {
     position: absolute;
@@ -450,12 +462,14 @@ ul#categorie {
     display:none;
     list-style: none;
 }
-.container {
+form .containerA {
     height: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     display: inline-table;
+    margin: 0 auto;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 /*cose per prodotti*/
@@ -477,6 +491,7 @@ li#risRicerca.categorie{
 li#risRicerca.prodotti{
     display:inline-table;
     width:90%;
+    margin-top: 50px;
 }
 ul#product{
     display: block;
@@ -496,13 +511,19 @@ ul#products li {
     margin-left: 10px;
     margin-top:0;
 }
+ul#products li#products.descrizione { 
+    display: inline-table;
+    margin-left: 10px;
+    margin-top:0;
+    transform: translateY(-50px);
+}
 
 ul#products li span.price { 
     font-weight: bold; 
     display: block; 
     margin-bottom: 15px; 
     color: #8f9296; 
-    font-size: 15px; 
+    font-size: 25px; 
     margin-top: 15px;
 }
 ul#products li span a{
@@ -517,5 +538,12 @@ ul#products li#products.carrello {
     float:right;
     text-align: right;
     /*transform: translateY(100px);*/
+}
+.imgProdotto{
+    heigth:200px;
+    width:200px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #fff;
 }
 
