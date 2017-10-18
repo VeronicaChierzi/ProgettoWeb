@@ -37,14 +37,7 @@
 		<filter-name>AuthenticationFilter</filter-name>
 		<url-pattern>/user/*</url-pattern>
 	</filter-mapping>
-	<!--<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/errore.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>404</error-code>
-		<location>/errore.jsp</location>
-	</error-page>-->
+	
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>it.unitn.disi.servlet.LoginServlet</servlet-class>
@@ -123,16 +116,17 @@
 		<exception-type>java.lang.NullPointerException</exception-type>
 		<location>/WEB-INF/jsp/error_pages/errorNullPointerException.jsp</location>
 	</error-page>
+	<error-page>
+		<exception-type>java.io.IOException</exception-type >
+		<location>/WEB-INF/jsp/error_pages/errorIOException.jsp</location>
+	</error-page>
+
 	<!--
 	<error-page>
 		<exception-type>javax.servlet.ServletException</exception-type >
 		<location>/WEB-INF/jsp/error_pages/errorServletException.jsp</location>
 	</error-page>
 	-->
-	<error-page>
-		<exception-type>java.io.IOException</exception-type >
-		<location>/WEB-INF/jsp/error_pages/errorIOException.jsp</location>
-	</error-page>
 	<!--
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
