@@ -14,6 +14,7 @@ public class LogoutServlet extends MyServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("user");
+		session.removeAttribute("cart");
 		//session.invalidate();
 		redirect(response, "index.jsp");
 	}

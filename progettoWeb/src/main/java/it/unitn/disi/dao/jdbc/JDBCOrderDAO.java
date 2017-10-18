@@ -11,8 +11,6 @@ import it.unitn.disi.entities.orders.OrderProduct;
 import it.unitn.disi.entities.carts.Cart;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 
@@ -89,10 +87,13 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			CON.setAutoCommit(true);
 			return true;
 		} catch (DAOException ex) {
-			throw new DAOException("Errore saveCart: " + ex.getMessage());
+			//CON.rollback();
+			//CON.serAutoCommit(true);
+			throw new DAOException("Errore DAOException saveCart: " + ex.getMessage());
 		} catch (SQLException ex) {
 			//CON.rollback();
-			throw new DAOException("Errore saveCart: " + ex.getMessage());
+			//CON.serAutoCommit(true);
+			throw new DAOException("Errore SQLException saveCart: " + ex.getMessage());
 		}
 	}
 
@@ -139,12 +140,12 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 				result = ps.executeUpdate();
 			} catch (SQLException ex) {
 				//System.err.println("Impossibile eseguire query: " + ex.getMessage());
-				throw new DAOException("Errore esecuzione query insertOrderProduct: " + ex.getMessage());
+				throw new DAOException("Errore SQLException esecuzione query insertOrderProduct: " + ex.getMessage());
 			}
 			boolean b = (result > 0); //se ha modificato almeno 1 riga, restituisce true
 			return b;
 		} catch (SQLException ex) {
-			throw new DAOException("Errore sqlexcpetion in insertOrderProduct: " + ex.getMessage());
+			throw new DAOException("Errore SQLExcpetion in insertOrderProduct: " + ex.getMessage());
 		}
 	}
 
