@@ -21,7 +21,13 @@
                 <jsp:include page = "/barraRicerca.jsp"/>
             </li>
             <li>
-        <h1>Dimenticato password</h1>
+                <h1>Inserisci qui la tua mail e ti invieremo un codice di reset</h1>
+            </li>
+            <li>
+                <input name="emailReset" type="text" class="form-control" placeholder="Email" />               
+            </li>
+            <li>
+                <button type="submit">invia mail</button>
             </li>
         </ul>
     </body>
