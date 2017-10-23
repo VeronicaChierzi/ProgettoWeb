@@ -15,29 +15,28 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "BuyServlet", urlPatterns = {"/BuyServlet"})
 public class BuyServlet extends MyServlet {
 
-    private OrderDAO orderDAO;
+	private OrderDAO orderDAO;
 	private ProductDAO productDAO;
 
-
-    @Override
-    public void init() throws ServletException {
-        orderDAO = (OrderDAO) initDao(OrderDAO.class);
+	@Override
+	public void init() throws ServletException {
+		orderDAO = (OrderDAO) initDao(OrderDAO.class);
 		productDAO = (ProductDAO) initDao(ProductDAO.class);
-    }
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		try {
 			CartController.checkCart(session, user, productDAO);
 			orderDAO.buyCart(CartController.getOrCreateCart(session));
-            redirect(response, "index.jsp");
+			redirect(response, "index.jsp");
 		} catch (DAOException ex) {
 			System.err.println("Errore buy servlet: " + ex.getMessage());
-            redirect(response, "cart.jsp");
+			redirect(response, "cart.jsp");
 		}
 	}
-	
+
 }

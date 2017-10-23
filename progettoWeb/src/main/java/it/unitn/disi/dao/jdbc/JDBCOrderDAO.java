@@ -84,19 +84,32 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 				insertOrder(o);
 			}
 			CON.commit();
-			CON.setAutoCommit(true);
 			return true;
 		} catch (DAOException ex) {
-			//CON.rollback();
-			//CON.serAutoCommit(true);
+			try {
+				System.err.println("Transaction is being rolled back");
+				CON.rollback();
+			} catch(SQLException exc) {
+				throw new DAOException("Errore SQLException durante il rollback di saveCart: " + exc.getMessage());
+			}
 			throw new DAOException("Errore DAOException saveCart: " + ex.getMessage());
 		} catch (SQLException ex) {
-			//CON.rollback();
-			//CON.serAutoCommit(true);
+			try {
+				System.err.println("Transaction is being rolled back");
+				CON.rollback();
+			} catch(SQLException exc) {
+				throw new DAOException("Errore SQLException durante il rollback di saveCart: " + exc.getMessage());
+			}
 			throw new DAOException("Errore SQLException saveCart: " + ex.getMessage());
+		} finally {
+			try {
+				CON.setAutoCommit(true);
+			} catch (SQLException ex) {
+				throw new DAOException("Errore: impossibile risettare autoCommit a true: " + ex.getMessage());
+			}
 		}
 	}
-
+	
 	private boolean insertOrder(Order order) throws DAOException {
 		/*
 		if ((order.getIdShop() == -1) || (order.getIdUser() == -1)) {
@@ -113,19 +126,42 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			try {
 				result = ps.executeUpdate();
 				for (OrderProduct op : order.getOrderProducts()) {
+					decreaseShopProduct(op, order);
 					insertOrderProduct(op);
 				}
 			} catch (SQLException ex) {
 				//System.err.println("Impossibile eseguire query: " + ex.getMessage());
-				throw new DAOException("Errore esecuzione query insertOrder: " + ex.getMessage());
+				throw new DAOException("Errore SQLException esecuzione query insertOrder: " + ex.getMessage());
 			}
 			boolean b = (result > 0); //se ha modificato almeno 1 riga, restituisce true
 			return b;
 		} catch (SQLException ex) {
-			throw new DAOException("Errore sqlexcpetion in insertOrder: " + ex.getMessage());
+			throw new DAOException("Errore SQLException in insertOrder: " + ex.getMessage());
 		}
 	}
 	
+	//diminuisce la quantità del prodotto in vendita nel negozio
+	private boolean decreaseShopProduct(OrderProduct orderProduct, Order order) throws DAOException {
+		String query = "UPDATE shops_products SET quantity = quantity-? WHERE id_product=? AND id_shop=?;";
+		try (PreparedStatement ps = CON.prepareStatement(query)) {
+			ps.setInt(1, orderProduct.getQuantity());
+			ps.setInt(2, orderProduct.getIdProduct());
+			ps.setInt(3, order.getIdShop());
+
+			int result = -1; //quantità di righe modificate dalla query insert
+			try {
+				result = ps.executeUpdate();
+			} catch (SQLException ex) {
+				//System.err.println("Impossibile eseguire query: " + ex.getMessage());
+				throw new DAOException("Errore SQLException esecuzione query decreaseShopProduct: " + ex.getMessage());
+			}
+			boolean b = (result > 0); //se ha modificato almeno 1 riga, restituisce true
+			return b;
+		} catch (SQLException ex) {
+			throw new DAOException("Errore SQLExcpetion in decreaseShopProduct: " + ex.getMessage());
+		}
+	}
+
 	private boolean insertOrderProduct(OrderProduct orderProduct) throws DAOException {
 		//id order e datetime_purchase sono generati dal database
 		String query = "INSERT INTO orders_products(id_order, id_product, price, quantity) VALUES (?, ?, ?, ?)";
@@ -148,5 +184,4 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			throw new DAOException("Errore SQLExcpetion in insertOrderProduct: " + ex.getMessage());
 		}
 	}
-
 }
