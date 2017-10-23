@@ -24,7 +24,7 @@ public class RegistrationSellerServlet extends MyServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String nomeNeg = (String) request.getParameter("nomeNeg");
+		String nomeNeg = (String) request.getParameter("name");
 		String partitaIva = (String) request.getParameter("partita_iva");
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("user");	// L'utente deve essere loggato!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
