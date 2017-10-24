@@ -60,7 +60,7 @@ public class WebAppContextListener implements ServletContextListener {
         props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.setProperty("mail.smtp.auth", "true");
         props.setProperty("mail.smtp.starttls.enable", "true");
-        props.setProperty("mail.debug", "true"); //TODO - Rimuovere il debug
+        //props.setProperty("mail.debug", "true"); //TODO - Rimuovere il debug
         
         Session s = Session.getInstance(props, new Authenticator() {
 
