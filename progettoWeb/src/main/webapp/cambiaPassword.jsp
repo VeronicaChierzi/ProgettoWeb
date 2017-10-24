@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <jsp:include page="/navbarHead.jsp"/>
@@ -21,10 +22,10 @@
                 <jsp:include page = "/barraRicerca.jsp"/>
             </li>
             <li>
-                <h1>Inserisci qui la tua mail e ti invieremo un codice di reset</h1>
+                <h1>Inserisci la nuova password</h1>
             </li>
 
-            <form action="../ChangePassword" id="usrform" method="POST">
+            <form action="ChangePassword" id="usrform" method="POST">
                 <li>
                     <input type="password" name="password" value="password" class="form-control">
                     <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden="true">

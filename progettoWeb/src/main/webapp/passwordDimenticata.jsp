@@ -15,7 +15,7 @@
     <body class="sfondo">
         <ul id="paginazione">
             <li>
-        <jsp:include page="/navbar.jsp" />
+                <jsp:include page="/navbar.jsp" />
             </li>
             <li>
                 <jsp:include page = "/barraRicerca.jsp"/>
@@ -23,12 +23,14 @@
             <li>
                 <h1>Inserisci qui la tua mail e ti invieremo un codice di reset</h1>
             </li>
-            <li>
-                <input name="emailReset" type="text" class="form-control" placeholder="Email" />               
-            </li>
-            <li>
-                <button type="submit">invia mail</button>
-            </li>
+            <form action="ForgotPasswordServlet" method="post">
+
+                <label for="emailReset">Email</label>
+                <input type="text" id="emailReset" name="emailReset" class="form-control" placeholder="Email" value="" required>
+
+                <input type="submit" value="Prosegui"></input>
+                <br>
+            </form>
         </ul>
     </body>
 </html>

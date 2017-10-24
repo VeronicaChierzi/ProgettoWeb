@@ -48,10 +48,8 @@ public class HashUtil {
             crypt.reset();
             crypt.update(psw.getBytes("UTF-8"));
             sha1 = byteToHex(crypt.digest());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            System.out.println(e.getMessage());
         }
         return sha1;
     }

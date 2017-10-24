@@ -62,7 +62,7 @@ public class ForgotPasswordServlet extends MyServlet {
                         msg.setRecipients(Message.RecipientType.TO,
                                 InternetAddress.parse(email, false));
 
-                        msg.setSubject("Benvenuto su KSMR");
+                        msg.setSubject("Richiesta cambio passowrd - KSMR");
 
                         StringBuffer url = request.getRequestURL();
                         String uri = request.getRequestURI();
