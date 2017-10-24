@@ -1,7 +1,7 @@
 <%-- 
-    Document   : passwordDimenticata
-    Created on : Sep 29, 2017, 11:49:13 AM
-    Author     : Veronica Chierzi
+    Document   : cambiaPassword
+    Created on : Oct 24, 2017, 2:42:23 PM
+    Author     : Luca Degani
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,14 +23,23 @@
             <li>
                 <h1>Inserisci qui la tua mail e ti invieremo un codice di reset</h1>
             </li>
-            <form action="ForgotPasswordServlet" method="post">
 
-                <label for="emailReset">Email</label>
-                <input type="text" id="emailReset" name="emailReset" class="form-control" placeholder="Email" value="" required>
+            <form action="../ChangePassword" id="usrform" method="POST">
+                <li>
+                    <input type="password" name="password" value="password" class="form-control">
+                    <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden="true">
+                    <input type="text" name="email" value="<%=request.getParameter("email")%>" hidden="true">
+                </li>
+                <li>
+                    <button type="submit">Cambia password</button>
+                </li>
 
-                <input type="submit" value="Prosegui"></input>
-                <br>
+
             </form>
+
+
+
+
         </ul>
     </body>
 </html>

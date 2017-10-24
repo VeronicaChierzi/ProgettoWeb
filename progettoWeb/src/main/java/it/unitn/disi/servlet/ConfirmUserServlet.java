@@ -48,9 +48,12 @@ public class ConfirmUserServlet extends MyServlet {
             String hash = request.getParameter("id");
             String usn = request.getParameter("usn");
             try {
+                System.out.println("Dega");
                 if(userDao.confirmUser(hash, usn)) {
-                    redirect(response, "");
+                    redirect(response, "index.jsp");
                     //TODO - Mostrare un messaggio di avvenuta conferma della email + inviare un eventuale conferma per email
+                } else {
+                    redirect(response, "index.jsp");
                 }
             } catch (DAOException ex) {
                 Logger.getLogger(ConfirmUserServlet.class.getName()).log(Level.SEVERE, null, ex);

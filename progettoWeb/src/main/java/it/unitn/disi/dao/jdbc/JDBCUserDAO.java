@@ -201,8 +201,104 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
             }
             return b;
         } catch (SQLException ex) {
-            throw new DAOException("Errore query getByUsernameAndPassword", ex);
+            throw new DAOException("Errore query confirm User", ex);
         } finally {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean existsUser(String email) throws DAOException {
+        try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM users WHERE email ilike ?;")) {
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("errore SQLException in query existsUser", ex);
+        }
+        
+    }
+
+    @Override
+    public boolean changePassword(String email, String password, String userHash) throws DAOException {
+        try (PreparedStatement ps = CON.prepareStatement("UPDATE public.users SET password= ? WHERE email = ? AND user_hash = ?;")) {
+            ps.setString(1, password);
+            ps.setString(2, email);
+            ps.setString(3, userHash);
+            int ris = ps.executeUpdate();
+            if(ris == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("errore SQLException in query changePassword", ex);
+        }        
+        
+    }
+
+    @Override
+    public boolean setNewUserHash(int userID, String userHash) throws DAOException {
+        try (PreparedStatement ps = CON.prepareStatement("UPDATE public.users SET user_hash = ? WHERE id = ?;")) {
+            ps.setString(1, userHash);
+            ps.setInt(2, userID);
+            int ris = ps.executeUpdate();
+            if(ris == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("errore SQLException in query setNewUserHash", ex);
+        }
+    }
+
+    @Override
+    public User getByEmail(String email) throws DAOException {
+        if (email == null) {
+            throw new DAOException("Email è obbligatoro", new NullPointerException("email is null"));
+        }
+        try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+            ps.setString(1, email);
+            try (ResultSet rsUser = ps.executeQuery()) {
+                User user = null;
+                if (rsUser.next()) {
+                    user = new User(
+                            rsUser.getInt("id"),
+                            rsUser.getString("username"),
+                            rsUser.getString("email"),
+                            rsUser.getString("password"),
+                            rsUser.getString("first_name"),
+                            rsUser.getString("last_name"),
+                            rsUser.getString("user_hash"),
+                            rsUser.getBoolean("verificato")
+                    );
+
+                    //controlla se l'utente è anche un venditore
+                    user.setUserSeller(getUserSeller(user.getId()));
+                    //controlla se l'utente è anche un admin
+                    user.setUserAdmin(getUserAdmin(user.getId()));
+                }
+                if (rsUser.next()) {
+                    throw new DAOException("Errore: ci sono più utenti con la stessa email");
+                }
+                return user;
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("Errore query getByUsernameAndPassword", ex);
+        }
+    }
+
+    @Override
+    public boolean hasRightHash(String email, String userHash) throws DAOException {
+        User u = getByEmail(email);
+        if(u.getHash().equalsIgnoreCase(userHash)) {
+            return true;
+        } else {
             return false;
         }
     }

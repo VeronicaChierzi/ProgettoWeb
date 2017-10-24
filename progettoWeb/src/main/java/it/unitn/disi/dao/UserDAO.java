@@ -17,5 +17,15 @@ public interface UserDAO extends DAO<User, Integer> {
 	public UserSeller getUserSeller(int idUser) throws DAOException;
         
         public boolean confirmUser(String hash, String usn) throws DAOException;
+        
+        public boolean existsUser(String email) throws DAOException;
+        
+        public User getByEmail(String email) throws DAOException;
+        
+        public boolean changePassword(String email, String password, String userHash) throws DAOException;
+        
+        public boolean setNewUserHash(int userId, String userHash) throws DAOException;
+        
+        public boolean hasRightHash(String email, String userHash) throws DAOException;
 
 }
