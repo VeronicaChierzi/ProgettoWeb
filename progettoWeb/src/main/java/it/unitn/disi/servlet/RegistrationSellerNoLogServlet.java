@@ -11,11 +11,13 @@ import it.unitn.disi.entities.User;
 import it.unitn.disi.utils.HashUtil;
 import it.unitn.disi.utils.PasswordValidator;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -80,6 +82,28 @@ public class RegistrationSellerNoLogServlet extends MyServlet {
             
             if (b) { //utente inserito nel database
                 System.out.println("utente nel db");
+                
+                Session s = (Session) getServletContext().getAttribute("mailSession");
+                Message msg = new MimeMessage(s);
+                try {
+                    msg.setFrom(new InternetAddress(username));
+                    msg.setRecipients(Message.RecipientType.TO,
+                            InternetAddress.parse(email, false));
+
+                    msg.setSubject("Benvenuto su KSMR");
+
+                    StringBuffer url = request.getRequestURL();
+                    String uri = request.getRequestURI();
+                    String ctx = request.getContextPath();
+                    String base = url.substring(0, url.length() - uri.length() + ctx.length()) + "/";
+                    String link = base + "ConfirmUser" + "?id=" + user_hash + "&usn=" + username;
+                    msg.setText("Attiva il tuo account cliccando sul seguente link:\n\n" + link);
+                    msg.setSentDate(new Date());
+                    Transport.send(msg);
+                } catch (MessagingException me) {
+                    me.printStackTrace(System.err);
+                }
+                
                 User user = userDao.getByUsernameAndPassword(username, HashUtil.generatePasswordHash(password));
                 int idUser = user.getId();
                 boolean v = userDao.insertUserSeller(idUser, nomeNeg, partitaIva);
