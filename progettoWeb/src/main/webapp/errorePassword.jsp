@@ -20,7 +20,7 @@
                 <jsp:include page = "barraRicerca.jsp"/>
             </li>
             <li>
-        <h1>Password merda</h1>
+                <h1>Password merda</h1>
             </li>
         </ul>
     </body>

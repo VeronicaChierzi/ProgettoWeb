@@ -25,6 +25,7 @@
             <li>
                 Numero notifiche: 
             </li>
+            
         </ul>
     </body>
 </html>

@@ -8,8 +8,7 @@
 <html>
     <head>
         <jsp:include page="/navbarHead.jsp" />
-
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.15/fc-3.2.2/fh-3.1.2/r-2.1.1/datatables.min.css"/>
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.15/fc-3.2.2/fh-3.1.2/r-2.1.1/datatables.min.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Lista Prodotti</title>
     </head>
