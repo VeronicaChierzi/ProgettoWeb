@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
         <link href="http://code.jquery.com/ui/1.11.4/themes/redmond/jquery-ui.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+              
+
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <link rel="stylesheet" href="/progettoWeb/css/myStyleSheet.css">

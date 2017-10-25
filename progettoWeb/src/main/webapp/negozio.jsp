@@ -26,6 +26,15 @@
             <li>
                 <h1 id="negozio">Questa è la pagina del negozio <%=user.getUserSeller().getName()%>!</h1>
             </li>
+            <li>
+                immagine negozio o logo
+            </li>
+            <li>
+                caricare immagini negozio
+            </li>  
+            <li>
+                sezione per le modifiche
+            </li>
         </ul>
     </body>
 </html>
