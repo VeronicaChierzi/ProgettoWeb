@@ -17,9 +17,23 @@
             <li>
         <jsp:include page="../navbar.jsp" />
             </li>
-            <li>
+            <li style="margin-bottom:20px;">
                 <jsp:include page = "../barraRicerca.jsp"/>
             </li>
+            <li>
+                <ul id="profilo">
+                    <li>
+                        <% if (user.isAdmin()) {%>
+                        <img src="../img/user/userAdmin.png" width="100px" height="100px" />
+                        <%}else{%>
+                         <img src="../img/user/user.png" width="100px" height="100px"> 
+                         <%}%>
+                    </li>
+                </ul>
+                
+                
+                
+            </li>  
             <li>
                 
         <h1>Profilo utente</h1>

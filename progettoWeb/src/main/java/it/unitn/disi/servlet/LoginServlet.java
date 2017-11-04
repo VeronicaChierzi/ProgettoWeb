@@ -4,6 +4,7 @@ import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.utils.Model;
+import it.unitn.disi.utils.HashUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +29,8 @@ public class LoginServlet extends MyServlet {
         String password = request.getParameter("password");
         HttpSession session = request.getSession(true);
         try {
-            User user1 = userDao.getByUsernameAndPassword(usernameEmail, password);
-            User user2 = userDao.getByEmailAndPassword(usernameEmail, password);
+            User user1 = userDao.getByUsernameAndPassword(usernameEmail, HashUtil.generatePasswordHash(password));
+            User user2 = userDao.getByEmailAndPassword(usernameEmail, HashUtil.generatePasswordHash(password));
             if ((user1 != null) ) {
                 //utente loggato con username
                 session.setAttribute("user", user1);

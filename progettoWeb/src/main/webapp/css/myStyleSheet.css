@@ -223,6 +223,10 @@ h1 {
     margin-top: 5px;
     padding-bottom: 10px;
 }
+h1#negozio{
+    margin-top: 30px;
+    margin-left: 30px;
+}
 @media (min-width: 500px){
     h1 {
         font-family: Quicksand, sans-serif;
@@ -396,7 +400,8 @@ a:hover {
 }
 .search {
     width: auto;
-    position: relative
+    position: relative;
+    vertical-align: middle;
 }
 /*Resize the wrap to see the search bar change!*/
 
@@ -414,6 +419,8 @@ a:hover {
 }
 .bgBarraRicerca{
     background-color: #8f9296;
+    vertical-align: middle;
+    display: block;
 }
 
 ul#paginazione {
@@ -435,10 +442,75 @@ ul#barra{
     width: 100%;
     position: relative;
     text-align: center;
+    display: inline-table;
+    vertical-align: middle;
 }
 
-li#barra {
+/*bottone categorie*/
+li#barraL {
     display: inline-table;
+    float: left;
+    margin-left: 20px;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+.dropbtn {
+    background-color: #8f9296;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+/*nascosto di default*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F7F7F7;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #F2F2F2;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #808080;
+}
+li#barraC {
+    display: inline-table;
+    width: 50%;
+}
+.centroCentro{
+    vertical-align: middle;
+    position: relative;
+    margin-top: 5px;
+    vertical-align: middle;
+}
+li#barraR {
+    display: inline-table;
+    float: right;
+    margin-right: 20px;
+    vertical-align: middle;   
 }
 
 div#esternoBarra{
@@ -470,6 +542,21 @@ form .containerA {
     margin: 0 auto;
     margin-left: 20%;
     margin-right: 20%;
+}
+
+ul#profilo{
+    font-family: Quicksand, sans-serif;
+    font-size: 16px;
+    color: #F7F7F7;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    display: inline-table;
+    vertical-align: middle;
 }
 
 /*cose per prodotti*/
