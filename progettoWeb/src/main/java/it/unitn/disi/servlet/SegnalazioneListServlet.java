@@ -1,5 +1,6 @@
 package it.unitn.disi.servlet;
 
+import it.unitn.disi.utils.MyPaths;
 import it.unitn.disi.dao.SegnalazioneDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.Segnalazione;
@@ -23,16 +24,16 @@ public class SegnalazioneListServlet extends MyServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
 		try {
 			Segnalazione[] segnalazioni = segnalazioneDAO.getAllSegnalazioni();
 			if (segnalazioni != null) {
 				request.setAttribute("segnalazioni", segnalazioni);
-				forward(request, response, "/WEB-INF/jsp/admin/SegnalazioneList.jsp");
+				forward(request, response, MyPaths.Admin.segnalazioneList);
 			}
 		} catch (DAOException ex) {
 			System.err.println(ex.getMessage());
-			forward(request, response, "/WEB-INF/jsp/admin/SegnalazioneList.jsp");
+			forward(request, response, MyPaths.Admin.segnalazioneList);
+			//forward(request, response, "/WEB-INF/jsp/admin/SegnalazioneList.jsp");
 		}
 	}
 }

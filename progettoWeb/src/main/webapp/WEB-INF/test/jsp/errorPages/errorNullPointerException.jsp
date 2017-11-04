@@ -3,10 +3,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Errore Null Pointer Exception</title>
     </head>
     <body>
-		<jsp:include page="/WEB-INF/jsp/utils/navbar.jsp" />
-        <h1>Hello World!</h1>
+        <h1>Errore Null Pointer Exception</h1>
+		<jsp:include page="/WEB-INF/jsp/error_pages/printException.jsp" />
     </body>
 </html>

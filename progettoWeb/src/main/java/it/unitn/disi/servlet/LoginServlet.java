@@ -3,6 +3,7 @@ package it.unitn.disi.servlet;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
+import it.unitn.disi.utils.Model;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,8 +44,9 @@ public class LoginServlet extends MyServlet {
                 //query eseguita senza errori, ma che non ha dato nessun risultato
                 //utente non loggato. impostare messaggio di login fallito da visualizzare
                 session.setAttribute("loginFallito", "Login fallito: username o password errati");
+				Model.Messages.setLoginFailed(request);
                 redirect(response, "login.jsp");
-                System.out.println("errato");
+                System.err.println("errato");
             }
         } catch (DAOException ex) {
             //la query ha generato un errore

@@ -6,11 +6,11 @@ asd
 
 
 <% Segnalazione[] segnalazioni = (Segnalazione[]) request.getAttribute("segnalazioni");%>
-<%=segnalazioni%>
+<%--<%=segnalazioni%>--%>
 <br/>
 
 <% for (Segnalazione s : segnalazioni) {%>
-<%=s%>
+	<%=s%>
 <% }%>
 
 <br/>
@@ -18,5 +18,5 @@ qwe
 <br/>
 
 <jsp:include page="<%=MyPaths.Utils.navbar %>" />
-<jsp:include page="<%=MyPaths.All.home %>" />
+<%--<jsp:include page="<%=MyPaths.All.home %>" />--%>
 

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implements SegnalazioneDAO {
@@ -18,6 +19,76 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 
 	@Override
 	public Segnalazione[] getAllSegnalazioni() throws DAOException {
+		Segnalazione[] segnalazioni = getSimpleAllSegnalazioni();
+		for (Segnalazione s : segnalazioni) {
+			SegnalazioneRisposta sr = getSegnalazioneRisposta(s.getId());
+			s.setSegnalazioneRisposta(sr);
+		}
+		return segnalazioni;
+	}
+
+	private Segnalazione[] getSimpleAllSegnalazioni() throws DAOException {
+		String query = "SELECT * FROM segnalazioni ORDER BY datetime DESC";
+		Object[] parametriQuery = new Object[]{};
+		Class classe = Segnalazione.class;
+		String[] nomiColonne = new String[]{"id", "id_order", "title", "description", "datetime"};
+		Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class, Timestamp.class};
+		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return segnalazioni;
+	}
+
+	@Override
+	public Segnalazione[] getOpenSegnalazioni() throws DAOException {
+		Segnalazione[] segnalazioni = getSimpleOpenSegnalazioni();
+		for (Segnalazione s : segnalazioni) {
+			SegnalazioneRisposta sr = getSegnalazioneRisposta(s.getId());
+			s.setSegnalazioneRisposta(sr);
+		}
+		return segnalazioni;
+	}
+
+	private Segnalazione[] getSimpleOpenSegnalazioni() throws DAOException {
+		String query = "SELECT s.* FROM segnalazioni AS s INNER JOIN segnalazioni_risposte AS sr ON (s.id = sr.id_segnalazione) ORDER BY datetime DESC;";
+		Object[] parametriQuery = new Object[]{};
+		Class classe = Segnalazione.class;
+		String[] nomiColonne = new String[]{"id", "id_order", "title", "description", "datetime"};
+		Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class, Timestamp.class};
+
+		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return segnalazioni;
+	}
+
+	@Override
+	public Segnalazione getSegnalazione(int idSegnalazione) throws DAOException {
+		Segnalazione s = getSimpleSegnalazione(idSegnalazione);
+		s.setSegnalazioneRisposta(getSegnalazioneRisposta(s.getId()));
+		return s;
+	}
+
+	private Segnalazione getSimpleSegnalazione(int idSegnalazione) throws DAOException {
+		String query = "SELECT * FROM segnalazioni WHERE id=?";
+		Object[] parametriQuery = new Object[]{idSegnalazione};
+		Class classe = Segnalazione.class;
+		String[] nomiColonne = new String[]{"id", "id_order", "title", "description", "datetime"};
+		Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class, Timestamp.class};
+
+		Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return s;
+	}
+
+	private SegnalazioneRisposta getSegnalazioneRisposta(int idSegnalazione) throws DAOException {
+		String query = "SELECT * FROM segnalazioni_risposte WHERE id_segnalazione=?";
+		Object[] parametriQuery = new Object[]{idSegnalazione};
+		Class classe = SegnalazioneRisposta.class;
+		String[] nomiColonne = new String[]{"id_segnalazione", "id_user_admin", "message", "descrizione", "restituire_soldi", "valutazione_negativa_venditore"};
+		Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class, boolean.class, boolean.class};
+
+		SegnalazioneRisposta sr = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return sr;
+	}
+
+	// <editor-fold defaultstate="collapsed" desc="old">
+	public Segnalazione[] getAllSegnalazioniOld() throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM segnalazioni ORDER BY datetime DESC")) {
 			try (ResultSet rs = ps.executeQuery()) {
 				ArrayList<Segnalazione> segnalazioni_temp = new ArrayList<>();
@@ -42,8 +113,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		}
 	}
 
-	@Override
-	public Segnalazione[] getOpenSegnalazioni() throws DAOException {
+	public Segnalazione[] getOpenSegnalazioniOld() throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT s.* FROM segnalazioni AS s INNER JOIN segnalazioni_risposte AS sr ON (s.id = sr.id_segnalazione) ORDER BY datetime DESC;")) {
 			try (ResultSet rs = ps.executeQuery()) {
 				ArrayList<Segnalazione> segnalazioni_temp = new ArrayList<>();
@@ -68,8 +138,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		}
 	}
 
-	@Override
-	public Segnalazione getSegnalazione(int idSegnalazione) throws DAOException {
+	public Segnalazione getSegnalazioneOld(int idSegnalazione) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM segnalazioni WHERE id=?")) {
 			ps.setInt(1, idSegnalazione);
 			try (ResultSet rs = ps.executeQuery()) {
@@ -95,7 +164,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		}
 	}
 
-	private SegnalazioneRisposta getSegnalazioneRisposta(int idSegnalazione) throws DAOException {
+	private SegnalazioneRisposta getSegnalazioneRispostaOld(int idSegnalazione) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM segnalazioni_risposte WHERE id_segnalazione=?")) {
 			ps.setInt(1, idSegnalazione);
 			try (ResultSet rs = ps.executeQuery()) {
@@ -121,4 +190,6 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 			throw new DAOException("Errore SQLException preparedStatment getSegnalazioneRisposta: " + ex.getMessage(), ex);
 		}
 	}
+	// </editor-fold>
+
 }

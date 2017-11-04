@@ -1,3 +1,4 @@
+<%@page import="it.unitn.disi.utils.Model"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,11 +49,18 @@
                             </div>-->
                         </form>
                         <%
-            if (session.getAttribute("loginFallito") != null) {
-                out.print(session.getAttribute("loginFallito"));
-                session.removeAttribute("loginFallito");
-            }
-        %>
+							if (session.getAttribute("loginFallito") != null) {
+								out.print(session.getAttribute("loginFallito"));
+								session.removeAttribute("loginFallito");
+							}
+						%>
+						<br/>
+						<%
+							if(Model.Messages.consumeLoginFailed(request)){
+								out.print("Login non riuscito!!!");
+							}
+						%>
+						<br/>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ package it.unitn.disi.servlet;
 import it.unitn.disi.dao.CategoryContainerDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.categories.CategoryContainer;
+import it.unitn.disi.utils.Model;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,6 +26,26 @@ public class CategoryContainerServlet extends MyServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		ServletContext sc = request.getServletContext();
+		if (Model.Application.getCategoryContainer(request)!=null) {
+			try {
+				CategoryContainer categoryContainer = categoryContainerDAO.getCategoryContainer();
+				Model.Application.setCategoryContainer(request, categoryContainer);
+				Model.Messages.setCategoryContainerLoaded(request);
+			} catch (DAOException ex) {
+				System.err.println("Errore nel caricamento di categoryContainer: " + ex.getMessage());
+				Model.Messages.setCategoryContainerError(request);
+			}
+		} else {
+			System.err.println("categoryContainer gia caricate");
+			Model.Messages.setCategoryContainerAlreadyLoaded(request);
+		}
+	}
+	
+	/*
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		ServletContext sc = request.getServletContext();
 		if (sc.getAttribute("categoryContainer") == null) {
 			try {
 				CategoryContainer categoryContainer = categoryContainerDAO.getCategoryContainer();
@@ -39,6 +60,7 @@ public class CategoryContainerServlet extends MyServlet {
 			session.setAttribute("categoryContainerMessage", "categoryContainer gia caricato");
 		}
 	}
+	*/
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	/**
