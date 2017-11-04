@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <context-param>
-        <description>Database connection url</description>
-        <param-name>dburl</param-name>
-        <!--<param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>-->
-        <param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>
-    </context-param>
-    <context-param>
-        <description>Database usn</description>
-        <param-name>dbusername</param-name>
-        <param-value>pweb</param-value>
-    </context-param>
-    <context-param>
-        <description>Database psw</description>
-        <param-name>dbpassword</param-name>
-        <param-value>sette</param-value>
-    </context-param>
-    <context-param>
-        <description>Email username</description>
-        <param-name>usnemail</param-name>
-        <param-value>noreply.ksmr@gmail.com</param-value>
-    </context-param>
-    <context-param>
-        <description>Email psw</description>
-        <param-name>pswemail</param-name>
-        <param-value>bcycxkwctewgazfw</param-value>
-    </context-param>
-    <listener>
-        <description>ServletContextListener</description>
-        <listener-class>it.unitn.disi.listeners.WebAppContextListener</listener-class>
-    </listener>
-    <filter>
-        <filter-name>AuthenticationFilter</filter-name>
-        <filter-class>it.unitn.disi.filters.AuthenticationFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/user/*</url-pattern>
-    </filter-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>NotificationServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>InserisciCategorieServlet</servlet-name>
-        <servlet-class>it.unitn.disi.debug.InserisciCategorieServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>InserisciSottocategorieServlet</servlet-name>
-        <servlet-class>it.unitn.disi.debug.InserisciSottocategorieServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>InserisciProdottiServlet</servlet-name>
-        <servlet-class>it.unitn.disi.debug.InserisciProdottiServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ConfirmUserServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
-        <servlet-class>it.unitn.disi.debug.InserisciPuntiVenditaServlet</servlet-class>
-    </servlet>
+	<context-param>
+		<description>Database connection url</description>
+		<param-name>dburl</param-name>
+		<!--<param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>-->
+		<!--<param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>-->
+		<param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>
+	</context-param>
+	<context-param>
+		<description>Database usn</description>
+		<param-name>dbusername</param-name>
+		<!--<param-value>pweb</param-value>-->
+		<!--<param-value>postgres</param-value>-->
+		<param-value>pweb</param-value>
+	</context-param>
+	<context-param>
+		<description>Database psw</description>
+		<param-name>dbpassword</param-name>
+		<param-value>sette</param-value>
+	</context-param>
+	<context-param>
+		<description>Email username</description>
+		<param-name>usnemail</param-name>
+		<param-value>noreply.ksmr@gmail.com</param-value>
+	</context-param>
+	<context-param>
+		<description>Email psw</description>
+		<param-name>pswemail</param-name>
+		<param-value>bcycxkwctewgazfw</param-value>
+	</context-param>
+  
+	<listener>
+		<description>ServletContextListener</description>
+		<listener-class>it.unitn.disi.listeners.WebAppContextListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>AuthenticationFilter</filter-name>
+		<filter-class>it.unitn.disi.filters.AuthenticationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthenticationFilter</filter-name>
+		<url-pattern>/user/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>NotificationServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>InserisciCategorieServlet</servlet-name>
+		<servlet-class>it.unitn.disi.debug.InserisciCategorieServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>InserisciSottocategorieServlet</servlet-name>
+		<servlet-class>it.unitn.disi.debug.InserisciSottocategorieServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>InserisciProdottiServlet</servlet-name>
+		<servlet-class>it.unitn.disi.debug.InserisciProdottiServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ConfirmUserServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
+    <servlet-class>it.unitn.disi.debug.InserisciPuntiVenditaServlet</servlet-class>
+  </servlet>
+	<servlet>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.RegistrationServlet</servlet-class>
+	</servlet>
     <servlet>
         <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.GeneraVenditaPuntiVenditaServlet</servlet-class>
@@ -78,38 +87,35 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.ChangePasswordServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RegistrationServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.RegistrationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistrationServlet</servlet-name>
-        <url-pattern>/RegistrationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NotificationServlet</servlet-name>
-        <url-pattern>/NotificationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>InserisciCategorieServlet</servlet-name>
-        <url-pattern>/debug/InserisciCategorieServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>InserisciSottocategorieServlet</servlet-name>
-        <url-pattern>/debug/InserisciSottocategorieServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>InserisciProdottiServlet</servlet-name>
-        <url-pattern>/debug/InserisciProdottiServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ConfirmUserServlet</servlet-name>
-        <url-pattern>/ConfirmUser</url-pattern>
-    </servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<url-pattern>/RegistrationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>NotificationServlet</servlet-name>
+		<url-pattern>/NotificationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>InserisciCategorieServlet</servlet-name>
+		<url-pattern>/debug/InserisciCategorieServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>InserisciSottocategorieServlet</servlet-name>
+		<url-pattern>/debug/InserisciSottocategorieServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>InserisciProdottiServlet</servlet-name>
+		<url-pattern>/debug/InserisciProdottiServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ConfirmUserServlet</servlet-name>
+		<url-pattern>/ConfirmUser</url-pattern>
+	</servlet-mapping>
     <servlet-mapping>
         <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
         <url-pattern>/debug/InserisciPuntiVenditaServlet</url-pattern>
@@ -126,38 +132,42 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
+
+
+	<session-config>
+		<session-timeout>
 			30
 		</session-timeout>
-    </session-config>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/WEB-INF/jsp/error_pages/error404.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>405</error-code>
-        <location>/WEB-INF/jsp/error_pages/error405.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/WEB-INF/jsp/error_pages/error500.jsp</location>
-    </error-page>
-    <error-page>
-        <exception-type>java.lang.NullPointerException</exception-type>
-        <location>/WEB-INF/jsp/error_pages/errorNullPointerException.jsp</location>
-    </error-page>
-    <error-page>
-        <exception-type>java.io.IOException</exception-type>
-        <location>/WEB-INF/jsp/error_pages/errorIOException.jsp</location>
-    </error-page>
-    <!--
+	</session-config>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error_pages/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/jsp/error_pages/error405.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error_pages/error500.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/WEB-INF/jsp/error_pages/errorNullPointerException.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.io.IOException</exception-type >
+		<location>/WEB-INF/jsp/error_pages/errorIOException.jsp</location>
+	</error-page>
+
+	<!--
 	<error-page>
 		<exception-type>javax.servlet.ServletException</exception-type >
 		<location>/WEB-INF/jsp/error_pages/errorServletException.jsp</location>
 	</error-page>
 	-->
-    <!--
+	<!--
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/WEB-INF/jsp/error_pages/errorUnknown.jsp</location>
