@@ -1,3 +1,4 @@
+<%@page import="it.unitn.disi.utils.Model"%>
 <%@page import="it.unitn.disi.entities.categories.CategoryContainer"%>
 <%@page import="it.unitn.disi.entities.categories.Category"%>
 <%@page import="it.unitn.disi.entities.categories.Subcategory" %>
@@ -27,7 +28,8 @@
                 <%--
                 <%= session.getAttribute("categoryContainerMessage")%>
 		<%session.removeAttribute("categoryContainerMessage"); %>--%>
-		<% CategoryContainer categoryContainer = (CategoryContainer) application.getAttribute("categoryContainer"); %>
+		<%-- CategoryContainer categoryContainer = (CategoryContainer) application.getAttribute("categoryContainer"); --%>
+		<% CategoryContainer categoryContainer = Model.Application.getCategoryContainer(request); %>
                 <%--
 		<%=categoryContainer %>
 		<%=categoryContainer.getCategory(1) %>
