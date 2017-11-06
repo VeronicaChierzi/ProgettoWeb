@@ -5,18 +5,19 @@
 
 <div>
 	<ul>
-		<li><a href="<%=MyPaths.All.home%>">Home</a></li>
-		<li><a href="<%=MyPaths.User.cart%>">Carrello</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.All.home%>">Home</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.User.cart%>">Carrello</a></li>
 			<% if (user == null) { %>
-		<li><a href="<%=MyPaths.Anonymous.login%>">Login</a></li>
-		<li><a href="<%=MyPaths.Anonymous.register %>">Register</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.Anonymous.login%>">Login</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.Anonymous.register %>">Register</a></li>
 			<% } else {%>
-		<li><a href="<%=MyPaths.User.profile%>"><%//= user.getUsername()%></a></li>
-		<li><a href="<%=MyPaths.User.orderList%>">ordini</a></li>
-		<li><a href="<%=MyPaths.User.logout%>">Logout</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.User.profile%>"><%//= user.getUsername()%></a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.User.orderList%>">ordini</a></li>
+		<li><a href="<%=MyPaths.Public.Servlet.User.logout%>">Logout</a></li>
 			<% } %>
-		<li><a href="<%=MyPaths.Debug.locations%>">location(test)</a></li>
-		<li><a href="<%=MyPaths.Debug.categoryContainer%>">categoryContainer(test)</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.Debug.navbarComplete%>">navbarComplete(test)</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.Debug.locationContainer%>">location(test)</a></li>
+		<li><a href="<%=MyPaths.Public.Jsp.Debug.categoryContainer%>">categoryContainer(test)</a></li>
 		<li><a href="/progettoWeb/ProductServlet?id=1">product1(test)</a></li>
 		<li><a href="/progettoWeb/product.jsp?id=2">product2(test)</a></li>
 	</ul>

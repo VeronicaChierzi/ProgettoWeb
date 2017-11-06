@@ -2,9 +2,8 @@ package it.unitn.disi.servlet;
 
 import it.unitn.disi.dao.LocationDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
-import it.unitn.disi.entities.locations.Location;
+import it.unitn.disi.entities.locations.LocationContainer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +27,7 @@ public class LocationServlet extends MyServlet {
 		ServletContext sc = request.getServletContext();
 		if (sc.getAttribute("location") == null) {
 			try {
-				Location location = locationDao.getLocation();
+				LocationContainer location = locationDao.getLocation();
 				sc.setAttribute("location", location);
 				session.setAttribute("locationMessage", "Location è stato caricato dal database. Dovrebbe comparire solo la prima volta!!!");
 			} catch (DAOException ex) {

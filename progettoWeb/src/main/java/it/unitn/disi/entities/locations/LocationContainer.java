@@ -2,14 +2,14 @@ package it.unitn.disi.entities.locations;
 
 import java.util.HashMap;
 
-public class Location {
+public class LocationContainer {
 
 	private final Regione[] regioni;
 	private final HashMap<Integer, Regione> regioniHash;
 	private final HashMap<Integer, Provincia> provinceHash;
 	private final HashMap<Integer, Comune> comuniHash;
 
-	public Location(Regione[] regioni, HashMap<Integer, Regione> regioniHash, HashMap<Integer, Provincia> provinceHash, HashMap<Integer, Comune> comuniHash) {
+	public LocationContainer(Regione[] regioni, HashMap<Integer, Regione> regioniHash, HashMap<Integer, Provincia> provinceHash, HashMap<Integer, Comune> comuniHash) {
 		this.regioni = regioni;
 		this.regioniHash = regioniHash;
 		this.provinceHash = provinceHash;

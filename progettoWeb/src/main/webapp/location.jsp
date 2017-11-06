@@ -1,5 +1,5 @@
 <%@page import="it.unitn.disi.entities.locations.Provincia"%>
-<%@page import="it.unitn.disi.entities.locations.Location" %>
+<%@page import="it.unitn.disi.entities.locations.LocationContainer" %>
 <%@page import="it.unitn.disi.entities.locations.Regione"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@
 		<% session.removeAttribute("locationMessage"); %>
 		<br/><br/>
 		
-		<% Location location = (Location) application.getAttribute("location"); %>
+		<% LocationContainer location = (LocationContainer) application.getAttribute("location"); %>
 		<%=location %><br/>
 		<%=location.getRegione(1) %><br/>
 		<%=location.getRegione(1).getName() %><br/>
