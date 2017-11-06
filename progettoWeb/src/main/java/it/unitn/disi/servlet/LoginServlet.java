@@ -45,7 +45,7 @@ public class LoginServlet extends MyServlet {
                 //query eseguita senza errori, ma che non ha dato nessun risultato
                 //utente non loggato. impostare messaggio di login fallito da visualizzare
                 session.setAttribute("loginFallito", "Login fallito: username o password errati");
-				Model.Messages.setLoginFailed(request);
+				Model.Messages.setAttribute(request, Model.Messages.loginFailed);
                 redirect(response, "login.jsp");
                 System.err.println("errato");
             }
@@ -56,5 +56,4 @@ public class LoginServlet extends MyServlet {
             redirect(response, "login.jsp");
         }
     }
-
 }
