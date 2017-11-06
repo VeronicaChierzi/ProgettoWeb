@@ -28,11 +28,11 @@ public class SegnalazioneListServlet extends MyServlet {
 			Segnalazione[] segnalazioni = segnalazioneDAO.getAllSegnalazioni();
 			if (segnalazioni != null) {
 				request.setAttribute("segnalazioni", segnalazioni);
-				forward(request, response, MyPaths.Admin.segnalazioneList);
+				//forward(request, response, MyPaths.Admin.segnalazioneList);
 			}
 		} catch (DAOException ex) {
 			System.err.println(ex.getMessage());
-			forward(request, response, MyPaths.Admin.segnalazioneList);
+			//forward(request, response, MyPaths.Admin.segnalazioneList);
 			//forward(request, response, "/WEB-INF/jsp/admin/SegnalazioneList.jsp");
 		}
 	}

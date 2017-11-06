@@ -3,15 +3,15 @@
 	<context-param>
 		<description>Database connection url</description>
 		<param-name>dburl</param-name>
-		<!--<param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>-->
-		<!--<param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>-->
+		<!-- online <param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>-->
+		<!-- locale <param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>-->
 		<param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>
 	</context-param>
 	<context-param>
 		<description>Database usn</description>
 		<param-name>dbusername</param-name>
-		<!--<param-value>pweb</param-value>-->
-		<!--<param-value>postgres</param-value>-->
+		<!-- online <param-value>pweb</param-value>-->
+		<!-- locale <param-value>postgres</param-value>-->
 		<param-value>pweb</param-value>
 	</context-param>
 	<context-param>
@@ -29,11 +29,275 @@
 		<param-name>pswemail</param-name>
 		<param-value>bcycxkwctewgazfw</param-value>
 	</context-param>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
   
 	<listener>
 		<description>ServletContextListener</description>
 		<listener-class>it.unitn.disi.listeners.WebAppContextListener</listener-class>
 	</listener>
+
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<servlet>
+		<servlet-name>SegnalazioneAdmin</servlet-name>
+		<jsp-file>/WEB-INF/public/admin/segnalazione.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SegnalazioneListAdmin</servlet-name>
+		<jsp-file>/WEB-INF/public/admin/segnalazioneList.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Home</servlet-name>
+		<jsp-file>/WEB-INF/public/all/home.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Product</servlet-name>
+		<jsp-file>/WEB-INF/public/all/product.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>ProductList</servlet-name>
+		<jsp-file>/WEB-INF/public/all/productList.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Shop</servlet-name>
+		<jsp-file>/WEB-INF/public/all/shop.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>ConfirmUser</servlet-name>
+		<jsp-file>/WEB-INF/public/anonymous/confirmUser.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>ForgottenPassword</servlet-name>
+		<jsp-file>/WEB-INF/public/anonymous/ForgottenPassword.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<jsp-file>/WEB-INF/public/anonymous/login.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<jsp-file>/WEB-INF/public/anonymous/register.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>MyShop</servlet-name>
+		<jsp-file>/WEB-INF/public/seller/myShop.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SegnalazioneSeller</servlet-name>
+		<jsp-file>/WEB-INF/public/seller/segnalazione.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SegnalazioneListSeller</servlet-name>
+		<jsp-file>/WEB-INF/public/seller/segnalazioneList.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Seller</servlet-name>
+		<jsp-file>/WEB-INF/public/seller/seller.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SellProduct</servlet-name>
+		<jsp-file>/WEB-INF/public/seller/sellProduct.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Cart</servlet-name>
+		<jsp-file>/WEB-INF/public/user/cart.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>ChangePassword</servlet-name>
+		<jsp-file>/WEB-INF/public/user/changePassword.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Order</servlet-name>
+		<jsp-file>/WEB-INF/public/user/order.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderList</servlet-name>
+		<jsp-file>/WEB-INF/public/user/orderList.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>Profile</servlet-name>
+		<jsp-file>/WEB-INF/public/user/profile.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SegnalazioneUser</servlet-name>
+		<jsp-file>/WEB-INF/public/user/segnalazioneUser.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SegnalazioneListUser</servlet-name>
+		<jsp-file>/WEB-INF/public/user/segnalazioneListUser.jsp</jsp-file>
+	</servlet>
+	
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<servlet-mapping>
+		<servlet-name>SegnalazioneAdmin</servlet-name>
+		<url-pattern>/prova/SegnalazioneAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SegnalazioneListAdmin</servlet-name>
+		<url-pattern>/prova/SegnalazioneListAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Home</servlet-name>
+		<url-pattern>/prova/</url-pattern>
+		<url-pattern>/prova/Home</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Product</servlet-name>
+		<url-pattern>/prova/Product</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProductList</servlet-name>
+		<url-pattern>/prova/ProductList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Shop</servlet-name>
+		<url-pattern>/prova/Shop</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ConfirmUser</servlet-name>
+		<url-pattern>/prova/ConfirmUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ForgottenPassword</servlet-name>
+		<url-pattern>/prova/ForgottenPassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/prova/Login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/prova/Register</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MyShop</servlet-name>
+		<url-pattern>/prova/MyShop</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SegnalazioneSeller</servlet-name>
+		<url-pattern>/prova/SegnalazioneSeller</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SegnalazioneListSeller</servlet-name>
+		<url-pattern>/prova/SegnalazioneListSeller</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SellProduct</servlet-name>
+		<url-pattern>/prova/SellProduct</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Seller</servlet-name>
+		<url-pattern>/prova/Seller</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Cart</servlet-name>
+		<url-pattern>/prova/Cart</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangePassword</servlet-name>
+		<url-pattern>/prova/ChangePassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Order</servlet-name>
+		<url-pattern>/prova/Order</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderList</servlet-name>
+		<url-pattern>/prova/OrderList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Profile</servlet-name>
+		<url-pattern>/prova/Profile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SegnalazioneListUser</servlet-name>
+		<url-pattern>/prova/SegnalazioneListUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SegnalazioneUser</servlet-name>
+		<url-pattern>/prova/SegnalazionetUser</url-pattern>
+	</servlet-mapping>
+
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC DEBUG JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!-- da rimuovere prima della consegna -->
+	<servlet>
+		<servlet-name>CategoryContainer</servlet-name>
+		<jsp-file>/WEB-INF/public/debug/categoryContainer.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>LocationContainer</servlet-name>
+		<jsp-file>/WEB-INF/public/debug/locationContainer.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>NavbarComplete</servlet-name>
+		<jsp-file>/WEB-INF/public/debug/navbarComplete.jsp</jsp-file>
+	</servlet>
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC DEBUG JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!-- da rimuovere prima della consegna -->
+	<servlet-mapping>
+		<servlet-name>CategoryContainer</servlet-name>
+		<url-pattern>/prova/CategoryContainer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LocationContainer</servlet-name>
+		<url-pattern>/prova/LocationContainer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>NavbarComplete</servlet-name>
+		<url-pattern>/prova/NavbarComplete</url-pattern>
+	</servlet-mapping>
+
+	
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+	<!--
+	<servlet>
+		<servlet-name>LoginServleta</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.LoginServlet</servlet-class>
+	</servlet>
+	-->
+	
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+	<!--
+	<servlet-mapping>
+		<servlet-name>LoginServleta</servlet-name>
+		<url-pattern>/LoginServleta</url-pattern>
+	</servlet-mapping>
+	-->
+	
+	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+	<servlet>
+		<servlet-name>GetProductServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.privatee.GetProductServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetProductListServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.privatee.GetProductListServlet</servlet-class>
+	</servlet>
+	
+	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+	<servlet-mapping>
+		<servlet-name>GetProductServlet</servlet-name>
+		<url-pattern>/WEB-INF/servlet/GetProductServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetProductListServlet</servlet-name>
+		<url-pattern>/WEB-INF/servlet/GetProductListServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- |||||||||||||||||||||||||||||||||| PRIVATE STARTUP SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+	<servlet>
+		<servlet-name>LoadCategoryContainerServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.startup.LoadCategoryContainerServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>LoadLocationContainerServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.startup.LoadLocationContainerServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- |||||||||||||||||||||||||||||||||| FILTERS ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	<filter>
 		<filter-name>AuthenticationFilter</filter-name>
 		<filter-class>it.unitn.disi.filters.AuthenticationFilter</filter-class>
@@ -42,7 +306,42 @@
 		<filter-name>AuthenticationFilter</filter-name>
 		<url-pattern>/user/*</url-pattern>
 	</filter-mapping>
-	
+
+	<!-- |||||||||||||||||||||||||||||||||| ERROR PAGES |!!!!!!!!!!!|||||||||||||||||||||||||||||||||||||||||||||||||| -->	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/error_pages/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/jsp/error_pages/error405.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/error_pages/error500.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/WEB-INF/jsp/error_pages/errorNullPointerException.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.io.IOException</exception-type >
+		<location>/WEB-INF/jsp/error_pages/errorIOException.jsp</location>
+	</error-page>
+	<!--
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type >
+		<location>/WEB-INF/jsp/error_pages/errorServletException.jsp</location>
+	</error-page>
+	-->
+	<!--
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/WEB-INF/jsp/error_pages/errorUnknown.jsp</location>
+	</error-page>
+	-->
+
+	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>it.unitn.disi.servlet.LoginServlet</servlet-class>
@@ -67,27 +366,28 @@
 		<servlet-name>ConfirmUserServlet</servlet-name>
 		<servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
 	</servlet>
-  <servlet>
-    <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
-    <servlet-class>it.unitn.disi.debug.InserisciPuntiVenditaServlet</servlet-class>
-  </servlet>
+	<servlet>
+		<servlet-name>InserisciPuntiVenditaServlet</servlet-name>
+		<servlet-class>it.unitn.disi.debug.InserisciPuntiVenditaServlet</servlet-class>
+	</servlet>
 	<servlet>
 		<servlet-name>RegistrationServlet</servlet-name>
 		<servlet-class>it.unitn.disi.servlet.RegistrationServlet</servlet-class>
 	</servlet>
-    <servlet>
-        <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
-        <servlet-class>it.unitn.disi.debug.GeneraVenditaPuntiVenditaServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ForgotPasswordServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ChangePasswordServlet</servlet-class>
-    </servlet>
+	<servlet>
+		<servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
+		<servlet-class>it.unitn.disi.debug.GeneraVenditaPuntiVenditaServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ForgotPasswordServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.ForgotPasswordServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ChangePasswordServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.ChangePasswordServlet</servlet-class>
+	</servlet>
 
+	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/LoginServlet</url-pattern>
@@ -116,61 +416,20 @@
 		<servlet-name>ConfirmUserServlet</servlet-name>
 		<url-pattern>/ConfirmUser</url-pattern>
 	</servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
-        <url-pattern>/debug/InserisciPuntiVenditaServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
-        <url-pattern>/debug/GeneraVenditaPuntiVenditaServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <url-pattern>/ForgotPasswordServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <url-pattern>/ChangePassword</url-pattern>
-    </servlet-mapping>
-
-
-	<session-config>
-		<session-timeout>
-			30
-		</session-timeout>
-	</session-config>
-	
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/jsp/error_pages/error404.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>405</error-code>
-		<location>/WEB-INF/jsp/error_pages/error405.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/WEB-INF/jsp/error_pages/error500.jsp</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.lang.NullPointerException</exception-type>
-		<location>/WEB-INF/jsp/error_pages/errorNullPointerException.jsp</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.io.IOException</exception-type >
-		<location>/WEB-INF/jsp/error_pages/errorIOException.jsp</location>
-	</error-page>
-
-	<!--
-	<error-page>
-		<exception-type>javax.servlet.ServletException</exception-type >
-		<location>/WEB-INF/jsp/error_pages/errorServletException.jsp</location>
-	</error-page>
-	-->
-	<!--
-	<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/WEB-INF/jsp/error_pages/errorUnknown.jsp</location>
-	</error-page>
-	-->
+	<servlet-mapping>
+		<servlet-name>InserisciPuntiVenditaServlet</servlet-name>
+		<url-pattern>/debug/InserisciPuntiVenditaServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
+		<url-pattern>/debug/GeneraVenditaPuntiVenditaServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ForgotPasswordServlet</servlet-name>
+		<url-pattern>/ForgotPasswordServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangePasswordServlet</servlet-name>
+		<url-pattern>/ChangePassword</url-pattern>
+	</servlet-mapping>
 </web-app>

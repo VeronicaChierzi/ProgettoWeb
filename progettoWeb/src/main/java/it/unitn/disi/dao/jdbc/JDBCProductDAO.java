@@ -110,11 +110,11 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 					);
 					product.setShopProduct(getMinShopProduct(product.getId()));
 				}
-				System.out.println(product);
-				System.out.println(product.getShopProduct());
-				if (product.getShopProduct() != null) {
-					System.out.println(product.getShopProduct().getPrice());
-				}
+				//System.out.println(product);
+				//System.out.println(product.getShopProduct());
+				//if (product!=null && product.getShopProduct() != null) {
+					//System.out.println(product.getShopProduct().getPrice());
+				//}
 				if (rs.next()) {
 					throw new DAOException("Errore: ci sono più prodotti con lo stesso id");
 				}

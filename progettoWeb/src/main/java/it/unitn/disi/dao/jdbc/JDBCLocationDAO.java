@@ -3,7 +3,7 @@ package it.unitn.disi.dao.jdbc;
 import it.unitn.disi.dao.LocationDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.locations.Comune;
-import it.unitn.disi.entities.locations.Location;
+import it.unitn.disi.entities.locations.LocationContainer;
 import it.unitn.disi.entities.locations.Provincia;
 import it.unitn.disi.entities.locations.Regione;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class JDBCLocationDAO extends JDBCDAO<Location, Integer> implements LocationDAO {
+public class JDBCLocationDAO extends JDBCDAO<LocationContainer, Integer> implements LocationDAO {
 
 	private static final int ESTIMATED_SIZE_REGIONI = 20;
 	private static final int ESTIMATED_SIZE_PROVINCE = 110;
@@ -27,7 +27,7 @@ public class JDBCLocationDAO extends JDBCDAO<Location, Integer> implements Locat
 	}
 
 	@Override
-	public Location getLocation() throws DAOException {
+	public LocationContainer getLocation() throws DAOException {
 		Regione[] regioni;
 		HashMap<Integer, Regione> regioniHash = new HashMap<>(HASHMAP_INITIAL_CAPACITY_REGIONI);
 		HashMap<Integer, Provincia> provinceHash = new HashMap<>(HASHMAP_INITIAL_CAPACITY_PROVINCE);
@@ -50,7 +50,7 @@ public class JDBCLocationDAO extends JDBCDAO<Location, Integer> implements Locat
 				}
 			}
 		}
-		Location l = new Location(regioni, regioniHash, provinceHash, comuniHash);
+		LocationContainer l = new LocationContainer(regioni, regioniHash, provinceHash, comuniHash);
 		return l;
 	}
 

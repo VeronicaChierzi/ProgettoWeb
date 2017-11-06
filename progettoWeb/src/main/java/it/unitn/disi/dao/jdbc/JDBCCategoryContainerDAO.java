@@ -6,7 +6,7 @@ import it.unitn.disi.entities.categories.Category;
 import it.unitn.disi.entities.categories.CategoryContainer;
 import it.unitn.disi.entities.categories.Subcategory;
 import it.unitn.disi.entities.locations.Comune;
-import it.unitn.disi.entities.locations.Location;
+import it.unitn.disi.entities.locations.LocationContainer;
 import it.unitn.disi.entities.locations.Provincia;
 import it.unitn.disi.entities.locations.Regione;
 import java.sql.Connection;
