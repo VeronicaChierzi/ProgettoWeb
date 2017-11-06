@@ -56,7 +56,7 @@
 						%>
 						<br/>
 						<%
-							if(Model.Messages.consumeLoginFailed(request)){
+							if(Model.Messages.consumeAttribute(request, Model.Messages.loginFailed)){
 								out.print("Login non riuscito!!!");
 							}
 						%>
