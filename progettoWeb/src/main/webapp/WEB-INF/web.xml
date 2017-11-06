@@ -3,12 +3,12 @@
     <context-param>
         <description>Database connection url</description>
         <param-name>dburl</param-name>
-        <param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>
+        <param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>
     </context-param>
     <context-param>
         <description>Database usn</description>
         <param-name>dbusername</param-name>
-        <param-value>postgres</param-value>
+        <param-value>pweb</param-value>
     </context-param>
     <context-param>
         <description>Database psw</description>
