@@ -44,7 +44,7 @@
                                     </li>
                                     <li id="products" class="descrizione" >                                    
                                         <h3><%=p.getName()%></h3>
-                                        <span class="meta">Product ID: 543J423 </span><br>
+                                        <span class="meta">Product ID: <%=p.getId()%></span><br>
                                         <span class="meta"> <%=p.getDescription()%></span>
                                         <span class="price"> <%//p.getShopProduct().getPrice()%></span>
                                     </li>
