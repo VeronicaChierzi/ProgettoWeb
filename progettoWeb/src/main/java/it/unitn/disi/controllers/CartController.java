@@ -1,6 +1,6 @@
 package it.unitn.disi.controllers;
 
-import it.unitn.disi.dao.ProductDAO;
+import it.unitn.disi.dao.ShopProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.ShopProduct;
 import it.unitn.disi.entities.User;
@@ -64,7 +64,7 @@ public class CartController {
 		return op;
 	}
 
-	public static boolean checkCart(HttpSession session, User user, ProductDAO productDAO) throws DAOException {
+	public static boolean checkCart(HttpSession session, User user, ShopProductDAO shopProductDAO) throws DAOException {
 		Cart cart = getOrCreateCart(session);
 
 		//controlla che l'id del carrello sia ugule all'id dell'utente
@@ -112,7 +112,7 @@ public class CartController {
 				}
 
 				//ricava dal datatbase i dati (prezzo, quantita) aggiornati rispetto al prodotto venduto dal negozio
-				ShopProduct sp = productDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
+				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
 
 				//controlla che la quantità sia uguale a quella attualmente nel database
 				if (op.getQuantity() > sp.getQuantity()) {
@@ -126,7 +126,7 @@ public class CartController {
 					return false;
 				}
 				
-				if(aggiornaOrderProduct(op, o, productDAO)==false){
+				if(aggiornaOrderProduct(op, o, shopProductDAO)==false){
 					System.err.println("Il prezzo o la quantità del prodotto " + op.getIdProduct() + " sono cambiati");
 					return false;
 				}
@@ -139,10 +139,10 @@ public class CartController {
 	//i dati potrebbe essere diversi perchè il venditore potrebbe aver già venduto alcuni oggetti oppure potrebbe aver cambiato prezzo
 	//restituisce true se i dati non sono cambiati
 	//restituisce false se i dati sono cambiati
-	private static boolean aggiornaOrderProduct(OrderProduct op, Order o, ProductDAO productDAO) throws DAOException {
+	private static boolean aggiornaOrderProduct(OrderProduct op, Order o, ShopProductDAO shopProductDAO) throws DAOException {
 		boolean b = true;
 		//ricava dal datatbase i dati (prezzo, quantita) aggiornati rispetto al prodotto venduto dal negozio
-		ShopProduct sp = productDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
+		ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
 
 		//controlla che la quantità sia uguale a quella attualmente nel database
 		if (op.getQuantity() > sp.getQuantity()) {

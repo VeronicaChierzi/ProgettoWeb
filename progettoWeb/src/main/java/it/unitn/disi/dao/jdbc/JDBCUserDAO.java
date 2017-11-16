@@ -91,6 +91,40 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
     }
 
     @Override
+    public User getByUsernameEmailAndPassword(String usernameEmail, String password) throws DAOException {
+		if ((usernameEmail == null) || (password == null)) {
+            throw new DAOException("Username/email e password sono campi obbligatori", new NullPointerException("username/email or password are null"));
+        }
+		String query = "SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?";
+		Object[] parametriQuery = new Object[]{usernameEmail, usernameEmail, password};
+		Class classe = User.class;
+		String[] nomiColonne = new String[]{"id", "username", "email", "password", "first_name", "last_name", "user_hash", "verificato"};
+		Class[] constructorParameterTypes = new Class[]{int.class, String.class, String.class, String.class, String.class, String.class, String.class, boolean.class};
+		User user = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		
+		if(user!=null){
+			//controlla se l'utente è anche un venditore
+			user.setUserSeller(getUserSeller(user.getId()));
+			//controlla se l'utente è anche un admin
+			user.setUserAdmin(getUserAdmin(user.getId()));
+		}
+
+		return user;
+	}
+	
+    @Override
+    public UserSeller getUserSeller(int id) throws DAOException {
+		String query = "SELECT * FROM users_sellers WHERE id = ?";
+		Object[] parametriQuery = new Object[]{id};
+		Class classe = UserSeller.class;
+		String[] nomiColonne = new String[]{"id", "name", "partita_iva"};
+		Class[] constructorParameterTypes = new Class[]{int.class, String.class, String.class};
+		UserSeller userSeller = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return userSeller;
+	}
+	
+	/*
+    @Override
     public UserSeller getUserSeller(int id) throws DAOException {
         try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM users_sellers WHERE id = ?")) {
             ps.setInt(1, id);
@@ -111,7 +145,18 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
             throw new DAOException("errore SQLException in query getUserAdmin", ex);
         }
     }
+	*/
 
+	private UserAdmin getUserAdmin(int id) throws DAOException {
+		String query = "SELECT * FROM users_admins WHERE id = ?";
+		Object[] parametriQuery = new Object[]{id};
+		Class classe = UserAdmin.class;
+		String[] nomiColonne = new String[]{"id"};
+		Class[] constructorParameterTypes = new Class[]{int.class};
+		UserAdmin userAdmin = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return userAdmin;
+	}
+	/*
     private UserAdmin getUserAdmin(int id) throws DAOException {
         try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM users_admins WHERE id = ?")) {
             ps.setInt(1, id);
@@ -130,6 +175,7 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
             throw new DAOException("errore SQLException in query getUserAdmin", ex);
         }
     }
+	*/
 
     @Override
     public boolean insertUser(String username, String email, String password, String firstName, String lastName, String userHash) throws DAOException {
@@ -260,7 +306,7 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
     @Override
     public User getByEmail(String email) throws DAOException {
         if (email == null) {
-            throw new DAOException("Email è obbligatoro", new NullPointerException("email is null"));
+            throw new DAOException("Email è obbligatorio", new NullPointerException("email is null"));
         }
         try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM users WHERE email = ?")) {
             ps.setString(1, email);

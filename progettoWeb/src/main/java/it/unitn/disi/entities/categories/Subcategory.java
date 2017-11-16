@@ -7,15 +7,11 @@ public class Subcategory {
 	private int idCategory;
 	
 	private Category category;
-	
-	public Subcategory() {
-	}
 
-	public Subcategory(int id, String name, int idCategory, Category category) {
+	public Subcategory(int id, String name, int idCategory) {
 		this.id = id;
 		this.name = name;
 		this.idCategory = idCategory;
-		this.category = category;
 	}
 	
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">

@@ -55,6 +55,40 @@ public class JDBCLocationDAO extends JDBCDAO<LocationContainer, Integer> impleme
 	}
 
 	private Regione[] getRegioni() throws DAOException {
+		String query = "SELECT * FROM regioni ORDER BY name ASC";
+		Object[] parametriQuery = new Object[]{};
+		Class classe = Regione.class;
+		String[] nomiColonne = new String[]{"id", "name"};
+		Class[] constructorParameterTypes = new Class[]{int.class, String.class};
+		Regione[] regioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return regioni;
+	}
+	private Provincia[] getProvinceByIdRegione(int idRegione, Regione regione) throws DAOException {
+		String query = "SELECT * FROM province WHERE id_regione = ? ORDER BY name ASC";
+		Object[] parametriQuery = new Object[]{idRegione};
+		Class classe = Provincia.class;
+		String[] nomiColonne = new String[]{"id", "name", "id_regione"};
+		Class[] constructorParameterTypes = new Class[]{int.class, String.class, int.class};
+		Provincia[] province = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		for (Provincia p : province) {
+			p.setRegione(regione);
+		}
+		return province;
+	}
+	private Comune[] getComuniByIdProvincia(int idProvincia, Provincia provincia) throws DAOException {
+		String query = "SELECT * FROM comuni WHERE id_provincia = ? ORDER BY name ASC";
+		Object[] parametriQuery = new Object[]{idProvincia};
+		Class classe = Comune.class;
+		String[] nomiColonne = new String[]{"id", "name", "id_provincia"};
+		Class[] constructorParameterTypes = new Class[]{int.class, String.class, int.class};
+		Comune[] comuni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		for (Comune c : comuni) {
+			c.setProvincia(provincia);
+		}
+		return comuni;
+	}
+	/*
+	private Regione[] getRegioni() throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM regioni ORDER BY name ASC")) {
 			try (ResultSet rs = ps.executeQuery()) {
 				ArrayList<Regione> regioni_temp = new ArrayList<>(); //uso ArrayList perchè non posso ricavare direttamente la lunghezza da ResultSet
@@ -73,7 +107,9 @@ public class JDBCLocationDAO extends JDBCDAO<LocationContainer, Integer> impleme
 			throw new DAOException("Impossible to get the list of regioni", ex);
 		}
 	}
+	*/
 
+	/*
 	private Provincia[] getProvinceByIdRegione(int idRegione, Regione regione) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM province WHERE id_regione = ? ORDER BY name ASC")) {
 			ps.setInt(1, idRegione);
@@ -96,7 +132,9 @@ public class JDBCLocationDAO extends JDBCDAO<LocationContainer, Integer> impleme
 			throw new DAOException("Impossible to get the list of province", ex);
 		}
 	}
+	*/
 
+	/*
 	private Comune[] getComuniByIdProvincia(int idProvincia, Provincia provincia) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM comuni WHERE id_provincia = ? ORDER BY name ASC")) {
 			ps.setInt(1, idProvincia);
@@ -119,4 +157,5 @@ public class JDBCLocationDAO extends JDBCDAO<LocationContainer, Integer> impleme
 			throw new DAOException("Impossible to get the list of comuni", ex);
 		}
 	}
+	*/
 }

@@ -9,14 +9,10 @@ public class Provincia {
 	private Regione regione;
 	private Comune[] comuni;
 
-	public Provincia() {
-	}
-
-	public Provincia(int id, String name, int idRegione, Regione regione) {
+	public Provincia(int id, String name, int idRegione) {
 		this.id = id;
 		this.name = name;
 		this.idRegione = idRegione;
-		this.regione = regione;
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">

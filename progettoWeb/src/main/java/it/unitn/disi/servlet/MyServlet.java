@@ -20,6 +20,7 @@ public abstract class MyServlet extends HttpServlet {
 		}
 		try {
 			DAO dao = daoFactory.getDAO(daoClass);
+			dao.initFriendsDAO(daoFactory);
 			return dao;
 		} catch (DAOFactoryException ex) {
 			throw new ServletException("Impossible to get dao", ex);
@@ -27,11 +28,7 @@ public abstract class MyServlet extends HttpServlet {
 	}
 	
 	protected void redirect(HttpServletResponse response, String page) throws IOException {
-		String contextPath = getServletContext().getContextPath();
-		if (!contextPath.endsWith("/")) {
-			contextPath += "/";
-		}
-		response.sendRedirect(response.encodeRedirectURL(contextPath + page));
+		response.sendRedirect(response.encodeRedirectURL(page));
 	}
 
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String page)

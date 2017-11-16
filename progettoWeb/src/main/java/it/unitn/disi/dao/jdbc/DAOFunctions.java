@@ -25,10 +25,7 @@ public class DAOFunctions {
 				T t = null;
 				Constructor<T> constructor = myGetConstructor(classe, constructorParameterTypes);
 				if (rs.next()) {
-					Object[] parametri = new Object[nomiColonne.length];
-					for (int i = 0; i < nomiColonne.length; i++) {
-						parametri[i] = rs.getObject(nomiColonne[i]);
-					}
+					Object[] parametri = myRetriveData(nomiColonne, constructorParameterTypes, rs);
 					t = myNewInstance(constructor, parametri);
 				}
 				if (rs.next()) {
@@ -59,10 +56,7 @@ public class DAOFunctions {
 				ArrayList<T> tempListT = new ArrayList<>();
 				Constructor<T> constructor = myGetConstructor(classe, constructorParameterTypes);
 				while (rs.next()) {
-					Object[] parametri = new Object[nomiColonne.length];
-					for (int i = 0; i < nomiColonne.length; i++) {
-						parametri[i] = rs.getObject(nomiColonne[i]);
-					}
+					Object[] parametri = myRetriveData(nomiColonne, constructorParameterTypes, rs);
 					T t = myNewInstance(constructor, parametri);
 					tempListT.add(t);
 				}
@@ -126,6 +120,25 @@ public class DAOFunctions {
 			Logger.getLogger(DAOFunctions.class.getName()).log(Level.SEVERE, null, ex);
 			throw new DAOException(errore, ex);
 		}
+	}
+
+	//legge i dati restituiti dal database e li trasforma in tipi/oggetti java
+	private static Object[] myRetriveData(String[] nomiColonne, Class[] constructorParameterTypes, ResultSet rs) throws SQLException {
+		Object[] parametri = new Object[nomiColonne.length];
+		for (int i = 0; i < nomiColonne.length; i++) {
+			if (constructorParameterTypes[i] == float.class) {
+				parametri[i] = rs.getFloat(nomiColonne[i]);
+			} else if (constructorParameterTypes[i] == int.class) {
+				parametri[i] = rs.getInt(nomiColonne[i]);
+			} else if (constructorParameterTypes[i] == String.class) {
+				parametri[i] = rs.getString(nomiColonne[i]);
+			} else if (constructorParameterTypes[i] == boolean.class) {
+				parametri[i] = rs.getBoolean(nomiColonne[i]);
+			} else {
+				parametri[i] = rs.getObject(nomiColonne[i]);
+			}
+		}
+		return parametri;
 	}
 
 	//crea una nuova istanza e gestisce tutte le eccezioni. Se c'è un'eccezione lancia una DAOException

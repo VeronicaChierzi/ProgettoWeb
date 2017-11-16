@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 
 <%--<jsp:include page="/WEB-INF/CategoryContainerServlet" />--%>
-<jsp:include page="/user/ordini.jsp" />		
 <script>
 	function mostra(id) {
 		var elements = document.getElementsByClassName("subcat");
@@ -30,7 +29,7 @@
 <%= session.getAttribute("categoryContainerMessage")%>
 <%session.removeAttribute("categoryContainerMessage"); %>--%>
 <%-- CategoryContainer categoryContainer = (CategoryContainer) application.getAttribute("categoryContainer"); --%>
-<% CategoryContainer categoryContainer = Model.Application.getCategoryContainer(config); %>
+<% CategoryContainer categoryContainer = (CategoryContainer)Model.Application.getAttribute(config, Model.Application.categoryContainer); %>
 <%--
 <%=categoryContainer %>
 <%=categoryContainer.getCategory(1) %>

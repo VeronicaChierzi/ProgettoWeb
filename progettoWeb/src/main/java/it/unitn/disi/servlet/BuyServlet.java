@@ -2,7 +2,7 @@ package it.unitn.disi.servlet;
 
 import it.unitn.disi.controllers.CartController;
 import it.unitn.disi.dao.OrderDAO;
-import it.unitn.disi.dao.ProductDAO;
+import it.unitn.disi.dao.ShopProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
 import java.io.IOException;
@@ -16,12 +16,12 @@ import javax.servlet.http.HttpSession;
 public class BuyServlet extends MyServlet {
 
 	private OrderDAO orderDAO;
-	private ProductDAO productDAO;
+	private ShopProductDAO shopProductDAO;
 
 	@Override
 	public void init() throws ServletException {
 		orderDAO = (OrderDAO) initDao(OrderDAO.class);
-		productDAO = (ProductDAO) initDao(ProductDAO.class);
+		shopProductDAO = (ShopProductDAO) initDao(ShopProductDAO.class);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class BuyServlet extends MyServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		try {
-			CartController.checkCart(session, user, productDAO);
+			CartController.checkCart(session, user, shopProductDAO);
 			orderDAO.buyCart(CartController.getOrCreateCart(session));
 			redirect(response, "index.jsp");
 		} catch (DAOException ex) {

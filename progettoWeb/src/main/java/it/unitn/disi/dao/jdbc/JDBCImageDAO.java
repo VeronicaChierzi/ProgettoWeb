@@ -1,49 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.ImageDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.Image;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-
-/**
- *
- * @author root
- */
 public class JDBCImageDAO extends JDBCDAO<Image, Integer> implements ImageDAO {
 
-    public JDBCImageDAO(Connection con) {
-        super(con);
-    }
-    
-    @Override
-    public Image getProductImage(int prodId) throws DAOException {
-        try (PreparedStatement ps = CON.prepareStatement("select * from images where id_product = ? limit 1;")) {
-            ps.setInt(1, prodId);
-            try (ResultSet rs = ps.executeQuery()) {
-                Image image = null;
-                if (rs.next()) {
-                    image = new Image(
-                            rs.getInt("id"),
-                            rs.getInt("id_product"),
-                            rs.getString("path"),
-                            rs.getString("alt")
-                    );
-                    image.setPath(image.getPath().substring(0, 12) + "/img/" + image.getPath().substring(13).toLowerCase().replace(" ", "_"));
-                }
-                return image;
-            }
-        } catch (SQLException ex) {
-            throw new DAOException("Errore SQLException query getProductImage", ex);
-        }
-    }
-    
+	private static final Class classe = Image.class;
+	private static final String[] nomiColonne = new String[]{"id", "id_product", "path", "alt"};
+	private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class};
+
+	public JDBCImageDAO(Connection con) {
+		super(con);
+	}
+	
+	@Override
+	public Image getProductImage(int idProduct) throws DAOException {
+		String query = "SELECT * FROM images WHERE id_product = ? LIMIT 1;";
+		Object[] parametriQuery = new Object[]{idProduct};
+		Image image = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		image.setPath(image.getPath().substring(0, 12) + "/img/" + image.getPath().substring(13).toLowerCase().replace(" ", "_"));
+		return image;
+	}
+
 }

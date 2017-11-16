@@ -7,9 +7,13 @@
 package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.DAO;
+import it.unitn.disi.dao.ProductDAO;
+import it.unitn.disi.dao.ShopProductDAO;
 import it.unitn.disi.dao.exceptions.DAOFactoryException;
+import it.unitn.disi.dao.factories.DAOFactory;
 import java.sql.Connection;
 import java.util.HashMap;
+import javax.servlet.ServletException;
 
 /**
  * This is the base DAO class all concrete DAO using JDBC technology must
@@ -64,5 +68,21 @@ public abstract class JDBCDAO<ENTITY_CLASS, PRIMARY_KEY_CLASS> implements DAO<EN
 	@Override
 	public <DAO_CLASS extends DAO> DAO_CLASS getDAO(Class<DAO_CLASS> daoClass) throws DAOFactoryException {
 		return (DAO_CLASS) FRIEND_DAOS.get(daoClass);
+	}
+	
+	protected DAO initDao(Class daoClass, DAOFactory daoFactory) throws ServletException {
+		if (daoFactory == null) {
+			throw new ServletException("Impossible to get dao factory");
+		}
+		try {
+			DAO dao = daoFactory.getDAO(daoClass);
+			return dao;
+		} catch (DAOFactoryException ex) {
+			throw new ServletException("Impossible to get dao", ex);
+		}
+	}
+	
+	@Override
+	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException{
 	}
 }
