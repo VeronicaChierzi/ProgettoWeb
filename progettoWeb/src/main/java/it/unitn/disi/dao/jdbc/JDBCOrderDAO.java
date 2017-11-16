@@ -1,23 +1,80 @@
 package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.OrderDAO;
+import it.unitn.disi.dao.OrderProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import it.unitn.disi.dao.factories.DAOFactory;
+import it.unitn.disi.entities.carts.Cart;
 import it.unitn.disi.entities.orders.Order;
 import it.unitn.disi.entities.orders.OrderProduct;
-import it.unitn.disi.entities.carts.Cart;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.servlet.ServletException;
+
 
 public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
+
+	private static final Class classe = Order.class;
+	private static final String[] nomiColonne = new String[]{"id", "id_user", "id_shop", "datetime_purchase"};
+	private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, Timestamp.class};
+
+	private OrderProductDAO orderProductDAO;
 
 	public JDBCOrderDAO(Connection con) {
 		super(con);
 	}
 
+	@Override
+	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException {
+		orderProductDAO = (OrderProductDAO) initDao(OrderProductDAO.class, daoFactory);
+	}
+	
+	@Override
+	public Order[] getOrdersUser(int idUser) throws DAOException {
+		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC";
+		Object[] parametriQuery = new Object[]{idUser};
+		Order[] orders = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		for (Order o : orders) {
+			OrderProduct[] op = orderProductDAO.getOrderProductsByIdOrder(o.getId());
+			ArrayList<OrderProduct> opList = new ArrayList<>(Arrays.asList(op));
+			o.setOrderProducts(opList);
+		}
+		return orders;
+	}
+
+	@Override
+	public Order getOrderUser(int id, int idUser) throws DAOException {
+		String query = "SELECT * FROM orders WHERE id=? ORDER BY datetime_purchase DESC";
+		Object[] parametriQuery = new Object[]{id};
+		Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		if(o!=null) {
+			OrderProduct[] op = orderProductDAO.getOrderProductsByIdOrder(o.getId());
+			ArrayList<OrderProduct> opList = new ArrayList<>(Arrays.asList(op));
+			o.setOrderProducts(opList);
+		}
+		return o;
+	}
+
+	@Override
+	public Order[] getOrdersSeller(int idSeller) throws DAOException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public Order[] getOrdersShop(int idShop, int idSeller) throws DAOException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public Order getOrderSeller(int id, int idSeller) throws DAOException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
+	/*
 	@Override
 	public Order[] getOrdersByIdUser(int idUser) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC")) {
@@ -44,7 +101,9 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			throw new DAOException("Errore SQLException query getOrdersByIdUser: " + ex.getMessage(), ex);
 		}
 	}
+	*/
 
+	/*
 	private OrderProduct[] getOrderProductsByIdOrder(int idOrder) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM orders_products WHERE id_order=?")) {
 			ps.setInt(1, idOrder);
@@ -67,11 +126,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			throw new DAOException("Errore SQLException query getOrderProductsByIdOrder: " + ex.getMessage(), ex);
 		}
 	}
-
-	@Override
-	public Order getOrderByID(int id) throws DAOException {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
+	*/
 
 	@Override
 	public boolean buyCart(Cart cart) throws DAOException {
@@ -89,7 +144,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			try {
 				System.err.println("Transaction is being rolled back");
 				CON.rollback();
-			} catch(SQLException exc) {
+			} catch (SQLException exc) {
 				throw new DAOException("Errore SQLException durante il rollback di saveCart: " + exc.getMessage());
 			}
 			throw new DAOException("Errore DAOException saveCart: " + ex.getMessage());
@@ -97,7 +152,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			try {
 				System.err.println("Transaction is being rolled back");
 				CON.rollback();
-			} catch(SQLException exc) {
+			} catch (SQLException exc) {
 				throw new DAOException("Errore SQLException durante il rollback di saveCart: " + exc.getMessage());
 			}
 			throw new DAOException("Errore SQLException saveCart: " + ex.getMessage());
@@ -109,13 +164,13 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			}
 		}
 	}
-	
+
 	private boolean insertOrder(Order order) throws DAOException {
 		/*
 		if ((order.getIdShop() == -1) || (order.getIdUser() == -1)) {
 			throw new DAOException("", new NullPointerException("Username, email, password, firstName o lastName sono null"));
 		}
-		*/
+		 */
 		//id order e datetime_purchase sono generati dal database
 		String query = "INSERT INTO orders(id_user, id_shop) VALUES (?, ?)";
 		try (PreparedStatement ps = CON.prepareStatement(query)) {
@@ -139,7 +194,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			throw new DAOException("Errore SQLException in insertOrder: " + ex.getMessage());
 		}
 	}
-	
+
 	//diminuisce la quantità del prodotto in vendita nel negozio
 	private boolean decreaseShopProduct(OrderProduct orderProduct, Order order) throws DAOException {
 		String query = "UPDATE shops_products SET quantity = quantity-? WHERE id_product=? AND id_shop=?;";
@@ -184,4 +239,5 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			throw new DAOException("Errore SQLExcpetion in insertOrderProduct: " + ex.getMessage());
 		}
 	}
+
 }

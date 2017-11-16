@@ -8,9 +8,7 @@ public class Product {
 	private int idSubcategory;
 
 	private ShopProduct shopProduct; //negozio che vende al prezzo minimo
-
-	public Product() {
-	}
+	private Image image; //immagine principale del prodotto
 
 	public Product(int id, String name, String description, int idSubcategory) {
 		this.id = id;
@@ -88,6 +86,20 @@ public class Product {
 	 */
 	public void setShopProduct(ShopProduct shopProduct) {
 		this.shopProduct = shopProduct;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public Image getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(Image image) {
+		this.image = image;
 	}
 	// </editor-fold>
 

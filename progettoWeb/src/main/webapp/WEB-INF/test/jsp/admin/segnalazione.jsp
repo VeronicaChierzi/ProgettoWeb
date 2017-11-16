@@ -1,12 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-		<jsp:include page="/WEB-INF/jsp/utils/navbar.jsp" />
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="it.unitn.disi.utils.MyPaths"%>
+<jsp:include page="<%=MyPaths.Private.Jsp.Utils.header%>"/>
+
+<div>
+	<h1>Pagina Segnalazione Admin</h1>
+</div>
+
+<jsp:include page="<%=MyPaths.Private.Jsp.Utils.footer%>"/>

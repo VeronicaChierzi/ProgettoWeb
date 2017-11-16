@@ -23,7 +23,7 @@ public class ProductServlet extends MyServlet {
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		try {
-			Product product = productDAO.getProductByID(id);
+			Product product = productDAO.getProduct(id);
 			if (product != null) {
 				request.setAttribute("product", product);
 				forward(request, response, "/product.jsp");

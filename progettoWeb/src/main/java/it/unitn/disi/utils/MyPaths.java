@@ -23,16 +23,19 @@ public class MyPaths {
 
 			public static class All {
 
+				public static final String cart = prefix + "Cart";
 				public static final String home = prefix + "Home";
 				public static final String product = prefix + "Product";
 				public static final String productList = prefix + "ProductList";
 				public static final String shop = prefix + "Shop";
+				public static final String seller = prefix + "Seller";
 			}
 
 			public static class Anonymous {
 
 				public static final String login = prefix + "Login";
-				public static final String register = prefix + "Register";
+				public static final String registration = prefix + "Registration";
+				public static final String registrationSeller = prefix + "RegistrationSeller";
 				public static final String forgottenPassword = prefix + "ForgottenPassword";
 			}
 
@@ -40,27 +43,32 @@ public class MyPaths {
 
 				public static final String profile = prefix + "Profile";
 				public static final String changePassword = prefix + "ChangePassword";
-				public static final String cart = prefix + "Cart";
-				//public static final String logout = prefix + "logout"; //??? rimanda ad una servlet?
-				public static final String orderList = prefix + "OrderList";
-				public static final String order = prefix + "Order";
-				public static final String segnalazione = prefix + "Segnalazione";
-				public static final String segnalazioneList = prefix + "SegnalazioneList";
+				public static final String order = prefix + "OrderUser";
+				public static final String orders = prefix + "OrdersUser";
+				public static final String segnalazione = prefix + "SegnalazioneUser";
+				public static final String segnalazioni = prefix + "SegnalazioniUser";
+				public static final String segnalazioniOpen = prefix + "SegnalazioniOpenUser";
+				public static final String registrationSellerLog = prefix + "RegistrationSellerLog";
 			}
 
 			public static class Seller {
 
-				public static final String segnalazione = prefix + "Segnalazione";
-				public static final String segnalazioneList = prefix + "SegnalazioneList";
-				public static final String seller = prefix + "Seller";
+				public static final String order = prefix + "OrderSeller";
+				public static final String ordersSeller = prefix + "OrdersSeller";
+				public static final String ordersShop = prefix + "OrdersShop";
+				public static final String segnalazione = prefix + "SegnalazioneSeller";
+				public static final String segnalazioni = prefix + "SegnalazioniSeller";
+				public static final String segnalazioniOpen = prefix + "SegnalazioniOpenSeller";
+				public static final String mySeller = prefix + "MySeller";
 				public static final String myShop = prefix + "MyShop";
 				public static final String sellProduct = prefix + "SellProduct";
 			}
 
 			public static class Admin {
 
-				public static final String segnalazione = prefix + "Segnalazione";
-				public static final String segnalazioneList = prefix + "SegnalazioneList";
+				public static final String segnalazione = prefix + "SegnalazioneSeller";
+				public static final String segnalazioni = prefix + "SegnalazioniSeller";
+				public static final String segnalazioniOpen = prefix + "SegnalazioniOpenSeller";
 			}
 
 			public static class Debug {
@@ -84,23 +92,25 @@ public class MyPaths {
 			//da aggiungere Register Seller
 			public static class Anonymous {
 
-				public static final String login = prefix + "/LoginServlet";
-				public static final String register = prefix + "/RegisterServlet";
-				public static final String forgottenPassword = prefix + "/ForgottenPasswordServlet";
-				public static final String confirmUser = prefix + "/ConfirmUserServlet";
+				public static final String login = prefix + "LoginServlet";
+				public static final String registration = prefix + "RegistrationServlet";
+				public static final String registrationSeller = prefix + "RegistrationSellerServlet";
+				public static final String forgottenPassword = prefix + "ForgottenPasswordServlet";
+				public static final String confirmUser = prefix + "ConfirmUserServlet";
 			}
 
 			public static class User {
 
-				public static final String addToCart = prefix + "/AddToCartServlet";
-				public static final String buyCart = prefix + "/BuyCartServlet";
-				public static final String changePassword = prefix + "/ChangePasswordServlet";
-				public static final String logout = prefix + "/LogoutServlet";
+				public static final String addToCart = prefix + "AddToCartServlet";
+				public static final String buyCart = prefix + "BuyCartServlet";
+				public static final String changePassword = prefix + "ChangePasswordServlet";
+				public static final String logout = prefix + "LogoutServlet";
+				public static final String registrationSellerLog = prefix + "RegistrationSellerLogServlet";
 			}
 
 			public static class Seller {
 
-				public static final String sellProduct = prefix + "/SellProductServlet";
+				public static final String sellProduct = prefix + "SellProductServlet";
 				//inserire nuovo punto vendita???
 				//modificare informazioni venditore/punto vendita???
 				//segnare un ordine ricevuto come spedito???
@@ -133,10 +143,12 @@ public class MyPaths {
 
 				private static final String prefix = Jsp.prefix + "all/";
 
+				public static final String cart = prefix + "cart.jsp";
 				public static final String home = prefix + "home.jsp";
 				public static final String product = prefix + "product.jsp";
 				public static final String productList = prefix + "productList.jsp";
 				public static final String shop = prefix + "shop.jsp";
+				public static final String seller = prefix + "seller.jsp";
 			}
 
 			public static class Anonymous {
@@ -144,7 +156,8 @@ public class MyPaths {
 				private static final String prefix = Jsp.prefix + "anonymous/";
 
 				public static final String login = prefix + "login.jsp";
-				public static final String register = prefix + "register.jsp";
+				public static final String registration = prefix + "registration.jsp";
+				public static final String registrationSeller = prefix + "registrationSeller.jsp";
 				public static final String forgottenPassword = prefix + "forgottenPassword.jsp";
 				public static final String confirmUser = prefix + "confirmUser.jsp";
 			}
@@ -155,21 +168,25 @@ public class MyPaths {
 
 				public static final String profile = prefix + "profile.jsp";
 				public static final String changePassword = prefix + "changePassword.jsp";
-				public static final String cart = prefix + "cart.jsp";
-				public static final String logout = prefix + "logout.jsp"; //??? rimanda ad una servlet?
-				public static final String orderList = prefix + "orderList.jsp";
 				public static final String order = prefix + "order.jsp";
+				public static final String orders = prefix + "orders.jsp";
 				public static final String segnalazione = prefix + "segnalazione.jsp";
-				public static final String segnalazioneList = prefix + "segnalazioneList.jsp";
+				public static final String segnalazioni = prefix + "segnalazioni.jsp";
+				public static final String segnalazioniOpen = prefix + "segnalazioniOpen.jsp";
+				public static final String registrationSellerLog = prefix + "registrationSellerLog.jsp";
 			}
 
 			public static class Seller {
 
-				private static final String prefix = Jsp.prefix + "user/";
+				private static final String prefix = Jsp.prefix + "seller/";
 
+				public static final String order = prefix + "order.jsp";
+				public static final String ordersSeller = prefix + "ordersSeller.jsp";
+				public static final String ordersShop = prefix + "ordersShop.jsp";
 				public static final String segnalazione = prefix + "segnalazione.jsp";
-				public static final String segnalazioneList = prefix + "segnalazioneList.jsp";
-				public static final String seller = prefix + "seller.jsp";
+				public static final String segnalazioni = prefix + "segnalazioni.jsp";
+				public static final String segnalazioniOpen = prefix + "segnalazioniOpen.jsp";
+				public static final String mySeller = prefix + "mySeller.jsp";
 				public static final String myShop = prefix + "myShop.jsp";
 				public static final String sellProduct = prefix + "sellProduct.jsp";
 			}
@@ -179,13 +196,15 @@ public class MyPaths {
 				private static final String prefix = Jsp.prefix + "admin/";
 
 				public static final String segnalazione = prefix + "segnalazione.jsp";
-				public static final String segnalazioneList = prefix + "segnalazioneList.jsp";
+				public static final String segnalazioni = prefix + "segnalazioni.jsp";
+				public static final String segnalazioniOpen = prefix + "segnalazioniOpen.jsp";
 			}
 
 			public static class Utils {
 
 				private static final String prefix = Jsp.prefix + "utils/";
 
+				public static final String header = prefix + "header.jsp";
 				public static final String navbar = prefix + "navbar.jsp";
 				public static final String searchBar = prefix + "searchBar.jsp";
 				public static final String footer = prefix + "footer.jsp";
@@ -230,43 +249,40 @@ public class MyPaths {
 			// queste servlet saranno mappate sotto il percorso WEB-INF/servlet/ nel file web.xml
 			private static final String prefix = Private.prefix + "servlet/";
 
-			//category Container
-			//location servlet
-			//order list
-			//order
-			//product list
-			//product
-			//segnalazione list (user)
-			//segnalazione list (admin)
-			//segnalazione list (seller)
-			//segnalazione (user, admin e seller sono uguali???)
-			//get my shop
-			//get shop X
-			//get recensioni prodotto X
 			public static class All {
-
 				public static final String getProduct = Servlet.prefix + "GetProductServlet";
 				public static final String getProductList = Servlet.prefix + "GetProductListServlet";
 				public static final String getShop = Servlet.prefix + "GetShopServlet";
 				//public static final String getProductReview = prefix + "GetProductReview";
+				//get recensioni prodotto X (o dentro getProduct?)
 			}
 
 			public static class User {
-
-				public static final String getOrder = Servlet.prefix + "GetOrderServlet";
-				public static final String getOrderList = Servlet.prefix + "GetOrderListServlet";
-				public static final String getSegnalazione = Servlet.prefix + "GetSegnalazioneServlet";
-				public static final String getSegnalazioneList = Servlet.prefix + "GetSegnalazioneListServlet";
+				public static final String getOrder = Servlet.prefix + "GetOrderUserServlet";
+				public static final String getOrders = Servlet.prefix + "GetOrdersUserServlet";
+				public static final String getSegnalazione = Servlet.prefix + "GetSegnalazioneUserServlet";
+				public static final String getSegnalazioni = Servlet.prefix + "GetSegnalazioniUserServlet";
+				public static final String getSegnalazioniOpen = Servlet.prefix + "GetSegnalazioniOpenUserServlet";
 			}
 
 			public static class Seller {
-
 				public static final String getMyShops = Servlet.prefix + "GetMyShopsServlet";
 				//public static final String getMySellerInfo = prefix + "GetMySellerInfo"; //già effettuato nel login???
+				public static final String getOrder = Servlet.prefix + "GetOrderSellerServlet";
+				public static final String getOrdersSeller = Servlet.prefix + "GetOrdersSellerServlet";
+				public static final String getOrdersShop= Servlet.prefix + "GetOrdersShopServlet";
+				public static final String getSegnalazione = Servlet.prefix + "GetSegnalazioneSellerServlet";
+				public static final String getSegnalazioni = Servlet.prefix + "GetSegnalazioniSellerServlet";
+				public static final String getSegnalazioniOpen = Servlet.prefix + "GetSegnalazioniOpenSellerServlet";
+			}
+			
+			public static class Admin {
+				public static final String getSegnalazione = Servlet.prefix + "GetSegnalazioneAdminServlet";
+				public static final String getSegnalazioni = Servlet.prefix + "GetSegnalazioniAdminServlet";
+				public static final String getSegnalazioniOpen = Servlet.prefix + "GetSegnalazioniOpenAdminServlet";
 			}
 
 			public static class Init {
-
 				//servlet richiamate soltanto all'avvio del server perchè i dati rimangono costanti (categorie e location)
 				//salvano i dati in application
 				public static final String loadCategoryContainer = Servlet.prefix + "LoadCategoryContainerServlet";

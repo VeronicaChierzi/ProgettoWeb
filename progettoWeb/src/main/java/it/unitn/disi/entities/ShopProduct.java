@@ -6,10 +6,7 @@ public class ShopProduct {
 	private int idShop;
 	private float price;
 	private int quantity;
-
-	public ShopProduct() {
-	}
-
+	
 	public ShopProduct(int idProduct, int idShop, float price, int quantity) {
 		this.idProduct = idProduct;
 		this.idShop = idShop;

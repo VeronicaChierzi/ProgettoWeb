@@ -7,6 +7,8 @@
 package it.unitn.disi.dao;
 
 import it.unitn.disi.dao.exceptions.DAOFactoryException;
+import it.unitn.disi.dao.factories.DAOFactory;
+import javax.servlet.ServletException;
 
 /**
  * The basic DAO interface that all DAOs must implement.
@@ -34,5 +36,7 @@ public interface DAO<ENTITY_CLASS, PRIMARY_KEY> {
 	 * @since 1.0.170417
 	 */
 	public <DAO_CLASS extends DAO> DAO_CLASS getDAO(Class<DAO_CLASS> daoClass) throws DAOFactoryException;
+
+	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException;
 
 }

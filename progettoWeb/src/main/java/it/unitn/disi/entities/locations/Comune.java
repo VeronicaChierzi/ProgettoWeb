@@ -8,14 +8,10 @@ public class Comune {
 
 	private Provincia provincia;
 
-	public Comune() {
-	}
-
-	public Comune(int id, String name, int idProvincia, Provincia provincia) {
+	public Comune(int id, String name, int idProvincia) {
 		this.id = id;
 		this.name = name;
 		this.idProvincia = idProvincia;
-		this.provincia = provincia;
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
