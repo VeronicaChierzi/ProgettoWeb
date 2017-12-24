@@ -25,7 +25,7 @@
                 <h1>Inserisci la nuova password</h1>
             </li>
 
-            <% String action = ((request.getParameter("id") == null || request.getParameter("id") == null) ? "index.jsp" : "ChangePassword");%>
+            <% String action = ((request.getParameter("id") == null || request.getParameter("email") == null) ? "index.jsp" : "ChangePassword");%>
             <form action="<%=action%>" id="usrform" method="POST">
                 <li>
                     <input type="password" name="password" value="password" class="form-control">
