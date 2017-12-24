@@ -5,6 +5,7 @@ import it.unitn.disi.dao.ProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.Product;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +29,13 @@ public class ProductListServlet extends MyServlet {
         String search = request.getParameter("textSearch");
         System.out.println("CIAO BELLO LUCA" + request == null);
         try {
-            Product[] products = productDAO.searchProducts(search);
-            
-            if (products != null) {
+            Product[] productsArray = productDAO.searchProducts(search);
+
+            if (productsArray != null) {
+                ArrayList<Product> products = new ArrayList<Product>(productsArray.length);
+                for (Product p : productsArray) {
+                    products.add(p);
+                }
                 request.setAttribute("products", products);
                 request.setAttribute("searchQuery", search);
                 request.setAttribute("imageDAO", imageDAO);
@@ -40,7 +45,7 @@ public class ProductListServlet extends MyServlet {
             System.err.println("Errore nell'ottenere la lista di prodotti(ProductListServlet): " + ex.getMessage());
         }
     }
-    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
