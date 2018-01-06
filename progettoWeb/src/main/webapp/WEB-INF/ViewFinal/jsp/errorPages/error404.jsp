@@ -1,3 +1,4 @@
+<%@page import="it.unitn.disi.utils.MyPaths"%>
 <%@page isErrorPage="true" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

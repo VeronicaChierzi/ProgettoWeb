@@ -1,6 +1,6 @@
 <%@page import="it.unitn.disi.utils.MyPaths"%>
 <%@page import="it.unitn.disi.utils.Model"%>
-<%--<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
+<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
 
 <div>
 	<h1>Home</h1>
@@ -14,5 +14,3 @@
 </div>
 
 <jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>
---%>
-<%=MyPaths.Jsp.allProduct%>
