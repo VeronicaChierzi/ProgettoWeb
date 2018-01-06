@@ -33,7 +33,7 @@ public class RegistrationSellerLogServlet extends MyServlet {
 			if (user.isSeller()) {
 				Model.Messages.setBoolean(request, Model.Messages.registrationSellerLogFailedBoolean);
 				Model.Messages.setString(request, Model.Messages.registrationSellerLogFailedString, "Sei già un venditore");
-				redirect(response, MyPaths.Public.Jsp.User.registrationSellerLog);
+				redirect(response, MyPaths.Jsp.userRegistrationSellerLog);
 				return;
 			}
 
@@ -41,17 +41,17 @@ public class RegistrationSellerLogServlet extends MyServlet {
 			try {
 				boolean b = UserController.registrationSellerLog(userDao, getServletContext(), request, nomeNeg, partitaIva);
 				if (b) { //utente registrato
-					redirect(response, MyPaths.Public.Jsp.User.profile);
+					redirect(response, MyPaths.Jsp.userProfile);
 					return;
 				} else { //registrazione fallita
 					setInputField(request, nomeNeg, partitaIva);
 					Model.Messages.setBoolean(request, Model.Messages.registrationFailedBoolean);
-					redirect(response, MyPaths.Public.Jsp.Anonymous.registration);
+					redirect(response, MyPaths.Jsp.userRegistrationSellerLog);
 					return;
 				}
 			} catch (DAOException ex) { //impossibile inserire nuovo utente
 				System.err.println("Errore DAOException in RegistrationSellerLogServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (Exception e) {
 			System.err.println("Errore utente non loggato in GetOrderSellerServlet: " + e.getMessage());

@@ -28,13 +28,13 @@ public class LoginServlet extends MyServlet {
 		try {
 			boolean loggato = UserController.login(userDao, request, usernameEmail, password);
 			if (loggato == true) {
-				redirect(response, MyPaths.Public.Jsp.User.profile);
+				redirect(response, MyPaths.Jsp.userProfile);
 			} else {
-				redirect(response, MyPaths.Public.Jsp.Anonymous.login);
+				redirect(response, MyPaths.Jsp.anonymousLogin);
 			}
 		} catch (DAOException ex) { //utente non loggato a causa di un eccezione nell'eseguire la query
 			System.err.println("Errore DAOException in LoginServlet: " + ex.getMessage());
-			forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+			forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 		}
 	}
 }

@@ -14,7 +14,7 @@ public class LogoutServlet extends MyServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		session.invalidate();
-		redirect(response, MyPaths.Public.Jsp.All.home);
+		redirect(response, MyPaths.Jsp.allHome);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods">

@@ -145,6 +145,7 @@ public class Model {
 	}
 
 	public static class Messages {
+		// BOOLEAN MESSAGES
 		// HOW TO USE
 		//boolean b = Model.Messages.consumeAttribute(request, Model.Messages.nomeOggetto);
 		//Model.Messages.setAttribute(request, Model.Messages.nomeOggetto);
@@ -172,6 +173,7 @@ public class Model {
 		// </editor-fold>
 
 		
+		// STRING MESSAGES
 		// HOW TO USE
 		//boolean b = Model.Messages.consumeAttribute(request, Model.Messages.nomeOggetto);
 		//Model.Messages.setAttribute(request, Model.Messages.nomeOggetto);

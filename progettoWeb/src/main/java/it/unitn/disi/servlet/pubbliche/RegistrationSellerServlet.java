@@ -36,17 +36,17 @@ public class RegistrationSellerServlet extends MyServlet {
 		try {
 			boolean b = UserController.registrationSeller(userDao, getServletContext(), request, username, email, password, password2, firstName, lastName, nomeNeg, partitaIva);
 			if (b) { //utente registrato e loggato
-				redirect(response, MyPaths.Public.Jsp.User.profile);
+				redirect(response, MyPaths.Jsp.userProfile);
 				return;
 			} else { //registrazione fallita
 				setInputField(request, username, email, firstName, lastName, nomeNeg, partitaIva);
 				Model.Messages.setBoolean(request, Model.Messages.registrationFailedBoolean);
-				redirect(response, MyPaths.Public.Jsp.Anonymous.registration);
+				redirect(response, MyPaths.Jsp.anonymousRegistrationSeller);
 				return;
 			}
 		} catch (DAOException ex) { //impossibile inserire nuovo utente
 			System.err.println("Errore DAOException in RegistrationServlet: " + ex.getMessage());
-			forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+			forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 		}
 	}
 

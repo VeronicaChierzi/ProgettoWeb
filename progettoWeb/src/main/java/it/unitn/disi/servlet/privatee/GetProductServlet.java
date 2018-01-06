@@ -29,7 +29,7 @@ public class GetProductServlet extends MyServlet {
 				Model.Request.setAttribute(request, Model.Request.product, product);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetProductServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Errore NumberFormatException in GetProductServlet: " + e.getMessage());

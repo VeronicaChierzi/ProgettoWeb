@@ -12,10 +12,10 @@ public class MyUtils {
 	public static final boolean sendRegistrationConfirmEmail = false;
 
 	//se impostato a true, utilizza le pagine jsp di test(senza grafica)
-	public static final boolean useTestJSP = true;
+	public static final boolean useViewTest = true;
 
 	//se impostato a true, stampa il debug del login/registrazione/logout dell'utente
-	public static final boolean debugUserController = true;
+	public static final boolean debugUserController = false;
 	
 	//se impostato a true, stampa un messaggio di debug quando MySerlvet effettua un forward, un redirect o un include
 	//funziona solo sulle MyServlet. Le JSP non stampano nulla.

@@ -31,7 +31,7 @@ public class GetOrderSellerServlet extends MyServlet {
 				Model.Request.setAttribute(request, Model.Request.orderSeller, o);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetOrderSellerServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response,  MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Errore NumberFormatException in GetOrderSellerServlet: " + e.getMessage());
