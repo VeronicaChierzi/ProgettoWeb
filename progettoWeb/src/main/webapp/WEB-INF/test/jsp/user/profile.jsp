@@ -26,7 +26,7 @@
 		name: <%=seller.getName()%><br/>
 		partita iva: <%=seller.getPartitaIva()%><br/>
 	<% } else { %>
-		<a href="/progettoWeb/registerSeller.jsp">Registrati come venditore</a><br/>
+		<a href="<%=MyPaths.Public.Jsp.User.registrationSellerLog%>">Registrati come venditore</a><br/>
 	<% } %>
 	<br/>
 

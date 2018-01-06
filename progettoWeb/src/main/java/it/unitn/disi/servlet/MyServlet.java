@@ -3,6 +3,7 @@ package it.unitn.disi.servlet;
 import it.unitn.disi.dao.DAO;
 import it.unitn.disi.dao.exceptions.DAOFactoryException;
 import it.unitn.disi.dao.factories.DAOFactory;
+import it.unitn.disi.utils.MyUtils;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -28,11 +29,17 @@ public abstract class MyServlet extends HttpServlet {
 	}
 	
 	protected void redirect(HttpServletResponse response, String page) throws IOException {
+		if(MyUtils.debugServletForwardRedirectInclude){
+			System.err.println("MYSERVLET REDIRECT TO: "+page);
+		}
 		response.sendRedirect(response.encodeRedirectURL(page));
 	}
 
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String page)
 			throws ServletException, IOException {
+		if(MyUtils.debugServletForwardRedirectInclude){
+			System.err.println("MYSERVLET FORWARD TO: "+page);
+		}
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher(page);
 		rd.forward(request, response);
@@ -40,6 +47,9 @@ public abstract class MyServlet extends HttpServlet {
 	
 	protected void include(HttpServletRequest request, HttpServletResponse response, String page)
 			throws ServletException, IOException {
+		if(MyUtils.debugServletForwardRedirectInclude){
+			System.err.println("MYSERVLET INCLUDE: "+page);
+		}
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher(page);
 		rd.include(request, response);

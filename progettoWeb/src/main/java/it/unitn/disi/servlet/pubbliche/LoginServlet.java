@@ -1,10 +1,9 @@
 package it.unitn.disi.servlet.pubbliche;
 
+import it.unitn.disi.controllers.UserController;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
-import it.unitn.disi.entities.User;
 import it.unitn.disi.servlet.MyServlet;
-import it.unitn.disi.utils.HashUtil;
 import it.unitn.disi.utils.Model;
 import it.unitn.disi.utils.MyPaths;
 import java.io.IOException;
@@ -26,14 +25,11 @@ public class LoginServlet extends MyServlet {
 			throws ServletException, IOException {
 		String usernameEmail = Model.Parameter.get(request, "username");
 		String password = Model.Parameter.get(request, "password");
-		String hashPassword = HashUtil.generatePasswordHash(password);
 		try {
-			User user = userDao.getByUsernameEmailAndPassword(usernameEmail, hashPassword);
-			if (user != null) { //utente loggato
-				Model.Session.setAttribute(request, Model.Session.user, user);
+			boolean loggato = UserController.login(userDao, request, usernameEmail, password);
+			if (loggato == true) {
 				redirect(response, MyPaths.Public.Jsp.User.profile);
-			} else { //utente non loggato
-				Model.Messages.setAttribute(request, Model.Messages.loginFailed);
+			} else {
 				redirect(response, MyPaths.Public.Jsp.Anonymous.login);
 			}
 		} catch (DAOException ex) { //utente non loggato a causa di un eccezione nell'eseguire la query

@@ -23,13 +23,14 @@
 		</div>
 		<br/>
 	</form>
-	<% if (Model.Messages.consumeAttribute(request, Model.Messages.loginFailed)) { %>
+	<% if (Model.Messages.consumeBoolean(request, Model.Messages.loginFailed)) { %>
 	Login non riuscito!!!<br/>
 	<% }%>
 	<div>
 		Dati account<br/>
 		username/email: "verdi" oppure "verdi@gmail.com"<br/>
 		password: "Verdi1."<br/>
+		<br/><br/>
 	</div>
 </div>
 

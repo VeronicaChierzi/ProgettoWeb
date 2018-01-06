@@ -135,7 +135,7 @@ public class MyPaths {
 			// contiene i percorsi delle jsp pubbliche, che sono sotto web-inf/public
 			// i percorsi di queste pagine sono i mapping specificati nel file web.xml
 			
-			private static final boolean test = true; //se impostato a true, utilizza le pagine di test
+			private static final boolean test = MyUtils.useTestJSP; //se impostato a true, utilizza le pagine di test
 			private static final String testString = (test ? "test/" : "");
 			private static final String prefix = Private.prefix + testString + "jsp/";
 

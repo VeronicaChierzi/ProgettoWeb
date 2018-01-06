@@ -1,7 +1,6 @@
 package it.unitn.disi.servlet.pubbliche;
 
 import it.unitn.disi.servlet.MyServlet;
-import it.unitn.disi.utils.Model;
 import it.unitn.disi.utils.MyPaths;
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -5,14 +5,14 @@
 		<param-name>dburl</param-name>
 		<!-- online <param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>-->
 		<!-- locale <param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>-->
-		<param-value>jdbc:postgresql://54.37.15.93:3306/postgres</param-value>
+		<param-value>jdbc:postgresql://127.0.0.1:5432/webprog</param-value>
 	</context-param>
 	<context-param>
 		<description>Database usn</description>
 		<param-name>dbusername</param-name>
 		<!-- online <param-value>pweb</param-value>-->
 		<!-- locale <param-value>postgres</param-value>-->
-		<param-value>pweb</param-value>
+		<param-value>postgres</param-value>
 	</context-param>
 	<context-param>
 		<description>Database psw</description>
@@ -148,19 +148,19 @@
 	</servlet>
 	<servlet>
 		<servlet-name>RegistrationSellerLog</servlet-name>
-		<jsp-file>/WEB-INF/public/anonymous/registrationSellerLog.jsp</jsp-file>
+		<jsp-file>/WEB-INF/public/user/registrationSellerLog.jsp</jsp-file>
 	</servlet>
 	<servlet>
 		<servlet-name>SegnalazioneUser</servlet-name>
-		<jsp-file>/WEB-INF/public/user/segnalazioneUser.jsp</jsp-file>
+		<jsp-file>/WEB-INF/public/user/segnalazione.jsp</jsp-file>
 	</servlet>
 	<servlet>
 		<servlet-name>SegnalazioniUser</servlet-name>
-		<jsp-file>/WEB-INF/public/user/segnalazioniUser.jsp</jsp-file>
+		<jsp-file>/WEB-INF/public/user/segnalazioni.jsp</jsp-file>
 	</servlet>
 	<servlet>
 		<servlet-name>SegnalazioniOpenUser</servlet-name>
-		<jsp-file>/WEB-INF/public/user/segnalazioniOpenUser.jsp</jsp-file>
+		<jsp-file>/WEB-INF/public/user/segnalazioniOpen.jsp</jsp-file>
 	</servlet>
 	
 	<!-- |||||||||||||||||||||||||||||||||| PUBLIC JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -350,6 +350,18 @@
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<url-pattern>/RegistrationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegistrationSellerServlet</servlet-name>
+		<url-pattern>/RegistrationSellerServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegistrationSellerLogServlet</servlet-name>
+		<url-pattern>/RegistrationSellerLogServlet</url-pattern>
 	</servlet-mapping>
 	
 	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
@@ -570,10 +582,6 @@
 		<servlet-class>it.unitn.disi.debug.InserisciPuntiVenditaServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>RegistrationServlet</servlet-name>
-		<servlet-class>it.unitn.disi.servlet.RegistrationServlet</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
 		<servlet-class>it.unitn.disi.debug.GeneraVenditaPuntiVenditaServlet</servlet-class>
 	</servlet>
@@ -587,10 +595,6 @@
 	</servlet>
 
 	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->	
-	<servlet-mapping>
-		<servlet-name>RegistrationServlet</servlet-name>
-		<url-pattern>/RegistrationServlet</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>NotificationServlet</servlet-name>
 		<url-pattern>/NotificationServlet</url-pattern>
@@ -627,4 +631,31 @@
 		<servlet-name>ChangePasswordServlet</servlet-name>
 		<url-pattern>/ChangePassword</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </web-app>
