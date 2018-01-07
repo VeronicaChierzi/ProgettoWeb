@@ -175,128 +175,129 @@
 	<!-- |||||||||||||||||||||||||||||||||| JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	<servlet-mapping>
 		<servlet-name>SegnalazioneAdmin</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioneAdmin</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioneAdmin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioniAdmin</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioniAdmin</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioniAdmin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioniOpenAdmin</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioniOpenAdmin</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioniOpenAdmin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Cart</servlet-name>
-		<url-pattern>/prova/ViewFinal/Cart</url-pattern>
+		<url-pattern>/ViewFinal/Cart</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Home</servlet-name>
-		<url-pattern>/prova/ViewFinal/</url-pattern>
-		<url-pattern>/prova/ViewFinal/Home</url-pattern>
+		<url-pattern>/ViewFinal/Home</url-pattern>
+		<url-pattern>/ViewFinal/</url-pattern>
+		<url-pattern>/ViewFinal</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Product</servlet-name>
-		<url-pattern>/prova/ViewFinal/Product</url-pattern>
+		<url-pattern>/ViewFinal/Product</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ProductList</servlet-name>
-		<url-pattern>/prova/ViewFinal/ProductList</url-pattern>
+		<url-pattern>/ViewFinal/ProductList</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Seller</servlet-name>
-		<url-pattern>/prova/ViewFinal/Seller</url-pattern>
+		<url-pattern>/ViewFinal/Seller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Shop</servlet-name>
-		<url-pattern>/prova/ViewFinal/Shop</url-pattern>
+		<url-pattern>/ViewFinal/Shop</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ConfirmUser</servlet-name>
-		<url-pattern>/prova/ViewFinal/ConfirmUser</url-pattern>
+		<url-pattern>/ViewFinal/ConfirmUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ForgottenPassword</servlet-name>
-		<url-pattern>/prova/ViewFinal/ForgottenPassword</url-pattern>
+		<url-pattern>/ViewFinal/ForgottenPassword</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
-		<url-pattern>/prova/ViewFinal/Login</url-pattern>
+		<url-pattern>/ViewFinal/Login</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Registration</servlet-name>
-		<url-pattern>/prova/ViewFinal/Registration</url-pattern>
+		<url-pattern>/ViewFinal/Registration</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RegistrationSeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/RegistrationSeller</url-pattern>
+		<url-pattern>/ViewFinal/RegistrationSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>MySeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/MySeller</url-pattern>
+		<url-pattern>/ViewFinal/MySeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>MyShop</servlet-name>
-		<url-pattern>/prova/ViewFinal/MyShop</url-pattern>
+		<url-pattern>/ViewFinal/MyShop</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>OrderSeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/OrderSeller</url-pattern>
+		<url-pattern>/ViewFinal/OrderSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>OrdersSeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/OrdersSeller</url-pattern>
+		<url-pattern>/ViewFinal/OrdersSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>OrdersShop</servlet-name>
-		<url-pattern>/prova/ViewFinal/OrdersShop</url-pattern>
+		<url-pattern>/ViewFinal/OrdersShop</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioneSeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioneSeller</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioneSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioniSeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioniSeller</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioniSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioniOpenSeller</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioniOpenSeller</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioniOpenSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SellProduct</servlet-name>
-		<url-pattern>/prova/ViewFinal/SellProduct</url-pattern>
+		<url-pattern>/ViewFinal/SellProduct</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ChangePassword</servlet-name>
-		<url-pattern>/prova/ViewFinal/ChangePassword</url-pattern>
+		<url-pattern>/ViewFinal/ChangePassword</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>OrderUser</servlet-name>
-		<url-pattern>/prova/ViewFinal/OrderUser</url-pattern>
+		<url-pattern>/ViewFinal/OrderUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>OrdersUser</servlet-name>
-		<url-pattern>/prova/ViewFinal/OrdersUser</url-pattern>
+		<url-pattern>/ViewFinal/OrdersUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Profile</servlet-name>
-		<url-pattern>/prova/ViewFinal/Profile</url-pattern>
+		<url-pattern>/ViewFinal/Profile</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RegistrationSellerLog</servlet-name>
-		<url-pattern>/prova/ViewFinal/RegistrationSellerLog</url-pattern>
+		<url-pattern>/ViewFinal/RegistrationSellerLog</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioneUser</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioneUser</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioneUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioniUser</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioniUser</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioniUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SegnalazioniOpenUser</servlet-name>
-		<url-pattern>/prova/ViewFinal/SegnalazioniOpenUser</url-pattern>
+		<url-pattern>/ViewFinal/SegnalazioniOpenUser</url-pattern>
 	</servlet-mapping>
 
 	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -435,132 +436,133 @@
 	<!-- |||||||||||||||||||||||||||||||||| JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioneAdmin</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioneAdmin</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioneAdmin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioniAdmin</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioniAdmin</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioniAdmin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioniOpenAdmin</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioniOpenAdmin</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioniOpenAdmin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Cart</servlet-name>
-		<url-pattern>/prova/ViewTest/Cart</url-pattern>
+		<url-pattern>/ViewTest/Cart</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Home</servlet-name>
-		<url-pattern>/prova/ViewTest/</url-pattern>
-		<url-pattern>/prova/ViewTest/Home</url-pattern>
+		<url-pattern>/ViewTest/Home</url-pattern>
+		<url-pattern>/ViewTest/</url-pattern>
+		<url-pattern>/ViewTest</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Product</servlet-name>
-		<url-pattern>/prova/ViewTest/Product</url-pattern>
+		<url-pattern>/ViewTest/Product</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_ProductList</servlet-name>
-		<url-pattern>/prova/ViewTest/ProductList</url-pattern>
+		<url-pattern>/ViewTest/ProductList</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Seller</servlet-name>
-		<url-pattern>/prova/ViewTest/Seller</url-pattern>
+		<url-pattern>/ViewTest/Seller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Shop</servlet-name>
-		<url-pattern>/prova/ViewTest/Shop</url-pattern>
+		<url-pattern>/ViewTest/Shop</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_ConfirmUser</servlet-name>
-		<url-pattern>/prova/ViewTest/ConfirmUser</url-pattern>
+		<url-pattern>/ViewTest/ConfirmUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_ForgottenPassword</servlet-name>
-		<url-pattern>/prova/ViewTest/ForgottenPassword</url-pattern>
+		<url-pattern>/ViewTest/ForgottenPassword</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Login</servlet-name>
-		<url-pattern>/prova/ViewTest/Login</url-pattern>
+		<url-pattern>/ViewTest/Login</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Registration</servlet-name>
-		<url-pattern>/prova/ViewTest/Registration</url-pattern>
+		<url-pattern>/ViewTest/Registration</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_RegistrationSeller</servlet-name>
-		<url-pattern>/prova/ViewTest/RegistrationSeller</url-pattern>
+		<url-pattern>/ViewTest/RegistrationSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_MySeller</servlet-name>
-		<url-pattern>/prova/ViewTest/MySeller</url-pattern>
+		<url-pattern>/ViewTest/MySeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_MyShop</servlet-name>
-		<url-pattern>/prova/ViewTest/MyShop</url-pattern>
+		<url-pattern>/ViewTest/MyShop</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_OrderSeller</servlet-name>
-		<url-pattern>/prova/ViewTest/OrderSeller</url-pattern>
+		<url-pattern>/ViewTest/OrderSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_OrdersSeller</servlet-name>
-		<url-pattern>/prova/ViewTest/OrdersSeller</url-pattern>
+		<url-pattern>/ViewTest/OrdersSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_OrdersShop</servlet-name>
-		<url-pattern>/prova/ViewTest/OrdersShop</url-pattern>
+		<url-pattern>/ViewTest/OrdersShop</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioneSeller</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioneSeller</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioneSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioniSeller</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioniSeller</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioniSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioniOpenSeller</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioniOpenSeller</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioniOpenSeller</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SellProduct</servlet-name>
-		<url-pattern>/prova/ViewTest/SellProduct</url-pattern>
+		<url-pattern>/ViewTest/SellProduct</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_ChangePassword</servlet-name>
-		<url-pattern>/prova/ViewTest/ChangePassword</url-pattern>
+		<url-pattern>/ViewTest/ChangePassword</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_OrderUser</servlet-name>
-		<url-pattern>/prova/ViewTest/OrderUser</url-pattern>
+		<url-pattern>/ViewTest/OrderUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_OrdersUser</servlet-name>
-		<url-pattern>/prova/ViewTest/OrdersUser</url-pattern>
+		<url-pattern>/ViewTest/OrdersUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_Profile</servlet-name>
-		<url-pattern>/prova/ViewTest/Profile</url-pattern>
+		<url-pattern>/ViewTest/Profile</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_RegistrationSellerLog</servlet-name>
-		<url-pattern>/prova/ViewTest/RegistrationSellerLog</url-pattern>
+		<url-pattern>/ViewTest/RegistrationSellerLog</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioneUser</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioneUser</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioneUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioniUser</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioniUser</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioniUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_SegnalazioniOpenUser</servlet-name>
-		<url-pattern>/prova/ViewTest/SegnalazioniOpenUser</url-pattern>
+		<url-pattern>/ViewTest/SegnalazioniOpenUser</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_PaginaDiDecisione</servlet-name>
-		<url-pattern>/prova/ViewTest/PaginaDiDecisione</url-pattern>
+		<url-pattern>/ViewTest/PaginaDiDecisione</url-pattern>
 	</servlet-mapping>
 
 	<!-- |||||||||||||||||||||||||||||||||| DEBUG JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -581,15 +583,15 @@
 	<!-- da rimuovere prima della consegna -->
 	<servlet-mapping>
 		<servlet-name>ViewTest_CategoryContainer</servlet-name>
-		<url-pattern>/prova/ViewTest/CategoryContainer</url-pattern>
+		<url-pattern>/ViewTest/CategoryContainer</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_LocationContainer</servlet-name>
-		<url-pattern>/prova/ViewTest/LocationContainer</url-pattern>
+		<url-pattern>/ViewTest/LocationContainer</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ViewTest_NavbarComplete</servlet-name>
-		<url-pattern>/prova/ViewTest/NavbarComplete</url-pattern>
+		<url-pattern>/ViewTest/NavbarComplete</url-pattern>
 	</servlet-mapping>
 
 	

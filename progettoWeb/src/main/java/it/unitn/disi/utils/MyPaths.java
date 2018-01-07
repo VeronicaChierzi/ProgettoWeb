@@ -15,8 +15,8 @@ public class MyPaths {
 		// <editor-fold defaultstate="collapsed" desc="Prefix e Funzioni">
 		private static boolean viewTest;
 
-		private static final String prefixViewFinal = "/progettoWeb/prova/ViewFinal/";
-		private static final String prefixViewTest = "/progettoWeb/prova/ViewTest/";
+		private static final String prefixViewFinal = "/progettoWeb/ViewFinal/";
+		private static final String prefixViewTest = "/progettoWeb/ViewTest/";
 
 		private static final String prefixHiddenViewFinal = "/WEB-INF/ViewFinal/jsp/";
 		private static final String prefixHiddenViewTest = "/WEB-INF/ViewTest/jsp/";
