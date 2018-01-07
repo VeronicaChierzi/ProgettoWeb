@@ -21,6 +21,14 @@ public class Model {
 			}
 			return s;
 		}
+		public static int getInt(HttpServletRequest request, String parameterName) {
+			int num = Integer.parseInt(request.getParameter(parameterName));
+			return num;
+		}
+		public static float getFloat(HttpServletRequest request, String parameterName) {
+			float num = Float.parseFloat(request.getParameter(parameterName));
+			return num;
+		}
 		// </editor-fold>
 	}
 

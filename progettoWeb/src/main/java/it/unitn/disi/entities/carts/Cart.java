@@ -21,6 +21,10 @@ public class Cart {
 		return totalPrice;
 	}
 	
+	public boolean isEmpty(){
+		return (orders.isEmpty());
+	}
+	
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
 	/**
 	 * @return the idUser

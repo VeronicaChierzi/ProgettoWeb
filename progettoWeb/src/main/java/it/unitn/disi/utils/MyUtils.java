@@ -17,6 +17,9 @@ public class MyUtils {
 	//se impostato a true, stampa il debug del login/registrazione/logout dell'utente
 	public static final boolean debugUserController = false;
 	
+	//se impostato a true, stampa il debug del carrello (acquisto/aggiunta oggetti)
+	public static final boolean debugCartController = true;
+	
 	//se impostato a true, stampa un messaggio di debug quando MySerlvet effettua un forward, un redirect o un include
 	//funziona solo sulle MyServlet. Le JSP non stampano nulla.
 	public static final boolean debugServletForwardRedirectInclude = true;

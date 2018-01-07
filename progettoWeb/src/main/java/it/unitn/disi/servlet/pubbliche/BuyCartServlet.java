@@ -1,19 +1,20 @@
-package it.unitn.disi.servlet;
+package it.unitn.disi.servlet.pubbliche;
 
 import it.unitn.disi.controllers.CartController;
 import it.unitn.disi.dao.OrderDAO;
 import it.unitn.disi.dao.ShopProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
+import it.unitn.disi.servlet.MyServlet;
+import it.unitn.disi.utils.Model;
+import it.unitn.disi.utils.MyPaths;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "BuyServlet", urlPatterns = {"/BuyServlet"})
-public class BuyServlet extends MyServlet {
+public class BuyCartServlet extends MyServlet {
 
 	private OrderDAO orderDAO;
 	private ShopProductDAO shopProductDAO;
@@ -27,15 +28,19 @@ public class BuyServlet extends MyServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
 		try {
-			CartController.checkCart(session, user, shopProductDAO);
-			orderDAO.buyCart(CartController.getOrCreateCart(session));
-			redirect(response, "index.jsp");
-		} catch (DAOException ex) {
-			System.err.println("Errore buy servlet: " + ex.getMessage());
-			redirect(response, "cart.jsp");
+			User user = Model.Session.getUserLogged(request);
+			try {
+				HttpSession session = request.getSession();
+				if(CartController.buyCart(session, user, shopProductDAO, orderDAO))
+				redirect(response, MyPaths.Jsp.allHome);
+			} catch (DAOException ex) {
+				System.err.println("Errore buy servlet: " + ex.getMessage());
+				Model.Messages.setBoolean(request, "buyCartFailed");
+				redirect(response, MyPaths.Jsp.allCart);
+			}
+		} catch (Exception e) {
+			System.err.println("Errore utente non loggato in BuyCartServlet: " + e.getMessage());
 		}
 	}
 

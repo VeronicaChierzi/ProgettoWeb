@@ -37,6 +37,7 @@ public class UserController {
 				if (MyUtils.debugUserController) {
 					System.err.println("Login riuscito!");
 				}
+				CartController.connectCartToUser(request.getSession(), request);
 				return true;
 			} else { //utente non loggato
 				Model.Messages.setBoolean(request, Model.Messages.loginFailed);

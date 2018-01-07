@@ -180,6 +180,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 			int result = -1; //quantità di righe modificate dalla query insert
 			try {
 				result = ps.executeUpdate();
+				aggiornaIdOrder(order); //imposta alla variabile order e agli orderProducts, l'id di order che è stato appena generato dal database
 				for (OrderProduct op : order.getOrderProducts()) {
 					decreaseShopProduct(op, order);
 					insertOrderProduct(op);
@@ -238,6 +239,25 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 		} catch (SQLException ex) {
 			throw new DAOException("Errore SQLExcpetion in insertOrderProduct: " + ex.getMessage());
 		}
+	}
+
+	//aggiorna l'id di order e di tutti gli orderproducts.
+	//serve perchè quando inserisco un nuovo ordine, il database genera l'id dell'ordine, che mi serve per inserire nel database gli OrderProduct
+	private void aggiornaIdOrder(Order order) throws DAOException {
+		int orderId = getLastOrderId(order.getIdUser());
+		order.setId(orderId);
+		for (OrderProduct op : order.getOrderProducts()) {
+			op.setIdOrder(orderId);
+		}
+	}
+	
+	//restituisce l'id dell'ultimo ordine inserito da un utente.
+	//serve per conoscere l'id che il database ha assegnato all'ordine appena inserito
+	private int getLastOrderId(int idUser) throws DAOException {
+		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC LIMIT 1";
+		Object[] parametriQuery = new Object[]{idUser};
+		Order order = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		return order.getId();
 	}
 
 }

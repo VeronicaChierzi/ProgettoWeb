@@ -38,10 +38,10 @@
 	idShop: <%=shopProduct.getIdShop()%><br/>
 	price: <%=shopProduct.getPrice()%><br/>
 	quantity: <%=shopProduct.getQuantity()%><br/>
-	<form method="post" action="AddToCartServlet">
+	<form method="post" action="<%=MyPaths.Servlet.Pubbliche.addToCart%>">
 		<input type="hidden" name="id_product" value="<%=product.getId()%>" />
 		<input type="hidden" name="id_shop" value="<%=shopProduct.getIdShop()%>" />
-		<input type="hidden" name="current_price" value="<%=shopProduct.getPrice()%>" />
+		<%--<input type="hidden" name="current_price" value="<%=shopProduct.getPrice()%>" />--%>
 		<select name="quantity" autocomplete="off">
 			<% for (int i = 1; i <= shopProduct.getQuantity() && i <= 99; i++) {%>
 			<option value="<%=i%>" <% if (i == 1) { %> selected <% }%>><%=i%></option>

@@ -60,6 +60,7 @@ public class MyPaths {
 		public static String adminSegnalazioniOpen;
 		public static String allCart;
 		public static String allHome;
+		public static String allPaginaDiDecisione;
 		public static String allProduct;
 		public static String allProductList;
 		public static String allShop;
@@ -105,6 +106,7 @@ public class MyPaths {
 			adminSegnalazioniOpen = p + "SegnalazioniOpenAdmin";
 			allCart = p + "Cart";
 			allHome = p + "Home";
+			allPaginaDiDecisione = p + "PaginaDiDecisione";
 			allProduct = p + "Product";
 			allProductList = p + "ProductList";
 			allSeller = p + "Seller";
@@ -168,6 +170,8 @@ public class MyPaths {
 			public static final String addToCart = p + "AddToCartServlet";
 			public static final String buyCart = p + "BuyCartServlet";
 			public static final String changePassword = p + "ChangePasswordServlet";
+			public static final String changeProductQuantityCartServlet = p + "ChangeProductQuantityCartServlet";
+			public static final String deleteProductCartServlet = p + "DeleteProductCartServlet";
 			public static final String confirmUser = p + "ConfirmUserServlet";
 			public static final String forgottenPassword = p + "ForgottenPasswordServlet";
 			public static final String login = p + "LoginServlet";
