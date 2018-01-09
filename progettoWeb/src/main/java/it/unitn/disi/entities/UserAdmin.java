@@ -4,9 +4,6 @@ public class UserAdmin {
 
 	private int id;
 
-	public UserAdmin() {
-	}
-
 	public UserAdmin(int id) {
 		this.id = id;
 	}

@@ -7,6 +7,9 @@ public class ShopProduct {
 	private float price;
 	private int quantity;
 	
+	private Product product;
+	private Shop shop;
+	
 	public ShopProduct(int idProduct, int idShop, float price, int quantity) {
 		this.idProduct = idProduct;
 		this.idShop = idShop;
@@ -69,6 +72,34 @@ public class ShopProduct {
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	/**
+	 * @return the product
+	 */
+	public Product getProduct() {
+		return product;
+	}
+
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	/**
+	 * @return the shop
+	 */
+	public Shop getShop() {
+		return shop;
+	}
+
+	/**
+	 * @param shop the shop to set
+	 */
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 	// </editor-fold>
 

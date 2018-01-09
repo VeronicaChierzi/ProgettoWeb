@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.NotificationDAO;
@@ -16,10 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author root
- */
 public class JDBCNotificationDAO extends JDBCDAO<Notification, Integer> implements NotificationDAO {
 
     public JDBCNotificationDAO(Connection con) {

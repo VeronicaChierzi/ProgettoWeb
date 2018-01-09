@@ -30,7 +30,7 @@ public class GetSegnalazioniOpenAdminServlet extends MyServlet {
 				Model.Request.setAttribute(request, Model.Request.segnalazioniOpenAdmin, s);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetSegnalazioniOpenAdminServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Errore NumberFormatException in GetSegnalazioniOpenAdminServlet: " + e.getMessage());

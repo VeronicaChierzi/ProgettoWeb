@@ -1,31 +1,13 @@
-/*
- * AA 2016-2017
- * Introduction to Web Programming
- * Common - DAO
- * UniTN
- */
 package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.DAO;
-import it.unitn.disi.dao.ProductDAO;
-import it.unitn.disi.dao.ShopProductDAO;
 import it.unitn.disi.dao.exceptions.DAOFactoryException;
 import it.unitn.disi.dao.factories.DAOFactory;
+import it.unitn.disi.utils.MyUtils;
 import java.sql.Connection;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 
-/**
- * This is the base DAO class all concrete DAO using JDBC technology must
- * extend.
- *
- * @param <ENTITY_CLASS> the class of the entities the dao handle.
- * @param <PRIMARY_KEY_CLASS> the class of the primary key of the entity the dao
- * handle.
- *
- * @author Stefano Chirico
- * @since 1.0.170417
- */
 public abstract class JDBCDAO<ENTITY_CLASS, PRIMARY_KEY_CLASS> implements DAO<ENTITY_CLASS, PRIMARY_KEY_CLASS> {
 
 	/**
@@ -69,20 +51,38 @@ public abstract class JDBCDAO<ENTITY_CLASS, PRIMARY_KEY_CLASS> implements DAO<EN
 	public <DAO_CLASS extends DAO> DAO_CLASS getDAO(Class<DAO_CLASS> daoClass) throws DAOFactoryException {
 		return (DAO_CLASS) FRIEND_DAOS.get(daoClass);
 	}
-	
+
+	@Override
+	public <DAO_CLASS extends DAO> DAO_CLASS setDAO(Class<DAO_CLASS> daoClass, DAO dao) throws DAOFactoryException {
+		return (DAO_CLASS) FRIEND_DAOS.put(daoClass, dao);
+	}
+
 	protected DAO initDao(Class daoClass, DAOFactory daoFactory) throws ServletException {
 		if (daoFactory == null) {
 			throw new ServletException("Impossible to get dao factory");
 		}
 		try {
-			DAO dao = daoFactory.getDAO(daoClass);
+			DAO dao = getDAO(daoClass);
+			if (dao == null) {
+				dao = daoFactory.getDAO(daoClass);
+				setDAO(daoClass, dao);
+				if (dao != null) {
+					dao.initFriendsDAO(daoFactory);
+					if (MyUtils.debugDaoInit) {
+						System.err.println("DAO ottenuto da un altro jdbcdao: " + dao.toString());
+					}
+				} else {
+					System.err.println("ERRORE: Impossibile ottenere il dao");
+				}
+			}
 			return dao;
 		} catch (DAOFactoryException ex) {
 			throw new ServletException("Impossible to get dao", ex);
 		}
 	}
-	
+
 	@Override
-	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException{
+	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException {
 	}
+
 }

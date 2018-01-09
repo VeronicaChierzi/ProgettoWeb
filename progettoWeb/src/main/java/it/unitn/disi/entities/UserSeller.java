@@ -6,9 +6,6 @@ public class UserSeller {
 	private String name;
 	private String partitaIva;
 
-	public UserSeller() {
-	}
-
 	public UserSeller(int id, String name, String partitaIva) {
 		this.id = id;
 		this.name = name;

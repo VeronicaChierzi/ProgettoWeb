@@ -30,7 +30,7 @@ public class GetProductListServlet extends MyServlet {
 			}
 		} catch (DAOException ex) {
 			System.err.println("Errore DAOException in GetProductListServlet: " + ex.getMessage());
-			forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+			forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 		}
 	}
 

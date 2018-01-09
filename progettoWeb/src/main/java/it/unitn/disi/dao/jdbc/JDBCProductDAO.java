@@ -28,16 +28,24 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 		shopProductDAO = (ShopProductDAO) initDao(ShopProductDAO.class, daoFactory);
 		imageDAO = (ImageDAO) initDao(ImageDAO.class, daoFactory);
 	}
+	
+	private void setPointers(Product p, boolean loadMinShopProduct, boolean loadImage) throws DAOException {
+		if (p != null) {
+			if (loadMinShopProduct) {
+				p.setShopProduct(shopProductDAO.getMinShopProduct(p.getId(), p));
+			}
+			if (loadImage) {
+				p.setImage(imageDAO.getProductImage(p.getId()));
+			}
+		}
+	}
 
 	@Override
-	public Product getProduct(int id) throws DAOException {
+	public Product getProduct(int id, boolean loadMinShopProduct, boolean loadImage) throws DAOException {
 		String query = "SELECT * FROM products WHERE id = ?";
 		Object[] parametriQuery = new Object[]{id};
 		Product p = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
-		if (p != null) {
-			p.setShopProduct(shopProductDAO.getMinShopProduct(p.getId()));
-			p.setImage(imageDAO.getProductImage(p.getId()));
-		}
+		setPointers(p, loadMinShopProduct, loadImage);
 		return p;
 	}
 
@@ -55,8 +63,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 		};
 		Product[] productList = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Product p : productList) {
-			p.setShopProduct(shopProductDAO.getMinShopProduct(p.getId()));
-			p.setImage(imageDAO.getProductImage(p.getId()));
+			setPointers(p, true, true);
 		}
 		return productList;
 	}

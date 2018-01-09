@@ -1,6 +1,7 @@
 package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.exceptions.DAOException;
+import it.unitn.disi.utils.MyUtils;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +22,17 @@ public class DAOFunctions {
 			Class classe, String[] nomiColonne, Class[] constructorParameterTypes,
 			Connection CON) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement(query)) {
+			if (MyUtils.debugDAOFunctions) {
+				if (MyUtils.isDebuggableClass(classe)) {
+					System.err.println("DAOFunctions GET ONE: " + query
+							+ "\nPARAMETRI: " + Arrays.toString(queryParameters)
+							+ "\nCLASSE: " + classe.getName()
+							+ "\nNOMI COLONNE: " + Arrays.toString(nomiColonne)
+							+ "\nCONSTRUCTOR PARAMETER TYPES: " + Arrays.toString(constructorParameterTypes)
+							+ "\n"
+					);
+				}
+			}
 			myPrepareStatement(ps, queryParameters);
 			try (ResultSet rs = ps.executeQuery()) {
 				T t = null;
@@ -34,8 +47,9 @@ public class DAOFunctions {
 					throw new DAOException(errore);
 				}
 				if (t == null) {
-					String errore = "Warning: la query ha trovato 0 oggetti";
-					System.err.println(errore);
+					if (MyUtils.debugDAOFunctions) {
+						System.err.println("Warning: la query ha trovato 0 oggetti");
+					}
 				}
 				return t;
 			} catch (SQLException ex) {
@@ -51,6 +65,17 @@ public class DAOFunctions {
 			Class classe, String[] nomiColonne, Class[] constructorParameterTypes,
 			Connection CON) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement(query)) {
+			if (MyUtils.debugDAOFunctions) {
+				if (MyUtils.isDebuggableClass(classe)) {
+					System.err.println("DAOFunctions GET MANY: " + query
+							+ "\nPARAMETRI: " + Arrays.toString(queryParameters)
+							+ "\nCLASSE: " + classe.getName()
+							+ "\nNOMI COLONNE: " + Arrays.toString(nomiColonne)
+							+ "\nCONSTRUCTOR PARAMETER TYPES: " + Arrays.toString(constructorParameterTypes)
+							+ "\n"
+					);
+				}
+			}
 			myPrepareStatement(ps, queryParameters);
 			try (ResultSet rs = ps.executeQuery()) {
 				ArrayList<T> tempListT = new ArrayList<>();

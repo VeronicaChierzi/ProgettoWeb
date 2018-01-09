@@ -31,7 +31,7 @@ public class GetSegnalazioneSellerServlet extends MyServlet {
 				Model.Request.setAttribute(request, Model.Request.segnalazioneSeller, s);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetSegnalazioneSellerServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Errore NumberFormatException in GetSegnalazioneSellerServlet: " + e.getMessage());
