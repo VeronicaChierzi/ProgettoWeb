@@ -35,7 +35,7 @@ public class AddToCartServlet extends MyServlet {
 
 		HttpSession session = request.getSession(true);
 		try {
-			ShopProduct sp = shopProductDAO.getShopProduct(idProduct, idShop);
+			ShopProduct sp = shopProductDAO.getShopProduct(idProduct, idShop, false, false);
 			//float realPrice = sp.getPrice(); //ricava dal database il prezzo reale
 			//if (realPrice != clientPrice) {
 			//stampa messaggio per l'utente. il prezzo è stato cambiato.

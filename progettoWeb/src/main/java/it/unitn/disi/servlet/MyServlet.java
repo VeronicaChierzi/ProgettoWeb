@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public abstract class MyServlet extends HttpServlet {
-	
+
 	protected DAO initDao(Class daoClass) throws ServletException {
 		DAOFactory daoFactory = (DAOFactory) super.getServletContext().getAttribute("daoFactory");
 		if (daoFactory == null) {
@@ -21,34 +21,41 @@ public abstract class MyServlet extends HttpServlet {
 		}
 		try {
 			DAO dao = daoFactory.getDAO(daoClass);
-			dao.initFriendsDAO(daoFactory);
+			if (dao != null) {
+				dao.initFriendsDAO(daoFactory);
+				if (MyUtils.debugDaoInit) {
+					System.err.println("DAO ottenuto da una servlet: " + dao.toString());
+				}
+			} else {
+				System.err.println("ERRORE: Impossibile ottenere il dao");
+			}
 			return dao;
 		} catch (DAOFactoryException ex) {
 			throw new ServletException("Impossible to get dao", ex);
 		}
 	}
-	
+
 	protected void redirect(HttpServletResponse response, String page) throws IOException {
-		if(MyUtils.debugServletForwardRedirectInclude){
-			System.err.println("MYSERVLET REDIRECT TO: "+page);
+		if (MyUtils.debugServletForwardRedirectInclude) {
+			System.err.println("MYSERVLET REDIRECT TO: " + page);
 		}
 		response.sendRedirect(response.encodeRedirectURL(page));
 	}
 
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String page)
 			throws ServletException, IOException {
-		if(MyUtils.debugServletForwardRedirectInclude){
-			System.err.println("MYSERVLET FORWARD TO: "+page);
+		if (MyUtils.debugServletForwardRedirectInclude) {
+			System.err.println("MYSERVLET FORWARD TO: " + page);
 		}
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
-	
+
 	protected void include(HttpServletRequest request, HttpServletResponse response, String page)
 			throws ServletException, IOException {
-		if(MyUtils.debugServletForwardRedirectInclude){
-			System.err.println("MYSERVLET INCLUDE: "+page);
+		if (MyUtils.debugServletForwardRedirectInclude) {
+			System.err.println("MYSERVLET INCLUDE: " + page);
 		}
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher(page);

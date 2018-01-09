@@ -1,5 +1,7 @@
 package it.unitn.disi.entities.orders;
 
+import it.unitn.disi.entities.Shop;
+import it.unitn.disi.entities.User;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -9,8 +11,10 @@ public class Order {
 	private int idUser;
 	private int idShop;
 	private Timestamp datetimePurchase;
-	
+
 	private ArrayList<OrderProduct> orderProducts;
+	private User user;
+	private Shop shop;
 
 	public Order() {
 		orderProducts = new ArrayList<>();
@@ -23,7 +27,7 @@ public class Order {
 		this.datetimePurchase = datetimePurchase;
 		orderProducts = new ArrayList<>();
 	}
-	
+
 	public float getTotalPrice() {
 		float totalPrice = 0.0f;
 		for (OrderProduct op : orderProducts) {
@@ -31,7 +35,7 @@ public class Order {
 		}
 		return totalPrice;
 	}
-	
+
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
 	/**
 	 * @return the id
@@ -101,6 +105,34 @@ public class Order {
 	 */
 	public void setOrderProducts(ArrayList<OrderProduct> orderProducts) {
 		this.orderProducts = orderProducts;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	/**
+	 * @return the shop
+	 */
+	public Shop getShop() {
+		return shop;
+	}
+
+	/**
+	 * @param shop the shop to set
+	 */
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 	// </editor-fold>
 

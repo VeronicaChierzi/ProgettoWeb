@@ -30,7 +30,7 @@ public class DeleteProductCartServlet extends MyServlet {
 
 		HttpSession session = request.getSession(true);
 		try {
-			ShopProduct sp = shopProductDAO.getShopProduct(idProduct, idShop);
+			ShopProduct sp = shopProductDAO.getShopProduct(idProduct, idShop, false, false);
 			CartController.deleteProduct(session, sp);
 			Model.Messages.setBoolean(request, "rimossoProdottoCarrello");
 			redirect(response, MyPaths.Jsp.allCart);

@@ -12,56 +12,56 @@
 	<% if (cart == null || cart.isEmpty()) { %>
 	Il carrello è vuoto
 	<% } else { %>
-		<% float totalPrice = 0.0f; %>
-		<table border="1">
-			<% int num_o = 0; %>
-			<% for (Order o : cart.getOrders()) {%>
-			<tr>
-				<td>id order: <%=o.getId()%></td>
-				<td>id shop: <%=o.getIdShop()%></td>
-				<td>id user: <%=o.getIdUser()%></td>
-				<td>datetime purchase: <%=o.getDatetimePurchase()%></td>
-				<td>total price order: <%=o.getTotalPrice()%></td>
-				<td>order products: <%=o.getOrderProducts()%></td>
-			</tr>
-			<tr>
-				<td>
-					<table border="1">
-						<% int num_op = 0; %>
-						<% for (OrderProduct op : o.getOrderProducts()) {%>
-						<tr>
-							<td>id order: <%=op.getIdOrder()%></td>
-							<td>id product: <%=op.getIdProduct()%></td>
-							<td>single price: <%=op.getPrice()%></td>
-							<td>
-								quantity: <%=op.getQuantity()%>
-								<form name="form<%=num_o%>_<%=num_op%>" action="<%=MyPaths.Servlet.Pubbliche.changeProductQuantityCartServlet%>" method="POST">
-									<select name="quantity" autocomplete="off" onchange="document.form<%=num_o%>_<%=num_op%>.submit()">
-										<% for (int i = 1; i <= 99; i++) {%>
-										<option value="<%=i%>" <% if (i == op.getQuantity()) { %> selected <% }%>><%=i%></option>
-										<% } %>
-									</select>
-									<input type="hidden" name="id_product" value="<%=op.getIdProduct()%>" />
-									<input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
-								</form>
-							</td>
-							<td>total price orderProduct: <%=op.getTotalPrice()%></td>
-							<td>
-								<form action="<%=MyPaths.Servlet.Pubbliche.deleteProductCartServlet%>" method="POST">
-									<input type="hidden" name="id_product" value="<%=op.getIdProduct()%>" />
-									<input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
-									<input type="submit" value="remove" />
-								</form>
-							</td>
-						</tr>
-						<% num_op++; %>
-						<% } %>
-					</table>
-				</td>
-			</tr>
-			<% num_o++; %>
-			<% }%>
-		</table>
+		<% int num_o = 0; %>
+		<% for (Order o : cart.getOrders()) {%>
+		<div style="border:1px solid black;">
+			<h3>Informazioni Ordine</h3>
+			<ul>
+				<li>id order: <%=o.getId()%></li>
+				<li>id shop: <%=o.getIdShop()%></li>
+				<li>id user: <%=o.getIdUser()%></li>
+				<li>datetime purchase: <%=o.getDatetimePurchase()%></li>
+				<li>total price order: <%=o.getTotalPrice()%></li>
+				<li>order products: <%=o.getOrderProducts()%></li>
+			</ul>
+			<h4>Prodotti dell'ordine</h4>
+			<ul>
+				<% int num_op = 0; %>
+				<% for (OrderProduct op : o.getOrderProducts()) {%>
+				<li>
+					<ul>
+						<li>id order: <%=op.getIdOrder()%></li>
+						<li>id product: <%=op.getIdProduct()%></li>
+						<li>single price: <%=op.getPrice()%></li>
+						<li>
+							quantity: <%=op.getQuantity()%>
+							<form name="form<%=num_o%>_<%=num_op%>" action="<%=MyPaths.Servlet.Pubbliche.changeProductQuantityCartServlet%>" method="POST">
+								<select name="quantity" autocomplete="off" onchange="document.form<%=num_o%>_<%=num_op%>.submit()">
+									<% for (int i = 1; i <= 99; i++) {%>
+									<option value="<%=i%>" <% if (i == op.getQuantity()) { %> selected <% }%>><%=i%></option>
+									<% } %>
+								</select>
+								<input type="hidden" name="id_product" value="<%=op.getIdProduct()%>" />
+								<input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
+							</form>
+						</li>
+						<li>total price orderProduct: <%=op.getTotalPrice()%></li>
+						<li>
+							<form action="<%=MyPaths.Servlet.Pubbliche.deleteProductCartServlet%>" method="POST">
+								<input type="hidden" name="id_product" value="<%=op.getIdProduct()%>" />
+								<input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
+								<input type="submit" value="remove" />
+							</form>
+						</li>
+					</ul>
+				</li>
+				<% num_op++; %>
+				<% } %>
+			</ul>
+		</div><br/>
+		<% num_o++; %>
+		<% }%>
+
 		total price cart: <%=cart.getTotalPrice()%></br>
 
 		<% User user = (User)Model.Session.getAttribute(request, Model.Session.user); %>
@@ -70,9 +70,9 @@
 				<input type="submit" value="compra" />
 			</form>
 		<% } else { %>
-		<p>
-			Effettua il <a href="<%=MyPaths.Jsp.anonymousLogin%>">login</a> per procedere all'acquisto
-		</p>
+			<p>
+				Effettua il <a href="<%=MyPaths.Jsp.anonymousLogin%>">login</a> per procedere all'acquisto
+			</p>
 		<% } %>
 	<% } %>
 	<% if (Model.Messages.consumeBoolean(request, "buyCartFailed")) { %>

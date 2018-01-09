@@ -2,6 +2,8 @@ package it.unitn.disi.dao.jdbc;
 
 import it.unitn.disi.dao.OrderDAO;
 import it.unitn.disi.dao.OrderProductDAO;
+import it.unitn.disi.dao.ShopDAO;
+import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.dao.factories.DAOFactory;
 import it.unitn.disi.entities.carts.Cart;
@@ -15,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.servlet.ServletException;
 
-
 public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 
 	private static final Class classe = Order.class;
@@ -23,6 +24,8 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 	private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, Timestamp.class};
 
 	private OrderProductDAO orderProductDAO;
+	private UserDAO userDAO;
+	private ShopDAO shopDAO;
 
 	public JDBCOrderDAO(Connection con) {
 		super(con);
@@ -31,103 +34,80 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 	@Override
 	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException {
 		orderProductDAO = (OrderProductDAO) initDao(OrderProductDAO.class, daoFactory);
+		shopDAO = (ShopDAO) initDao(ShopDAO.class, daoFactory);
 	}
-	
+
+	private void setPointers(Order o, boolean loadOrdersProducts, boolean loadUser, boolean loadShop) throws DAOException {
+		if (o != null) {
+			if (loadOrdersProducts) {
+				OrderProduct[] op = orderProductDAO.getOrderProductsByIdOrder(o.getId());
+				ArrayList<OrderProduct> opList = new ArrayList<>(Arrays.asList(op));
+				o.setOrderProducts(opList);
+			}
+			if (loadUser) {
+				o.setUser(userDAO.getUser(o.getIdUser()));
+			}
+			if (loadShop) {
+				o.setShop(shopDAO.getShop(o.getIdShop(), true, true));
+			}
+		}
+	}
+
+	//usato in segnalazione, per prendere l'ordine, per prendere l'utente e il negozio per prendere il venditore
+	@Override
+	public Order getOrder(int id) throws DAOException {
+		String query = "SELECT * FROM orders WHERE id=?";
+		Object[] parametriQuery = new Object[]{id};
+		Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		if (o != null) {
+			setPointers(o, true, true, true);
+		}
+		return o;
+	}
+
+	//dettagli di un ordine di un utente. idUser usato per garantire sicurezza(solo l'utente che ha effettuato l'ordine deve poter visualizzarlo).
+	@Override
+	public Order getOrderUser(int id, int idUser) throws DAOException {
+		String query = "SELECT * FROM orders WHERE id=? AND id_user=?";
+		Object[] parametriQuery = new Object[]{id, idUser};
+		Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		if (o != null) {
+			setPointers(o, true, false, true);
+		}
+		return o;
+	}
+
+	//tutti gli ordini di un utente
 	@Override
 	public Order[] getOrdersUser(int idUser) throws DAOException {
 		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC";
 		Object[] parametriQuery = new Object[]{idUser};
 		Order[] orders = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Order o : orders) {
-			OrderProduct[] op = orderProductDAO.getOrderProductsByIdOrder(o.getId());
-			ArrayList<OrderProduct> opList = new ArrayList<>(Arrays.asList(op));
-			o.setOrderProducts(opList);
+			setPointers(o, true, false, true);
 		}
 		return orders;
 	}
 
+	//dettagli di un ordine di un venditore (raggiungibile sia da OrdersSeller che da OrdersShop). idSeller usato per garantire sicurezza(solo il venditore cheha ricevuto l'ordine deve poter visualizzarlo).
 	@Override
-	public Order getOrderUser(int id, int idUser) throws DAOException {
-		String query = "SELECT * FROM orders WHERE id=? ORDER BY datetime_purchase DESC";
-		Object[] parametriQuery = new Object[]{id};
-		Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
-		if(o!=null) {
-			OrderProduct[] op = orderProductDAO.getOrderProductsByIdOrder(o.getId());
-			ArrayList<OrderProduct> opList = new ArrayList<>(Arrays.asList(op));
-			o.setOrderProducts(opList);
-		}
-		return o;
+	public Order getOrderSeller(int id, int idSeller) throws DAOException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
+	//tutti gli ordini di un venditore
 	@Override
 	public Order[] getOrdersSeller(int idSeller) throws DAOException {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
+	//tutti gli ordini di un punto vendita (appartenente a un venditore (da controllare per sicurezza che appartenga al venditore))
 	@Override
 	public Order[] getOrdersShop(int idShop, int idSeller) throws DAOException {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
-	@Override
-	public Order getOrderSeller(int id, int idSeller) throws DAOException {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-	
-	/*
-	@Override
-	public Order[] getOrdersByIdUser(int idUser) throws DAOException {
-		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC")) {
-			ps.setInt(1, idUser);
-			try (ResultSet rs = ps.executeQuery()) {
-				ArrayList<Order> orders_temp = new ArrayList<>(); //uso ArrayList perchè non posso ricavare direttamente la lunghezza da ResultSet
-				while (rs.next()) {
-					Order o = new Order(
-							rs.getInt("id"),
-							rs.getInt("id_user"),
-							rs.getInt("id_shop"),
-							rs.getTimestamp("datetime_purchase")
-					);
-					OrderProduct[] op = getOrderProductsByIdOrder(o.getId());
-					ArrayList<OrderProduct> opList = new ArrayList<>(Arrays.asList(op));
-					o.setOrderProducts(opList);
-					orders_temp.add(o);
-				}
-				Order[] orders = new Order[orders_temp.size()];
-				orders = orders_temp.toArray(orders); //trasforma arrayList in un array statico
-				return orders;
-			}
-		} catch (SQLException ex) {
-			throw new DAOException("Errore SQLException query getOrdersByIdUser: " + ex.getMessage(), ex);
-		}
-	}
-	*/
-
-	/*
-	private OrderProduct[] getOrderProductsByIdOrder(int idOrder) throws DAOException {
-		try (PreparedStatement ps = CON.prepareStatement("SELECT * FROM orders_products WHERE id_order=?")) {
-			ps.setInt(1, idOrder);
-			try (ResultSet rs = ps.executeQuery()) {
-				ArrayList<OrderProduct> orderProducts_temp = new ArrayList<>(); //uso ArrayList perchè non posso ricavare direttamente la lunghezza da ResultSet
-				while (rs.next()) {
-					OrderProduct o = new OrderProduct(
-							rs.getInt("id_order"),
-							rs.getInt("id_product"),
-							rs.getFloat("price"),
-							rs.getInt("quantity")
-					);
-					orderProducts_temp.add(o);
-				}
-				OrderProduct[] orderProducts = new OrderProduct[orderProducts_temp.size()];
-				orderProducts = orderProducts_temp.toArray(orderProducts); //trasforma arrayList in un array statico
-				return orderProducts;
-			}
-		} catch (SQLException ex) {
-			throw new DAOException("Errore SQLException query getOrderProductsByIdOrder: " + ex.getMessage(), ex);
-		}
-	}
-	*/
-
+	// <editor-fold defaultstate="collapsed" desc="BuyCart e funzioni per completare l'acquisto">
 	@Override
 	public boolean buyCart(Cart cart) throws DAOException {
 		if (cart == null) {
@@ -244,20 +224,24 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 	//aggiorna l'id di order e di tutti gli orderproducts.
 	//serve perchè quando inserisco un nuovo ordine, il database genera l'id dell'ordine, che mi serve per inserire nel database gli OrderProduct
 	private void aggiornaIdOrder(Order order) throws DAOException {
-		int orderId = getLastOrderId(order.getIdUser());
+		order.getIdShop();
+		int orderId = getLastOrderId(order);
 		order.setId(orderId);
 		for (OrderProduct op : order.getOrderProducts()) {
 			op.setIdOrder(orderId);
 		}
 	}
-	
+
 	//restituisce l'id dell'ultimo ordine inserito da un utente.
 	//serve per conoscere l'id che il database ha assegnato all'ordine appena inserito
-	private int getLastOrderId(int idUser) throws DAOException {
-		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC LIMIT 1";
-		Object[] parametriQuery = new Object[]{idUser};
+	private int getLastOrderId(Order o) throws DAOException {
+		int idUser = o.getIdUser();
+		int idShop = o.getIdShop();
+		String query = "SELECT * FROM orders WHERE id_user=? AND id_shop=? ORDER BY datetime_purchase DESC LIMIT 1";
+		Object[] parametriQuery = new Object[]{idUser, idShop};
 		Order order = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		return order.getId();
 	}
+	// </editor-fold>
 
 }

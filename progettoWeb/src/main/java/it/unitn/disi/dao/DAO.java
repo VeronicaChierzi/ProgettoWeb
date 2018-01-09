@@ -37,6 +37,8 @@ public interface DAO<ENTITY_CLASS, PRIMARY_KEY> {
 	 */
 	public <DAO_CLASS extends DAO> DAO_CLASS getDAO(Class<DAO_CLASS> daoClass) throws DAOFactoryException;
 
+	public <DAO_CLASS extends DAO> DAO_CLASS setDAO(Class<DAO_CLASS> daoClass, DAO dao) throws DAOFactoryException;
+
 	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException;
 
 }

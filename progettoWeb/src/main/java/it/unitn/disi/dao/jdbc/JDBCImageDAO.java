@@ -14,7 +14,7 @@ public class JDBCImageDAO extends JDBCDAO<Image, Integer> implements ImageDAO {
 	public JDBCImageDAO(Connection con) {
 		super(con);
 	}
-	
+
 	@Override
 	public Image getProductImage(int idProduct) throws DAOException {
 		String query = "SELECT * FROM images WHERE id_product = ? LIMIT 1;";

@@ -1,6 +1,7 @@
 package it.unitn.disi.controllers;
 
 import it.unitn.disi.dao.UserDAO;
+import it.unitn.disi.dao.UserSellerDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.entities.UserSeller;
@@ -96,7 +97,7 @@ public class UserController {
 	// false se le registrazione fallisce
 	// DAOException se c'è un errore nella query
 	public static boolean registrationSeller(
-			UserDAO userDao, ServletContext servletContext, HttpServletRequest request,
+			UserDAO userDao, UserSellerDAO userSellerDao, ServletContext servletContext, HttpServletRequest request,
 			String username, String email, String password, String password2, String firstName, String lastName, String nomeNeg, String partitaIva
 	) throws DAOException {
 		if (MyUtils.debugUserController) {
@@ -118,7 +119,7 @@ public class UserController {
 				//login
 				boolean loggato = UserController.login(userDao, request, username, password);
 				if (loggato) {
-					if (registrazioneVenditore(userDao, request, nomeNeg, partitaIva) == true) {
+					if (registrazioneVenditore(userSellerDao, request, nomeNeg, partitaIva) == true) {
 						return true; //utente venditore registrato
 					} else {
 						return false; //utente venditore non registrato
@@ -143,27 +144,27 @@ public class UserController {
 	// false se le registrazione fallisce
 	// DAOException se c'è un errore nella query
 	public static boolean registrationSellerLog(
-			UserDAO userDao, ServletContext servletContext, HttpServletRequest request,
+			UserSellerDAO userSellerDao, ServletContext servletContext, HttpServletRequest request,
 			String nomeNeg, String partitaIva
 	) throws DAOException {
 		if (MyUtils.debugUserController) {
 			System.err.println("Inizio tentativo di Registrazione Venditore. nomeNeg: " + nomeNeg + ", partitaIva: " + partitaIva);
 		}
 		try {
-			return registrazioneVenditore(userDao, request, nomeNeg, partitaIva);
+			return registrazioneVenditore(userSellerDao, request, nomeNeg, partitaIva);
 		} catch (DAOException ex) { //impossibile inserire nuovo utente
 			System.err.println("Errore DAOException in Registration: " + ex.getMessage());
 			throw ex;
 		}
 	}
 
-	private static boolean registrazioneVenditore(UserDAO userDao, HttpServletRequest request, String nomeNeg, String partitaIva)
+	private static boolean registrazioneVenditore(UserSellerDAO userSellerDao, HttpServletRequest request, String nomeNeg, String partitaIva)
 			throws DAOException {
 		try {
 			User user = Model.Session.getUserLogged(request);
-			boolean v = userDao.insertUserSeller(user.getId(), nomeNeg, partitaIva);
+			boolean v = userSellerDao.insertUserSeller(user.getId(), nomeNeg, partitaIva);
 			if (v) { //utente venditore registrato
-				UserSeller userSeller = userDao.getUserSeller(user.getId());
+				UserSeller userSeller = userSellerDao.getUserSeller(user.getId());
 				user.setUserSeller(userSeller);
 				return true;
 			} else { //registrazione utente venditore fallita. effettua comunque il login come utente normale.

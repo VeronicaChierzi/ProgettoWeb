@@ -2,6 +2,7 @@ package it.unitn.disi.servlet.pubbliche;
 
 import it.unitn.disi.controllers.UserController;
 import it.unitn.disi.dao.UserDAO;
+import it.unitn.disi.dao.UserSellerDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.servlet.MyServlet;
 import it.unitn.disi.utils.Model;
@@ -14,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistrationSellerServlet extends MyServlet {
 
 	private UserDAO userDao;
+	private UserSellerDAO userSellerDao;
 
 	@Override
 	public void init() throws ServletException {
 		userDao = (UserDAO) initDao(UserDAO.class);
+		userSellerDao = (UserSellerDAO) initDao(UserSellerDAO.class);
 	}
 
 	@Override
@@ -34,7 +37,7 @@ public class RegistrationSellerServlet extends MyServlet {
 
 		//registra utente
 		try {
-			boolean b = UserController.registrationSeller(userDao, getServletContext(), request, username, email, password, password2, firstName, lastName, nomeNeg, partitaIva);
+			boolean b = UserController.registrationSeller(userDao, userSellerDao, getServletContext(), request, username, email, password, password2, firstName, lastName, nomeNeg, partitaIva);
 			if (b) { //utente registrato e loggato
 				redirect(response, MyPaths.Jsp.userProfile);
 				return;

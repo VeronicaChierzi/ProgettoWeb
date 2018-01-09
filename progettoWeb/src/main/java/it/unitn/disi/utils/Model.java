@@ -108,7 +108,7 @@ public class Model {
 				String errore = "ERRORE DI SICUREZZA: L'utente NON è LOGGATO e sta cercando di accedere ad una servlet riservata ad utenti loggati!!!";
 				System.err.println(errore);
 				throw new Exception(errore);
-			} else if (u.isSeller()) {
+			} else if (!u.isSeller()) {
 				String errore = "ERRORE DI SICUREZZA: L'utente è loggato, ma NON è un VENDITORE e sta cercando di accedere ad una servlet riservata a venditori!!!";
 				System.err.println(errore);
 				throw new Exception(errore);
@@ -122,7 +122,7 @@ public class Model {
 				String errore = "ERRORE DI SICUREZZA: L'utente NON è LOGGATO e sta cercando di accedere ad una servlet riservata ad utenti loggati!!!";
 				System.err.println(errore);
 				throw new Exception(errore);
-			} else if (u.isAdmin()) {
+			} else if (!u.isAdmin()) {
 				String errore = "ERRORE DI SICUREZZA: L'utente è loggato, ma NON è un ADMIN e sta cercando di accedere ad una servlet riservata agli admin!!!";
 				System.err.println(errore);
 				throw new Exception(errore);

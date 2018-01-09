@@ -1,5 +1,6 @@
 package it.unitn.disi.entities;
 
+import it.unitn.disi.entities.orders.Order;
 import java.sql.Timestamp;
 
 public class Segnalazione {
@@ -11,14 +12,8 @@ public class Segnalazione {
 	private Timestamp datetime;
 
 	private SegnalazioneRisposta segnalazioneRisposta;
+	private Order order;
 
-	/*
-	private int idUser;
-	private String username;
-	private int idUserSeller;
-	private String nameSeller;
-	 */
-	
 	public Segnalazione(int id, int idOrder, String title, String description, Timestamp datetime) {
 		this.id = id;
 		this.idOrder = idOrder;
@@ -26,9 +21,9 @@ public class Segnalazione {
 		this.description = description;
 		this.datetime = datetime;
 	}
-	
-	public boolean isOpen(){
-		return (segnalazioneRisposta==null);
+
+	public boolean isOpen() {
+		return (segnalazioneRisposta == null);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
@@ -114,6 +109,20 @@ public class Segnalazione {
 	 */
 	public void setSegnalazioneRisposta(SegnalazioneRisposta segnalazioneRisposta) {
 		this.segnalazioneRisposta = segnalazioneRisposta;
+	}
+
+	/**
+	 * @return the order
+	 */
+	public Order getOrder() {
+		return order;
+	}
+
+	/**
+	 * @param order the order to set
+	 */
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 	// </editor-fold>
 

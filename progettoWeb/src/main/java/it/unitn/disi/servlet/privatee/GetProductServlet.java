@@ -25,7 +25,7 @@ public class GetProductServlet extends MyServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			try {
-				Product product = productDAO.getProduct(id);
+				Product product = productDAO.getProduct(id, true, true);
 				Model.Request.setAttribute(request, Model.Request.product, product);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetProductServlet: " + ex.getMessage());

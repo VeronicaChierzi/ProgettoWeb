@@ -14,11 +14,17 @@ public class MyUtils {
 	//se impostato a true, utilizza le pagine jsp di test(senza grafica)
 	public static final boolean useViewTest = true;
 
+	//se impostato a true, stampa il debug della modalità test/final di MyPaths
+	public static final boolean debugMyPathsMode = false;
+	
+	//se impostato a true, stampa il debug delle jdcb dao quando vengono inizializzate/richieste
+	public static final boolean debugDaoInit = false;
+	
 	//se impostato a true, stampa il debug del login/registrazione/logout dell'utente
 	public static final boolean debugUserController = false;
 	
 	//se impostato a true, stampa il debug del carrello (acquisto/aggiunta oggetti)
-	public static final boolean debugCartController = true;
+	public static final boolean debugCartController = false;
 	
 	//se impostato a true, stampa un messaggio di debug quando MySerlvet effettua un forward, un redirect o un include
 	//funziona solo sulle MyServlet. Le JSP non stampano nulla.

@@ -25,12 +25,18 @@ public class MyPaths {
 		private static String ph; //currentPrefixHidden;
 
 		static {
-			System.err.println("MyPaths");
+			if(MyUtils.debugMyPathsMode){
+				System.err.println("MyPaths");
+			}
 			if (MyUtils.useViewTest) {
-				System.err.println("Mode Test");
+				if(MyUtils.debugMyPathsMode){
+					System.err.println("Mode Test");
+				}
 				setModeTest();
 			} else {
-				System.err.println("Mode Final");
+				if(MyUtils.debugMyPathsMode){
+					System.err.println("Mode Final");
+				}
 				setModeFinal();
 			}
 			//System.err.println(allHome);

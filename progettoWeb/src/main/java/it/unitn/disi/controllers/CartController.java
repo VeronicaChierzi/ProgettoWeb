@@ -10,8 +10,6 @@ import it.unitn.disi.entities.orders.Order;
 import it.unitn.disi.entities.orders.OrderProduct;
 import it.unitn.disi.utils.Model;
 import it.unitn.disi.utils.MyUtils;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -88,6 +86,7 @@ public class CartController {
 				if (MyUtils.debugCartController) {
 					System.err.println("Fine buyCart. L'acquisto dei prodotti nel carrello è stato completato");
 				}
+				deleteCartAndCreateNew(session);
 				return true;
 			} else {
 				System.err.println("Fine buyCart. Impossibile effettuare l'acquisto. Problema in orderDAO.buyCart");
@@ -107,11 +106,11 @@ public class CartController {
 		Cart cart = getOrCreateCart(session);
 
 		//controlla che il carrello non sia vuoto
-		if (cart==null || cart.isEmpty()) {
+		if (cart == null || cart.isEmpty()) {
 			System.err.println("Errore: il carrello è vuoto");
 			return false;
 		}
-		
+
 		//controlla che l'id del carrello sia ugule all'id dell'utente
 		if (cart.getIdUser() != user.getId()) {
 			System.err.println("Errore: l'id dell'utente loggato è diverso dall'id dell'utente del carrello");
@@ -157,7 +156,7 @@ public class CartController {
 				}
 
 				//ricava dal datatbase i dati (prezzo, quantita) aggiornati rispetto al prodotto venduto dal negozio
-				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
+				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), false, false);
 
 				//controlla che la quantità sia uguale a quella attualmente nel database
 				if (op.getQuantity() > sp.getQuantity()) {
@@ -183,6 +182,11 @@ public class CartController {
 		return true;
 	}
 
+	private static void deleteCartAndCreateNew(HttpSession session) {
+		Cart currentCart = getOrCreateCart(session);
+		currentCart.getOrders().clear();
+	}
+
 	//controlla che i dati (prezzo, quantità) dell'orderProduct siano coerenti con quelli attualmente contenuti nel database
 	//i dati potrebbe essere diversi perchè il venditore potrebbe aver già venduto alcuni oggetti oppure potrebbe aver cambiato prezzo
 	//restituisce true se i dati non sono cambiati
@@ -190,7 +194,7 @@ public class CartController {
 	private static boolean aggiornaOrderProduct(OrderProduct op, Order o, ShopProductDAO shopProductDAO) throws DAOException {
 		boolean b = true;
 		//ricava dal datatbase i dati (prezzo, quantita) aggiornati rispetto al prodotto venduto dal negozio
-		ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
+		ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), false, false);
 
 		//controlla che la quantità sia uguale a quella attualmente nel database
 		if (op.getQuantity() > sp.getQuantity()) {
@@ -256,7 +260,7 @@ public class CartController {
 			System.err.println("Fine connectCartToUser. Impossibile connettere il carrello all'utente.");
 		}
 	}
-	
+
 	//modifica la quantità di un prodotto nel carrello
 	public static void changeQuantity(HttpSession session, ShopProduct sp, int quantity) {
 		if (MyUtils.debugCartController) {
@@ -282,7 +286,7 @@ public class CartController {
 		Order o = cercaOrder(cart, sp.getIdShop());
 		OrderProduct op = cercaOrderProduct(o, sp.getIdProduct());
 		o.getOrderProducts().remove(op); //rimuove orderProduct
-		if(o.getOrderProducts().isEmpty()){ //se order non ha più nessun orderProduct, rimuove anche order
+		if (o.getOrderProducts().isEmpty()) { //se order non ha più nessun orderProduct, rimuove anche order
 			cart.getOrders().remove(o);
 		}
 		if (MyUtils.debugCartController) {
