@@ -171,6 +171,10 @@
 		<servlet-name>SegnalazioniOpenUser</servlet-name>
 		<jsp-file>/WEB-INF/ViewFinal/jsp/user/segnalazioniOpen.jsp</jsp-file>
 	</servlet>
+	<servlet>
+		<servlet-name>PaginaDiDecisione</servlet-name>
+		<jsp-file>/WEB-INF/ViewFinal/jsp/all/paginaDiDecisione.jsp</jsp-file>
+	</servlet>
 	
 	<!-- |||||||||||||||||||||||||||||||||| JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	<servlet-mapping>
@@ -298,6 +302,10 @@
 	<servlet-mapping>
 		<servlet-name>SegnalazioniOpenUser</servlet-name>
 		<url-pattern>/ViewFinal/SegnalazioniOpenUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PaginaDiDecisione</servlet-name>
+		<url-pattern>/ViewFinal/PaginaDiDecisione</url-pattern>
 	</servlet-mapping>
 
 	<!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -687,6 +695,10 @@
 		<servlet-name>GetProductListServlet</servlet-name>
 		<servlet-class>it.unitn.disi.servlet.privatee.GetProductListServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetCartUpdatedServlet</servlet-name>
+		<servlet-class>it.unitn.disi.servlet.privatee.GetCartUpdatedServlet</servlet-class>
+	</servlet>
 	<!-- ||||||| ORDER ||||||| -->
 	<servlet>
 		<servlet-name>GetOrderSellerServlet</servlet-name>
@@ -754,6 +766,10 @@
 	<servlet-mapping>
 		<servlet-name>GetProductListServlet</servlet-name>
 		<url-pattern>/WEB-INF/servlet/GetProductListServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetCartUpdatedServlet</servlet-name>
+		<url-pattern>/WEB-INF/servlet/GetCartUpdatedServlet</url-pattern>
 	</servlet-mapping>
 	<!-- ||||||| ORDER ||||||| -->
 	<servlet-mapping>

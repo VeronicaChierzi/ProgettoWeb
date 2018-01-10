@@ -4,15 +4,15 @@
     Author     : Veronica Chierzi
 --%>
 
+<%@page import="it.unitn.disi.utils.MyPaths"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 
 <nav class="navbar navbar-transparent navbar-static-top navbar-fixed-top">
     <div class="wrap">
         <div class="search">
             <div class="borderBarra">
                 <div class="bgBarraRicerca ">
-                    <form action="/progettoWeb/ProductListServlet" method="post">
+                    <form action="<%=MyPaths.Jsp.allProductList%>" method="post">
                         <div class="centerImg">
                             <ul id="barra">
                                 <li id="barraL">

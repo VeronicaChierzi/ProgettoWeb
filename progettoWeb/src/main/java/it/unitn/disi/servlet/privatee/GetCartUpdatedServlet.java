@@ -1,24 +1,32 @@
-package it.unitn.disi.servlet.pubbliche;
+package it.unitn.disi.servlet.privatee;
 
+import it.unitn.disi.controllers.CartController;
+import it.unitn.disi.dao.ShopProductDAO;
+import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.servlet.MyServlet;
 import it.unitn.disi.utils.MyPaths;
-import it.unitn.disi.utils.MyUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ViewFinalSet", urlPatterns = {"/ViewFinal/Set"})
-public class ViewFinalSet extends MyServlet {
+public class GetCartUpdatedServlet extends MyServlet {
+
+	private ShopProductDAO shopProductDAO;
+
+	@Override
+	public void init() throws ServletException {
+		shopProductDAO = (ShopProductDAO) initDao(ShopProductDAO.class);
+	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (MyUtils.debugMyPathsMode) {
-			System.err.println("Vista attuale impostata su ViewFinal");
+		try {
+			CartController.updateCart(request.getSession(), shopProductDAO);
+		} catch (DAOException ex) {
+			System.err.println("Errore DAOException in GetCartServlet: " + ex.getMessage());
+			forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 		}
-		MyPaths.Jsp.setModeFinal();
-		redirect(response, MyPaths.Jsp.allHome);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods">
@@ -34,4 +42,5 @@ public class ViewFinalSet extends MyServlet {
 		processRequest(request, response);
 	}
 	// </editor-fold>
+
 }

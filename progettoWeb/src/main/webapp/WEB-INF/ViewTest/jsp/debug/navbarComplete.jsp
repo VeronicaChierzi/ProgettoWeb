@@ -148,7 +148,7 @@
 
 		<h4>Seller</h4>
 		<ul>
-			<li><a href="<%=MyPaths.Servlet.Privatee.sellerGetMyShops%>">getMyShops</a></li>
+			<li><a href="<%=MyPaths.Servlet.Privatee.sellerGetMyShop%>">getMyShops</a></li>
 			<li><a href="<%=MyPaths.Servlet.Privatee.sellerGetOrder%>">getOrder</a></li>
 			<li><a href="<%=MyPaths.Servlet.Privatee.sellerGetOrdersSeller%>">getOrdersSeller</a></li>
 			<li><a href="<%=MyPaths.Servlet.Privatee.sellerGetOrdersShop%>">getOrdersShop</a></li>

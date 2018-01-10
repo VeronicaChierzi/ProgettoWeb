@@ -45,7 +45,7 @@
 		<div class="text-center checkbox">
 			<label>
 				<input type="checkbox" name="privacy" id="privacy" value="" required>Accetto l'informaiva sulla
-				<a href="documenti/InformativaPrivacy.pdf" target="_blank"> privacy</a>
+				<a href="/progettoWeb/documenti/InformativaPrivacy.pdf" target="_blank"> privacy</a>
 			</label>
 		</div>
 		<br>
