@@ -6,10 +6,12 @@ import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.ShopProduct;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.entities.carts.Cart;
+import it.unitn.disi.entities.carts.CartItem;
 import it.unitn.disi.entities.orders.Order;
 import it.unitn.disi.entities.orders.OrderProduct;
 import it.unitn.disi.utils.Model;
 import it.unitn.disi.utils.MyUtils;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -199,14 +201,14 @@ public class CartController {
 		//controlla che la quantità sia uguale a quella attualmente nel database
 		if (op.getQuantity() > sp.getQuantity()) {
 			op.setQuantity(sp.getQuantity());
-			System.err.println("Errore: la quantita di oggetti " + op.getIdProduct() + " venduti dal venditore è inferiore rispetto alla quantita che l'utente ha nel carrello in sessione. il venditore potrebbe aver già venduto alcuni oggetti.");
+			System.err.println("Aggiornamento carrello: la quantita di oggetti " + op.getIdProduct() + " venduti dal venditore è inferiore rispetto alla quantita che l'utente ha nel carrello in sessione. il venditore potrebbe aver già venduto alcuni oggetti.");
 			b = false;
 		}
 
 		//controlla che il prezzo sia uguale a quello attualmente nel database
 		if (op.getPrice() != sp.getPrice()) {
 			op.setPrice(sp.getPrice());
-			System.err.println("Errore: il prezzo del database è diverso da quello memorizzato nella sessione. il venditore potrebbe aver cambiato il prezzo.");
+			System.err.println("Aggiornamento carrello: il prezzo del database è diverso da quello memorizzato nella sessione. il venditore potrebbe aver cambiato il prezzo.");
 			b = false;
 		}
 		return b;
@@ -292,6 +294,22 @@ public class CartController {
 		if (MyUtils.debugCartController) {
 			System.err.println("Fine deleteProduct. L'oggetto è stato rimosso dal carrello");
 		}
+	}
+
+	public static void updateCart(HttpSession session, ShopProductDAO shopProductDAO) throws DAOException {
+		Cart cart = getOrCreateCart(session);
+		ArrayList<CartItem> tempList = new ArrayList<>();
+		for (Order o : cart.getOrders()) {
+			for (OrderProduct op : o.getOrderProducts()) {
+				aggiornaOrderProduct(op, o, shopProductDAO);
+				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), true, true);
+				CartItem ci = new CartItem(op.getQuantity(), sp);
+				tempList.add(ci);
+			}
+		}
+		CartItem[] cartItems = new CartItem[tempList.size()];
+		cartItems = (CartItem[]) tempList.toArray(cartItems);
+		cart.setCartItems(cartItems);
 	}
 
 }

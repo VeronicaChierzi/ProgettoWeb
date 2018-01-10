@@ -37,14 +37,19 @@ public class Model {
 		//Oggetto o = (Oggetto) Model.Request.getAttribute(request, Model.Request.nomeOggetto);
 		//Model.Request.setAttribute(request, Model.Request.nomeOggetto, oggetto);
 
-		public static final String product = "product";
-		public static final String productList = "products";
+		public static final String seller = "seller"; //pagina pubblica di un venditore (e dei suoi negozi), visualizzabile da chiunque
+		public static final String shop = "shop"; //pagina pubblica di un punto vendita, visualizzabile da chiunque
+		public static final String mySeller = "mySeller"; //pagina riservata al venditore, mostra la lista dei propri negozi e i dati di UserSeller (nome e partita iva)
+		public static final String myShop = "myShop"; //pagina riservata al venditore, mostra un proprio negozio/punto vendita specifico
+		
+		public static final String product = "product"; //pagina di dettaglio di un singolo prodotto
+		public static final String productList = "products"; //lista di prodotti, visualizzata dopo la ricerca
 
-		public static final String orderUser = "orderUser";
-		public static final String ordersUser = "ordersUser";
-		public static final String orderSeller = "ordersUser";
-		public static final String ordersShop = "ordersShop"; //lista ordini di un punto vendita
-		public static final String ordersSeller = "ordersSeller"; //lista completa ordini di un venditore
+		public static final String orderUser = "orderUser"; //pagina riservata agli utenti loggati, mostra un proprio ordine
+		public static final String ordersUser = "ordersUser"; //pagina riservata agli utenti loggati, mostra la lista dei propri ordini
+		public static final String orderSeller = "orderSeller"; //pagina riservata ai venditori, mostra un ordine ricevuto
+		public static final String ordersShop = "ordersShop"; //pagina riservata ai venditori, mostra la lista di ordini ricevuti da un punto vendita
+		public static final String ordersSeller = "ordersSeller"; //pagina riservata ai venditori, mostra la lista completa di ordini ricevuti da un venditore
 
 		public static final String segnalazioneUser = "segnalazioneUser";
 		public static final String segnalazioniUser = "segnalazioniUser";

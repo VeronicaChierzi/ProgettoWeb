@@ -12,7 +12,7 @@ public class MyUtils {
 	public static final boolean sendRegistrationConfirmEmail = false;
 
 	//se impostato a true, utilizza le pagine jsp di test(senza grafica)
-	public static final boolean useViewTest = true;
+	public static final boolean useViewTest = false;
 
 	//se impostato a true, stampa il debug della modalità test/final di MyPaths
 	public static final boolean debugMyPathsMode = false;

@@ -4,9 +4,11 @@ import it.unitn.disi.entities.orders.Order;
 import java.util.ArrayList;
 
 public class Cart {
-	
+
 	private int idUser;
 	private ArrayList<Order> orders;
+	
+	private CartItem[] cartItems;
 
 	public Cart(int idUser) {
 		this.idUser = idUser;
@@ -51,6 +53,20 @@ public class Cart {
 	 */
 	public void setOrders(ArrayList<Order> orders) {
 		this.orders = orders;
+	}
+	
+	/**
+	 * @return the cartItems
+	 */
+	public CartItem[] getCartItems() {
+		return cartItems;
+	}
+
+	/**
+	 * @param cartItems the cartItems to set
+	 */
+	public void setCartItems(CartItem[] cartItems) {
+		this.cartItems = cartItems;
 	}
 	// </editor-fold>
 	

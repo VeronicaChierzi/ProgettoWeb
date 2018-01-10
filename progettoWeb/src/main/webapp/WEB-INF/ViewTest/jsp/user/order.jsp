@@ -9,7 +9,7 @@
 	<h1>Order</h1>
 	<% Order o = (Order)Model.Request.getAttribute(request, Model.Request.orderUser); %>
 	<% if (o == null) { %>
-		Ordine non trovato
+		Ordine non trovato<br/>
 	<% } else { %>
 		<div style="border:1px solid black;">
 			<h3>Informazioni Ordine</h3>

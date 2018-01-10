@@ -98,6 +98,7 @@ public class MyPaths {
 		//public static final String allConfirmUser "confirmUser.jsp"; "ConfirmUser";
 
 		// pagine/file nascosti
+		public static String _utilsCategoryList;
 		public static String _utilsFooter;
 		public static String _utilsHeader;
 		public static String _utilsNavbar;
@@ -143,6 +144,7 @@ public class MyPaths {
 			userSegnalazioniOpen = p + "SegnalazioniOpenUser";
 
 			//nomi percorsi privati (visualizzabili solamente dal server)
+			_utilsCategoryList = ph + "utils/categoryList.jsp";
 			_utilsFooter = ph + "utils/footer.jsp";
 			_utilsHeader = ph + "utils/header.jsp";
 			_utilsNavbar = ph + "utils/navbar.jsp";
@@ -209,10 +211,13 @@ public class MyPaths {
 			public static final String adminGetSegnalazione = p + "GetSegnalazioneAdminServlet";
 			public static final String adminGetSegnalazioni = p + "GetSegnalazioniAdminServlet";
 			public static final String adminGetSegnalazioniOpen = p + "GetSegnalazioniOpenAdminServlet";
+			public static final String allGetCartUpdatedServlet = p + "GetCartUpdatedServlet";
 			public static final String allGetProduct = p + "GetProductServlet";
 			public static final String allGetProductList = p + "GetProductListServlet";
+			public static final String allGetSeller = p + "GetSellerServlet";
 			public static final String allGetShop = p + "GetShopServlet";
-			public static final String sellerGetMyShops = p + "GetMyShopsServlet";
+			public static final String sellerGetMySeller = p + "GetMyShopServlet";
+			public static final String sellerGetMyShop = p + "GetMyShopServlet";
 			public static final String sellerGetOrder = p + "GetOrderSellerServlet";
 			public static final String sellerGetOrdersSeller = p + "GetOrdersSellerServlet";
 			public static final String sellerGetOrdersShop = p + "GetOrdersShopServlet";
