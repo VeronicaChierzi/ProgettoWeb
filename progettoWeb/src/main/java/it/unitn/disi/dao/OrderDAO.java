@@ -16,5 +16,7 @@ public interface OrderDAO extends DAO<Order, Integer> {
 	public Order[] getOrdersShop(int idShop, int idSeller) throws DAOException; //tutti gli ordini di un punto vendita (appartenente a un venditore (da controllare per sicurezza che appartenga al venditore))
 
 	public boolean buyCart(Cart cart) throws DAOException;	
+        
+        public int hasUserBought(int userId, int prodId) throws DAOException;
 	
 }
