@@ -100,7 +100,6 @@ header.masthead .header-content .header-content-inner p {
     position: relative;
     min-height: 40px;
     margin-bottom: 0px;
-    border: 1px solid transparent;
     height: 55px;
 }
 @media (min-width: 768px) {
@@ -263,7 +262,7 @@ h1#negozio{
     margin-right: auto;
 }
 .navbar-transparent {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgb(229, 229, 229);
     text-color: black;
 }
 
@@ -304,6 +303,20 @@ a:link {
 /* visited link */
 a:visited {
     color: #607D8B;
+}
+a#nonverif{
+	    color:#840505 ;
+						background-color: #ffdddd
+
+}
+a#nonverif:hover{
+	    color:#840505 ;
+				background-color: #ffdddd
+
+}
+a#nonverif:visited{
+	    color:#607D8B ;
+		background-color: #ffdddd
 }
 
 /* mouse over link */
