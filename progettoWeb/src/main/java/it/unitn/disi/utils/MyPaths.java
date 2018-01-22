@@ -175,6 +175,7 @@ public class MyPaths {
 
 			private static final String p = "/progettoWeb/";
 
+			public static final String addReview = p + "AddReviewServlet";
 			public static final String addToCart = p + "AddToCartServlet";
 			public static final String buyCart = p + "BuyCartServlet";
 			public static final String changePassword = p + "ChangePasswordServlet";

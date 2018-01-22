@@ -6,6 +6,7 @@ import it.unitn.disi.dao.ShopDAO;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.dao.factories.DAOFactory;
+import it.unitn.disi.entities.Product;
 import it.unitn.disi.entities.carts.Cart;
 import it.unitn.disi.entities.orders.Order;
 import it.unitn.disi.entities.orders.OrderProduct;
@@ -243,5 +244,19 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 		return order.getId();
 	}
 	// </editor-fold>
+
+    @Override
+    public int hasUserBought(int userId, int prodId) throws DAOException {
+        Order[] o = getOrdersUser(userId);
+        for(int i = 0; i < o.length; i++) {
+            for(OrderProduct p : o[i].getOrderProducts()) {
+                if(p.getIdProduct() == prodId) {
+                    return p.getIdOrder();
+                }
+            }
+        }
+        return -1;
+        
+    }
 
 }
