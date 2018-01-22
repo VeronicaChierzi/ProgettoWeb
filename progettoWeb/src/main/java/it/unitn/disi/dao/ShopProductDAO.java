@@ -1,16 +1,17 @@
 package it.unitn.disi.dao;
 
 import it.unitn.disi.dao.exceptions.DAOException;
-import it.unitn.disi.entities.Shop;
+import it.unitn.disi.entities.Product;
 import it.unitn.disi.entities.ShopProduct;
-import java.util.List;
 
-public interface ShopProductDAO {
+public interface ShopProductDAO extends DAO<ShopProduct, Integer> {
 
-	public List<Shop> getAllShopsThatSellsAProduct(int prodId) throws DAOException;
+	public ShopProduct getShopProduct(int idProduct, int idShop, boolean loadProduct, boolean loadShop) throws DAOException;
 
-	public ShopProduct getShopProduct(int idProduct, int idShop) throws DAOException;
+	public ShopProduct getMinShopProduct(int idProduct, Product product) throws DAOException;
+	
+	public ShopProduct[] getShopsProductsByIdProduct(int idProduct, boolean loadProduct, boolean loadShop) throws DAOException;
 
-	public ShopProduct getMinShopProduct(int idProduct) throws DAOException;
+	public ShopProduct[] getShopsProductsByIdShop(int idShop, boolean loadProduct, boolean loadShop) throws DAOException;
 
 }

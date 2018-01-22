@@ -30,7 +30,7 @@ public class GetOrdersSellerServlet extends MyServlet {
 				Model.Request.setAttribute(request, Model.Request.ordersSeller, orders);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetOrdersSellerServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (Exception e) {
 			System.err.println("Errore utente non loggato in GetOrdersSellerServlet: " + e.getMessage());

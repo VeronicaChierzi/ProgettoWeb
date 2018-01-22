@@ -1,21 +1,30 @@
 package it.unitn.disi.controllers;
 
+import it.unitn.disi.dao.OrderDAO;
 import it.unitn.disi.dao.ShopProductDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.ShopProduct;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.entities.carts.Cart;
+import it.unitn.disi.entities.carts.CartItem;
 import it.unitn.disi.entities.orders.Order;
 import it.unitn.disi.entities.orders.OrderProduct;
+import it.unitn.disi.utils.Model;
+import it.unitn.disi.utils.MyUtils;
+import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class CartController {
 
 	//restituisce il carrello. se non esiste, lo crea.
-	public static Cart getOrCreateCart(HttpSession session) {
+	private static Cart getOrCreateCart(HttpSession session) {
 		Cart cart = (Cart) session.getAttribute("cart");
 		if (cart == null) {
-			User user = (User) session.getAttribute("user");
+			if (MyUtils.debugCartController) {
+				System.err.println("getOrCreateCart. Il carrello non esiste ancora. Verrà creato un nuovo carrello.");
+			}
+			User user = (User) session.getAttribute(Model.Session.user);
 			int idUser;
 			if (user != null) {
 				idUser = user.getId();
@@ -23,7 +32,7 @@ public class CartController {
 				idUser = -1;
 			}
 			cart = new Cart(idUser);
-			session.setAttribute("cart", cart);
+			session.setAttribute(Model.Session.cart, cart);
 		}
 		return cart;
 	}
@@ -33,12 +42,18 @@ public class CartController {
 	//imposta il prezzo reale
 	//imposta la quantità (minimo fra (quantità già aggiunta+appena aggiunta),(quantità in vendita))
 	public static void addToCart(HttpSession session, ShopProduct sp, int quantityToAdd) {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio addToCart. L'oggetto sta per essere aggiunto al carrello. sp: " + sp + ", quantita:" + quantityToAdd);
+		}
 		Cart cart = getOrCreateCart(session);
 		Order o = cercaOrder(cart, sp.getIdShop());
 		OrderProduct op = cercaOrderProduct(o, sp.getIdProduct());
 		op.setPrice(sp.getPrice());
 		int nextQuantity = Math.min(op.getQuantity() + quantityToAdd, sp.getQuantity());
 		op.setQuantity(nextQuantity);
+		if (MyUtils.debugCartController) {
+			System.err.println("Fine addTocart. L'oggetto è stato aggiunto al carrello");
+		}
 	}
 
 	//cerca un ordine con idShop. se non lo trova, lo crea
@@ -64,8 +79,39 @@ public class CartController {
 		return op;
 	}
 
-	public static boolean checkCart(HttpSession session, User user, ShopProductDAO shopProductDAO) throws DAOException {
+	public static boolean buyCart(HttpSession session, User user, ShopProductDAO shopProductDAO, OrderDAO orderDAO) throws DAOException {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio buyCart. L'acquisto dei prodotti nel carrello sta per essere effettuato");
+		}
+		if (checkCart(session, user, shopProductDAO)) {
+			if (orderDAO.buyCart(CartController.getOrCreateCart(session))) {
+				if (MyUtils.debugCartController) {
+					System.err.println("Fine buyCart. L'acquisto dei prodotti nel carrello è stato completato");
+				}
+				deleteCartAndCreateNew(session);
+				return true;
+			} else {
+				System.err.println("Fine buyCart. Impossibile effettuare l'acquisto. Problema in orderDAO.buyCart");
+				return false;
+			}
+		} else {
+			System.err.println("Fine buyCart. Impossibile effettuare l'acquisto. Problema in checkCart.");
+			return false;
+		}
+	}
+
+	private static boolean checkCart(HttpSession session, User user, ShopProductDAO shopProductDAO) throws DAOException {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio checkCart. Il carrello verrà controllato (confronto prezzi attuali/precedenti, quantità, ecc...)");
+			printCart(session);
+		}
 		Cart cart = getOrCreateCart(session);
+
+		//controlla che il carrello non sia vuoto
+		if (cart == null || cart.isEmpty()) {
+			System.err.println("Errore: il carrello è vuoto");
+			return false;
+		}
 
 		//controlla che l'id del carrello sia ugule all'id dell'utente
 		if (cart.getIdUser() != user.getId()) {
@@ -74,7 +120,7 @@ public class CartController {
 		}
 
 		//controlla che il carrello abbia almeno un ordine
-		if (cart.getOrders().size() > 0) {
+		if (cart.getOrders().isEmpty()) {
 			System.err.println("Errore: il carrello non contiene nessun ordine");
 			return false;
 		}
@@ -86,9 +132,9 @@ public class CartController {
 				System.err.println("Errore: l'id dell'utente loggato è diverso dall'id dell'utente dell'ordine");
 				return false;
 			}
-			
+
 			//controlla che l'ordine abbia almeno un orderProduct
-			if (o.getOrderProducts().size() > 0) {
+			if (o.getOrderProducts().isEmpty()) {
 				System.err.println("Errore: l'ordine non contiene nessun orderProduct");
 				return false;
 			}
@@ -112,7 +158,7 @@ public class CartController {
 				}
 
 				//ricava dal datatbase i dati (prezzo, quantita) aggiornati rispetto al prodotto venduto dal negozio
-				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
+				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), false, false);
 
 				//controlla che la quantità sia uguale a quella attualmente nel database
 				if (op.getQuantity() > sp.getQuantity()) {
@@ -125,14 +171,22 @@ public class CartController {
 					System.err.println("Errore: il prezzo del database è diverso da quello memorizzato nella sessione. il venditore potrebbe aver cambiato il prezzo.");
 					return false;
 				}
-				
-				if(aggiornaOrderProduct(op, o, shopProductDAO)==false){
+
+				if (aggiornaOrderProduct(op, o, shopProductDAO) == false) {
 					System.err.println("Il prezzo o la quantità del prodotto " + op.getIdProduct() + " sono cambiati");
 					return false;
 				}
 			}
 		}
+		if (MyUtils.debugCartController) {
+			System.err.println("Fine checkCart. Il carrello è corretto");
+		}
 		return true;
+	}
+
+	private static void deleteCartAndCreateNew(HttpSession session) {
+		Cart currentCart = getOrCreateCart(session);
+		currentCart.getOrders().clear();
 	}
 
 	//controlla che i dati (prezzo, quantità) dell'orderProduct siano coerenti con quelli attualmente contenuti nel database
@@ -142,22 +196,120 @@ public class CartController {
 	private static boolean aggiornaOrderProduct(OrderProduct op, Order o, ShopProductDAO shopProductDAO) throws DAOException {
 		boolean b = true;
 		//ricava dal datatbase i dati (prezzo, quantita) aggiornati rispetto al prodotto venduto dal negozio
-		ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop());
+		ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), false, false);
 
 		//controlla che la quantità sia uguale a quella attualmente nel database
 		if (op.getQuantity() > sp.getQuantity()) {
 			op.setQuantity(sp.getQuantity());
-			System.err.println("Errore: la quantita di oggetti " + op.getIdProduct() + " venduti dal venditore è inferiore rispetto alla quantita che l'utente ha nel carrello in sessione. il venditore potrebbe aver già venduto alcuni oggetti.");
+			System.err.println("Aggiornamento carrello: la quantita di oggetti " + op.getIdProduct() + " venduti dal venditore è inferiore rispetto alla quantita che l'utente ha nel carrello in sessione. il venditore potrebbe aver già venduto alcuni oggetti.");
 			b = false;
 		}
 
 		//controlla che il prezzo sia uguale a quello attualmente nel database
 		if (op.getPrice() != sp.getPrice()) {
 			op.setPrice(sp.getPrice());
-			System.err.println("Errore: il prezzo del database è diverso da quello memorizzato nella sessione. il venditore potrebbe aver cambiato il prezzo.");
+			System.err.println("Aggiornamento carrello: il prezzo del database è diverso da quello memorizzato nella sessione. il venditore potrebbe aver cambiato il prezzo.");
 			b = false;
 		}
 		return b;
+	}
+
+	private static void printCart(HttpSession session) {
+		Cart cart = getOrCreateCart(session);
+		System.err.println("Stampa carrello");
+		String s = "";
+		s += "\tCart\n";
+		s += "idUser: " + cart.getIdUser() + "\n";
+		s += "totalPrice: " + cart.getTotalPrice() + "\n";
+		s += "orders size: " + cart.getOrders().size() + "\n";
+		for (Order o : cart.getOrders()) {
+			s += "\tOrder\n";
+			s += "id: " + o.getId() + "\n";
+			s += "idShop: " + o.getIdShop() + "\n";
+			s += "idUser: " + o.getIdUser() + "\n";
+			s += "datetimePurchase: " + o.getDatetimePurchase() + "\n";
+			s += "totalPrice: " + o.getTotalPrice() + "\n";
+			s += "orderProducts size: " + o.getOrderProducts().size() + "\n";
+			for (OrderProduct op : o.getOrderProducts()) {
+				s += "\tOrder Product\n";
+				s += "idOrder: " + op.getIdOrder() + "\n";
+				s += "idProduct: " + op.getIdProduct() + "\n";
+				s += "price: " + op.getPrice() + "\n";
+				s += "quantity: " + op.getQuantity() + "\n";
+				s += "totalPrice: " + op.getTotalPrice() + "\n";
+			}
+		}
+		System.err.println(s);
+	}
+
+	//connette l'utente che ha appena efettuato il login con il carrello (se esisteva già un carrello. altrimenti lo crea)
+	public static void connectCartToUser(HttpSession session, HttpServletRequest request) {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio connectCartToUser. Il carrello sarà collegato all'utente.");
+		}
+		try {
+			Cart cart = getOrCreateCart(session);
+			User user = Model.Session.getUserLogged(request);
+			cart.setIdUser(user.getId());
+			for (Order o : cart.getOrders()) {
+				o.setIdUser(user.getId());
+			}
+			if (MyUtils.debugCartController) {
+				System.err.println("Fine connectCartToUser. Il Carrello è stato collegato all'utente");
+			}
+		} catch (Exception e) {
+			System.err.println("Errore utente non loggato in connectCartToUser: " + e.getMessage());
+			System.err.println("Fine connectCartToUser. Impossibile connettere il carrello all'utente.");
+		}
+	}
+
+	//modifica la quantità di un prodotto nel carrello
+	public static void changeQuantity(HttpSession session, ShopProduct sp, int quantity) {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio changeQuantity. La quantità dell'oggetto sta per essere modificata. sp: " + sp + ", quantita:" + quantity);
+		}
+		Cart cart = getOrCreateCart(session);
+		Order o = cercaOrder(cart, sp.getIdShop());
+		OrderProduct op = cercaOrderProduct(o, sp.getIdProduct());
+		op.setPrice(sp.getPrice());
+		int nextQuantity = Math.min(quantity, sp.getQuantity());
+		op.setQuantity(nextQuantity);
+		if (MyUtils.debugCartController) {
+			System.err.println("Fine changeQuantity. La quantità dell'oggetto è stata modificata");
+		}
+	}
+
+	//rimuove un prodotto dal carrello
+	public static void deleteProduct(HttpSession session, ShopProduct sp) {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio deleteProduct. L'oggetto sta per essere rimosso dal carrello. sp: " + sp);
+		}
+		Cart cart = getOrCreateCart(session);
+		Order o = cercaOrder(cart, sp.getIdShop());
+		OrderProduct op = cercaOrderProduct(o, sp.getIdProduct());
+		o.getOrderProducts().remove(op); //rimuove orderProduct
+		if (o.getOrderProducts().isEmpty()) { //se order non ha più nessun orderProduct, rimuove anche order
+			cart.getOrders().remove(o);
+		}
+		if (MyUtils.debugCartController) {
+			System.err.println("Fine deleteProduct. L'oggetto è stato rimosso dal carrello");
+		}
+	}
+
+	public static void updateCart(HttpSession session, ShopProductDAO shopProductDAO) throws DAOException {
+		Cart cart = getOrCreateCart(session);
+		ArrayList<CartItem> tempList = new ArrayList<>();
+		for (Order o : cart.getOrders()) {
+			for (OrderProduct op : o.getOrderProducts()) {
+				aggiornaOrderProduct(op, o, shopProductDAO);
+				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), true, true);
+				CartItem ci = new CartItem(op.getQuantity(), sp);
+				tempList.add(ci);
+			}
+		}
+		CartItem[] cartItems = new CartItem[tempList.size()];
+		cartItems = (CartItem[]) tempList.toArray(cartItems);
+		cart.setCartItems(cartItems);
 	}
 
 }

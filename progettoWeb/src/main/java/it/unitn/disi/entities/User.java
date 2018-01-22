@@ -10,43 +10,24 @@ public class User {
 	private String lastName;
 	private String hash;
 	private boolean verificato;
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", hash=" + hash + ", verificato=" + verificato + ", userSeller=" + userSeller + ", userAdmin=" + userAdmin + '}';
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    public boolean isVerificato() {
-        return verificato;
-    }
-
-    public void setVerificato(boolean verificato) {
-        this.verificato = verificato;
-    }
-
+	
 	private UserSeller userSeller;
 	private UserAdmin userAdmin;
 
-	public User() {
+	@Override
+	public String toString() {
+		return "User{" + "id=" + getId() + ", username=" + getUsername() + ", email=" + getEmail() + ", password=" + getPassword() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", hash=" + getHash() + ", verificato=" + isVerificato() + ", userSeller=" + userSeller + ", userAdmin=" + userAdmin + '}';
 	}
 
-	public User(int id, String username, String email, String password, String firstName, String lastName,String hash, boolean verificato) {
+	public User(int id, String username, String email, String password, String firstName, String lastName, String hash, boolean verificato) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
-                this.hash = hash;
-                this.verificato = verificato;
+		this.hash = hash;
+		this.verificato = verificato;
 	}
 
 	public boolean isSeller() {
@@ -140,6 +121,34 @@ public class User {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the hash
+	 */
+	public String getHash() {
+		return hash;
+	}
+
+	/**
+	 * @param hash the hash to set
+	 */
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
+	/**
+	 * @return the verificato
+	 */
+	public boolean isVerificato() {
+		return verificato;
+	}
+
+	/**
+	 * @param verificato the verificato to set
+	 */
+	public void setVerificato(boolean verificato) {
+		this.verificato = verificato;
 	}
 
 	/**

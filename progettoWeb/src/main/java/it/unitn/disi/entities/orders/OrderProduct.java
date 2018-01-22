@@ -1,14 +1,15 @@
 package it.unitn.disi.entities.orders;
 
+import it.unitn.disi.entities.Product;
+
 public class OrderProduct {
-	
+
 	private int idOrder;
 	private int idProduct;
 	private float price;
 	private int quantity;
 
-	public OrderProduct() {
-	}
+	private Product product;
 
 	public OrderProduct(int idOrder, int idProduct, float price, int quantity) {
 		this.idOrder = idOrder;
@@ -18,10 +19,9 @@ public class OrderProduct {
 	}
 
 	public float getTotalPrice() {
-		return price*quantity;
+		return price * quantity;
 	}
 
-	
 	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
 	/**
 	 * @return the idOrder
@@ -78,6 +78,20 @@ public class OrderProduct {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	/**
+	 * @return the product
+	 */
+	public Product getProduct() {
+		return product;
+	}
+
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	// </editor-fold>
-	
+
 }

@@ -1,5 +1,6 @@
 package it.unitn.disi.dao.jdbc;
 
+import it.unitn.disi.dao.OrderDAO;
 import it.unitn.disi.dao.SegnalazioneDAO;
 import it.unitn.disi.dao.SegnalazioneRispostaDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
@@ -16,6 +17,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 	private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class, Timestamp.class};
 
 	private SegnalazioneRispostaDAO segnalazioneRispostaDAO;
+	private OrderDAO orderDAO;
 
 	public JDBCSegnalazioneDAO(Connection con) {
 		super(con);
@@ -24,6 +26,18 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 	@Override
 	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException {
 		segnalazioneRispostaDAO = (SegnalazioneRispostaDAO) initDao(SegnalazioneRispostaDAO.class, daoFactory);
+		orderDAO = (OrderDAO) initDao(OrderDAO.class, daoFactory);
+	}
+
+	private void setPointers(Segnalazione s, boolean loadSegnalazioneRisposta, boolean loadOrder) throws DAOException {
+		if (s != null) {
+			if (loadSegnalazioneRisposta) {
+				s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			}
+			if (loadOrder) {
+				s.setOrder(orderDAO.getOrder(s.getIdOrder()));
+			}
+		}
 	}
 
 /////////////////////////////////////////////// ADMIN /////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +47,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{};
 		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Segnalazione s : segnalazioni) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return segnalazioni;
 	}
@@ -44,7 +58,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{};
 		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Segnalazione s : segnalazioni) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return segnalazioni;
 	}
@@ -55,7 +69,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idSegnalazione};
 		Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		if (s != null) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return s;
 	}
@@ -71,7 +85,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idUser};
 		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Segnalazione s : segnalazioni) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return segnalazioni;
 	}
@@ -87,7 +101,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idUser};
 		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Segnalazione s : segnalazioni) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return segnalazioni;
 	}
@@ -101,7 +115,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idSegnalazione, idUser};
 		Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		if (s != null) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return s;
 	}
@@ -118,7 +132,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idSeller};
 		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Segnalazione s : segnalazioni) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return segnalazioni;
 	}
@@ -135,7 +149,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idSeller};
 		Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Segnalazione s : segnalazioni) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return segnalazioni;
 	}
@@ -150,7 +164,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 		Object[] parametriQuery = new Object[]{idSegnalazione, idSeller};
 		Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		if (s != null) {
-			s.setSegnalazioneRisposta(segnalazioneRispostaDAO.getSegnalazioneRisposta(s.getId()));
+			setPointers(s, true, true);
 		}
 		return s;
 	}

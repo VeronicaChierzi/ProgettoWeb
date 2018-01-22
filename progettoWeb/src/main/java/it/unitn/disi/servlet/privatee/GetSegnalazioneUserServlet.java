@@ -31,7 +31,7 @@ public class GetSegnalazioneUserServlet extends MyServlet {
 				Model.Request.setAttribute(request, Model.Request.segnalazioneUser, s);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetSegnalazioneUserServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Private.Jsp.ErrorPages.errorDAOException);
+				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
 			}
 		} catch (NumberFormatException e) {
 			System.err.println("Errore NumberFormatException in GetSegnalazioneUserServlet: " + e.getMessage());

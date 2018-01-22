@@ -5,8 +5,10 @@ import it.unitn.disi.entities.Product;
 
 public interface ProductDAO extends DAO<Product, Integer> {
 
-	public Product getProduct(int id) throws DAOException;
+	public Product getProduct(int id, boolean loadMinShopProduct, boolean loadImage) throws DAOException;
 	
 	public Product[] searchProducts(String text) throws DAOException;
+        
+        public Product[] getProductsByCategory(int cat) throws DAOException;
 
 }

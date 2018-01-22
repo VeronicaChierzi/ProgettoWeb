@@ -25,7 +25,7 @@ html .sfondoHome {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: 50%;
-    /*position: absolute; non va una sega non metterlo*/
+    /*position: absolute; non va non metterlo*/
     height: 100%;
     background-repeat: no-repeat; 
     background-position: center;
@@ -37,7 +37,7 @@ html .sfondo {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    /*position: absolute; non va una sega non metterlo*/
+    /*position: absolute; non va  non metterlo*/
     height: 100%;
     background-repeat: no-repeat; 
     background-position: center;
@@ -49,7 +49,7 @@ html .sfondoP {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    /*position: absolute; non va una sega non metterlo*/
+    /*position: absolute; non va non metterlo*/
     height: 100%;
     background-repeat: no-repeat; 
     background-position: center;
@@ -479,12 +479,21 @@ li#barraL {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
+
+.dropdown-content table {
+    border: #bcb7ad;
+    padding: 5px 7px;
     text-decoration: none;
     display: block;
 }
+
+.dropdown-content table tr a {
+    color: black;
+    padding: 8px 11px;
+    text-decoration: none;
+    display: block;
+}
+
 .dropdown-content a:hover {
     background-color: #F2F2F2;
 }
@@ -564,7 +573,7 @@ ul#risRicerca{
     font-family: Quicksand, sans-serif;
     font-size: 16px;
     color: #000;
-    font-weight: bolder;
+    /*font-weight: bolder; LUCA */
     margin: 0;
     padding: 0;
     list-style: none;
@@ -574,11 +583,12 @@ ul#risRicerca{
 li#risRicerca.categorie{
     display:inline-table;
     width:10%;
+    padding-left: 20px
 }
 li#risRicerca.prodotti{
     display:inline-table;
     width:90%;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 ul#product{
     display: block;
@@ -602,7 +612,7 @@ ul#products li#products.descrizione {
     display: inline-table;
     margin-left: 10px;
     margin-top:0;
-    transform: translateY(-50px);
+    transform: translateY(-75px);
 }
 
 ul#products li span.price { 
@@ -634,3 +644,30 @@ ul#products li#products.carrello {
     border-color: #fff;
 }
 
+h1.paddingLeftTop {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+h1.paddingTop {
+    padding-top: 20px;
+}
+
+/*PAGINA PRODOTTO*/
+img.prodotto {
+    width: 100%;
+    height: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #fff;
+}
+
+p.descrizioneProdotto {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-style: italic;
+}
+
+div.addToCart {
+    margin-top: 10px;
+}
