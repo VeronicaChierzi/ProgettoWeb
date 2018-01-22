@@ -1,3 +1,4 @@
+<%@page import="it.unitn.disi.utils.MyPaths"%>
 <%@page import="it.unitn.disi.utils.Model"%>
 <%@page import="it.unitn.disi.entities.categories.CategoryContainer"%>
 <%@page import="it.unitn.disi.entities.categories.Category"%>
@@ -35,7 +36,8 @@
 						<% for (Subcategory s : c.getSubcategories()) { %>
 							<li>
 								<%--<td>id: <%=s.getId()%></td>--%>
-								<a><%=s.getName()%></a>
+								<a href="<%=MyPaths.Jsp.allProductList + "?category=" + s.getId()%>"><%=s.getName()%></a>
+                                                                
 							</li>
 						<% } %>
 					</ul>

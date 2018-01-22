@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <% if (user == null) {%>
-						<li><a href="<%=MyPaths.Jsp.allCart%>">Carrello</a></li>
+						<li><a href="<%=MyPaths.Jsp.allCart%>"><span class="glyphicon glyphicon-shopping-cart"></span>  Carrello</a></li>
 						<% if (request.getRequestURI().equalsIgnoreCase(MyPaths.Jsp.anonymousLogin)) {%>
 							<li><a href="<%=MyPaths.Jsp.anonymousRegistration%>"><span class="glyphicon glyphicon-user"></span> Registrati </a></li>
 						<% } else if (request.getRequestURI().equalsIgnoreCase(MyPaths.Jsp.anonymousRegistration) || request.getRequestURI().equalsIgnoreCase(MyPaths.Jsp.anonymousRegistrationSeller)) {%>
@@ -29,7 +29,7 @@
 							<li><a href="<%=MyPaths.Jsp.anonymousLogin%>"><span class="glyphicon glyphicon-log-in"></span> Accedi </a></li>
 						<% } %>
                     <% } else { %>
-						<li><a href="<%=MyPaths.Jsp.allCart%>">Carrello</a></li>
+						<li><a href="<%=MyPaths.Jsp.allCart%>"><span class="glyphicon glyphicon-shopping-cart"></span>  Carrello</a></li>
 						<li><a href="<%=MyPaths.Jsp.userOrders%>">Ordini</a></li>
 						<li><a href="<%=MyPaths.Jsp.userProfile%>"><span class="glyphicon glyphicon-user"></span> <%=user.getFirstName()%> </a></li>
 						<% if (user.isSeller()) { %>

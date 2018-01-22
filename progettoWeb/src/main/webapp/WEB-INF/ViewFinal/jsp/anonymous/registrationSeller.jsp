@@ -17,10 +17,10 @@
             </li>
             <li>
                 <div>
-                    <img class="centerImg resizeImg showLogo" src="progettoWeb/img/logo/logoFinale.png" height="60" width="60">
+                    <img class="centerImg resizeImg showLogo" src="/progettoWeb/img/logo/logoFinale.png" height="60" width="60">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <div class="input-group center-block border resizeRegistration">
+                            <div class="input-group center-block border resizeRegistration" style="padding-left: 25px">
 								<form action="<%=MyPaths.Servlet.Pubbliche.registrationSeller%>" method="POST">
                                     <h1 class="text-center">Registrati come Venditore</h1>
                                     <!--CONTROLLO MAIL E INVIO MESSAGGIO-->

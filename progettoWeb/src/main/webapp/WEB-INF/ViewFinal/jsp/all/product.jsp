@@ -1,4 +1,6 @@
 <%-- Scheda del prodotto --%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="it.unitn.disi.utils.StringUtils"%>
 <%@page import="it.unitn.disi.utils.MyPaths"%>
 <%@page import="it.unitn.disi.utils.Model"%>
 <%@page import="it.unitn.disi.entities.Product"%>
@@ -15,54 +17,64 @@
         <title>Prodotto</title>
     </head>
     <body class="sfondo">
+        
         <ul id="paginazione">
 			<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
             <li>
-				<h1>Product</h1>
+			<div class="container">	
 				<% Product product = (Product) Model.Request.getAttribute(request, Model.Request.product);%>
+                                <% ShopProduct shopProduct = (ShopProduct) product.getShopProduct();%>
 				
 				<% if (product == null) { %>
 					Prodotto non trovato<br/>
 				<% } else { %>
+                                <h1 class="paddingLeftTop"><%=StringUtils.formatForWeb(product.getName())%></h1>
 					<% Image image = product.getImage(); %>
+                                        <table style="padding: 20px; border-spacing: 10px;"><tr>
 					<% if (image != null) {%>
-						<a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>">
-							<img src="<%=image.getPath()%>" alt="<%=image.getAlt()%>">
+                                        <td style="padding: 20px; white-space: nowrap; width: auto;">
+        					<a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>">
+                                                    <img src="<%=image.getPath()%>" class="prodotto" alt="<%=image.getAlt()%>">
 						</a>
+                                            </td>
 						<br/>
+                                                <td style="padding: 20px; width: 70%">
 					<% } else { %>
 						Immagine non trovata<br/>
 					<% } %>
-
-					id: <%=product.getId()%><br/>
-					name: <%=product.getName()%><br/>
-					description: <%=product.getDescription()%><br/>
-					<br/>
+                                        <h3><%=StringUtils.formatForWeb(product.getName())%></h3>
+					<h5>Cod. <%=product.getId()%></h5>
+                                        <h4>Descrizione dell'oggetto:</h4>
+                                        <p class="descrizioneProdotto"><%=product.getDescription()%></p>
 					
-					<% ShopProduct shopProduct = (ShopProduct) product.getShopProduct();%>
 					<% if (shopProduct == null) {%>
 						Il prodotto non è disponibile<br/>
 					<% } else { %>
-						idProduct: <%=shopProduct.getIdProduct()%><br/>
-						idShop: <%=shopProduct.getIdShop()%><br/>
-						price: <%=shopProduct.getPrice()%><br/>
-						quantity: <%=shopProduct.getQuantity()%><br/>
+                                        Venduto e spedito da: <%=shopProduct.getShop().getUserSeller().getName()%><br/>
+                                        <h2>&euro; <%=new DecimalFormat("#.##").format(shopProduct.getPrice())%></h2>
+						Quantità disponibile: <%=shopProduct.getQuantity()%><br/>
+                                                <div class="addToCart">
 						<form method="post" action="<%=MyPaths.Servlet.Pubbliche.addToCart%>">
 							<input type="hidden" name="id_product" value="<%=product.getId()%>" />
 							<input type="hidden" name="id_shop" value="<%=shopProduct.getIdShop()%>" />
 							<%--<input type="hidden" name="current_price" value="<%=shopProduct.getPrice()%>" />--%>
-							<select name="quantity" autocomplete="off">
+                                                        <select name="quantity" autocomplete="off" style="padding: 2px; margin-right: 10px">
 								<% for (int i = 1; i <= shopProduct.getQuantity() && i <= 99; i++) {%>
 								<option value="<%=i%>" <% if (i == 1) { %> selected <% }%>><%=i%></option>
 								<% } %>
 							</select>
-							<td><input type="submit" value="add to cart" /></td>
+                                                        <button type="submit"><span class="glyphicon glyphicon-shopping-cart"></span>  Aggiungi al carrello</input>
 						</form>
+                                                </div>
 					<% } %>
+                                                </td>
+                                                </tr></table>
 					<br/>
 				<% } %>
+                            </div>
             </li>
         </ul>
+        
     </body>
 </html>
 

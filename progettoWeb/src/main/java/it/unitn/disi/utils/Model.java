@@ -12,6 +12,7 @@ public class Model {
 		//String s = Model.Parameter.get(request, Model.Parameter.nomeParametro);
 
 		public static final String textSearch = "textSearch";
+		public static final String category = "category";
 
 		// <editor-fold defaultstate="collapsed" desc="Getter">
 		public static String get(HttpServletRequest request, String parameterName) {

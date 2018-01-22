@@ -20,7 +20,7 @@
                     <img class="centerImg resizeImg showLogo" src="/progettoWeb/img/logo/logoFinale.png" height="60" width="60">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <div class="input-group center-block border resizeRegistration">
+                            <div class="input-group center-block border resizeRegistration" style="padding-left: 25px">
 								<form action="<%=MyPaths.Servlet.Pubbliche.registration%>" method="POST">
                                     <h1 class="text-center">Registrati</h1>
                                     <!--CONTROLLO MAIL E INVIO MESSAGGIO-->
@@ -30,26 +30,31 @@
 										<input type="email" id="emailRegistration" name="email" class="form-control paddingRightInput" placeholder="Email" required
 											   value="<%=Model.Messages.consumeString(request, "email")%>">
 									</div>
+                                                                        <br>
 									<div class="form-group">
 										<label for="usernameRegistration">Username*</label>
 										<input type="text" id="usernameRegistration" name="username" class="form-control paddingRightInput" placeholder="Username" required
 											   value="<%=Model.Messages.consumeString(request, "username")%>">
 									</div>
+                                                                        <br>
                                     <!--VEDERE COME METTERE TIC VISUALIZZATO QUANDO PASSWORD GIUSTA ENTRAMBI-->
                                     <!--METTERE AVVISO PER LUNGHEZZA 8 CARATTERI ALMENO 1 NUMERO-->
 									<div class="form-group">
 										<label for="passwordRegistration">Password* </label>
 										<input type="password" id="passwordRegistration" name="password" class="form-control paddingRightInput" placeholder="Password" required>
 									</div>
+                                    <br>
 									<div class="form-group">
 										<label for="passwordRegistrationRip">Ripeti Password* </label>
 										<input type="password" id="passwordRegistrationRip" name="password2" class="form-control paddingRightInput" placeholder="Password" required>
 									</div>
+                                    <br>
 									<div class="form-group">
 										<label for="nameRegistration">Nome*</label>
 										<input type="text" id="nameRegistration" name="first_name" class="form-control paddingRightInput" placeholder="Nome" required
 											   value="<%=Model.Messages.consumeString(request, "first_name")%>">
 									</div>
+                                                                        <br>
 									<div class="form-group">
 										<label for="cognomeRegistration">Cognome*</label>
 										<input type="text" id="cognomeRegistration" name="last_name" class="form-control paddingRightInput" placeholder="Cognome" required

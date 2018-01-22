@@ -20,9 +20,15 @@
                 <div class="header-content-inner">
                     <!--form di login-->
                     <img class="centerImg resizeImg" src="/progettoWeb/img/logo/logoFinale.png" height="60" width="60" style="padding: 10px;">
-                    <div class="border resizeRegistration">
+                    <div class="border resizeRegistration" style="padding-left: 25px">
 						<form action="<%=MyPaths.Servlet.Pubbliche.login%>" method="post">
                             <h1 class="text-center">Login</h1>
+                            <% if (Model.Messages.consumeBoolean(request, Model.Messages.loginFailed)) { %>
+                                <div class="alert alert-danger centerImg" role="alert">
+                                    <span class="glyphicon glyphicon-remove-sign"></span> Login fallito: username o password errati
+                                </div>
+							
+                            <% }%>
                             <br>
                             <div class="form-group">
                                 <label for="emailLogin">Username (email)</label>
@@ -48,9 +54,7 @@
                                 <span class="sr-only"></span>Username o password errati.
                             </div>-->
                         </form>
-						<% if (Model.Messages.consumeBoolean(request, Model.Messages.loginFailed)) { %>
-							Login non riuscito: Username o password errati<br/>
-						<% }%>
+						
                     </div>
                 </div>
             </div>

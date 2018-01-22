@@ -44,18 +44,6 @@
             </li>
         </ul>
 
-
-        <%
-			/*Class.forName("org.postgresql.Driver");
-            Connection connection = null;
-            connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/prova","postgres", "marco");
-            PreparedStatement p = connection.prepareStatement("SELECT * FROM test");
-            ResultSet rs = p.executeQuery();
-            
-            connection.close();*/
-        %>
-
-        <h5></h5>
     </div>
 
     <!--<script src="http://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>

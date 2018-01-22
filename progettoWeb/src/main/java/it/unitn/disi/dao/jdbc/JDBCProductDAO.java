@@ -67,4 +67,15 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
 		}
 		return productList;
 	}
+
+    @Override
+    public Product[] getProductsByCategory(int cat) throws DAOException{
+        String query = "SELECT * FROM products WHERE id_subcategory = ?";
+		Object[] parametriQuery = new Object[]{cat};
+		Product[] productList = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		for (Product p : productList) {
+			setPointers(p, true, true);
+		}
+		return productList;
+    }
 }
