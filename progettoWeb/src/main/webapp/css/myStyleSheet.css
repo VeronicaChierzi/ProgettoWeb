@@ -315,7 +315,7 @@ a#nonverif:hover{
 
 }
 a#nonverif:visited{
-	    color:#607D8B ;
+	    color:#840505 ;
 		background-color: #f7efef
 }
 
@@ -564,6 +564,9 @@ form .containerA {
     margin: 0 auto;
     margin-left: 20%;
     margin-right: 20%;
+}
+ul{
+	list-style:none
 }
 
 ul#profilo{
