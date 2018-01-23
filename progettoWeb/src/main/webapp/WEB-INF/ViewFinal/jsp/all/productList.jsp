@@ -94,11 +94,13 @@
                                                 
                                                 
                                                 <%if(UrlUtils.getOffsetFromUrl(request.getQueryString()) != 0) {%>
-                                                    <button onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())-10)+"")%>'" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>  Pagina precedente</button>
+                                                    <button style="margin-right: 10px; margin-bottom: 20px;" onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())-10)+"")%>'" class="btn btn-secondary">
+														<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>  Pagina precedente</button>
                                                 <% }%>
                                                 
                                                 <%if((int) Model.Request.getAttribute(request, "count") == 10) {%>
-                                                    <button onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())+10)+"")%>'" class="btn btn-secondary">Pagina successiva  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                                                    <button style="margin-bottom: 20px;" onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())+10)+"")%>'" class="btn btn-primary">
+														Pagina successiva  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
                                                 <% }%>
                     </li>
 
@@ -113,4 +115,3 @@
 </body>
 </html>
 
-<jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>
