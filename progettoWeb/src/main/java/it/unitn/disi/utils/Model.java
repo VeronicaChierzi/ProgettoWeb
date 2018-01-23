@@ -11,8 +11,10 @@ public class Model {
         // HOW TO USE
         //String s = Model.Parameter.get(request, Model.Parameter.nomeParametro);
 
-        public static final String textSearch = "textSearch";
         public static final String category = "category";
+        public static final String offset = "offset";
+        public static final String sort = "sort";
+        public static final String textSearch = "textSearch";
 
         // <editor-fold defaultstate="collapsed" desc="Getter">
         public static String get(HttpServletRequest request, String parameterName) {

@@ -6,7 +6,10 @@ import it.unitn.disi.entities.Product;
 import it.unitn.disi.servlet.MyServlet;
 import it.unitn.disi.utils.Model;
 import it.unitn.disi.utils.MyPaths;
+import it.unitn.disi.utils.ProductUtil;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,21 +28,77 @@ public class GetProductListServlet extends MyServlet {
             throws ServletException, IOException {
         String search = Model.Parameter.get(request, Model.Parameter.textSearch);
         String category = Model.Parameter.get(request, Model.Parameter.category);
-        if (search != "") {
-            try {
-                Product[] productList = productDAO.searchProducts(search);
-                if (productList != null) {
-                    Model.Request.setAttribute(request, "products", productList);
+        String sort = Model.Parameter.get(request, Model.Parameter.sort);
+        String off = Model.Parameter.get(request, Model.Parameter.offset);
+
+        int offset = 0;
+        if (!off.equals("") && !Pattern.matches("[a-zA-Z]+", off)) {
+            offset = Integer.parseInt(off);
+            if(offset<0) offset = -offset;
+        }
+
+        if (!search.equals("")) {
+            if (sort.equals("")) {
+                try {
+                    Product[] productList = productDAO.searchProducts(search, offset);
+                    ProductUtil.mergeSortPrice(productList);
+                    if (productList != null) {
+                        Model.Request.setAttribute(request, "count", productList.length);
+                        Model.Request.setAttribute(request, "products", productList);
+                    }
+                } catch (DAOException ex) {
+                    System.err.println("Errore DAOException in GetProductListServlet: " + ex.getMessage());
+                    forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
                 }
-            } catch (DAOException ex) {
-                System.err.println("Errore DAOException in GetProductListServlet: " + ex.getMessage());
-                forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
+            } else if (sort.equalsIgnoreCase("price")) {
+                try {
+                    Product[] productList = productDAO.searchProducts(search, offset);
+                    ProductUtil.mergeSortPrice(productList);
+
+                    if (productList != null) {
+                        Model.Request.setAttribute(request, "count", productList.length);
+                        Model.Request.setAttribute(request, "products", productList);
+                    }
+                } catch (DAOException ex) {
+                    System.err.println("Errore DAOException in GetProductListServlet: " + ex.getMessage());
+                    forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
+                }
+            } else if (sort.equalsIgnoreCase("review")) {
+                try {
+                    Product[] productList = productDAO.searchProducts(search, offset);
+                    ProductUtil.mergeSortReview(productList);
+                    ProductUtil.rovesciaArray(productList);
+
+                    if (productList != null) {
+                        Model.Request.setAttribute(request, "count", productList.length);
+                        Model.Request.setAttribute(request, "products", productList);
+                    }
+                } catch (DAOException ex) {
+                    System.err.println("Errore DAOException in GetProductListServlet: " + ex.getMessage());
+                    forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
+                }
+            } else {
+                try {
+                    Product[] productList = productDAO.searchProducts(search, offset);
+                    ProductUtil.mergeSortPrice(productList);
+
+                    if (productList != null) {
+                        Model.Request.setAttribute(request, "count", productList.length);
+                        Model.Request.setAttribute(request, "products", productList);
+                    }
+                } catch (DAOException ex) {
+                    System.err.println("Errore DAOException in GetProductListServlet: " + ex.getMessage());
+                    forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
+                }
             }
-        } else if(category != "" && !Pattern.matches("[a-zA-Z]+", category)) {
+        } else if (!category.equals("") && !Pattern.matches("[a-zA-Z]+", category)) {
             try {
-                
+
                 Product[] productList = productDAO.getProductsByCategory(Integer.parseInt(category));
+                ProductUtil.mergeSortPrice(productList);
+
                 if (productList != null) {
+                    Model.Request.setAttribute(request, "count", productList.length);
                     Model.Request.setAttribute(request, "products", productList);
                 }
             } catch (DAOException ex) {
@@ -48,8 +107,11 @@ public class GetProductListServlet extends MyServlet {
             }
         } else { //restituisco comunque tutti i prodotti
             try {
-                Product[] productList = productDAO.searchProducts(search);
+                Product[] productList = productDAO.searchProducts(search, offset);
+                ProductUtil.mergeSortPrice(productList);
+
                 if (productList != null) {
+                    Model.Request.setAttribute(request, "count", productList.length);
                     Model.Request.setAttribute(request, "products", productList);
                 }
             } catch (DAOException ex) {
