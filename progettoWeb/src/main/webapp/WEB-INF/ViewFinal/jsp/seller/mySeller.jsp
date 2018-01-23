@@ -36,19 +36,26 @@
 
                     <table>
                         <%for (Shop a : b) {%>
-
+					<form action="<%=MyPaths.Servlet.Pubbliche.changeShopParams%>" method="post">
+						<tr>
+							<td></td>
+							<td>Orario</td>
+							<td></td>
+						</tr>
                         <tr>
                             <td>
                                 <p><%=a.getAddress()%>, <%=a.getComune().getName()%></p><br>
                             </td>
                             <td>
-                                <form action="<%=MyPaths.Servlet.Pubbliche.changeShopParams%>" method="post">
                                     <input type="hidden" name="idShop" value="<%=a.getId()%>" />
-                                    Orario<br><textarea rows="5" cols="40" name="orarioShop" type="text"><%= (a.getOrario() != null ? a.getOrario() : "")%></textarea><br>
-                                    <button type="submit" class="btn btn-primary">Salva</button>
-                                </form>
+                                    <textarea style="width: 100%; height: auto;" rows="4" cols="40" name="orarioShop" type="text"><%= (a.getOrario() != null ? a.getOrario() : "")%></textarea>
                             </td>
+							<td>
+								<button style="margin-left:20px;" type="submit" class="btn btn-primary">Salva</button>
+
+							</td>
                         </tr>
+                                </form>
 
                         <% }%>
                     </table>
@@ -59,4 +66,3 @@
     </body>
 </html>
 
-<jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>

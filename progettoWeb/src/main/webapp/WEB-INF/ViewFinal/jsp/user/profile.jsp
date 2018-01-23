@@ -30,9 +30,9 @@
                 </ul>
             </li>
 			<li>
-				<h1 style="text-align:center; font-size: 50px">Ciao, <%=user.getUsername()%>!</h1>
+				<h1 style="text-align:center; font-size: 20px">Ciao, <%=user.getUsername()%>!</h1>
 			</li>
-            <li style="margin-left: 50px; font-size: 30px;">
+            <li style="margin-left: 50px; font-size: 15px;">
 				<%--id: <%=user.getId()%><br/>--%>
 				<%=user.getFirstName()%> <%=user.getLastName()%><br/>
 
@@ -49,8 +49,8 @@
 
 				<% if (user.isSeller()) {%>
 				<% UserSeller seller = user.getUserSeller();%>
-				Sei il proprietario di <%=seller.getName()%>
-				<a href="<%=MyPaths.Jsp.sellerMySeller%>"><span class="glyphicon glyphicon-briefcase"></span> gestisi negozio</a><br/>
+				Sei il proprietario di 
+				<a href="<%=MyPaths.Jsp.sellerMySeller%>"><%=seller.getName()%></a><br/>
 				<br/>
 				<% } else {%>
 				<a href="<%=MyPaths.Jsp.userRegistrationSellerLog%>">Registrati come venditore</a><br/>
@@ -73,5 +73,3 @@
 		</ul>
 	</body>
 </html>
-
-<jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>
