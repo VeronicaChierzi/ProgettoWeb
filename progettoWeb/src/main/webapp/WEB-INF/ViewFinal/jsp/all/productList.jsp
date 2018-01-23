@@ -1,4 +1,5 @@
 <%-- Lista di prodotti visualizzata dopo una ricerca --%>
+<%@page import="it.unitn.disi.dao.ShopDAO"%>
 <%@page import="it.unitn.disi.utils.UrlUtils"%>
 <%@page import="it.unitn.disi.entities.categories.CategoryContainer"%>
 <%@page import="java.util.regex.Pattern"%>
@@ -26,6 +27,7 @@
             <li>
 				<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
             </li>
+			<% ShopDAO shopDAO = (ShopDAO) Model.Request.getAttribute(request, "shopDAO"); %>
 			<% Product[] productList = (Product[]) Model.Request.getAttribute(request, Model.Request.productList); %>
 			<% String search = Model.Parameter.get(request, Model.Parameter.textSearch); %>
 			<% String category = Model.Parameter.get(request, Model.Parameter.category);%>
@@ -66,8 +68,9 @@
 												</td>
 												<td id="products" class="descrizione" >
 													<h3 style="margin: 3px"><a href="<%=MyPaths.Jsp.allProduct%>?id=<%=p.getId()%>"><%=StringUtils.formatForWeb(p.getName())%></a></h3>
-													<span class="meta" style="padding-bottom: 15px; font-style: italic; font-weight: lighter; margin-top: 0px"><%=categoryContainer.getSubcategory(p.getIdSubcategory()).getName()%><br>
-													</span><br>
+													<span class="meta" style="padding-bottom: 15px; font-style: italic; font-weight: lighter; margin-top: 0px"><%=categoryContainer.getSubcategory(p.getIdSubcategory()).getName()%>
+                                                                                                            - Venduto da <a href="<%=MyPaths.Jsp.allShop + "?id=" + sp.getIdShop()%>"><%=shopDAO.getShop(sp.getIdShop(), true, false).getUserSeller().getName()%></a>
+													</span><br><br>
 													<span><%=p.getDescription()%></span>
 													<% if (sp != null) {%>
 													<span class="price"> &euro; <%=sp.getPrice()%></span>

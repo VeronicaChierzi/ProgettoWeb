@@ -4,137 +4,147 @@ import it.unitn.disi.entities.locations.Comune;
 
 public class Shop {
 
-	private int id;
-	private int idOwner;
-	private double latitude;
-	private double longitude;
-	private String address;
-	private int idComune;
-	
-	private UserSeller userSeller;
-	private Comune comune;
+    private int id;
+    private int idOwner;
+    private double latitude;
+    private double longitude;
+    private String address;
+    private int idComune;
+    private String orario;
 
-	public Shop(int id, int idOwner, double latitude, double longitude, String address, int idComune) {
-		this.id = id;
-		this.idOwner = idOwner;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.address = address;
-		this.idComune = idComune;
-	}
+    public String getOrario() {
+        return orario;
+    }
 
-	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
+    public void setOrario(String orario) {
+        this.orario = orario;
+    }
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+    private UserSeller userSeller;
+    private Comune comune;
 
-	/**
-	 * @return the idOwner
-	 */
-	public int getIdOwner() {
-		return idOwner;
-	}
+    public Shop(int id, int idOwner, double latitude, double longitude, String address, int idComune, String orario) {
+        this.id = id;
+        this.idOwner = idOwner;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+        this.idComune = idComune;
+        this.orario = orario;
+    }
 
-	/**
-	 * @param idOwner the idOwner to set
-	 */
-	public void setIdOwner(int idOwner) {
-		this.idOwner = idOwner;
-	}
+    // <editor-fold defaultstate="collapsed" desc="Getters e Setters">
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
 
-	/**
-	 * @return the latitude
-	 */
-	public double getLatitude() {
-		return latitude;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	/**
-	 * @param latitude the latitude to set
-	 */
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
+    /**
+     * @return the idOwner
+     */
+    public int getIdOwner() {
+        return idOwner;
+    }
 
-	/**
-	 * @return the longitude
-	 */
-	public double getLongitude() {
-		return longitude;
-	}
+    /**
+     * @param idOwner the idOwner to set
+     */
+    public void setIdOwner(int idOwner) {
+        this.idOwner = idOwner;
+    }
 
-	/**
-	 * @param longitude the longitude to set
-	 */
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
+    /**
+     * @return the latitude
+     */
+    public double getLatitude() {
+        return latitude;
+    }
 
-	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
+    /**
+     * @param latitude the latitude to set
+     */
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
 
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    /**
+     * @return the longitude
+     */
+    public double getLongitude() {
+        return longitude;
+    }
 
-	/**
-	 * @return the idComune
-	 */
-	public int getIdComune() {
-		return idComune;
-	}
+    /**
+     * @param longitude the longitude to set
+     */
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
-	/**
-	 * @param idComune the idComune to set
-	 */
-	public void setIdComune(int idComune) {
-		this.idComune = idComune;
-	}
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
 
-	/**
-	 * @return the userSeller
-	 */
-	public UserSeller getUserSeller() {
-		return userSeller;
-	}
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	/**
-	 * @param userSeller the userSeller to set
-	 */
-	public void setUserSeller(UserSeller userSeller) {
-		this.userSeller = userSeller;
-	}
+    /**
+     * @return the idComune
+     */
+    public int getIdComune() {
+        return idComune;
+    }
 
-	/**
-	 * @return the comune
-	 */
-	public Comune getComune() {
-		return comune;
-	}
+    /**
+     * @param idComune the idComune to set
+     */
+    public void setIdComune(int idComune) {
+        this.idComune = idComune;
+    }
 
-	/**
-	 * @param comune the comune to set
-	 */
-	public void setComune(Comune comune) {
-		this.comune = comune;
-	}
-	// </editor-fold>
+    /**
+     * @return the userSeller
+     */
+    public UserSeller getUserSeller() {
+        return userSeller;
+    }
+
+    /**
+     * @param userSeller the userSeller to set
+     */
+    public void setUserSeller(UserSeller userSeller) {
+        this.userSeller = userSeller;
+    }
+
+    /**
+     * @return the comune
+     */
+    public Comune getComune() {
+        return comune;
+    }
+
+    /**
+     * @param comune the comune to set
+     */
+    public void setComune(Comune comune) {
+        this.comune = comune;
+    }
+    // </editor-fold>
 
 }

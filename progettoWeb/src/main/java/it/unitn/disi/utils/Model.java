@@ -12,7 +12,9 @@ public class Model {
         //String s = Model.Parameter.get(request, Model.Parameter.nomeParametro);
 
         public static final String category = "category";
+        public static final String idShop = "idShop";
         public static final String offset = "offset";
+        public static final String orarioShop = "orarioShop";
         public static final String sort = "sort";
         public static final String textSearch = "textSearch";
 
@@ -50,8 +52,8 @@ public class Model {
         public static final String product = "product"; //pagina di dettaglio di un singolo prodotto
         public static final String productList = "products"; //lista di prodotti, visualizzata dopo la ricerca
         public static final String productReviews = "productReviews"; //reviews di un singolo prodotto
-        public static final String orderId = "orderId"; //id di un ordine di un singolo prodotto
 
+        public static final String orderId = "orderId"; //id di un ordine di un singolo prodotto
         public static final String orderUser = "orderUser"; //pagina riservata agli utenti loggati, mostra un proprio ordine
         public static final String ordersUser = "ordersUser"; //pagina riservata agli utenti loggati, mostra la lista dei propri ordini
         public static final String orderSeller = "orderSeller"; //pagina riservata ai venditori, mostra un ordine ricevuto
@@ -68,6 +70,8 @@ public class Model {
         public static final String segnalazioniSeller = "segnalazioniSeller";
         public static final String segnalazioniOpenSeller = "segnalazioniOpenSeller";
 
+        public static final String user = "user";
+        
         //private static final String shopName = "shop";
         //private static final String myShopsName = "myShops";
         // <editor-fold defaultstate="collapsed" desc="Getters e Setters">

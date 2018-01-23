@@ -53,7 +53,8 @@
                             <% if (shopProduct == null) {%>
                             Il prodotto non è disponibile<br/>
                             <% } else {%>
-                            Venduto e spedito da: <%=shopProduct.getShop().getUserSeller().getName()%><br/>
+                            Venduto e spedito da: <a href="<%=MyPaths.Jsp.allShop + "?id=" + shopProduct.getIdShop()%>">
+                                <%=shopProduct.getShop().getUserSeller().getName()%></a><br/>
                             <h2>&euro; <%=new DecimalFormat("#.##").format(shopProduct.getPrice())%></h2>
                             Quantità disponibile: <%=shopProduct.getQuantity()%><br/>
                             <div class="addToCart">
