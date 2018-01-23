@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="collapse navbar-collapse" id="myNavbar" style=" background-color: #e5e5e5;">
                 <ul class="nav navbar-nav navbar-right">
                     <% if (user == null) {%>
 						<li><a href="<%=MyPaths.Jsp.allCart%>"><span class="glyphicon glyphicon-shopping-cart"></span>  Carrello</a></li>
@@ -29,6 +29,13 @@
 							<li><a href="<%=MyPaths.Jsp.anonymousLogin%>"><span class="glyphicon glyphicon-log-in"></span> Accedi </a></li>
 						<% } %>
                     <% } else { %>
+							<%if (!user.isVerificato()) { %>
+							<li style="margin-right: 20px;">
+								<a id="nonverif" style="border-radius: 5px; margin-top: 2px; border-color: #840505; border-style: solid; border-width: 0.5px">
+									<span class="glyphicon glyphicon-exclamation-sign"></span> Account non verificato
+								</a>		
+							</li>
+							<%}%>
 						<li><a href="<%=MyPaths.Jsp.allCart%>"><span class="glyphicon glyphicon-shopping-cart"></span>  Carrello</a></li>
 						<li><a href="<%=MyPaths.Jsp.userOrders%>">Ordini</a></li>
 						<li><a href="<%=MyPaths.Jsp.userProfile%>"><span class="glyphicon glyphicon-user"></span> <%=user.getFirstName()%> </a></li>

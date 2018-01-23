@@ -32,7 +32,7 @@
                             <br>
                             <div class="form-group">
                                 <label for="emailLogin">Username (email)</label>
-                                <input type="text" id="emailLogin" name="username" class="form-control" placeholder="Email" value="" required>
+                                <input autofocus type="text" id="emailLogin" name="username" class="form-control" placeholder="Email" value="" required>
                             </div>
                             <div class="form-group">
                                 <label for="passwordLogin">Password </label>

@@ -100,7 +100,6 @@ header.masthead .header-content .header-content-inner p {
     position: relative;
     min-height: 40px;
     margin-bottom: 0px;
-    border: 1px solid transparent;
     height: 55px;
 }
 @media (min-width: 768px) {
@@ -263,7 +262,7 @@ h1#negozio{
     margin-right: auto;
 }
 .navbar-transparent {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgb(229, 229, 229);
     text-color: black;
 }
 
@@ -304,6 +303,20 @@ a:link {
 /* visited link */
 a:visited {
     color: #607D8B;
+}
+a#nonverif{
+	    color:#840505 ;
+						background-color: #f7efef
+
+}
+a#nonverif:hover{
+	    color:#840505 ;
+				background-color: #f7efef
+
+}
+a#nonverif:visited{
+	    color:#607D8B ;
+		background-color: #f7efef
 }
 
 /* mouse over link */
@@ -580,42 +593,23 @@ ul#risRicerca{
     width: 100%;
     display: inline-table;
 }
-li#risRicerca.categorie{
-    display:inline-table;
-    width:10%;
-    padding-left: 20px
-}
 li#risRicerca.prodotti{
     display:inline-table;
     width:90%;
     margin-top: 20px;
-}
-ul#product{
-    display: block;
-    width: 100%;
-}
-li#product{
-    display:block;
-    width: 100%
-}
-ul#products { 
-    list-style: none; 
-    width: 100%; 
-    padding-left: 0px;
 }
 ul#products li { 
     display: inline-table;
     margin-left: 10px;
     margin-top:0;
 }
-ul#products li#products.descrizione { 
+tr#products td#products.descrizione { 
     display: inline-table;
     margin-left: 10px;
     margin-top:0;
-    transform: translateY(-75px);
 }
 
-ul#products li span.price { 
+td#products span.price { 
     font-weight: bold; 
     display: block; 
     margin-bottom: 15px; 
@@ -623,7 +617,7 @@ ul#products li span.price {
     font-size: 25px; 
     margin-top: 15px;
 }
-ul#products li span a{
+ul#products  span a{
     margin-right: 100px;
     float:right;
     text-align: right;
@@ -636,8 +630,8 @@ ul#products li#products.carrello {
     text-align: right;
     /*transform: translateY(100px);*/
 }
-.imgProdotto{
-    heigth:200px;
+.imgProdotto{  /*OK*/
+    heigth:200px; 
     width:200px;
     border-style: solid;
     border-width: 5px;
@@ -657,9 +651,6 @@ h1.paddingTop {
 img.prodotto {
     width: 100%;
     height: auto;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #fff;
 }
 
 p.descrizioneProdotto {
@@ -670,4 +661,15 @@ p.descrizioneProdotto {
 
 div.addToCart {
     margin-top: 10px;
+}
+table {
+    /* border-spacing: 10px; */
+    border-collapse: initial;
+}
+
+table#products{
+	margin-bottom: 50px;
+}
+table#product{
+	margin-top: 20px;
 }

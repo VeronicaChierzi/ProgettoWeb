@@ -33,7 +33,7 @@
                                                         <table>
                                                             <thead>
                                                                 <tr>
-                                                                    <td><p style="align-content: left; font-weight: lighter; color: grey; font-style: italic; font-size: 9dp; margin: 5px"><%=c.getName()%></p></td>
+                                                                    <td><p style="align-content: left; font-weight: lighter; color: grey; font-style: italic; font-size: 9dp; margin: 5px;"><%=c.getName()%></p></td>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
