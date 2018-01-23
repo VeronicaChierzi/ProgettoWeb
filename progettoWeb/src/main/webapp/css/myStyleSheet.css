@@ -306,17 +306,17 @@ a:visited {
 }
 a#nonverif{
 	    color:#840505 ;
-						background-color: #ffdddd
+						background-color: #f7efef
 
 }
 a#nonverif:hover{
 	    color:#840505 ;
-				background-color: #ffdddd
+				background-color: #f7efef
 
 }
 a#nonverif:visited{
 	    color:#607D8B ;
-		background-color: #ffdddd
+		background-color: #f7efef
 }
 
 /* mouse over link */
