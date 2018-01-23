@@ -1,14 +1,11 @@
 <%-- Home del sito --%>
+<%@page import="it.unitn.disi.entities.categories.Subcategory"%>
+<%@page import="it.unitn.disi.entities.categories.Category"%>
+<%@page import="it.unitn.disi.entities.categories.CategoryContainer"%>
 <%@page import="it.unitn.disi.utils.MyPaths"%>
 <%@page import="it.unitn.disi.utils.Model"%>
 
-<%--
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
---%>
+<% CategoryContainer categoryContainer = (CategoryContainer) Model.Application.getAttribute(config, Model.Application.categoryContainer);%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +19,7 @@
     <body class="sfondoHome"> <!--da sistemare con cicli per cambio immagini-->
         <ul id="paginazione">
             <li>
-				<jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
+                <jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
             </li>
             <li>
                 <div class="centerImg resizeImgHome">
@@ -31,7 +28,7 @@
                 <br/>
             </li>
             <li>
-				<form action="<%=MyPaths.Jsp.allProductList%>" method="get">
+                <form action="<%=MyPaths.Jsp.allProductList%>" method="get">
                     <div class="input-group resizeSearch containerA">
                         <input id="testoRicerca" name="<%=Model.Parameter.textSearch%>" type="text" class="form-control" placeholder="Cerca..." />
                         <span class="input-group-btn">
@@ -40,17 +37,39 @@
                             </button>
                         </span>
                     </div>
+                    <br>
+                    <span class="meta">
+                          <span>Con almeno </span>
+                          <select name="rate" autocomplete="off" style="padding: 2px; margin-right: 10px; margin-left: 10px">
+                          <option value="0" selected>Qualsiasi</option>
+                          <% for (int i = 1; i <= 5; i++) {%>
+                          <option value="<%=i%>"><%=i%></option>
+                        <% }%>
+                        </select>
+                        <span> stelle</span>
+                    </span>
+                    <br>
+                    <span class="meta">
+                        <span>nella categoria </span>
+                        <select name="categoria" autocomplete="off" style="padding: 2px; margin-right: 10px; margin-left: 10px">
+                            <option value="all" selected>Tutte le categorie</option>
+                            <% if (categoryContainer != null) {%>
+                            <% for (Category c : categoryContainer.getCategories()) {%>
+                            <optgroup label="<%= c.getName()%>">
+                            <% for (Subcategory s : c.getSubcategories()) {%>
+                            <option value="<%=s.getId()%>"><%=s.getName()%></option>
+                            <% }%>
+                            </optgroup>
+                            <% }%>
+                            <% }%>
+                        </select>
+                    </span>
                 </form>
             </li>
         </ul>
 
-    </div>
-
-    <!--<script src="http://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
-    <script src="js/autocompletamento.js"></script>-->
-    <script src="/progettoWeb/js/autocompletamento.js"></script>
-</body>
+        <script src="/progettoWeb/js/autocompletamento.js"></script>
+    </body>
 </html>
 
 <jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>
