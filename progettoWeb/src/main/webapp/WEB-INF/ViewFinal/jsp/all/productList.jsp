@@ -3,9 +3,11 @@
 <%@page import="it.unitn.disi.utils.UrlUtils"%>
 <%@page import="it.unitn.disi.entities.categories.CategoryContainer"%>
 <%@page import="java.util.regex.Pattern"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="it.unitn.disi.utils.StringUtils"%>
 <%@page import="it.unitn.disi.entities.ShopProduct"%>
 <%@page import="it.unitn.disi.entities.Image"%>
+<%@page import="it.unitn.disi.entities.Shop"%>
 <%@page import="it.unitn.disi.utils.Model"%>
 <%@page import="it.unitn.disi.entities.Product"%>
 <%@page import="it.unitn.disi.utils.MyPaths"%>
@@ -69,8 +71,10 @@
 												<td id="products" class="descrizione" >
 													<h3 style="margin: 3px"><a href="<%=MyPaths.Jsp.allProduct%>?id=<%=p.getId()%>"><%=StringUtils.formatForWeb(p.getName())%></a></h3>
 													<span class="meta" style="padding-bottom: 15px; font-style: italic; font-weight: lighter; margin-top: 0px"><%=categoryContainer.getSubcategory(p.getIdSubcategory()).getName()%>
-                                                                                                            - Venduto da <a href="<%=MyPaths.Jsp.allShop + "?id=" + sp.getIdShop()%>"><%=shopDAO.getShop(sp.getIdShop(), true, false).getUserSeller().getName()%></a>
-													</span><br><br>
+                                                                                                            <% Shop shopp = shopDAO.getShop(sp.getIdShop(), true, true); %>
+                                                                                                            - Venduto da <a href="<%=MyPaths.Jsp.allShop + "?id=" + sp.getIdShop()%>"><%=shopp.getUserSeller().getName()%></a> di <%= shopp.getComune().getName()%>
+                                                                                                        </span><br>
+                                                                                                        <span><%=new DecimalFormat("#.#").format(p.getAverageReview())%> stelle su 5</span><br><br>
 													<span><%=p.getDescription()%></span>
 													<% if (sp != null) {%>
 													<span class="price"> &euro; <%=sp.getPrice()%></span>
