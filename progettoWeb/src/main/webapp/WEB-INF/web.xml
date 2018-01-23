@@ -614,6 +614,10 @@
         <servlet-class>it.unitn.disi.servlet.pubbliche.BuyCartServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ChangeShopParamsServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeShopParamsServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ChangeProductQuantityCartServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeProductQuantityCartServlet</servlet-class>
     </servlet>
@@ -642,7 +646,6 @@
         <servlet-class>it.unitn.disi.servlet.pubbliche.RegistrationSellerLogServlet</servlet-class>
     </servlet>
     <!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    
     <servlet-mapping>
         <servlet-name>AddReviewServlet</servlet-name>
         <url-pattern>/AddReviewServlet</url-pattern>
@@ -654,6 +657,10 @@
     <servlet-mapping>
         <servlet-name>BuyCartServlet</servlet-name>
         <url-pattern>/BuyCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeShopParamsServlet</servlet-name>
+        <url-pattern>/ChangeShopParamsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeProductQuantityCartServlet</servlet-name>
@@ -695,6 +702,10 @@
     <servlet>
         <servlet-name>GetCartUpdatedServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetCartUpdatedServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetMyShopServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.privatee.GetMyShopServlet</servlet-class>
     </servlet>
     <!-- ||||||| ORDER ||||||| -->
     <servlet>
@@ -743,6 +754,10 @@
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioniUserServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>GetShopServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.privatee.GetShopServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>GetSegnalazioniOpenAdminServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioniOpenAdminServlet</servlet-class>
     </servlet>
@@ -755,6 +770,10 @@
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioniOpenUserServlet</servlet-class>
     </servlet>
     <!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <servlet-mapping>
+        <servlet-name>GetMyShopServlet</servlet-name>
+        <url-pattern>/WEB-INF/servlet/GetMyShopServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetProductServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetProductServlet</url-pattern>
@@ -812,6 +831,10 @@
     <servlet-mapping>
         <servlet-name>GetSegnalazioniUserServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetSegnalazioniUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetShopServlet</servlet-name>
+        <url-pattern>/WEB-INF/servlet/GetShopServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetSegnalazioniOpenAdminServlet</servlet-name>

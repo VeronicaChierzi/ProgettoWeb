@@ -9,7 +9,7 @@ public interface ProductDAO extends DAO<Product, Integer> {
 	
 	public Product[] searchProducts(String text, int offset) throws DAOException;
         
-        public Product[] getProductsByCategory(int cat) throws DAOException;
+        public Product[] getProductsByCategory(int cat, int offset) throws DAOException;
         
 
 }

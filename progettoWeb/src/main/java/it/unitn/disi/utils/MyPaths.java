@@ -180,6 +180,7 @@ public class MyPaths {
 			public static final String buyCart = p + "BuyCartServlet";
 			public static final String changePassword = p + "ChangePasswordServlet";
 			public static final String changeProductQuantityCartServlet = p + "ChangeProductQuantityCartServlet";
+			public static final String changeShopParams = p + "ChangeShopParamsServlet";
 			public static final String deleteProductCartServlet = p + "DeleteProductCartServlet";
 			public static final String confirmUser = p + "ConfirmUserServlet";
 			public static final String forgottenPassword = p + "ForgottenPasswordServlet";
