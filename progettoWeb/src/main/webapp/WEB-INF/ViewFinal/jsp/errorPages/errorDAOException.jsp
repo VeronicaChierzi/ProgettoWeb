@@ -14,5 +14,3 @@
 		<jsp:include page="<%=MyPaths.Jsp._errorPagesPrintException%>" />
     </body>
 </html>
-
-<jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>

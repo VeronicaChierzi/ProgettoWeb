@@ -73,5 +73,3 @@
 		</ul>
 	</body>
 </html>
-
-<jsp:include page="<%=MyPaths.Jsp._utilsFooter%>"/>
