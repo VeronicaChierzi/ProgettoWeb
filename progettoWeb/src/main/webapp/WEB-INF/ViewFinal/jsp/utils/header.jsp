@@ -6,7 +6,7 @@
 	</li>
 	<%--<% if (!request.getRequestURI().equalsIgnoreCase(MyPaths.Jsp.allHome)) {%>--%>
 	<li style="height:66px">
-				<div style="position: fixed; width: 100%;">
+				<div style="position: sticky; width: 100%;">
 
 		<jsp:include page = "<%=MyPaths.Jsp._utilsSearchBar%>"/>
 				</div>

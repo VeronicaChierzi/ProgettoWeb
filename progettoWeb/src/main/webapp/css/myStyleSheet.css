@@ -565,6 +565,9 @@ form .containerA {
     margin-left: 20%;
     margin-right: 20%;
 }
+ul{
+	list-style:none
+}
 
 ul#profilo{
     font-family: Quicksand, sans-serif;
