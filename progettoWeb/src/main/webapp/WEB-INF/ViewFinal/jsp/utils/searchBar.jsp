@@ -4,6 +4,7 @@
     Author     : Veronica Chierzi
 --%>
 
+<%@page import="it.unitn.disi.utils.UrlUtils"%>
 <%@page import="it.unitn.disi.entities.categories.Subcategory"%>
 <%@page import="it.unitn.disi.entities.categories.Category"%>
 <%@page import="it.unitn.disi.entities.categories.CategoryContainer"%>
@@ -18,7 +19,6 @@
         <div class="search">
             <div class="borderBarra">
                 <div class="bgBarraRicerca ">
-                    <form action="<%=MyPaths.Jsp.allProductList%>" method="post">
                         <div class="centerImg">
                             <ul id="barra">
                                 <li id="barraL">
@@ -71,19 +71,22 @@
                                     </form>
 
                                 </li>
+                                <% if(request.getRequestURI().contains("ProductList")) {
+                                    %>
+                                
                                 <li id ="barraR">
                                     <div class="dropdown">
-                                        <button class="dropbtn">Indirizzo di spedizione</button>
+                                        <button class="dropbtn">Ordina per</button>
                                         <div class="dropdown-content">
-                                            <a href="#">Link 1</a>
-                                            <a href="#">Link 2</a>
-                                            <a href="#">Link 3</a>
+                                            <a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "price")%>">Prezzo crescente</a>
+                                            <a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "review")%>">Stelle</a>
                                         </div>
                                     </div>
                                 </li>
+                                
+                                <% } %>
                             </ul>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

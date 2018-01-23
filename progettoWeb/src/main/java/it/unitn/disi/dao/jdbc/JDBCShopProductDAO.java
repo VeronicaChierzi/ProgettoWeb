@@ -33,7 +33,7 @@ public class JDBCShopProductDAO extends JDBCDAO<ShopProduct, Integer> implements
 		if (sp != null) {
 			if (loadProduct) {
 				//non dice a productDAO di caricare il MinShopProduct perchè è questo shopProduct che sta chiamando il prodotto. (altrimenti sarebbe un loop infinito. inoltre non è detto che questo sia lo shopProduct minore(per esempio quando richiamo dal carrello))
-				Product p = productDAO.getProduct(sp.getIdProduct(), false, true);
+				Product p = productDAO.getProduct(sp.getIdProduct(), false, true, true);
 				p.setShopProduct(sp);
 				sp.setProduct(p);
 			}
