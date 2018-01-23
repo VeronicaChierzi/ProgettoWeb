@@ -20,7 +20,7 @@
 			<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
             <li>
                 <ul id="profilo">
-                    <li>
+                    <li style="margin-top: 15px;">
                         <% if (user.isAdmin()) {%>
 							<img src="/progettoWeb/img/user/userAdmin.png" width="100px" height="100px" />
                         <%}else{%>
