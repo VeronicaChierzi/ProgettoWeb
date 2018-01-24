@@ -680,6 +680,15 @@ tr#products td#products.descrizione {
     margin-top:0;
 }
 
+.totale{
+	font-weight: bold; 
+    display: block; 
+    margin-bottom: 15px; 
+    color: #8f9296; 
+    font-size: 25px; 
+    margin-top: 15px;
+}
+
 td#products span.price { 
     font-weight: bold; 
     display: block; 
@@ -744,3 +753,4 @@ table#products{
 table#product{
 	margin-top: 20px;
 }
+
