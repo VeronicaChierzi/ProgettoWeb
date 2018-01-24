@@ -554,8 +554,7 @@ li#barraL {
 li#barraC {
 	margin-left: auto;
 	margin-right: 5px;
-	position: sticky;
-
+	position: sticky;	
 }
 
 @media (min-width: 800px){
@@ -788,5 +787,36 @@ ul#paginazione li#messico{
 }
 
 #aggCarr{
-		margin-top: 10px;
+	margin-top: 10px;
+}
+
+#mi{
+	display: table; margin-left: auto; margin-right: auto; margin-top: 20px;
+}
+#sono{
+	display: table-caption;
+}
+#divertita{
+	display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+span#divertita div#sparire{
+	display: none;
+}
+
+@media (min-width: 800px){
+	#mi{
+		display: table; margin-left: auto; margin-right: auto; margin-top: 20px;
 	}
+	#sono{
+		display: flex;
+	}
+	#divertita{
+		display: flex; margin-bottom: 20px;
+	}
+	span#divertita div#sparire{
+		display: block;
+	}
+	
+}

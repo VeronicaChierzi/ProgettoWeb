@@ -1,4 +1,6 @@
 <%-- Scheda del prodotto --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="it.unitn.disi.entities.ReviewProduct"%>
 <%@page import="it.unitn.disi.entities.User"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -82,9 +84,9 @@
                     <% for (ReviewProduct r : rps) {%>
 					<div style="border-bottom-color: black; border-bottom-width: 1px; border-bottom-style: solid; margin-bottom: 10px; padding-bottom: 10px;">
 						<span style="font-size: 20px; font-style: italic; font-weight: 700;"><%=r.getTitle()%></span><br>
-                    <span style="font-size: 20px;"><%=r.getText()%></span><br>
-                    <span class="price"style="font-size: 20px; margin-bottom: 0px;">Voto: <%=r.getRate()%></span><br>
-                    <span><%=r.getDatetime()%></span><br>
+						<span style="font-size: 20px;"><%=r.getText()%></span><br>
+						<span class="price"style="font-size: 20px; margin-bottom: 0px;">Voto: <%=r.getRate()%></span><br>
+						<span style="font-size: 15px;"><%=new SimpleDateFormat("dd/MM/yyyy").format(r.getDatetime())%></span><br>
 					</div>
 
                     <% } %>
@@ -98,10 +100,10 @@
 
 
                     <% Object a = Model.Request.getAttribute(request, Model.Request.orderId);
-                        int orderId = -1;
-                        if (a != null) {
-                            orderId = (int) a;
-                        } %>
+						int orderId = -1;
+						if (a != null) {
+							orderId = (int) a;
+						} %>
                     <% if (orderId != -1) { //mostrare possibilità di aggiungere prodotti %>
                     <form method="post" action="<%=MyPaths.Servlet.Pubbliche.addReview%>">
                         <input type="hidden" name="id_product" value="<%=product.getId()%>" />
@@ -110,16 +112,34 @@
                         <input style="width: 100%; border-style: hidden; margin-bottom: 10px;" type="text" name="title" value=""/>
                         <br><br>
                         Testo<br>
-                        <input style="width: 100%; height: 100px; border-style: hidden; margin-bottom: 10px;" type="text" name="text" value=""/>
-						<div style="margin-bottom: 20px;     margin-left: auto; margin-right: auto; display: table;">	
-						<select name="rate" autocomplete="off" style="padding: 2px; margin-right: 10px;">
-                            <% for (int i = 1; i <= 5; i++) {%>
-                            <option value="<%=i%>" <% if (i == 5) { %> selected <% }%>><%=i%></option>
-                            <% } %>
-                        </select>
-                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus-sign"></span>  Aggiungi recensione</button>
+                        <textarea style="width: 100%; height: 100px; border-style: hidden; margin-bottom: 10px;" name="text" value=""></textarea>
+						<div style="margin-bottom: 10px;margin-left: auto; margin-right: auto; display: table;">	
+
+							<div class="stars" style="margin-bottom: 20px; margin-left: auto; margin-right: auto;">
+								<input type="radio" name="rate" class="star-1" id="star-1" value="1" />
+								<label class="star-1" for="star-1">1</label>
+								<input type="radio" name="rate" class="star-2" id="star-2" value="2"/>
+								<label class="star-2" for="star-2">2</label>
+								<input type="radio" name="rate" class="star-3" id="star-3" value="3"/>
+								<label class="star-3" for="star-3">3</label>
+								<input type="radio" name="rate" class="star-4" id="star-4" value="4"/>
+								<label class="star-4" for="star-4">4</label>
+								<input type="radio" name="rate" class="star-5" id="star-5" value="5"/>
+								<label class="star-5" for="star-5">5</label>
+								<span></span>
+							</div>            
+
+
+
+
+							<%--<select name="rate" autocomplete="off" style="padding: 2px; margin-right: 10px;">
+								<% for (int i = 1; i <= 5; i++) {%>
+								<option value="<%=i%>" <% if (i == 5) { %> selected <% }%>><%=i%></option>
+								<% } %>
+							</select>--%>
+							<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus-sign"></span>  Aggiungi recensione</button>
 						</div>
-                        
+
                     </form>
 
                     <% }%>

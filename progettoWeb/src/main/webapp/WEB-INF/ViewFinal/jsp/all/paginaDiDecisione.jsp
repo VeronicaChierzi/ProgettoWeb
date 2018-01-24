@@ -11,9 +11,9 @@
 	<body class="sfondo">
         <ul id="paginazione">
 			<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
-            <li id="messico">
+            <li id="messico" style="margin-top: 20px">
 				<% if (Model.Messages.consumeBoolean(request, "prodottoAggiuntoAlCarrello")) { %>
-				Il Prodotto è stato aggiunto al carrello<br/>
+				<div style="text-align: center">Il Prodotto è stato aggiunto al carrello</div> <br> 
 				<% }%>
 				<ul style="padding: 0px; display: inline-flex;" id="pulsantiscelta">
 					<li>
