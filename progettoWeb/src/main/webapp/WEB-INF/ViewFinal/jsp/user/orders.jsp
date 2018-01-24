@@ -1,4 +1,5 @@
 <%-- Lista degli ordini effettuati --%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="it.unitn.disi.entities.UserSeller"%>
 <%@page import="it.unitn.disi.entities.Shop"%>
@@ -57,8 +58,8 @@
                 <% } %>
                 <% }%>
             </li>
-            <li style="margin-left: 10px;">Data di acquisto: <%=o.getDatetimePurchase()%></li>
-            <li style="margin-left: 10px;">Totale: <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
+            <li style="margin-left: 10px;">Data d'acquisto: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimePurchase())%></li>
+            <li style="margin-left: 10px; font-size: 23px" class="price">Totale: &euro; <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
             <li style="border-bottom-width: 1px;
                 border-bottom-color: black;
                 border-bottom-style: solid;
@@ -108,9 +109,9 @@
                                         <% } %>
                                 <% } %>
                         </li>--%>
-                        <td><%=new DecimalFormat("#.##").format(op.getPrice())%></td>
+                        <td>&euro; <%=new DecimalFormat("#.##").format(op.getPrice())%></td>
                         <td><%=op.getQuantity()%></td>
-                        <td><%=new DecimalFormat("#.##").format(op.getTotalPrice())%></td>
+                        <td>&euro; <%=new DecimalFormat("#.##").format(op.getTotalPrice())%></td>
                     </tr>
 
 
