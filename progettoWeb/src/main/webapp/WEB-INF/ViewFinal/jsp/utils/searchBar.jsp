@@ -19,74 +19,74 @@
         <div class="search">
             <div class="borderBarra">
                 <div class="bgBarraRicerca ">
-                        <div class="centerImg">
-                            <ul id="barra">
-                                <li id="barraL">
-                                    <div class="dropdown">
-                                        <button class="dropbtn">Categorie</button>
-                                        <div class="dropdown-content"><!-- TODO: FARE UNA CLASSE -->      
-                                            <table border="1">
-                                                <tr>
-                                                    <% if (categoryContainer != null) { %>
-                                                    <% for (Category c : categoryContainer.getCategories()) {%>
-                                                    <td style="vertical-align: initial">
-                                                        <table>
-                                                            <thead>
-                                                                <tr>
-                                                                    <td><p style="align-content: left; font-weight: lighter; color: grey; font-style: italic; font-size: 9dp; margin: 5px;"><%=c.getName()%></p></td>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+					<div class="centerImg">
+						<ul id="barra">
+							<li id="barraL">
+								<div class="dropdown">
+									<button class="dropbtn">Categorie</button>
+									<div class="dropdown-content" style="padding: 5px;"><!-- TODO: FARE UNA CLASSE -->      
+										<table border="1" id="esterna">
+											<tr id="cosinoBello">
+												<% if (categoryContainer != null) { %>
+												<% for (Category c : categoryContainer.getCategories()) {%>
+												<td style="display: table-header-group; width: auto;">
+													<table>
+														<thead style="vertical-align: center;">
+															<tr>
+																<td><p id="categoriaBarra"><%=c.getName()%></p></td>
+															</tr>
+														</thead>
+														<tbody>
 
-                                                                <% for (Subcategory s : c.getSubcategories()) {%>
-                                                                <tr>
-                                                                    <td><a href="<%=MyPaths.Jsp.allProductList + "?category=" + s.getId()%>"><%=s.getName()%></a></td>
-                                                                </tr>
-                                                                <% } %>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
+															<% for (Subcategory s : c.getSubcategories()) {%>
+															<tr>
+																<td><a href="<%=MyPaths.Jsp.allProductList + "?category=" + s.getId()%>"><%=s.getName()%></a></td>
+															</tr>
+															<% } %>
+														</tbody>
+													</table>
+												</td>
 
-                                                    <% } %>
-                                                    <% }%>   
-                                                </tr>
-                                            </table>
+												<% } %>
+												<% }%>   
+											</tr>
+										</table>
 
-                                        </div>
-                                    </div>
-                                </li>
-                                <li id ="barraC">
+									</div>
+								</div>
+							</li>
+							<li id ="barraC">
 
-                                    <form action="<%=MyPaths.Jsp.allProductList%>" method="get">
-                                        <div class="input-group centroCentro">
+								<form action="<%=MyPaths.Jsp.allProductList%>" method="get">
+									<div class="input-group centroCentro">
 
-                                            <input id="testoRicerca" name="<%=Model.Parameter.textSearch%>" type="text" class="form-control" placeholder="Cerca..." />
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default" type="submit">
-                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                                </button>
-                                            </span>
-                                        </div>
+										<input id="testoRicerca" name="<%=Model.Parameter.textSearch%>" type="text" class="form-control" placeholder="Cerca..." />
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="submit">
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											</button>
+										</span>
+									</div>
 
-                                    </form>
+								</form>
 
-                                </li>
-                                <% if(request.getRequestURI().contains("ProductList")) {
-                                    %>
-                                
-                                <li id ="barraR">
-                                    <div class="dropdown">
-                                        <button class="dropbtn">Ordina per</button>
-                                        <div class="dropdown-content">
-                                            <a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "price")%>">Prezzo crescente</a>
-                                            <a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "review")%>">Stelle</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <% } %>
-                            </ul>
-                        </div>
+							</li>
+							<% if (request.getRequestURI().contains("ProductList")) {
+							%>
+
+							<li id ="barraR">
+								<div class="dropdown">
+									<button class="dropbtn">Ordina per</button>
+									<div class="dropdown-content">
+										<a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "price")%>">Prezzo crescente</a>
+										<a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "review")%>">Stelle</a>
+									</div>
+								</div>
+							</li>
+
+							<% }%>
+						</ul>
+					</div>
                 </div>
             </div>
         </div>

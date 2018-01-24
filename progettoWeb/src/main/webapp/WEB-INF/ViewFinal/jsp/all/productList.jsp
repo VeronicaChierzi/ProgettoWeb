@@ -69,7 +69,7 @@
 													<% }%>
 												</td>
 												<td id="products" class="descrizione" >
-													<h3 style="margin: 3px"><a href="<%=MyPaths.Jsp.allProduct%>?id=<%=p.getId()%>"><%=StringUtils.formatForWeb(p.getName())%></a></h3>
+													<p style="margin: 3px"><a href="<%=MyPaths.Jsp.allProduct%>?id=<%=p.getId()%>"><%=StringUtils.formatForWeb(p.getName())%></a></p>
 													<span class="meta" style="padding-bottom: 15px; font-style: italic; font-weight: lighter; margin-top: 0px"><%=categoryContainer.getSubcategory(p.getIdSubcategory()).getName()%>
                                                                                                             <% Shop shopp = shopDAO.getShop(sp.getIdShop(), true, true); %>
                                                                                                             - Venduto da <a href="<%=MyPaths.Jsp.allShop + "?id=" + sp.getIdShop()%>"><%=shopp.getUserSeller().getName()%></a> di <%= shopp.getComune().getName()%>
@@ -93,17 +93,17 @@
 									<% } %>
 							</table>
 							<% } else { %>
-							<span class="meta">Non è stato trovato nessun prodotto</span>
+							<span style="margin-bottom: 30px;">Non è stato trovato nessun prodotto</span> <br>
 						<% } %>
                                                 
                                                 
                                                 <%if(UrlUtils.getOffsetFromUrl(request.getQueryString()) != 0) {%>
-                                                    <button style="margin-right: 10px; margin-bottom: 20px;" onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())-10)+"")%>'" class="btn btn-secondary">
+                                                    <button style="margin-right: 10px; margin-bottom: 20px; margin-top:10px;" onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())-10)+"")%>'" class="btn btn-secondary">
 														<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>  Pagina precedente</button>
                                                 <% }%>
                                                 
                                                 <%if((int) Model.Request.getAttribute(request, "count") == 10) {%>
-                                                    <button style="margin-bottom: 20px;" onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())+10)+"")%>'" class="btn btn-primary">
+                                                    <button style="margin-bottom: 20px; margin-top:10px;" onclick="window.location.href='<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "offset", (UrlUtils.getOffsetFromUrl(request.getQueryString())+10)+"")%>'" class="btn btn-primary">
 														Pagina successiva  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
                                                 <% }%>
                     </li>

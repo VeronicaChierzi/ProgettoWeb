@@ -102,7 +102,7 @@ header.masthead .header-content .header-content-inner p {
     margin-bottom: 0px;
     height: 55px;
 }
-@media (min-width: 768px) {
+@media (min-width: 800px) {
     header.masthead {
         /*height: 100%;
         min-height: -webkit-fill-available;*/
@@ -444,6 +444,15 @@ ul#paginazione {
     list-style: none;
 }
 
+ li#barraheader {
+		height:130px;
+}
+@media (min-width: 800px){
+	li#barraheader{
+	height:66px;
+}
+}
+    
 ul#barra{
     font-family: Quicksand, sans-serif;
     font-size: 16px;
@@ -455,12 +464,29 @@ ul#barra{
     width: 100%;
     position: relative;
     text-align: center;
-    display: inline-table;
+	display: grid;
     vertical-align: middle;
+}
+@media (min-width: 800px){
+	ul#barra {
+  display: inline-table;
+}
 }
 
 /*bottone categorie*/
 li#barraL {
+    display: inline-table;
+    float: left;
+    margin-left: auto;
+	margin-right: auto;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+@media (min-width: 800px){
+	li#barraL {
     display: inline-table;
     float: left;
     margin-left: 20px;
@@ -469,6 +495,8 @@ li#barraL {
     margin-bottom: auto;
     
 }
+}
+
 
 .dropbtn {
     background-color: #8f9296;
@@ -493,18 +521,23 @@ li#barraL {
     z-index: 1;
 }
 
-.dropdown-content table {
-    border: #bcb7ad;
-    padding: 5px 7px;
+.dropdown-content table{
+    /* border: #bcb7ad; */
+    padding: 5px 5px;
     text-decoration: none;
     display: block;
+    border-style: hidden;
+    border-spacing: 0;
+    border-color: #bcb7ad;
 }
 
 .dropdown-content table tr a {
-    color: black;
-    padding: 8px 11px;
-    text-decoration: none;
+    padding: 4px 4px;
+    /* text-decoration: none; */
     display: block;
+    /* font-style: normal; */
+    color: black;
+	font-size: 15px;
 }
 
 .dropdown-content a:hover {
@@ -519,9 +552,19 @@ li#barraL {
     background-color: #808080;
 }
 li#barraC {
+	margin-left: auto;
+	margin-right: 5px;
+	position: sticky;
+	
+}
+
+@media (min-width: 800px){
+	li#barraC {
     display: inline-table;
     width: 50%;
 }
+}
+
 .centroCentro{
     vertical-align: middle;
     position: relative;
@@ -529,11 +572,36 @@ li#barraC {
     vertical-align: middle;
 }
 li#barraR {
+    margin-left: auto;
+	margin-right: auto;
+}
+@media (min-width: 800px){
+    li#barraR {
     display: inline-table;
     float: right;
     margin-right: 20px;
     vertical-align: middle;   
 }
+}
+
+#categoriaBarra{ 
+	font-weight: lighter; 
+	color: grey; 
+	font-style: italic; 
+	font-size: 20px; 
+	margin: 5px;
+	height: 60px;
+	text-align: center;	
+}
+#cosinoBello{
+	display: grid;
+}
+@media (min-width: 800px){
+    #cosinoBello{
+        display: flex;
+    }
+}
+
 
 div#esternoBarra{
     margin:0;
