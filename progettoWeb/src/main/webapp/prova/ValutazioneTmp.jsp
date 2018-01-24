@@ -15,7 +15,7 @@
     </head>
     <body>
         <h2>Valutazione Prodotto</h2>
-        <form action="/ValutazioneTmp.jsp" method="post">
+        <form action="/ValutazioneTmp.jsp" method="get">
             Titolo<br>
             <input type="text" name="titolo"><br>
             Recensione<br>
