@@ -8,17 +8,13 @@ package it.unitn.disi.servlet.privatee;
 import it.unitn.disi.dao.ShopDAO;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
-import it.unitn.disi.entities.Product;
 import it.unitn.disi.entities.Shop;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.servlet.MyServlet;
 import it.unitn.disi.utils.Model;
-import static it.unitn.disi.utils.Model.Request.shop;
 import it.unitn.disi.utils.MyPaths;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

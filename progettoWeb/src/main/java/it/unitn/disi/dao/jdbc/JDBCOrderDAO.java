@@ -153,10 +153,11 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 		}
 		 */
 		//id order e datetime_purchase sono generati dal database
-		String query = "INSERT INTO orders(id_user, id_shop) VALUES (?, ?)";
+		String query = "INSERT INTO orders(id_user, id_shop, datetime_purchase) VALUES (?, ?, ?)";
 		try (PreparedStatement ps = CON.prepareStatement(query)) {
 			ps.setInt(1, order.getIdUser());
 			ps.setInt(2, order.getIdShop());
+                        ps.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
 
 			int result = -1; //quantità di righe modificate dalla query insert
 			try {

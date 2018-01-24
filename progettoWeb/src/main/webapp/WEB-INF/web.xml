@@ -62,6 +62,10 @@
         <jsp-file>/WEB-INF/ViewFinal/jsp/all/cart.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>Payment</servlet-name>
+        <jsp-file>/WEB-INF/ViewFinal/jsp/all/payment.jsp</jsp-file>
+    </servlet>
+    <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/WEB-INF/ViewFinal/jsp/all/home.jsp</jsp-file>
     </servlet>
@@ -189,6 +193,10 @@
     <servlet-mapping>
         <servlet-name>Cart</servlet-name>
         <url-pattern>/ViewFinal/Cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Payment</servlet-name>
+        <url-pattern>/ViewFinal/Payment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -758,6 +766,10 @@
         <servlet-class>it.unitn.disi.servlet.privatee.GetShopServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.privatee.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>GetSegnalazioniOpenAdminServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioniOpenAdminServlet</servlet-class>
     </servlet>
@@ -835,6 +847,10 @@
     <servlet-mapping>
         <servlet-name>GetShopServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetShopServlet</url-pattern>
+    </servlet-mapping>    
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/WEB-INF/servlet/PaymentServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetSegnalazioniOpenAdminServlet</servlet-name>

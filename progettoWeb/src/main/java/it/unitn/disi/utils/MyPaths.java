@@ -78,6 +78,7 @@ public class MyPaths {
 		public static String debugCategoryContainer;
 		public static String debugLocationContainer;
 		public static String debugNavbarComplete;
+		public static String payment;
 		public static String sellerMySeller;
 		public static String sellerMyShop;
 		public static String sellerOrder;
@@ -125,6 +126,7 @@ public class MyPaths {
 			debugCategoryContainer = p + "CategoryContainer";
 			debugLocationContainer = p + "LocationContainer";
 			debugNavbarComplete = p + "NavbarComplete";
+			payment = p + "Payment";
 			sellerMySeller = p + "MySeller";
 			sellerMyShop = p + "MyShop";
 			sellerOrder = p + "OrderSeller";
@@ -231,6 +233,7 @@ public class MyPaths {
 			public static final String userGetSegnalazione = p + "GetSegnalazioneUserServlet";
 			public static final String userGetSegnalazioni = p + "GetSegnalazioniUserServlet";
 			public static final String userGetSegnalazioniOpen = p + "GetSegnalazioniOpenUserServlet";
+			public static final String allPaymentServlet = p + "PaymentServlet";
 		}
 	}
 }
