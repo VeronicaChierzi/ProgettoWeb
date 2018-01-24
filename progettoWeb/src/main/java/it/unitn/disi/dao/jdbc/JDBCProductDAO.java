@@ -40,7 +40,7 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
             if (loadImage) {
                 p.setImage(imageDAO.getProductImage(p.getId()));
             }
-            if(loadReviews) {
+            if (loadReviews) {
                 p.setReview(reviewProductDAO.getReviewsByProductId(p.getId()));
             }
         }
@@ -85,5 +85,78 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
         }
         return productList;
     }
-    
+
+    @Override
+    public Product[] searchProductsByCategory(String text, int cat, int offset) throws DAOException {
+        String query = "select distinct on (\"name\") * from\n"
+                + "((SELECT * FROM products WHERE (to_tsvector(\"name\") @@ plainto_tsquery(?)) AND id_subcategory = ?\n)"
+                + "UNION\n"
+                + "(select * from products where (\"name\" ilike ? or \"name\" ilike ?) AND id_subcategory = ? order by \"name\" asc)) as ris\n"
+                + "ORDER BY ris.\"name\" asc LIMIT 10 OFFSET ?;";
+        Object[] parametriQuery = new Object[]{
+            HtmlEscape.escapeHtml5(text),
+            cat,
+            HtmlEscape.escapeHtml5(text) + "%",
+            "%" + HtmlEscape.escapeHtml5(text) + "%",
+            cat,
+            offset
+        };
+        Product[] productList = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+        for (Product p : productList) {
+            setPointers(p, true, true, true);
+        }
+        return productList;
+    }
+
+    @Override
+    public Product[] searchProductsByCategoryAndRating(String text, int cat, int offset, int rating) throws DAOException {
+        String query = "select distinct on (ris.\"name\") ris.\"id\", ris.\"name\", ris.\"description\", ris.\"id_subcategory\", ris.\"price_standard\" from\n"
+                + "(((SELECT * FROM products WHERE (to_tsvector(\"name\") @@ plainto_tsquery(?)) AND id_subcategory = ?)\n"
+                + "union\n"
+                + "(select * from products where (\"name\" ilike ? or \"name\" ilike ?) AND id_subcategory = ? order by \"name\" asc)) as a join \n"
+                + "	(select \"rate\", \"id_product\" from reviews_products)\n"
+                + "as b on a.id = b.id_product) as ris\n"
+                + "group by ris.\"id\", ris.\"name\", ris.\"description\", ris.\"id_subcategory\", ris.\"price_standard\"\n"
+                + "having avg(ris.rate) >= ?\n"
+                + "ORDER BY ris.\"name\" asc LIMIT 10 OFFSET ?;";
+        Object[] parametriQuery = new Object[]{
+            HtmlEscape.escapeHtml5(text),
+            cat,
+            HtmlEscape.escapeHtml5(text) + "%",
+            "%" + HtmlEscape.escapeHtml5(text) + "%",
+            cat,
+            rating,
+            offset
+        };
+        Product[] productList = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+        for (Product p : productList) {
+            setPointers(p, true, true, true);
+        }
+        return productList;
+    }
+
+    @Override
+    public Product[] searchProductsByRating(String text, int offset, int rating) throws DAOException {
+        String query = "select distinct on (ris.\"name\") ris.\"id\", ris.\"name\", ris.\"description\", ris.\"id_subcategory\", ris.\"price_standard\" from\n"
+                + "(((SELECT * FROM products WHERE to_tsvector(\"name\") @@ plainto_tsquery(?))\n"
+                + "union\n"
+                + "(select * from products where \"name\" ilike ? or \"name\" ilike ? order by \"name\" asc)) as a join \n"
+                + "	(select \"rate\", \"id_product\" from reviews_products)\n"
+                + "as b on a.id = b.id_product) as ris\n"
+                + "group by ris.\"id\", ris.\"name\", ris.\"description\", ris.\"id_subcategory\", ris.\"price_standard\"\n"
+                + "having avg(ris.rate) >= ?\n"
+                + "ORDER BY ris.\"name\" asc LIMIT 10 OFFSET ?;";
+        Object[] parametriQuery = new Object[]{
+            HtmlEscape.escapeHtml5(text),
+            HtmlEscape.escapeHtml5(text) + "%",
+            "%" + HtmlEscape.escapeHtml5(text) + "%",
+            rating,
+            offset
+        };
+        Product[] productList = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+        for (Product p : productList) {
+            setPointers(p, true, true, true);
+        }
+        return productList;
+    }
 }

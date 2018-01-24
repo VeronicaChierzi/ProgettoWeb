@@ -11,5 +11,10 @@ public interface ProductDAO extends DAO<Product, Integer> {
         
         public Product[] getProductsByCategory(int cat, int offset) throws DAOException;
         
-
+        public Product[] searchProductsByCategory(String text, int cat, int offset) throws DAOException;
+        
+        public Product[] searchProductsByCategoryAndRating(String text, int cat, int offset, int rating) throws DAOException;
+        
+        public Product[] searchProductsByRating(String text, int offset, int rating) throws DAOException;
+        
 }

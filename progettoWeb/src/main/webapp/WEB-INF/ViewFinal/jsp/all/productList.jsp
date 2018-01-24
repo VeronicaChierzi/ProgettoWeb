@@ -74,7 +74,11 @@
                                                                                                             <% Shop shopp = shopDAO.getShop(sp.getIdShop(), true, true); %>
                                                                                                             - Venduto da <a href="<%=MyPaths.Jsp.allShop + "?id=" + sp.getIdShop()%>"><%=shopp.getUserSeller().getName()%></a> di <%= shopp.getComune().getName()%>
                                                                                                         </span><br>
+                                                                                                        <% if(p.getAverageReview() == 0) { %>
+                                                                                                        <span>Questo prodotto non è ancora stato recensito</span><br><br>
+                                                                                                        <%} else {%>
                                                                                                         <span><%=new DecimalFormat("#.#").format(p.getAverageReview())%> stelle su 5</span><br><br>
+                                                                                                        <% } %>                                                                                                        
 													<span><%=p.getDescription()%></span>
 													<% if (sp != null) {%>
 													<span class="price"> &euro; <%=sp.getPrice()%></span>

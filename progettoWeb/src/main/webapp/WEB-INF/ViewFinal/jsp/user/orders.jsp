@@ -24,6 +24,14 @@
             </li>
 			<li style="margin-left: 10px; margin-top: 30px; margin-bottom: 30px;">
 				<h1>I tuoi ordini</h1>
+                                
+                                <% if (Model.Messages.consumeBoolean(request, "erroreAcquisto")) { %>
+                                <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove-sign"></span> Impossibile effettuare l'acquisto. Contattare l'amministratore del sito.</div>
+				<% } %>
+				<% if (Model.Messages.consumeBoolean(request, "acquistoOk")) { %>
+                                <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok-sign"></span> L'acquisto è andato a buon fine.</div>
+				<% } %>
+                                
 			</li>
 
 			<% Order[] orders = (Order[]) Model.Request.getAttribute(request, Model.Request.ordersUser); %>

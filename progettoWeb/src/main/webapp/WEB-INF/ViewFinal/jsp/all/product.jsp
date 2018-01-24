@@ -87,7 +87,7 @@
 
 
                     <% } %>
-                    
+
                     <% if (Model.Messages.consumeBoolean(request, "recensioneFallita")) { %>
                     <br><div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove-sign"></span> Impossibile aggiungere la recensione. Controlla di non averla già fatta.</div>
                     <% } %>

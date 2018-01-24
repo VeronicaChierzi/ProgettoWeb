@@ -111,10 +111,10 @@
                                         Totale: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%><br/><br/>
 
 					<% User user = (User)Model.Session.getAttribute(request, Model.Session.user); %>
+                                        
+                                        
 					<% if (user!=null){ %>
-						<form method="post" action="<%=MyPaths.Servlet.Pubbliche.buyCart%>">
-							<input type="submit" value="compra" />
-						</form>
+                                            <button style="margin-bottom: 20px;" onclick="window.location.href='<%= MyPaths.Jsp.payment%>'" class="btn btn-primary">Procedi all'acquisto  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
 					<% } else { %>
                                                 <div class="alert alert-warning" role="alert">
                                                     Effettua il <a href="<%=MyPaths.Jsp.anonymousLogin%>" class="alert-link">login</a> per procedere all'acquisto.

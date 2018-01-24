@@ -11,10 +11,12 @@ public class Model {
         // HOW TO USE
         //String s = Model.Parameter.get(request, Model.Parameter.nomeParametro);
 
+        public static final String categoria = "categoria";
         public static final String category = "category";
         public static final String idShop = "idShop";
         public static final String offset = "offset";
         public static final String orarioShop = "orarioShop";
+        public static final String rate = "rate";
         public static final String sort = "sort";
         public static final String textSearch = "textSearch";
 
