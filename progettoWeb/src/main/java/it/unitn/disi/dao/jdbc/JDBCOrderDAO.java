@@ -35,7 +35,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 	@Override
 	public void initFriendsDAO(DAOFactory daoFactory) throws ServletException {
 		orderProductDAO = (OrderProductDAO) initDao(OrderProductDAO.class, daoFactory);
-                userDAO = (UserDAO) initDao(UserDAO.class, daoFactory)
+                userDAO = (UserDAO) initDao(UserDAO.class, daoFactory);
 		shopDAO = (ShopDAO) initDao(ShopDAO.class, daoFactory);
 	}
 
