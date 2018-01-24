@@ -224,7 +224,7 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
 	//funzione richiamata da Order
 	@Override
 	public User getUser(int id) throws DAOException {
-		String query = "SELECT * FROM users WHERE id=?";
+                String query = "SELECT * FROM users WHERE id=?";
 		Object[] parametriQuery = new Object[]{id};
 		User u = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		u.setPassword("");

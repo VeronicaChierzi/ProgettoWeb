@@ -179,6 +179,7 @@ public class MyPaths {
 
 			public static final String addReview = p + "AddReviewServlet";
 			public static final String addToCart = p + "AddToCartServlet";
+			public static final String addUserSegnalazione = p + "AddUserSegnalazione";
 			public static final String buyCart = p + "BuyCartServlet";
 			public static final String changePassword = p + "ChangePasswordServlet";
 			public static final String changeProductQuantityCartServlet = p + "ChangeProductQuantityCartServlet";
