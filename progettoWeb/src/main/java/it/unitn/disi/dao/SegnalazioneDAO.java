@@ -17,6 +17,8 @@ public interface SegnalazioneDAO extends DAO<Segnalazione, Integer> {
 	public Segnalazione[] getOpenSegnalazioniByIdUser(int idUser) throws DAOException;
 
 	public Segnalazione getSegnalazioneUser(int idSegnalazione, int idUser) throws DAOException;
+        
+        public boolean addSegnalazioneUser(int idOrder, String title, String descr) throws DAOException;
 
 
 	public Segnalazione[] getSegnalazioniByIdSeller(int idSeller) throws DAOException;

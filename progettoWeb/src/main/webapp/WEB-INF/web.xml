@@ -618,6 +618,10 @@
         <servlet-class>it.unitn.disi.servlet.pubbliche.AddToCartServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddUserSegnalazione</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.AddUserSegnalazione</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>BuyCartServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.BuyCartServlet</servlet-class>
     </servlet>
@@ -661,6 +665,10 @@
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserSegnalazione</servlet-name>
+        <url-pattern>/AddUserSegnalazione</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BuyCartServlet</servlet-name>
@@ -847,7 +855,7 @@
     <servlet-mapping>
         <servlet-name>GetShopServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetShopServlet</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/PaymentServlet</url-pattern>
