@@ -89,6 +89,18 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 		}
 		return orders;
 	}
+        
+        //tutti gli ordini di un utente
+	@Override
+	public Order[] getOrdersUserLimit(int idUser) throws DAOException {
+		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY id DESC LIMIT 10";
+		Object[] parametriQuery = new Object[]{idUser};
+		Order[] orders = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		for (Order o : orders) {
+			setPointers(o, true, false, true);
+		}
+		return orders;
+	}
 
 	//dettagli di un ordine di un venditore (raggiungibile sia da OrdersSeller che da OrdersShop). idSeller usato per garantire sicurezza(solo il venditore cheha ricevuto l'ordine deve poter visualizzarlo).
 	@Override

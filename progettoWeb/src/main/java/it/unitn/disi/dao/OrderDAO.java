@@ -17,6 +17,8 @@ public interface OrderDAO extends DAO<Order, Integer> {
 
 	public boolean buyCart(Cart cart) throws DAOException;	
         
+        public Order[] getOrdersUserLimit(int idUser) throws DAOException;
+        
         public int hasUserBought(int userId, int prodId) throws DAOException;
 	
 }
