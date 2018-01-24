@@ -305,18 +305,18 @@ a:visited {
     color: #607D8B;
 }
 a#nonverif{
-	    color:#840505 ;
-						background-color: #f7efef
+	color:#840505 ;
+	background-color: #f7efef
 
 }
 a#nonverif:hover{
-	    color:#840505 ;
-				background-color: #f7efef
+	color:#840505 ;
+	background-color: #f7efef
 
 }
 a#nonverif:visited{
-	    color:#840505 ;
-		background-color: #f7efef
+	color:#840505 ;
+	background-color: #f7efef
 }
 
 /* mouse over link */
@@ -444,15 +444,15 @@ ul#paginazione {
     list-style: none;
 }
 
- li#barraheader {
-		height:130px;
+li#barraheader {
+	height:130px;
 }
 @media (min-width: 800px){
 	li#barraheader{
-	height:66px;
+		height:66px;
+	}
 }
-}
-    
+
 ul#barra{
     font-family: Quicksand, sans-serif;
     font-size: 16px;
@@ -469,8 +469,8 @@ ul#barra{
 }
 @media (min-width: 800px){
 	ul#barra {
-  display: inline-table;
-}
+		display: inline-table;
+	}
 }
 
 /*bottone categorie*/
@@ -482,19 +482,19 @@ li#barraL {
     vertical-align: middle;
     margin-top: auto;
     margin-bottom: auto;
-    
+
 }
 
 @media (min-width: 800px){
 	li#barraL {
-    display: inline-table;
-    float: left;
-    margin-left: 20px;
-    vertical-align: middle;
-    margin-top: auto;
-    margin-bottom: auto;
-    
-}
+		display: inline-table;
+		float: left;
+		margin-left: 20px;
+		vertical-align: middle;
+		margin-top: auto;
+		margin-bottom: auto;
+
+	}
 }
 
 
@@ -555,14 +555,14 @@ li#barraC {
 	margin-left: auto;
 	margin-right: 5px;
 	position: sticky;
-	
+
 }
 
 @media (min-width: 800px){
 	li#barraC {
-    display: inline-table;
-    width: 50%;
-}
+		display: inline-table;
+		width: 50%;
+	}
 }
 
 .centroCentro{
@@ -577,11 +577,11 @@ li#barraR {
 }
 @media (min-width: 800px){
     li#barraR {
-    display: inline-table;
-    float: right;
-    margin-right: 20px;
-    vertical-align: middle;   
-}
+		display: inline-table;
+		float: right;
+		margin-right: 20px;
+		vertical-align: middle;   
+	}
 }
 
 #categoriaBarra{ 
@@ -752,5 +752,19 @@ table#products{
 }
 table#product{
 	margin-top: 20px;
+}
+
+ul#campiCarta li input{
+	margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+	border-style: initial;
+}
+
+ul#campiCarta li#bottone input{
+	margin-bottom: 60px; 
+	display: table; 
+	margin-left: auto; 
+	margin-right: auto;
 }
 

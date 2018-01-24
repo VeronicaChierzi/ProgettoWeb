@@ -24,25 +24,37 @@
 			<li>
                 <p class="totale">Totale ordine: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%></p>
 			</li>
-            <li>
+            <li style="margin-bottom: 60px; display: table; margin-left: auto; margin-right: auto;">
 
                 <% User user = (User) Model.Session.getAttribute(request, Model.Session.user); %>
                 <% if (user != null) {%>
-                <p>Dati carta di credito</p>
+                
                 <form method="post" action="<%=MyPaths.Servlet.Pubbliche.buyCart%>">
-                    Nome e cognome  
-                    <input type="text" name="name" value=""/>
-                    <br>
-                    <br>
-                    MM  <input type="text" name="mm" size="2" value=""/>  YY <input type="text" name="yy" size="2" value=""/><br><br>
-                    Codice <input type="text" name="code" size="16" value=""/>  CVC <input type="text" name="cvc" size="3" value=""/>
-                    <br>
-                    <br>
-                    <input class="btn btn-primary" type="submit" value="compra" />
+					<ul style="padding:10px;" id="campiCarta">
+						<li style="font-size: 25px;">
+							Dati carta di credito
+						</li>
+						<li>
+							Nome e cognome  <br>
+							<input required="true" type="text" name="name" value=""/>
+						</li>
+						<li id="automobile">
+							MM  <input required="true" type="text" name="mm" size="2" value=""/>  YY <input type="text" name="yy" size="2" value=""/>
+						</li>
+						<li id="automobile">
+							Codice <input required="true" type="text" name="code" size="16" value=""/>  CVC <input  required="true" type="text" name="cvc" size="3" value=""/>
+						</li>
+						<li id="bottone">
+							<input style="margin-top: 20px;" class="btn btn-primary" type="submit" value="compra" />
+						</li>
+					</ul>
+					
                 </form>
-					<br>
-					<img style="width: 20%; height: auto;"src="/progettoWeb/img/NSec.png">
-
+			</li>
+			<li>
+				<img class="centerImg" style="width: 5%; height: auto;"src="/progettoWeb/img/NSec.png">
+			</li>
+			<li>
                 <% } else {%>
                 <div class="alert alert-warning" role="alert">
                     Effettua il <a href="<%=MyPaths.Jsp.anonymousLogin%>" class="alert-link">login</a> per procedere all'acquisto.
