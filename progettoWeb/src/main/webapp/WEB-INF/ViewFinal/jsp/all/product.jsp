@@ -67,7 +67,7 @@
                                         <option value="<%=i%>" <% if (i == 1) { %> selected <% }%>><%=i%></option>
                                         <% } %>
                                     </select>
-                                    <button type="submit"><span class="glyphicon glyphicon-shopping-cart"></span>  Aggiungi al carrello</input>
+                                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-shopping-cart"></span>  Aggiungi al carrello</input>
                                 </form>
                             </div>
                             <% } %>
