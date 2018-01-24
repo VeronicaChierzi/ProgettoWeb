@@ -239,7 +239,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 	private int getLastOrderId(Order o) throws DAOException {
 		int idUser = o.getIdUser();
 		int idShop = o.getIdShop();
-		String query = "SELECT * FROM orders WHERE id_user=? AND id_shop=? ORDER BY datetime_purchase DESC LIMIT 1";
+		String query = "SELECT * FROM orders WHERE id_user=? AND id_shop=? ORDER BY id DESC LIMIT 1";
 		Object[] parametriQuery = new Object[]{idUser, idShop};
 		Order order = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		return order.getId();
