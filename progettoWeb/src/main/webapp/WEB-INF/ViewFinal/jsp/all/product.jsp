@@ -57,7 +57,7 @@
                                 <%=shopProduct.getShop().getUserSeller().getName()%></a><br/>
                             <h2>&euro; <%=new DecimalFormat("#.##").format(shopProduct.getPrice())%></h2>
                             Quantità disponibile: <%=shopProduct.getQuantity()%><br/>
-                            <div class="addToCart">
+                            <div class="addToCart" style="display: table-caption;">
                                 <form method="post" action="<%=MyPaths.Servlet.Pubbliche.addToCart%>">
                                     <input type="hidden" name="id_product" value="<%=product.getId()%>" />
                                     <input type="hidden" name="id_shop" value="<%=shopProduct.getIdShop()%>" />
@@ -67,24 +67,25 @@
                                         <option value="<%=i%>" <% if (i == 1) { %> selected <% }%>><%=i%></option>
                                         <% } %>
                                     </select>
-                                    <button type="submit"><span class="glyphicon glyphicon-shopping-cart"></span>  Aggiungi al carrello</input>
+                                    <button id="aggCarr" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-shopping-cart"></span>  Aggiungi al carrello</input>
                                 </form>
                             </div>
                             <% } %>
                         </td>
-                        </tr></table>
+                        </tr>
+					</table>
                     <br/>
                     <% } %>
 
                     <br/>
                     <% ReviewProduct[] rps = (ReviewProduct[]) Model.Request.getAttribute(request, Model.Request.productReviews); %>
                     <% for (ReviewProduct r : rps) {%>
-
-                    <span class="meta"><%=r.getTitle()%></span><br>
-                    <span class="meta"><%=r.getText()%></span><br>
-                    <span class="meta"><%=r.getRate()%></span><br>
-                    <span class="meta"><%=r.getDatetime()%></span><br>
-
+					<div style="border-bottom-color: black; border-bottom-width: 1px; border-bottom-style: solid; margin-bottom: 10px; padding-bottom: 10px;">
+						<span style="font-size: 20px; font-style: italic; font-weight: 700;"><%=r.getTitle()%></span><br>
+                    <span style="font-size: 20px;"><%=r.getText()%></span><br>
+                    <span class="price"style="font-size: 20px; margin-bottom: 0px;">Voto: <%=r.getRate()%></span><br>
+                    <span><%=r.getDatetime()%></span><br>
+					</div>
 
                     <% } %>
 
@@ -106,16 +107,19 @@
                         <input type="hidden" name="id_product" value="<%=product.getId()%>" />
                         <input type="hidden" name="id_order" value="<%=orderId%>"/>
                         Titolo<br>
-                        <input type="text" name="title" value=""/>
+                        <input style="width: 100%; border-style: hidden; margin-bottom: 10px;" type="text" name="title" value=""/>
                         <br><br>
                         Testo<br>
-                        <input type="text" name="text" value=""/>
-                        <select name="rate" autocomplete="off" style="padding: 2px; margin-right: 10px">
+                        <input style="width: 100%; height: 100px; border-style: hidden; margin-bottom: 10px;" type="text" name="text" value=""/>
+						<div style="margin-bottom: 20px;     margin-left: auto; margin-right: auto; display: table;">	
+						<select name="rate" autocomplete="off" style="padding: 2px; margin-right: 10px;">
                             <% for (int i = 1; i <= 5; i++) {%>
                             <option value="<%=i%>" <% if (i == 5) { %> selected <% }%>><%=i%></option>
                             <% } %>
                         </select>
-                        <button type="submit"><span class="glyphicon glyphicon-plus-sign"></span>  Aggiungi recensione</button>
+                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus-sign"></span>  Aggiungi recensione</button>
+						</div>
+                        
                     </form>
 
                     <% }%>

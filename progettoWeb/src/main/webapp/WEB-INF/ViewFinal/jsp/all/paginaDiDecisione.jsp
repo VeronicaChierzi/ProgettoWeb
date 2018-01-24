@@ -8,15 +8,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pagina decisione</title>
     </head>
-   <body class="sfondo">
+	<body class="sfondo">
         <ul id="paginazione">
 			<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
-            <li>
-				<% if(Model.Messages.consumeBoolean(request, "prodottoAggiuntoAlCarrello")){ %>
-					Il Prodotto è stato aggiunto al carrello<br/>
-				<% } %>
-				<a href="<%=MyPaths.Jsp.allHome%>">continua lo shopping</a><br/>
-				<a href="<%=MyPaths.Jsp.allCart%>">vai al carrello</a>
+            <li id="messico">
+				<% if (Model.Messages.consumeBoolean(request, "prodottoAggiuntoAlCarrello")) { %>
+				Il Prodotto è stato aggiunto al carrello<br/>
+				<% }%>
+				<ul style="padding: 0px; display: inline-flex;" id="pulsantiscelta">
+					<li>
+						<a class="btn btn-secondary" href="<%=MyPaths.Jsp.allHome%>">continua lo shopping</a><br/>
+
+					</li>
+					<li>
+						<a class="btn btn-primary" href="<%=MyPaths.Jsp.allCart%>">vai al carrello</a>
+
+					</li>
+				</ul>
             </li>
         </ul>
     </body>
