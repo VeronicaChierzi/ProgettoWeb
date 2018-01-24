@@ -16,19 +16,19 @@
     <body class="sfondo">
         <ul id="paginazione">
             <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
-            <li class="container">
+            <li>
                 <h1 class="paddingTop">Pagamento</h1>
                 <% Cart cart = (Cart) Model.Session.getAttribute(request, Model.Session.cart);%>
 
-                <br>
-                Totale: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%>
-
-                <br>
-                <br>
+            </li>
+			<li>
+                <p class="totale">Totale ordine: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%></p>
+			</li>
+            <li>
 
                 <% User user = (User) Model.Session.getAttribute(request, Model.Session.user); %>
                 <% if (user != null) {%>
-                <h3>Dati carta di credito</h3>
+                <p>Dati carta di credito</p>
                 <form method="post" action="<%=MyPaths.Servlet.Pubbliche.buyCart%>">
                     Nome e cognome  
                     <input type="text" name="name" value=""/>
@@ -38,8 +38,10 @@
                     Codice <input type="text" name="code" size="16" value=""/>  CVC <input type="text" name="cvc" size="3" value=""/>
                     <br>
                     <br>
-                    <input type="submit" value="compra" />
+                    <input class="btn btn-primary" type="submit" value="compra" />
                 </form>
+					<br>
+					<img style="width: 20%; height: auto;"src="/progettoWeb/img/NSec.png">
 
                 <% } else {%>
                 <div class="alert alert-warning" role="alert">
