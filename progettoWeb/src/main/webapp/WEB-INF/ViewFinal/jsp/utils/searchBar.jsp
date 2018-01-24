@@ -33,7 +33,7 @@
 													<table>
 														<thead style="vertical-align: center;">
 															<tr>
-																<td><p id="categoriaBarra"><%=c.getName()%></p></td>
+																<td><span id="categoriaBarra"><%=c.getName()%></span></td>
 															</tr>
 														</thead>
 														<tbody>
@@ -77,9 +77,11 @@
 							<li id ="barraR">
 								<div class="dropdown">
 									<button class="dropbtn">Ordina per</button>
-									<div class="dropdown-content">
-										<a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "price")%>">Prezzo crescente</a>
-										<a href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "review")%>">Stelle</a>
+									<div class="dropdown-content" style="padding: 5px;">
+										<div style="border-color:#bcb7ad; border-width: 1px; border-style: solid; padding:5px;">
+											<a style="color: black;" href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "price")%>">Prezzo crescente</a>
+										<a style="color: black;" href="<%=UrlUtils.cambiaUrl(request.getRequestURI() + "?" + request.getQueryString(), "sort", "review")%>">Stelle</a>
+										</div>
 									</div>
 								</div>
 							</li>

@@ -523,7 +523,7 @@ li#barraL {
 
 .dropdown-content table{
     /* border: #bcb7ad; */
-    padding: 5px 5px;
+    /*padding: 5px 5px;*/
     text-decoration: none;
     display: block;
     border-style: hidden;
@@ -590,6 +590,7 @@ li#barraR {
 	font-style: italic; 
 	font-size: 20px; 
 	margin: 5px;
+	padding: 2px;
 	height: 60px;
 	text-align: center;	
 }
@@ -777,3 +778,15 @@ ul#paginazione li#messico{
 	margin-left: auto; 
 	margin-right: auto;
 }
+.price{
+	font-weight: bold; 
+    display: block; 
+    margin-bottom: 15px; 
+    color: #8f9296; 
+    font-size: 25px; 
+    margin-top: 15px;
+}
+
+#aggCarr{
+		margin-top: 10px;
+	}
