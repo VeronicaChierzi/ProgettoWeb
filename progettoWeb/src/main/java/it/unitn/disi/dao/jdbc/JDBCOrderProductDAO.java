@@ -11,8 +11,8 @@ import javax.servlet.ServletException;
 public class JDBCOrderProductDAO extends JDBCDAO<OrderProduct, Integer> implements OrderProductDAO {
 
     private static final Class classe = OrderProduct.class;
-    private static final String[] nomiColonne = new String[]{"id_order", "id_product", "price", "quantity"};
-    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, float.class, int.class};
+    private static final String[] nomiColonne = new String[]{"id", "id_order", "id_product", "price", "quantity"};
+    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, float.class, int.class};
 
     private ProductDAO productDAO;
 

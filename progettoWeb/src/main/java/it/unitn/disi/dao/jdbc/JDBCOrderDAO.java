@@ -81,7 +81,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 	//tutti gli ordini di un utente
 	@Override
 	public Order[] getOrdersUser(int idUser) throws DAOException {
-		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY datetime_purchase DESC";
+		String query = "SELECT * FROM orders WHERE id_user=? ORDER BY id DESC";
 		Object[] parametriQuery = new Object[]{idUser};
 		Order[] orders = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
 		for (Order o : orders) {

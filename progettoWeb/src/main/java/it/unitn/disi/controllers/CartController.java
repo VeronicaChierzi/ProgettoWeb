@@ -74,7 +74,7 @@ public class CartController {
 				return op;
 			}
 		}
-		OrderProduct op = new OrderProduct(order.getId(), idProduct, 0.0f, 0);
+		OrderProduct op = new OrderProduct(0,order.getId(), idProduct, 0.0f, 0);
 		order.getOrderProducts().add(op);
 		return op;
 	}

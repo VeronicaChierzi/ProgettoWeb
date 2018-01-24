@@ -4,94 +4,104 @@ import it.unitn.disi.entities.Product;
 
 public class OrderProduct {
 
-	private int idOrder;
-	private int idProduct;
-	private float price;
-	private int quantity;
+    private int id;
 
-	private Product product;
+    public int getId() {
+        return id;
+    }
 
-	public OrderProduct(int idOrder, int idProduct, float price, int quantity) {
-		this.idOrder = idOrder;
-		this.idProduct = idProduct;
-		this.price = price;
-		this.quantity = quantity;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
+    private int idOrder;
+    private int idProduct;
+    private float price;
+    private int quantity;
 
-	public float getTotalPrice() {
-		return price * quantity;
-	}
+    private Product product;
 
-	// <editor-fold defaultstate="collapsed" desc="Getters e Setters">
-	/**
-	 * @return the idOrder
-	 */
-	public int getIdOrder() {
-		return idOrder;
-	}
+    public OrderProduct(int id, int idOrder, int idProduct, float price, int quantity) {
+        this.id = id;
+        this.idOrder = idOrder;
+        this.idProduct = idProduct;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
-	/**
-	 * @param idOrder the idOrder to set
-	 */
-	public void setIdOrder(int idOrder) {
-		this.idOrder = idOrder;
-	}
+    public float getTotalPrice() {
+        return price * quantity;
+    }
 
-	/**
-	 * @return the idProduct
-	 */
-	public int getIdProduct() {
-		return idProduct;
-	}
+    // <editor-fold defaultstate="collapsed" desc="Getters e Setters">
+    /**
+     * @return the idOrder
+     */
+    public int getIdOrder() {
+        return idOrder;
+    }
 
-	/**
-	 * @param idProduct the idProduct to set
-	 */
-	public void setIdProduct(int idProduct) {
-		this.idProduct = idProduct;
-	}
+    /**
+     * @param idOrder the idOrder to set
+     */
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
+    }
 
-	/**
-	 * @return the price
-	 */
-	public float getPrice() {
-		return price;
-	}
+    /**
+     * @return the idProduct
+     */
+    public int getIdProduct() {
+        return idProduct;
+    }
 
-	/**
-	 * @param price the price to set
-	 */
-	public void setPrice(float price) {
-		this.price = price;
-	}
+    /**
+     * @param idProduct the idProduct to set
+     */
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
+    }
 
-	/**
-	 * @return the quantity
-	 */
-	public int getQuantity() {
-		return quantity;
-	}
+    /**
+     * @return the price
+     */
+    public float getPrice() {
+        return price;
+    }
 
-	/**
-	 * @param quantity the quantity to set
-	 */
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
-	/**
-	 * @return the product
-	 */
-	public Product getProduct() {
-		return product;
-	}
+    /**
+     * @return the quantity
+     */
+    public int getQuantity() {
+        return quantity;
+    }
 
-	/**
-	 * @param product the product to set
-	 */
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-	// </editor-fold>
+    /**
+     * @param quantity the quantity to set
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    /**
+     * @return the product
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * @param product the product to set
+     */
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    // </editor-fold>
 
 }
