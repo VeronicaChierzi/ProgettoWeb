@@ -4,3 +4,6 @@
 <%@page import="it.unitn.disi.utils.MyPaths"%>
 <jsp:include page="<%=MyPaths.Servlet.Privatee.allGetSeller%>"/>
 <% Order o = (Order) Model.Request.getAttribute(request, Model.Request.seller); %>
+
+
+<%-- NON SERVE QUESTA PAGINA QUELLA GIUSTA -> SHOP.JSP--%>

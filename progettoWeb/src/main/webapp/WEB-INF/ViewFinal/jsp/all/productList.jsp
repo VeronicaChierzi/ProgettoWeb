@@ -39,7 +39,7 @@
 					titolo = categoryContainer.getSubcategory(Integer.parseInt(category)).getName();
 				}%>
 
-            <li>
+            <li class="container">
 				<%--
                 <h1>
 					<% if (search != null) {%>
@@ -116,9 +116,6 @@
                 </ul>
             </li>
         </ul>
-    </ul>
-</li>
-</ul>
 </body>
 </html>
 

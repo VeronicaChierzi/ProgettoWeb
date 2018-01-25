@@ -16,6 +16,8 @@
     <body class="sfondo">
         <ul id="paginazione">
             <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
+			
+			<div class="container">
             <li>
                 <h1 class="paddingTop">Pagamento</h1>
                 <% Cart cart = (Cart) Model.Session.getAttribute(request, Model.Session.cart);%>
@@ -52,7 +54,7 @@
                 </form>
 			</li>
 			<li>
-				<img class="centerImg" style="width: 5%; height: auto;"src="/progettoWeb/img/NSec.png">
+				<img class="centerImg" style="width: 20%; height: auto;"src="/progettoWeb/img/NSec.png">
 			</li>
 			<li>
                 <% } else {%>
@@ -62,6 +64,7 @@
                 <% }%>
 
             </li>
+			</div>
         </ul>
     </body>
 </html>

@@ -35,7 +35,8 @@
                     <% } else {%>
                     <h1 class="paddingLeftTop"><%=StringUtils.formatForWeb(product.getName())%></h1>
                     <% Image image = product.getImage(); %>
-                    <table style="border-spacing: 10px;"><tr>
+                    <table style="border-spacing: 10px;">
+						<tr>
                             <% if (image != null) {%>
                             <td style="white-space: nowrap; width: auto;">
                                 <a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>">
