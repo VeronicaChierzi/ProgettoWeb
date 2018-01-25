@@ -21,6 +21,7 @@
         <jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
         <h1>Order</h1>
         <% Order o = (Order) Model.Request.getAttribute(request, Model.Request.orderUser); %>
+        <% Boolean a = (boolean) Model.Request.getAttribute(request, Model.Request.isSegnalato); %>
         <% if (o == null) { %>
         Ordine non trovato<br/>
         <% } else {%>
@@ -42,6 +43,7 @@
                 </li>
                 <li>Data di acquisto: <%=o.getDatetimePurchase()%></li>
                 <li>Prezzo totale ordine: <%=o.getTotalPrice()%></li>
+                <% if(!a) { %>
                 <li>
                     <form action="<%=MyPaths.Servlet.Pubbliche.addUserSegnalazione%>" method="post">
                         <input type="hidden" name="idOrder" value="<%=o.getId()%>"/>
@@ -53,6 +55,7 @@
                         <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus-sign"></span>  Apri segnalazione</button>
                     </form>
                 </li>
+                <% } %>
             </ul>
             <h4>Prodotti dell'ordine</h4>
             <ul>

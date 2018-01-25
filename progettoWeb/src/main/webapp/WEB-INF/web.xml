@@ -650,6 +650,10 @@
         <servlet-class>it.unitn.disi.servlet.pubbliche.RegistrationServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RispondiSegnalazioneServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.RispondiSegnalazioneServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RegistrationSellerServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.RegistrationSellerServlet</servlet-class>
     </servlet>
@@ -697,6 +701,10 @@
     <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
         <url-pattern>/RegistrationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RispondiSegnalazioneServlet</servlet-name>
+        <url-pattern>/RispondiSegnalazioneServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistrationSellerServlet</servlet-name>

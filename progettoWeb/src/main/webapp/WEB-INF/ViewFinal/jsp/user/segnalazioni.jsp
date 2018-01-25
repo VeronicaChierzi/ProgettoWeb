@@ -33,7 +33,7 @@
                 <%=(s.isOpen() ? "APERTA" : "CHIUSA")%>
             </li>
             <li>
-                <h5><%=s.getTitle()%></h5>
+                <h5><a href="<%=MyPaths.Jsp.userSegnalazione + "?id=" + s.getId()%>"><%=s.getTitle()%></a></h5>
             </li>
             <li>
                 <h5><%=s.getDescription()%></h5>

@@ -107,10 +107,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 
     @Override
     public Segnalazione getSegnalazioneUser(int idSegnalazione, int idUser) throws DAOException {
-        String query = "SELECT s.*"
-                + "FROM segnalazioni AS s"
-                + "INNER JOIN orders AS o ON (s.id_order=o.id)"
-                + "WHERE s.id=? AND o.id_user=?;";
+        String query = "SELECT s.* FROM segnalazioni AS s INNER JOIN orders AS o ON (s.id_order=o.id) WHERE s.id=? AND o.id_user=?;";
         Object[] parametriQuery = new Object[]{idSegnalazione, idUser};
         Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
         if (s != null) {
@@ -190,6 +187,20 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
         } catch (SQLException ex) {
             throw new DAOException("Errore preparedStatement o sintassi query: " + ex);
         }
+    }
+
+    @Override
+    public boolean isSegnalato(int orderID) throws DAOException {
+        String query = "SELECT * FROM segnalazioni WHERE id_order=?";
+        Object[] parametriQuery = new Object[]{orderID};
+        Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+        if (s != null) {
+            return true;
+
+        } else {
+            return false;
+        }
+
     }
 
 }
