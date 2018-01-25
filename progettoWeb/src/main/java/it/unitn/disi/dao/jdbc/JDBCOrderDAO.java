@@ -6,7 +6,6 @@ import it.unitn.disi.dao.ShopDAO;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.dao.factories.DAOFactory;
-import it.unitn.disi.entities.Product;
 import it.unitn.disi.entities.carts.Cart;
 import it.unitn.disi.entities.orders.Order;
 import it.unitn.disi.entities.orders.OrderProduct;
@@ -73,6 +72,17 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
     public Order getOrderUser(int id, int idUser) throws DAOException {
         String query = "SELECT * FROM orders WHERE id=? AND id_user=?";
         Object[] parametriQuery = new Object[]{id, idUser};
+        Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+        if (o != null) {
+            setPointers(o, true, false, true);
+        }
+        return o;
+    }
+    
+    @Override
+    public Order getOrderAdmin(int id) throws DAOException {
+        String query = "SELECT * FROM orders WHERE id=?";
+        Object[] parametriQuery = new Object[]{id};
         Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
         if (o != null) {
             setPointers(o, true, false, true);
@@ -288,6 +298,17 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
         }
         return -1;
 
+    }
+
+    @Override
+    public Order[] getOrdersSellerLimit(int id) throws DAOException {
+        String query = "SELECT * FROM orders o JOIN shops s on o.id_shop = s.id WHERE s.id_owner=? ORDER BY o.id DESC LIMIT 10";
+        Object[] parametriQuery = new Object[]{id};
+        Order[] orders = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+        for (Order o : orders) {
+            setPointers(o, true, false, true);
+        }
+        return orders;
     }
 
 }

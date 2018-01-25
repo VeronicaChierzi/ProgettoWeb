@@ -50,8 +50,8 @@
                         UserSeller us = s.getUserSeller();
                                         if (us != null) {%>
                 Venduto dal punto vendita di 
-                <a href="<%=MyPaths.Jsp.allShop%>?id=<%=s.getComune()%>">
-                    <%=us.getName()%>
+                <a href="<%=MyPaths.Jsp.allShop%>?id=<%=s.getId()%>">
+                    <%=s.getComune().getName()%>
                 </a>
                 <% } %>
                 <% }%>

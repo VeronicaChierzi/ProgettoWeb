@@ -14,41 +14,48 @@ import javax.servlet.http.HttpServletResponse;
 
 public class GetOrdersSellerServlet extends MyServlet {
 
-	private OrderDAO orderDAO;
+    private OrderDAO orderDAO;
 
-	@Override
-	public void init() throws ServletException {
-		orderDAO = (OrderDAO) initDao(OrderDAO.class);
-	}
+    @Override
+    public void init() throws ServletException {
+        orderDAO = (OrderDAO) initDao(OrderDAO.class);
+    }
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-			User user = (User) Model.Session.getUserSellerLogged(request); //necessario per verificare che sia un venditore
-			try {
-				Order[] orders = orderDAO.getOrdersSeller(user.getId());
-				Model.Request.setAttribute(request, Model.Request.ordersSeller, orders);
-			} catch (DAOException ex) {
-				System.err.println("Errore DAOException in GetOrdersSellerServlet: " + ex.getMessage());
-				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
-			}
-		} catch (Exception e) {
-			System.err.println("Errore utente non loggato in GetOrdersSellerServlet: " + e.getMessage());
-		}
-	}
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String view = Model.Parameter.get(request, "view");
 
-	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods">
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
+        try {
+            User user = (User) Model.Session.getUserSellerLogged(request); //necessario per verificare che sia un venditore
+            try {
+                Order[] orders;
+                if (view.equalsIgnoreCase("all")) {
+                    orders = orderDAO.getOrdersSeller(user.getId());
+                } else {
+                    orders = orderDAO.getOrdersSellerLimit(user.getId());
+                }
+                Model.Request.setAttribute(request, Model.Request.ordersSeller, orders);
+            } catch (DAOException ex) {
+                System.err.println("Errore DAOException in GetOrdersSellerServlet: " + ex.getMessage());
+                forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);
+            }
+        } catch (Exception e) {
+            System.err.println("Errore utente non loggato in GetOrdersSellerServlet: " + e.getMessage());
+        }
+    }
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
-	// </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods">
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+    // </editor-fold>
 
 }

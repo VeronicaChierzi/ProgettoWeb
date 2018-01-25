@@ -26,7 +26,7 @@
 			<li>
 
 				<% Order o = (Order) Model.Request.getAttribute(request, Model.Request.orderUser); %>
-				<%-- boolean a = (boolean) Model.Request.getAttribute(request, Model.Request.isSegnalato); --%>
+				<% boolean a = (boolean) Model.Request.getAttribute(request, Model.Request.isSegnalato); %>
 				<% if (o == null) { %>
 				<div style="margin-left: 10px; font-size: 30px;">Ordine non trovato</div><br/>
 				<% } else {%>
@@ -104,6 +104,8 @@
 						--%>
 						<% num_op++; %>
 						<% } %>
+                                                
+                                                <% if(!a) { %>
 						
 						<li id="aprisegnalazione">
 							<form action="<%=MyPaths.Servlet.Pubbliche.addUserSegnalazione%>" method="post">
@@ -116,6 +118,7 @@
 								<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus-sign"></span>Apri segnalazione</button>
 							</form>
 						</li>
+                                                <% } %>
 					</ul>
 				</div>
 				<% }%>	
