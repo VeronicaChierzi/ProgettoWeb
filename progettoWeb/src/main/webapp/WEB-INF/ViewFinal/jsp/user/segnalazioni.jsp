@@ -15,7 +15,7 @@
     </head>
     <body class="sfondo">
         <ul id="paginazione">
-                        <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
+            <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
 
             <h1 class="paddingTop">Segnalazioni</h1>
 
@@ -25,19 +25,28 @@
             <% if (Model.Messages.consumeBoolean(request, "correttaAggiuntaSegnalazione")) { %>
             <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok-sign"></span> Segnalazione aperta correttamente!</div>
             <% } %>
-            
-            <% if(segnalazioni != null) {%>
-            <% for (Segnalazione s : segnalazioni) {%>
 
-            <li>
-                <%=(s.isOpen() ? "APERTA" : "CHIUSA")%>
-            </li>
-            <li>
-                <h5><a href="<%=MyPaths.Jsp.userSegnalazione + "?id=" + s.getId()%>"><%=s.getTitle()%></a></h5>
-            </li>
-            <li>
-                <h5><%=s.getDescription()%></h5>
-            </li>
+            <% if (segnalazioni != null) {%>
+            <% for (Segnalazione s : segnalazioni) {%>
+			<div class="container">
+				<li>
+					<%=(s.isOpen() ? ""
+							+ "<div class=\"price\" style=\"color: green; margin-bottom: 4px; \">"
+							+ "APERTA"
+							+ "</div>" : ""
+							+ "<div class=\"price\" style=\"color: red; margin-bottom: 4px;\">"
+							+ "CHIUSA"
+							+ "</div>")%>
+				</li>
+				<li>
+					<div style="font-size: 20px;">
+						<a href="<%=MyPaths.Jsp.userSegnalazione + "?id=" + s.getId()%>"><%=s.getTitle()%></a>
+					</div>
+				</li>
+				<li style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black; margin-bottom: 10px; font-size: 16px; ">
+					<div style="margin-bottom: 5px;"><%=s.getDescription()%></div>
+				</li>
+			</div>
 
             <% }%>
             <% }%>
