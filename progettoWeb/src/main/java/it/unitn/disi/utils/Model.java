@@ -62,6 +62,7 @@ public class Model {
         public static final String ordersShop = "ordersShop"; //pagina riservata ai venditori, mostra la lista di ordini ricevuti da un punto vendita
         public static final String ordersSeller = "ordersSeller"; //pagina riservata ai venditori, mostra la lista completa di ordini ricevuti da un venditore
 
+        public static final String isSegnalato = "isSegnalato";
         public static final String segnalazioneUser = "segnalazioneUser";
         public static final String segnalazioniUser = "segnalazioniUser";
         public static final String segnalazioniOpenUser = "segnalazioniOpenUser";
