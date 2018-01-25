@@ -634,7 +634,8 @@ form .containerA {
     margin-right: 20%;
 }
 ul{
-	list-style:none
+	list-style:none;
+	padding-left: 0px;
 }
 
 ul#profilo{
@@ -819,4 +820,31 @@ span#divertita div#sparire{
 		display: block;
 	}
 	
+}
+#aprisegnalazione{
+	width: 60%;
+	display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+tr#tabord td{
+	text-align: center;
+	display: inline-table;
+
+	
+}
+tr#tabord td div#argg{
+	margin-bottom: 5px;
+}
+tr#tabord td#altroes{
+	margin:10px;
+}
+#aprisegnalazione button{
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+}
+#aprisegnalazione{
+	margin-top: 20px;
+	margin-bottom: 30px;
 }

@@ -44,7 +44,7 @@
                 <% int num_o = 0; %>
                 <% for (Order o : orders) {%>
             <li style="margin-left: 10px; font-size: 30px;">
-                <a href="<%=MyPaths.Jsp.userOrder%>?id=<%=o.getId()%>">Ordine n°<%=o.getId()%></a>
+                <a href="<%=MyPaths.Jsp.userOrder%>?id=<%=o.getId()%>">Ordine numero <%=o.getId()%></a>
             </li>
             <li style="margin-left: 10px;">
                 <% Shop s = o.getShop();
