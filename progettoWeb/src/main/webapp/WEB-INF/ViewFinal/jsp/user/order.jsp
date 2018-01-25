@@ -26,9 +26,9 @@
 			<li>
 
 				<% Order o = (Order) Model.Request.getAttribute(request, Model.Request.orderUser); %>
-        <% Boolean a = (boolean) Model.Request.getAttribute(request, Model.Request.isSegnalato); %>
+				<%-- boolean a = (boolean) Model.Request.getAttribute(request, Model.Request.isSegnalato); --%>
 				<% if (o == null) { %>
-				Ordine non trovato<br/>
+				<div style="margin-left: 10px; font-size: 30px;">Ordine non trovato</div><br/>
 				<% } else {%>
 				<div>
 					<h1>Informazioni Ordine numero <%=o.getId()%></h1>
