@@ -189,6 +189,7 @@ public class MyPaths {
 			public static final String forgottenPassword = p + "ForgottenPasswordServlet";
 			public static final String login = p + "LoginServlet";
 			public static final String logout = p + "LogoutServlet";
+			public static final String rispondiSegnalazione = p + "RispondiSegnalazioneServlet";
 			public static final String registration = p + "RegistrationServlet";
 			public static final String registrationSeller = p + "RegistrationSellerServlet";
 			public static final String registrationSellerLog = p + "RegistrationSellerLogServlet";

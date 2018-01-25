@@ -119,12 +119,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 /////////////////////////////////////////////// SELLER /////////////////////////////////////////////////////////////////////////////////
     @Override
     public Segnalazione[] getSegnalazioniByIdSeller(int idSeller) throws DAOException {
-        String query = "SELECT s.*"
-                + "FROM segnalazioni AS s"
-                + "INNER JOIN orders AS o ON (s.id_order=o.id)"
-                + "INNER JOIN shops ON (o.id_shop = shops.id)"
-                + "WHERE shops.id_owner=?"
-                + "ORDER BY s.datetime DESC;";
+        String query = "SELECT s.* FROM segnalazioni AS s INNER JOIN orders AS o ON (s.id_order=o.id) INNER JOIN shops ON (o.id_shop = shops.id) WHERE shops.id_owner=? ORDER BY s.datetime DESC;";
         Object[] parametriQuery = new Object[]{idSeller};
         Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
         for (Segnalazione s : segnalazioni) {

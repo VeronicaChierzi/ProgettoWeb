@@ -37,7 +37,7 @@ public class RispondiSegnalazioneServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int idSegnalazione = Model.Parameter.getInt(request, "idOrder"); //controllare esista con getSegnalazioneAdmin
+        int idSegnalazione = Model.Parameter.getInt(request, "idSegnalazione"); //controllare esista con getSegnalazioneAdmin
         String message = (String) Model.Parameter.get(request, "message");
         String decisione = (String) Model.Parameter.get(request, "decisione");
         String rimborso = (String) Model.Parameter.get(request, "rimborso"); //parse con regex
@@ -55,7 +55,7 @@ public class RispondiSegnalazioneServlet extends MyServlet {
         try {
             User u = (User) Model.Session.getUserAdminLogged(request);
             if (segnalazioneDAO.getSegnalazioneAdmin(idSegnalazione) != null) {
-                if (segnalazioneRispostaDAO.addRispostaByAdmin(idSegnalazione, u.getUserAdmin().getId(), message, decisione, rimborsoB, negValB)) {
+                if (segnalazioneRispostaDAO.addRispostaByAdmin(idSegnalazione, u.getUserAdmin().getId(), message, decisione.charAt(0)+"", rimborsoB, negValB)) {
                     Model.Messages.setBoolean(request, "rispostaCorretta");
                     redirect(response, MyPaths.Jsp.adminSegnalazioni);
                 } else {
