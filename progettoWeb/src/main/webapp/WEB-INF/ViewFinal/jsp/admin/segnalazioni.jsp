@@ -18,32 +18,46 @@
         <ul id="paginazione">
             <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
 
-            <h1 class="paddingTop">Tutte le segnalazioni</h1>
 
-            <% if (segnalazioni != null) {%>
-            <% for (Segnalazione s : segnalazioni) {%>
+			<div class="container">
+				<h1 class="paddingTop">Tutte le segnalazioni</h1>
 
-            <li>
-                <%=(s.isOpen() ? "APERTA" : "CHIUSA")%>
-            </li>
-            <li>
-                <h5><<%=s.getTitle()%></h5>
-            </li>
-            <li>
-                <h5><%=s.getDescription()%></h5>
-            </li>
+				<div id="puzzette" style="margin-left: auto; margin-right: auto; display: table;">
 
-            <% if (s.getSegnalazioneRisposta() != null) {%>
+					<% if (segnalazioni != null) {%>
+					<% for (Segnalazione s : segnalazioni) {%>
 
-            <button class="btn btn-primary" onclick="window.location.href = '<%=MyPaths.Jsp.adminSegnalazione + "?id=" + s.getId()%>'">Gestisci questa segnalazione</button>
-            <% } else {%>
-            <button class="btn btn-primary" onclick="window.location.href = '<%=MyPaths.Jsp.adminSegnalazione + "?id=" + s.getId()%>'">Vedi dettaglio</button>
-            <% } %>
+					<div style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1px;">
+					<li>
+						<%=(s.isOpen() ? ""
+								+ "<div class=\"price\" style=\"color: green; margin-bottom: 4px; \">"
+								+ "APERTA"
+								+ "</div>" : ""
+								+ "<div class=\"price\" style=\"color: red; margin-bottom: 4px;\">"
+								+ "CHIUSA"
+						+ "</div>")%>
+					</li>
+					<li>
+						<h5><<%=s.getTitle()%></h5>
+					</li>
+					<li>
+						<h5><%=s.getDescription()%></h5>
+					</li>
+					<li style="margin-left: auto; margin-right: auto; display: table;" >
+					<% if (s.getSegnalazioneRisposta() != null) {%>
+					
+					<button style="margin-bottom: 20px;"class="btn btn-primary" onclick="window.location.href = '<%=MyPaths.Jsp.adminSegnalazione + "?id=" + s.getId()%>'">Vedi dettaglio</button>
+					<% } else {%>
+					<button style="margin-bottom: 20px;" class="btn btn-primary" onclick="window.location.href = '<%=MyPaths.Jsp.adminSegnalazione + "?id=" + s.getId()%>'">Gestisci questa segnalazione</button>
+					<% } %>
+					</li>
+					</div>
+					<% }%>
+					
+					<% }%>
 
-            <% }%>
-            <% }%>
-
-
+				</div>
+			</div>
         </ul>
     </body>
 </html>
