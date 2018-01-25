@@ -91,12 +91,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 
     @Override
     public Segnalazione[] getOpenSegnalazioniByIdUser(int idUser) throws DAOException {
-        String query = "SELECT s.*"
-                + "FROM segnalazioni AS s"
-                + "INNER JOIN orders AS o ON (s.id_order=o.id)"
-                + "INNER JOIN segnalazioni_risposte AS sr ON (s.id = sr.id_segnalazione)"
-                + "WHERE o.id_user=?"
-                + "ORDER BY s.datetime DESC;";
+        String query = "SELECT s.* FROM segnalazioni AS s INNER JOIN orders AS o ON (s.id_order=o.id) INNER JOIN segnalazioni_risposte AS sr ON (s.id = sr.id_segnalazione) WHERE o.id_user=? ORDER BY s.datetime DESC;";
         Object[] parametriQuery = new Object[]{idUser};
         Segnalazione[] segnalazioni = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
         for (Segnalazione s : segnalazioni) {
@@ -147,11 +142,7 @@ public class JDBCSegnalazioneDAO extends JDBCDAO<Segnalazione, Integer> implemen
 
     @Override
     public Segnalazione getSegnalazioneSeller(int idSegnalazione, int idSeller) throws DAOException {
-        String query = "SELECT s.*"
-                + "FROM segnalazioni AS s"
-                + "INNER JOIN orders AS o ON (s.id_order=o.id)"
-                + "INNER JOIN shops ON (o.id_shop = shops.id)"
-                + "WHERE s.id=? AND shops.id_owner=?";
+        String query = "SELECT s.* FROM segnalazioni AS s INNER JOIN orders AS o ON (s.id_order=o.id) INNER JOIN shops ON (o.id_shop = shops.id) WHERE s.id=? AND shops.id_owner=?";
         Object[] parametriQuery = new Object[]{idSegnalazione, idSeller};
         Segnalazione s = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
         if (s != null) {
