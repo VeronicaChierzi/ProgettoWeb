@@ -15,7 +15,7 @@
             <li>
 				<jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
             </li>
-            <li>
+            <li class="container">
             <div class="header-content">
                 <div class="header-content-inner">
                     <!--form di login-->

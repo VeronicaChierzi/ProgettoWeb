@@ -5,10 +5,24 @@
 <!DOCTYPE html>
 <html>
     <head>
+		 <jsp:include page="/navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Error 405</title>
     </head>
-    <body>
+     <body class="sfondo">
+        <ul id="paginazione">
+            <li>
+				<jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
+            </li>
+			
+			<li class="container">
+				<h1>Error 405: Method not allowed</h1>
+		Il metodo GET potrebbe non essere accettato da questa pagina<br/>
+			</li>
+		</ul>
+			
+				<%--CANCELLARE QUESTA PARTE--%>
+
         <h1>Error 405: Method not allowed</h1>
 		Il metodo GET potrebbe non essere accettato da questa pagina<br/>
 		<br/>
