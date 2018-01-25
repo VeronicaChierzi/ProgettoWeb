@@ -30,10 +30,16 @@ public class GetOrderUserServlet extends MyServlet {
 			int idOrder = Integer.parseInt(request.getParameter("id"));
 			User user = (User) Model.Session.getUserLogged(request); //necessario per verificare che sia un utente loggato
 			try {
-				Order o = orderDAO.getOrderUser(idOrder, user.getId());
+                            if(user.isAdmin()) {
+                                Order o = orderDAO.getOrderAdmin(idOrder);
+				Model.Request.setAttribute(request, Model.Request.orderUser, o);
+				Model.Request.setAttribute(request, Model.Request.isSegnalato, true);
+                            } else {
+                                Order o = orderDAO.getOrderUser(idOrder, user.getId());
 				Model.Request.setAttribute(request, Model.Request.orderUser, o);
                                 boolean a = segnalazioneDAO.isSegnalato(idOrder);
 				Model.Request.setAttribute(request, Model.Request.isSegnalato, a);
+                            }				
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetOrderUserServlet: " + ex.getMessage());
 				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);

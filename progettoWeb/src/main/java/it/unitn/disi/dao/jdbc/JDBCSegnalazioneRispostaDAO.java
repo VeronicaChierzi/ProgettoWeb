@@ -5,8 +5,8 @@ import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.SegnalazioneRisposta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 public class JDBCSegnalazioneRispostaDAO extends JDBCDAO<SegnalazioneRisposta, Integer> implements SegnalazioneRispostaDAO {
 
@@ -49,6 +49,27 @@ public class JDBCSegnalazioneRispostaDAO extends JDBCDAO<SegnalazioneRisposta, I
             return b;
         } catch (SQLException ex) {
             throw new DAOException("Errore preparedStatement o sintassi query: " + ex);
+        }
+    }
+
+    @Override
+    public int countSegnalazioniNegative(int idShop) throws DAOException {
+        String query = "select count(*) from (segnalazioni_risposte sr join segnalazioni s on sr.id_segnalazione=s.id) join orders o on s.id_order = o.id where o.id_shop = ? and sr.restituire_soldi is true;";
+        try (PreparedStatement ps = CON.prepareStatement(query)) {
+            ps.setInt(1, idShop);
+            try (ResultSet rsUser = ps.executeQuery()) {
+                int c = 0;
+                if (rsUser.next()) {
+                    c = rsUser.getInt(1);
+                }
+                if (rsUser.next()) {
+                    throw new DAOException("Errore: una count ha restituito più righe");
+                }
+                return c;
+            }
+        } catch (SQLException ex) {
+            
+            throw new DAOException("Errore query countSegnalazioniNegative", ex);
         }
     }
 

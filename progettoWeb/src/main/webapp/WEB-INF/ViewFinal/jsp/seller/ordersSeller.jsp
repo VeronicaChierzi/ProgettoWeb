@@ -1,4 +1,5 @@
 <%-- Lista degli ordini ricevuti dal venditore (tutti i negozi) --%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="it.unitn.disi.entities.UserSeller"%>
 <%@page import="it.unitn.disi.entities.Shop"%>
 <%@page import="it.unitn.disi.entities.Product"%>
@@ -50,13 +51,13 @@
                         UserSeller us = s.getUserSeller();
                                         if (us != null) {%>
                 Venduto dal punto vendita di 
-                <a href="<%=MyPaths.Jsp.allShop%>?id=<%=s.getComune()%>">
-                    <%=us.getName()%>
+                <a href="<%=MyPaths.Jsp.allShop%>?id=<%=s.getId()%>">
+                    <%=s.getComune().getName()%>
                 </a>
                 <% } %>
                 <% }%>
             </li>
-            <li style="margin-left: 10px;">Data di vendita: <%=o.getDatetimePurchase()%></li>
+            <li style="margin-left: 10px;">Data di vendita: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimePurchase())%></li>
             <li style="margin-left: 10px;">Totale: <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
             <li style="border-bottom-width: 1px;
                 border-bottom-color: black;
@@ -94,19 +95,6 @@
                             </a>
                         </td>
 
-                        <%--<li>
-                                <% if(p!=null){ %>
-                                        <% Image image = p.getImage(); %>
-                                        <% if (image != null) {%>
-                                                <a href="<%=MyPaths.Jsp.allProduct%>?id=<%=p.getId()%>">
-                                                        <img src="<%=image.getPath()%>" alt="<%=image.getAlt()%>">
-                                                </a>
-                                                <br/>
-                                        <% } else { %>
-                                                Immagine non trovata<br/>
-                                        <% } %>
-                                <% } %>
-                        </li>--%>
                         <td><%=new DecimalFormat("#.##").format(op.getPrice())%></td>
                         <td><%=op.getQuantity()%></td>
                         <td><%=new DecimalFormat("#.##").format(op.getTotalPrice())%></td>

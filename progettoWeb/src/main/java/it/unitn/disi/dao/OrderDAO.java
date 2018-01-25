@@ -21,4 +21,7 @@ public interface OrderDAO extends DAO<Order, Integer> {
         
         public int hasUserBought(int userId, int prodId) throws DAOException;
 	
+	public Order getOrderAdmin(int id) throws DAOException;
+
+        public Order[] getOrdersSellerLimit(int id) throws DAOException;
 }
