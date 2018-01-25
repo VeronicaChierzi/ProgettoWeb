@@ -37,10 +37,6 @@
 				<%=user.getFirstName()%> <%=user.getLastName()%><br/>
 
 				<%=user.getEmail()%><br/>
-				<%--password: <%=user.getPassword()%><br/>
-				
-				hash: <%=user.getHash()%><br/>
-				--%>
 				<%if (user.isVerificato() == false) {%>
 				<br>
 				<p style="color:#840505">Accedi alla tua mail e clicca sul link che ti è stato inviato al momento della registrazione per verificare l'account!</p>
@@ -52,6 +48,8 @@
 				Sei il proprietario di 
 				<a href="<%=MyPaths.Jsp.sellerMySeller%>"><%=seller.getName()%></a><br/>
                                 <a href="<%=MyPaths.Jsp.sellerSegnalazioni%>">Vedi le segnalazioni del tuo negozio</a><br/>
+                                <a href="<%=MyPaths.Jsp.sellerOrdersSeller%>">Vedi tutti gli ordini ricevuti</a><br/><br>
+                                
 				<br/>
 				<% } else {%>
 				<a href="<%=MyPaths.Jsp.userRegistrationSellerLog%>">Registrati come venditore</a><br/>
