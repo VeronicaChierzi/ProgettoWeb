@@ -27,4 +27,5 @@ public interface SegnalazioneDAO extends DAO<Segnalazione, Integer> {
 
 	public Segnalazione getSegnalazioneSeller(int idSegnalazione, int idSeller) throws DAOException;
 
+        public boolean isSegnalato(int orderID) throws DAOException;
 }

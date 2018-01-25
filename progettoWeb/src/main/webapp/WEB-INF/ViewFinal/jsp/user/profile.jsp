@@ -51,6 +51,7 @@
 				<% UserSeller seller = user.getUserSeller();%>
 				Sei il proprietario di 
 				<a href="<%=MyPaths.Jsp.sellerMySeller%>"><%=seller.getName()%></a><br/>
+                                <a href="<%=MyPaths.Jsp.sellerSegnalazioni%>">Vedi le segnalazioni del tuo negozio</a><br/>
 				<br/>
 				<% } else {%>
 				<a href="<%=MyPaths.Jsp.userRegistrationSellerLog%>">Registrati come venditore</a><br/>
@@ -59,6 +60,7 @@
 
 				<% if (user.isAdmin()) {%>
 				Sei un amministratore<br/>
+                                <a href="<%=MyPaths.Jsp.adminSegnalazioni%>">Lista delle segnalazioni del sistema</a><br/>
 				<%--
 				<% UserAdmin admin = user.getUserAdmin(); %>
 				<a href="<%=MyPaths.Jsp.myAdmin%>">Vai alla pagina riservata agli amministratori</a><br/>
@@ -66,8 +68,7 @@
 				<br/>
 				<% }%>
 
-				<a href="<%=MyPaths.Jsp.userSegnalazioni%>">Lista delle segnalazioni</a><br/>
-				<a href="<%=MyPaths.Jsp.userSegnalazioniOpen%>">Lista delle segnalazioni aperte</a><br/>
+				<a href="<%=MyPaths.Jsp.userSegnalazioni%>">Vedi le tue segnalazioni</a><br/>
 				<br/>
 			</li>
 		</ul>

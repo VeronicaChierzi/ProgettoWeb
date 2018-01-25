@@ -1,6 +1,7 @@
 package it.unitn.disi.servlet.privatee;
 
 import it.unitn.disi.dao.OrderDAO;
+import it.unitn.disi.dao.SegnalazioneDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.entities.User;
 import it.unitn.disi.entities.orders.Order;
@@ -15,10 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 public class GetOrderUserServlet extends MyServlet {
 
 	private OrderDAO orderDAO;
+	private SegnalazioneDAO segnalazioneDAO;
 
 	@Override
 	public void init() throws ServletException {
 		orderDAO = (OrderDAO) initDao(OrderDAO.class);
+		segnalazioneDAO = (SegnalazioneDAO) initDao(SegnalazioneDAO.class);
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -29,6 +32,8 @@ public class GetOrderUserServlet extends MyServlet {
 			try {
 				Order o = orderDAO.getOrderUser(idOrder, user.getId());
 				Model.Request.setAttribute(request, Model.Request.orderUser, o);
+                                boolean a = segnalazioneDAO.isSegnalato(idOrder);
+				Model.Request.setAttribute(request, Model.Request.isSegnalato, a);
 			} catch (DAOException ex) {
 				System.err.println("Errore DAOException in GetOrderUserServlet: " + ex.getMessage());
 				forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);

@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class JDBCSegnalazioneRispostaDAO extends JDBCDAO<SegnalazioneRisposta, Integer> implements SegnalazioneRispostaDAO {
 
     private static final Class classe = SegnalazioneRisposta.class;
-    private static final String[] nomiColonne = new String[]{"id_segnalazione", "id_user_admin", "message", "descrizione", "restituire_soldi", "valutazione_negativa_venditore"};
+    private static final String[] nomiColonne = new String[]{"id_segnalazione", "id_user_admin", "message", "decisione", "restituire_soldi", "valutazione_negativa_venditore"};
     private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, String.class, String.class, boolean.class, boolean.class};
 
     public JDBCSegnalazioneRispostaDAO(Connection con) {
@@ -39,7 +39,6 @@ public class JDBCSegnalazioneRispostaDAO extends JDBCDAO<SegnalazioneRisposta, I
             ps.setString(4, decisione);
             ps.setBoolean(5, restSoldi);
             ps.setBoolean(6, valutazioneNegativa);
-            ps.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
             int result = -1; //quantità di righe modificate dalla query insert
             try {
                 result = ps.executeUpdate();
