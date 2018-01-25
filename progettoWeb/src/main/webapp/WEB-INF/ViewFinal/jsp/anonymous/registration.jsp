@@ -15,7 +15,7 @@
             <li>
 				<jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
             </li>
-            <li>
+            <li class="container">
                 <div>
                     <img class="centerImg resizeImg showLogo" src="/progettoWeb/img/logo/logoFinale.png" height="60" width="60">
                     <div class="header-content">
