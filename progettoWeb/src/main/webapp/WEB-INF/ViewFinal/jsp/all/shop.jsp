@@ -8,6 +8,7 @@
 <jsp:include page="<%=MyPaths.Servlet.Privatee.allGetShop%>"/>
 <% Shop s = (Shop) Model.Request.getAttribute(request, "shop");%>
 <% User u = (User) Model.Request.getAttribute(request, "user");%>
+<% int neg = (int) Model.Request.getAttribute(request, "negative");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +23,8 @@
             <li>
                     <h1 class="paddingTop"><%= s.getUserSeller().getName()%></h1>
                     <h5>di <%= u.getLastName()%> <%= u.getFirstName()%></h5>
-                    <span class="meta"><%= s.getAddress()%>, <%= s.getComune().getName()%></span>
+                    <span class="meta"><%= s.getAddress()%>, <%= s.getComune().getName()%></span><br>
+                    <span class="meta">Questo negozio ha avuto <%=neg%> valutazioni negative.</span>
                     
             </li>
             <li>

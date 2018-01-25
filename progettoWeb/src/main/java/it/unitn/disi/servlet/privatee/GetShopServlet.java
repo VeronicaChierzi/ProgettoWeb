@@ -5,6 +5,7 @@
  */
 package it.unitn.disi.servlet.privatee;
 
+import it.unitn.disi.dao.SegnalazioneRispostaDAO;
 import it.unitn.disi.dao.ShopDAO;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
@@ -26,11 +27,13 @@ public class GetShopServlet extends MyServlet {
     
     private ShopDAO shopDAO;
     private UserDAO userDAO;
+    private SegnalazioneRispostaDAO segnalazioneRispostaDAO;
 
     @Override
     public void init() throws ServletException {
         shopDAO = (ShopDAO) initDao(ShopDAO.class);
         userDAO = (UserDAO) initDao(UserDAO.class);
+        segnalazioneRispostaDAO = (SegnalazioneRispostaDAO) initDao(SegnalazioneRispostaDAO.class);
     }
 
     @Override
@@ -44,6 +47,8 @@ public class GetShopServlet extends MyServlet {
                 User u = userDAO.getUser(s.getUserSeller().getId());
                 Model.Request.setAttribute(request, Model.Request.shop, s);
                 Model.Request.setAttribute(request, Model.Request.user, u);
+                Model.Request.setAttribute(request, "negative", segnalazioneRispostaDAO.countSegnalazioniNegative(id));
+                
             } catch (DAOException ex) {
                 System.err.println("Errore DAOException in GetShoptServlet: " + ex.getMessage());
                 forward(request, response, MyPaths.Jsp._errorPagesErrorDaoException);

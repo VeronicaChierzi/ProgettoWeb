@@ -70,6 +70,7 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
     //dettagli di un ordine di un utente. idUser usato per garantire sicurezza(solo l'utente che ha effettuato l'ordine deve poter visualizzarlo).
     @Override
     public Order getOrderUser(int id, int idUser) throws DAOException {
+        System.out.println("DEGAAAAA");
         String query = "SELECT * FROM orders WHERE id=? AND id_user=?";
         Object[] parametriQuery = new Object[]{id, idUser};
         Order o = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);

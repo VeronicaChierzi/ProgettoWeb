@@ -8,6 +8,8 @@ public interface SegnalazioneRispostaDAO extends DAO<SegnalazioneRisposta, Integ
 	public SegnalazioneRisposta getSegnalazioneRisposta(int idSegnalazione) throws DAOException;
         
         public boolean addRispostaByAdmin(int idSegnalazione, int idUser, String message, String decisione, boolean restSoldi, boolean valutazioneNegativa) throws DAOException;
+        
+        public int countSegnalazioniNegative(int idShop) throws DAOException;
 
 
 }
