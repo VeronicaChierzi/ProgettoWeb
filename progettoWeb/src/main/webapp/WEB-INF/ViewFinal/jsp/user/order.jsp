@@ -23,7 +23,7 @@
 		<ul id="paginazione">
             <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
 
-			<li>
+			<li class="container">
 
 				<% Order o = (Order) Model.Request.getAttribute(request, Model.Request.orderUser); %>
 				<% boolean a = (boolean) Model.Request.getAttribute(request, Model.Request.isSegnalato); %>

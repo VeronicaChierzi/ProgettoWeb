@@ -42,9 +42,14 @@
 						<% if (user.isSeller()) { %>
 							<li><a href="<%=MyPaths.Jsp.sellerMySeller%>"><span class="glyphicon glyphicon-lock"></span> <%=user.getUserSeller().getName()%> </a></li>
 						<% } %>
+							
+							<%--NOTIFICHE MARCO CONTROLLA--%>
+							
 						<%if (user.isAdmin()) { %>
-							<li><a href="/progettoWeb/user/notificheAdmin.jsp"><span class="glyphicon glyphicon-comment"></span></a></li>
-						<% } %>
+							<li><a href="<%= MyPaths.Jsp.adminSegnalazioni%>"><span class="glyphicon glyphicon-comment"></span></a></li>
+						<% } else { %>
+							<li><a href="<%= MyPaths.Jsp.userSegnalazioni%>"><span class="glyphicon glyphicon-comment"></span></a></li>
+						<%}%>	
 						<li><a href="<%=MyPaths.Servlet.Pubbliche.logout%>"><span class="glyphicon glyphicon-log-out"></span> Esci </a></li>
                     <%}%>
                 </ul>

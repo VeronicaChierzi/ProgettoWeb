@@ -857,3 +857,7 @@ tr#tabord td#altroes{
         display: inline
     }
 }
+
+div#puzzette h5{
+	font-size: 16px;
+}
