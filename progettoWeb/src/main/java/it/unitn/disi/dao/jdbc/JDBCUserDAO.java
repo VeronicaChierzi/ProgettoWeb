@@ -82,7 +82,7 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
 		if ((username == null) || (email == null) || (password == null) || (firstName == null) || (lastName == null) || (userHash == null)) {
 			throw new DAOException("Username, email, password, firstName e lastName sono campi obbligatori", new NullPointerException("Username, email, password, firstName o lastName sono null"));
 		}
-		String query = "INSERT INTO users(username, email, password, first_name, last_name, user_hash, verificato) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO users(id, username, email, password, first_name, last_name, user_hash, verificato) VALUES (nextval('users_id_seq'::regclass),?, ?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement ps = CON.prepareStatement(query)) {
 			ps.setString(1, username);
 			ps.setString(2, email);
