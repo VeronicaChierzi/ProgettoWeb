@@ -32,7 +32,7 @@
 							<%if (!user.isVerificato()) { %>
 							<li style="margin-right: 20px;">
 								<a id="nonverif" style="border-radius: 5px; margin-top: 2px; border-color: #840505; border-style: solid; border-width: 0.5px">
-									<span class="glyphicon glyphicon-exclamation-sign"></span> Account non verificato
+									<span class="glyphicon glyphicon-exclamation-sign"></span> <div id="nonVerSpa">Account non verificato</div>
 								</a>		
 							</li>
 							<%}%>
