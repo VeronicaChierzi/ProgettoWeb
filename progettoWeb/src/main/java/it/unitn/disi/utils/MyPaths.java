@@ -96,7 +96,7 @@ public class MyPaths {
 		public static String userSegnalazione;
 		public static String userSegnalazioni;
 		public static String userSegnalazioniOpen;
-		//public static final String allConfirmUser "confirmUser.jsp"; "ConfirmUser";
+		public static String allConfirmUser; //modificata da vero
 
 		// pagine/file nascosti
 		public static String _utilsCategoryList;
@@ -121,6 +121,7 @@ public class MyPaths {
 			allShop = p + "Shop";
 			anonymousForgottenPassword = p + "ForgottenPassword";
 			anonymousLogin = p + "Login";
+			allConfirmUser = p + "ConfirmUser"; //Modificato da vero
 			anonymousRegistration = p + "Registration";
 			anonymousRegistrationSeller = p + "RegistrationSeller";
 			debugCategoryContainer = p + "CategoryContainer";

@@ -35,7 +35,8 @@
                     <% } else {%>
                     <h1 class="paddingLeftTop"><%=StringUtils.formatForWeb(product.getName())%></h1>
                     <% Image image = product.getImage(); %>
-                    <table style="border-spacing: 10px;"><tr>
+                    <table style="border-spacing: 10px;">
+						<tr>
                             <% if (image != null) {%>
                             <td style="white-space: nowrap; width: auto;">
                                 <a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>">
@@ -113,8 +114,8 @@
                         <br><br>
                         Testo<br>
                         <textarea style="width: 100%; height: 100px; border-style: hidden; margin-bottom: 10px;" name="text" value=""></textarea>
+						
 						<div style="margin-bottom: 10px;margin-left: auto; margin-right: auto; display: table;">	
-
 							<div class="stars" style="margin-bottom: 20px; margin-left: auto; margin-right: auto;">
 								<input type="radio" name="rate" class="star-1" id="star-1" value="1" />
 								<label class="star-1" for="star-1">1</label>

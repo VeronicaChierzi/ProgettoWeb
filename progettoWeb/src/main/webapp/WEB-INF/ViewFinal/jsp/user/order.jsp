@@ -81,8 +81,14 @@
 										<div id="argg">Prezzo</div>
 										<div>&euro; <%=op.getPrice()%></div>
 									</td>
-									<td id="altroes"><div id="argg">Quantità</div><%=op.getQuantity()%></td>
-									<td id="altroes"><div id="argg">Totale</div>&euro; <%=op.getTotalPrice()%></td>
+									<td id="altroes">
+										<div id="argg">Quantità</div>
+										<div><%=op.getQuantity()%></div>
+									</td>
+									<td id="altroes">
+										<div id="argg">Totale</div>
+										<div>&euro; <%=op.getTotalPrice()%></div>
+									</td>
 								</tr>
 							</table>
 								
@@ -114,7 +120,7 @@
 								<input style="width: 100%; border-style: hidden; margin-bottom: 5px;" type="text" name="title" value=""/>
 								<br><br>
 								Testo<br>
-								<input style="width: 100%; height: 100px; border-style: hidden; margin-bottom: 10px;" type="text" name="description" value=""/>
+								<textarea style="width: 100%; height: 100px; border-style: hidden; margin-bottom: 10px;" name="description" value=""></textarea>
 								<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-plus-sign"></span>Apri segnalazione</button>
 							</form>
 						</li>

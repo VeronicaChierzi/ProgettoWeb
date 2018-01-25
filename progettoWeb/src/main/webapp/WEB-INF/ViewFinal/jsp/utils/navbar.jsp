@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="<%=MyPaths.Jsp.allHome%>"><img src="/progettoWeb/img/logo/logoPrivacySenzaBordo.png" alt="Brand KSMR" class="img-responsive2"></a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -32,7 +32,7 @@
 							<%if (!user.isVerificato()) { %>
 							<li style="margin-right: 20px;">
 								<a id="nonverif" style="border-radius: 5px; margin-top: 2px; border-color: #840505; border-style: solid; border-width: 0.5px">
-									<span class="glyphicon glyphicon-exclamation-sign"></span> Account non verificato
+									<span class="glyphicon glyphicon-exclamation-sign"></span> <div id="nonVerSpa">Account non verificato</div>
 								</a>		
 							</li>
 							<%}%>
