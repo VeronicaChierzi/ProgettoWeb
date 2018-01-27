@@ -32,14 +32,13 @@ public class BuyCartServlet extends MyServlet {
 			User user = Model.Session.getUserLogged(request);
 			try {
 				HttpSession session = request.getSession();
-				if(CartController.buyCart(session, user, shopProductDAO, orderDAO)){
-                                    Model.Messages.setBoolean(request, "acquistoOk");
-                                    redirect(response, MyPaths.Jsp.userOrders);
-                                    
-                                }else {
-                                    Model.Messages.setBoolean(request, "erroreAcquisto");
-                                    redirect(response, MyPaths.Jsp.userOrders);
-                                }
+				if (CartController.buyCart(session, user, shopProductDAO, orderDAO)) {
+					Model.Messages.setBoolean(request, "acquistoOk");
+					redirect(response, MyPaths.Jsp.userOrders);
+				} else {
+					Model.Messages.setBoolean(request, "erroreAcquisto");
+					redirect(response, MyPaths.Jsp.userOrders);
+				}
 			} catch (DAOException ex) {
 				System.err.println("Errore buy servlet: " + ex.getMessage());
 				Model.Messages.setBoolean(request, "buyCartFailed");

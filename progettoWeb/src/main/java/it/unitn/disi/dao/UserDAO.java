@@ -23,6 +23,8 @@ public interface UserDAO extends DAO<User, Integer> {
 
 	public boolean changePassword(String email, String password, String userHash) throws DAOException;
 
+	public boolean setNewPassword(int userID, String nuovaPassword) throws DAOException;
+
 	public boolean setNewUserHash(int userId, String userHash) throws DAOException;
 
 	public boolean hasRightHash(String email, String userHash) throws DAOException;

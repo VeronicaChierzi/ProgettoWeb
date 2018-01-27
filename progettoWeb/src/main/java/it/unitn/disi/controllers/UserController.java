@@ -218,7 +218,10 @@ public class UserController {
 				String uri = request.getRequestURI();
 				String ctx = request.getContextPath();
 				String base = url.substring(0, url.length() - uri.length() + ctx.length()) + "/";
-				String link = base + "ConfirmUser" + "?id=" + user_hash + "&usn=" + username;
+				String link = base + "ConfirmUserServlet" + "?id=" + user_hash + "&usn=" + username;
+				if (MyUtils.debugUserController) {
+					System.err.println("Link di conferma: " + link);
+				}
 				msg.setText("Attiva il tuo account cliccando sul seguente link:\n\n" + link);
 				msg.setSentDate(new Date());
 				Transport.send(msg);

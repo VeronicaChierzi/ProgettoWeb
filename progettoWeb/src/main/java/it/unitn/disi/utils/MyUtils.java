@@ -9,7 +9,7 @@ import it.unitn.disi.entities.locations.Regione;
 public class MyUtils {
 	
 	//se impostato a true, invia un'email quando un utente si registra.
-	public static final boolean sendRegistrationConfirmEmail = false;
+	public static final boolean sendRegistrationConfirmEmail = true;
 
 	//se impostato a true, utilizza le pagine jsp di test(senza grafica)
 	public static final boolean useViewTest = false;
@@ -21,14 +21,14 @@ public class MyUtils {
 	public static final boolean debugDaoInit = false;
 	
 	//se impostato a true, stampa il debug del login/registrazione/logout dell'utente
-	public static final boolean debugUserController = false;
+	public static final boolean debugUserController = true;
 	
 	//se impostato a true, stampa il debug del carrello (acquisto/aggiunta oggetti)
 	public static final boolean debugCartController = false;
 	
 	//se impostato a true, stampa un messaggio di debug quando MySerlvet effettua un forward, un redirect o un include
 	//funziona solo sulle MyServlet. Le JSP non stampano nulla.
-	public static final boolean debugServletForwardRedirectInclude = true;
+	public static final boolean debugServletForwardRedirectInclude = false;
 
 	//se impostato a true, stampa un messaggio di debug quando si utilizzano le funzioni di DAOFunctions
 	public static final boolean debugDAOFunctions = false;

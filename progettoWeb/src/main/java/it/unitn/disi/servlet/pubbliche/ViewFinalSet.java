@@ -5,11 +5,11 @@ import it.unitn.disi.utils.MyPaths;
 import it.unitn.disi.utils.MyUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+//import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ViewFinalSet", urlPatterns = {"/ViewFinal/Set"})
+//@WebServlet(name = "ViewFinalSet", urlPatterns = {"/ViewFinal/Set"})
 public class ViewFinalSet extends MyServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
