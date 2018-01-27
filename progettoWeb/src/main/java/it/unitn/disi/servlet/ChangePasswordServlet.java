@@ -5,6 +5,7 @@
  */
 package it.unitn.disi.servlet;
 
+import it.unitn.disi.servlet.pubbliche.ConfirmUserServlet;
 import it.unitn.disi.dao.UserDAO;
 import it.unitn.disi.dao.exceptions.DAOException;
 import it.unitn.disi.utils.HashUtil;

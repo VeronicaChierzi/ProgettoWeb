@@ -1,6 +1,5 @@
 <%@page isErrorPage="true" contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="it.unitn.disi.utils.MyPaths"%>
-<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
 
 <!DOCTYPE html>
 <html>

@@ -87,7 +87,7 @@
     </servlet>
     <servlet>
         <servlet-name>ConfirmedUser</servlet-name>
-        <jsp-file>/WEB-INF/ViewFinal/jsp/anonymous/confirmedUser.jsp</jsp-file>
+        <jsp-file>/WEB-INF/ViewFinal/jsp/all/confirmedUser.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>ForgottenPassword</servlet-name>
@@ -663,14 +663,13 @@
     </servlet>
     <servlet>
         <servlet-name>ConfirmUserServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ConfirmUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ForgottenPasswordServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.ForgottenPasswordServlet</servlet-class>
     </servlet>
-
-	<!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>AddReviewServlet</servlet-name>
         <url-pattern>/AddReviewServlet</url-pattern>
@@ -731,8 +730,7 @@
         <servlet-name>ForgottenPasswordServlet</servlet-name>
         <url-pattern>/ForgottenPasswordServlet</url-pattern>
     </servlet-mapping>
-
-	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>GetProductServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetProductServlet</servlet-class>
@@ -947,9 +945,7 @@
 		<location>/WEB-INF/ViewFinal/jsp/errorPages/errorUnknown.jsp</location>
 	</error-page>
 	-->
-
-
-	<!-- |||||||||||||||||||||||||||||||||| DEBUG SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!-- |||||||||||||||||||||||||||||||||| DEBUG SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>InserisciCategorieServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.InserisciCategorieServlet</servlet-class>
@@ -970,8 +966,7 @@
         <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.GeneraVenditaPuntiVenditaServlet</servlet-class>
     </servlet>
-
-	<!-- |||||||||||||||||||||||||||||||||| DEBUG SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!-- |||||||||||||||||||||||||||||||||| DEBUG SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>InserisciCategorieServlet</servlet-name>
         <url-pattern>/debug/InserisciCategorieServlet</url-pattern>
@@ -992,10 +987,8 @@
         <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
         <url-pattern>/debug/GeneraVenditaPuntiVenditaServlet</url-pattern>
     </servlet-mapping>
-
-
-	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-	<servlet>
+    <!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <servlet>
         <servlet-name>NotificationServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>
     </servlet>
@@ -1003,8 +996,7 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.ChangePasswordServlet</servlet-class>
     </servlet>
-
-	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!-- |||||||||||||||||||||||||||||||||| OLD SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
