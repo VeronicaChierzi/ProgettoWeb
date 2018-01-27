@@ -148,8 +148,6 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
 			return b;
 		} catch (SQLException ex) {
 			throw new DAOException("Errore query confirm User", ex);
-		} finally {
-			return false;
 		}
 	}
 

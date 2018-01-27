@@ -10,30 +10,18 @@
         <title>Utente confermato</title>
 	</head>
 	<body class="sfondo">	
-
 		<ul id="paginazione">
-			<jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
-			
+            <li>
+				<jsp:include page="<%=MyPaths.Jsp._utilsNavbar%>"/>
+            </li>
 			<li>	
-
 				<div class="container" style="margin-top: 50px;">
-
-
 					<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok-sign"></span> Utente confermato!</div>
-
-
 					<div style="margin-left: auto; margin-right: auto; display: table">
-						<a class="btn btn-primary" href="<%=MyPaths.Jsp.allHome%>">continua lo shopping</a>
-
+						<a class="btn btn-primary" href="<%=MyPaths.Jsp.allHome%>">Torna alla home</a>
 					</div>
 				</div>
-
 			</li>
-
-
 		</ul>
-
-
 	</body>
-
 </html>
