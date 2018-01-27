@@ -16,12 +16,20 @@
             </li>
 			
 			<li class="container">
-				   <h1>Errore Null Pointer Exception</h1>
+				<h1>Errore Null Pointer Exception</h1>
+				<p>
+					Si è verificato un errore.
+				</p>
+				<p>
+					Torna alla <a href="<%=MyPaths.Jsp.allHome%>">home</a>
+				</p>
 			</li>
 		</ul>
 			
-				<%--CANCELLARE QUESTA PARTE--%>
+		<%--
+		<!--CANCELLARE QUESTA PARTE-->
         <h1>Errore Null Pointer Exception</h1>
 		<jsp:include page="<%=MyPaths.Jsp._errorPagesPrintException%>"/>
+		--%>
     </body>
 </html>

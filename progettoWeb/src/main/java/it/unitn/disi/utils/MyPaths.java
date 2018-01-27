@@ -15,7 +15,8 @@ public class MyPaths {
 		// <editor-fold defaultstate="collapsed" desc="Prefix e Funzioni">
 		private static boolean viewTest;
 
-		private static final String prefixViewFinal = "/progettoWeb/ViewFinal/";
+		private static final String prefixViewFinal = "/progettoWeb/";
+		//private static final String prefixViewFinal = "/progettoWeb/ViewFinal/";
 		private static final String prefixViewTest = "/progettoWeb/ViewTest/";
 
 		private static final String prefixHiddenViewFinal = "/WEB-INF/ViewFinal/jsp/";
@@ -96,7 +97,7 @@ public class MyPaths {
 		public static String userSegnalazione;
 		public static String userSegnalazioni;
 		public static String userSegnalazioniOpen;
-		public static String allConfirmUser; //modificata da vero
+		public static String allConfirmedUser;
 
 		// pagine/file nascosti
 		public static String _utilsCategoryList;
@@ -113,6 +114,7 @@ public class MyPaths {
 			adminSegnalazioni = p + "SegnalazioniAdmin";
 			adminSegnalazioniOpen = p + "SegnalazioniOpenAdmin";
 			allCart = p + "Cart";
+			allConfirmedUser = p + "ConfirmedUser";
 			allHome = p + "Home";
 			allPaginaDiDecisione = p + "PaginaDiDecisione";
 			allProduct = p + "Product";
@@ -121,7 +123,6 @@ public class MyPaths {
 			allShop = p + "Shop";
 			anonymousForgottenPassword = p + "ForgottenPassword";
 			anonymousLogin = p + "Login";
-			allConfirmUser = p + "ConfirmUser"; //Modificato da vero
 			anonymousRegistration = p + "Registration";
 			anonymousRegistrationSeller = p + "RegistrationSeller";
 			debugCategoryContainer = p + "CategoryContainer";

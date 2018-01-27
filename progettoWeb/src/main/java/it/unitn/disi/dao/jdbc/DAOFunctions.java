@@ -86,8 +86,9 @@ public class DAOFunctions {
 					tempListT.add(t);
 				}
 				if (tempListT.isEmpty()) {
-					String errore = "Warning: la query ha trovato 0 oggetti";
-					System.err.println(errore);
+					if (MyUtils.debugDAOFunctions) {
+						System.err.println("Warning: la query ha trovato 0 oggetti");
+					}
 				}
 				T[] res = (T[]) Array.newInstance(classe, tempListT.size());
 				res = tempListT.toArray(res);

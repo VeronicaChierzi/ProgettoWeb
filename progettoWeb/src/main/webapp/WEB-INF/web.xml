@@ -86,12 +86,12 @@
         <jsp-file>/WEB-INF/ViewFinal/jsp/all/shop.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>ConfirmUser</servlet-name>
-        <jsp-file>/WEB-INF/ViewFinal/jsp/anonymous/confirmUser.jsp</jsp-file>
+        <servlet-name>ConfirmedUser</servlet-name>
+        <jsp-file>/WEB-INF/ViewFinal/jsp/anonymous/confirmedUser.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>ForgottenPassword</servlet-name>
-        <jsp-file>/WEB-INF/ViewFinal/jsp/anonymous/ForgottenPassword.jsp</jsp-file>
+        <jsp-file>/WEB-INF/ViewFinal/jsp/anonymous/forgottenPassword.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -180,142 +180,143 @@
     <!-- |||||||||||||||||||||||||||||||||| JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>SegnalazioneAdmin</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioneAdmin</url-pattern>
+        <url-pattern>/SegnalazioneAdmin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioniAdmin</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioniAdmin</url-pattern>
+        <url-pattern>/SegnalazioniAdmin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioniOpenAdmin</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioniOpenAdmin</url-pattern>
+        <url-pattern>/SegnalazioniOpenAdmin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Cart</servlet-name>
-        <url-pattern>/ViewFinal/Cart</url-pattern>
+        <url-pattern>/Cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Payment</servlet-name>
-        <url-pattern>/ViewFinal/Payment</url-pattern>
+        <url-pattern>/Payment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
-        <url-pattern>/ViewFinal/Home</url-pattern>
-        <url-pattern>/ViewFinal/</url-pattern>
-        <url-pattern>/ViewFinal</url-pattern>
+        <url-pattern>/Home</url-pattern>
+        <!--<url-pattern>/</url-pattern>-->
+        <!--<url-pattern>/ViewFinal</url-pattern>-->
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Product</servlet-name>
-        <url-pattern>/ViewFinal/Product</url-pattern>
+        <url-pattern>/Product</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductList</servlet-name>
-        <url-pattern>/ViewFinal/ProductList</url-pattern>
+        <url-pattern>/ProductList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Seller</servlet-name>
-        <url-pattern>/ViewFinal/Seller</url-pattern>
+        <url-pattern>/Seller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Shop</servlet-name>
-        <url-pattern>/ViewFinal/Shop</url-pattern>
+        <url-pattern>/Shop</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConfirmUser</servlet-name>
-        <url-pattern>/ViewFinal/ConfirmUser</url-pattern>
+        <servlet-name>ConfirmedUser</servlet-name>
+        <url-pattern>/ConfirmedUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgottenPassword</servlet-name>
-        <url-pattern>/ViewFinal/ForgottenPassword</url-pattern>
+        <url-pattern>/ForgottenPassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
-        <url-pattern>/ViewFinal/Login</url-pattern>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
-        <url-pattern>/ViewFinal/Registration</url-pattern>
+        <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistrationSeller</servlet-name>
-        <url-pattern>/ViewFinal/RegistrationSeller</url-pattern>
+        <url-pattern>/RegistrationSeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MySeller</servlet-name>
-        <url-pattern>/ViewFinal/MySeller</url-pattern>
+        <url-pattern>/MySeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MyShop</servlet-name>
-        <url-pattern>/ViewFinal/MyShop</url-pattern>
+        <url-pattern>/MyShop</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrderSeller</servlet-name>
-        <url-pattern>/ViewFinal/OrderSeller</url-pattern>
+        <url-pattern>/OrderSeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrdersSeller</servlet-name>
-        <url-pattern>/ViewFinal/OrdersSeller</url-pattern>
+        <url-pattern>/OrdersSeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrdersShop</servlet-name>
-        <url-pattern>/ViewFinal/OrdersShop</url-pattern>
+        <url-pattern>/OrdersShop</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioneSeller</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioneSeller</url-pattern>
+        <url-pattern>/SegnalazioneSeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioniSeller</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioniSeller</url-pattern>
+        <url-pattern>/SegnalazioniSeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioniOpenSeller</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioniOpenSeller</url-pattern>
+        <url-pattern>/SegnalazioniOpenSeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SellProduct</servlet-name>
-        <url-pattern>/ViewFinal/SellProduct</url-pattern>
+        <url-pattern>/SellProduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangePassword</servlet-name>
-        <url-pattern>/ViewFinal/ChangePassword</url-pattern>
+        <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrderUser</servlet-name>
-        <url-pattern>/ViewFinal/OrderUser</url-pattern>
+        <url-pattern>/OrderUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrdersUser</servlet-name>
-        <url-pattern>/ViewFinal/OrdersUser</url-pattern>
+        <url-pattern>/OrdersUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Profile</servlet-name>
-        <url-pattern>/ViewFinal/Profile</url-pattern>
+        <url-pattern>/Profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistrationSellerLog</servlet-name>
-        <url-pattern>/ViewFinal/RegistrationSellerLog</url-pattern>
+        <url-pattern>/RegistrationSellerLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioneUser</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioneUser</url-pattern>
+        <url-pattern>/SegnalazioneUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioniUser</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioniUser</url-pattern>
+        <url-pattern>/SegnalazioniUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SegnalazioniOpenUser</servlet-name>
-        <url-pattern>/ViewFinal/SegnalazioniOpenUser</url-pattern>
+        <url-pattern>/SegnalazioniOpenUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PaginaDiDecisione</servlet-name>
-        <url-pattern>/ViewFinal/PaginaDiDecisione</url-pattern>
+        <url-pattern>/PaginaDiDecisione</url-pattern>
     </servlet-mapping>
-    <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <!-- |||||||||||||||||||||||||||||||||| TEST VIEW ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <!-- |||||||||||||||||||||||||||||||||| JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!--
+    <!-A- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
+    <!-A- |||||||||||||||||||||||||||||||||| TEST VIEW ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
+    <!-A- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
+    <!-A- |||||||||||||||||||||||||||||||||| JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
     <servlet>
         <servlet-name>ViewTest_SegnalazioneAdmin</servlet-name>
         <jsp-file>/WEB-INF/ViewTest/jsp/admin/segnalazione.jsp</jsp-file>
@@ -444,7 +445,7 @@
         <servlet-name>ViewTest_PaginaDiDecisione</servlet-name>
         <jsp-file>/WEB-INF/ViewTest/jsp/all/paginaDiDecisione.jsp</jsp-file>
     </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <!-A- |||||||||||||||||||||||||||||||||| JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
     <servlet-mapping>
         <servlet-name>ViewTest_SegnalazioneAdmin</servlet-name>
         <url-pattern>/ViewTest/SegnalazioneAdmin</url-pattern>
@@ -575,8 +576,7 @@
         <servlet-name>ViewTest_PaginaDiDecisione</servlet-name>
         <url-pattern>/ViewTest/PaginaDiDecisione</url-pattern>
     </servlet-mapping>
-    <!-- |||||||||||||||||||||||||||||||||| DEBUG JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <!-- da rimuovere prima della consegna -->
+    <!-A- |||||||||||||||||||||||||||||||||| DEBUG JSP ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
     <servlet>
         <servlet-name>ViewTest_CategoryContainer</servlet-name>
         <jsp-file>/WEB-INF/ViewTest/jsp/debug/categoryContainer.jsp</jsp-file>
@@ -589,8 +589,7 @@
         <servlet-name>ViewTest_NavbarComplete</servlet-name>
         <jsp-file>/WEB-INF/ViewTest/jsp/debug/navbarComplete.jsp</jsp-file>
     </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| DEBUG JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <!-- da rimuovere prima della consegna -->
+    <!-A- |||||||||||||||||||||||||||||||||| DEBUG JSP MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||||||| -A-A>
     <servlet-mapping>
         <servlet-name>ViewTest_CategoryContainer</servlet-name>
         <url-pattern>/ViewTest/CategoryContainer</url-pattern>
@@ -603,6 +602,7 @@
         <servlet-name>ViewTest_NavbarComplete</servlet-name>
         <url-pattern>/ViewTest/NavbarComplete</url-pattern>
     </servlet-mapping>
+-->
     <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <!-- |||||||||||||||||||||||||||||||||| SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -661,7 +661,16 @@
         <servlet-name>RegistrationSellerLogServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.RegistrationSellerLogServlet</servlet-class>
     </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <servlet>
+        <servlet-name>ConfirmUserServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgottenPasswordServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ForgottenPasswordServlet</servlet-class>
+    </servlet>
+
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>AddReviewServlet</servlet-name>
         <url-pattern>/AddReviewServlet</url-pattern>
@@ -714,7 +723,16 @@
         <servlet-name>RegistrationSellerLogServlet</servlet-name>
         <url-pattern>/RegistrationSellerLogServlet</url-pattern>
     </servlet-mapping>
-    <!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <servlet-mapping>
+        <servlet-name>ConfirmUserServlet</servlet-name>
+        <url-pattern>/ConfirmUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgottenPasswordServlet</servlet-name>
+        <url-pattern>/ForgottenPasswordServlet</url-pattern>
+    </servlet-mapping>
+
+	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>GetProductServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetProductServlet</servlet-class>
@@ -731,7 +749,6 @@
         <servlet-name>GetMyShopServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetMyShopServlet</servlet-class>
     </servlet>
-    <!-- ||||||| ORDER ||||||| -->
     <servlet>
         <servlet-name>GetOrderSellerServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetOrderSellerServlet</servlet-class>
@@ -752,7 +769,6 @@
         <servlet-name>GetOrdersUserServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetOrdersUserServlet</servlet-class>
     </servlet>
-    <!-- ||||||| SEGNALAZIONE ||||||| -->
     <servlet>
         <servlet-name>GetSegnalazioneAdminServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioneAdminServlet</servlet-class>
@@ -814,7 +830,6 @@
         <servlet-name>GetCartUpdatedServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetCartUpdatedServlet</url-pattern>
     </servlet-mapping>
-    <!-- ||||||| ORDER ||||||| -->
     <servlet-mapping>
         <servlet-name>GetOrderSellerServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetOrderSellerServlet</url-pattern>
@@ -835,7 +850,6 @@
         <servlet-name>GetOrdersUserServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetOrdersUserServlet</url-pattern>
     </servlet-mapping>
-    <!-- ||||||| SEGNALAZIONE ||||||| -->
     <servlet-mapping>
         <servlet-name>GetSegnalazioneAdminServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetSegnalazioneAdminServlet</url-pattern>
@@ -933,11 +947,9 @@
 		<location>/WEB-INF/ViewFinal/jsp/errorPages/errorUnknown.jsp</location>
 	</error-page>
 	-->
-    <!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <servlet>
-        <servlet-name>NotificationServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>
-    </servlet>
+
+
+	<!-- |||||||||||||||||||||||||||||||||| DEBUG SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>InserisciCategorieServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.InserisciCategorieServlet</servlet-class>
@@ -951,10 +963,6 @@
         <servlet-class>it.unitn.disi.debug.InserisciProdottiServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConfirmUserServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ConfirmUserServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.InserisciPuntiVenditaServlet</servlet-class>
     </servlet>
@@ -962,19 +970,8 @@
         <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
         <servlet-class>it.unitn.disi.debug.GeneraVenditaPuntiVenditaServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ForgotPasswordServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>it.unitn.disi.servlet.ChangePasswordServlet</servlet-class>
-    </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| OLD SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <servlet-mapping>
-        <servlet-name>NotificationServlet</servlet-name>
-        <url-pattern>/NotificationServlet</url-pattern>
-    </servlet-mapping>
+
+	<!-- |||||||||||||||||||||||||||||||||| DEBUG SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>InserisciCategorieServlet</servlet-name>
         <url-pattern>/debug/InserisciCategorieServlet</url-pattern>
@@ -988,10 +985,6 @@
         <url-pattern>/debug/InserisciProdottiServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConfirmUserServlet</servlet-name>
-        <url-pattern>/ConfirmUser</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>InserisciPuntiVenditaServlet</servlet-name>
         <url-pattern>/debug/InserisciPuntiVenditaServlet</url-pattern>
     </servlet-mapping>
@@ -999,12 +992,25 @@
         <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
         <url-pattern>/debug/GeneraVenditaPuntiVenditaServlet</url-pattern>
     </servlet-mapping>
+
+
+	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<servlet>
+        <servlet-name>NotificationServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.ChangePasswordServlet</servlet-class>
+    </servlet>
+
+	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET MAPPING |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
-        <servlet-name>ForgotPasswordServlet</servlet-name>
-        <url-pattern>/ForgotPasswordServlet</url-pattern>
+        <servlet-name>NotificationServlet</servlet-name>
+        <url-pattern>/NotificationServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
-        <url-pattern>/ChangePassword</url-pattern>
+        <url-pattern>/ChangePasswordServlet</url-pattern>
     </servlet-mapping>
 </web-app>

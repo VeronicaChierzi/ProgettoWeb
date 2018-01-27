@@ -1,5 +1,6 @@
-Choose view:
-<ul>
-	<li><a href="/progettoWeb/ViewFinal/Set">Set View Final</a></li>
-	<li><a href="/progettoWeb/ViewTest/Set">Set View Test</a></li>
-</ul>
+<!-- Reindirizza immediatamente alla home nel caso in cui un utente scriva semplicemente "/progettoWeb/" invece di "/progettoWeb/Home" -->
+<%@page import="it.unitn.disi.utils.MyPaths"%>
+<%
+    String redirectURL = MyPaths.Jsp.allHome;
+    response.sendRedirect(redirectURL);
+%>

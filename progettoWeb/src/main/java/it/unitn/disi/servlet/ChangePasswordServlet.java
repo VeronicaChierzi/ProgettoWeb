@@ -42,9 +42,7 @@ public class ChangePasswordServlet extends MyServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         if (request.getParameter("id") != null && request.getParameter("email") != null && request.getParameter("password") != null) {
-
             String hash = request.getParameter("id");
             String email = request.getParameter("email");
             String password = request.getParameter("password");

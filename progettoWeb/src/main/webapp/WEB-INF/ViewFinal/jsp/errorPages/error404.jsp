@@ -16,10 +16,15 @@
 			<li class="container">
 				<h1>Ops.. Qui non c'&egrave; niente!</h1>
 			</li>
+			<p>
+				Torna alla <a href="<%=MyPaths.Jsp.allHome%>">home</a>
+			</p>
 		</ul>
 			
-		<%--CANCELLARE QUESTA PARTE--%>
+		<%--
+		<!--CANCELLARE QUESTA PARTE-->
         <h1>404 Not Found</h1>
 		<jsp:include page="<%=MyPaths.Jsp._errorPagesPrintException%>"/>
+		--%>
     </body>
 </html>

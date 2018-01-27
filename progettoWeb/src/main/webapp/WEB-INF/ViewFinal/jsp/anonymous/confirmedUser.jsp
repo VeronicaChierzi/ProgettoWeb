@@ -4,7 +4,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>	
+	<head>
 		<jsp:include page="/navbarHead.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Utente confermato</title>

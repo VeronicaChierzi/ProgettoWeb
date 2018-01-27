@@ -41,7 +41,7 @@
 							<input required="true" type="text" name="name" value=""/>
 						</li>
 						<li id="automobile">
-							MM  <input required="true" type="text" name="mm" size="2" value=""/>  YY <input type="text" name="yy" size="2" value=""/>
+							MM  <input required="true" type="text" name="mm" size="2" value=""/>  YY <input required="true" type="text" name="yy" size="2" value=""/>
 						</li>
 						<li id="automobile">
 							Codice <input required="true" type="text" name="code" size="16" value=""/>  CVC <input  required="true" type="text" name="cvc" size="3" value=""/>
@@ -50,7 +50,6 @@
 							<input style="margin-top: 20px;" class="btn btn-primary" type="submit" value="compra" />
 						</li>
 					</ul>
-					
                 </form>
 			</li>
 			<li>
@@ -62,9 +61,9 @@
                     Effettua il <a href="<%=MyPaths.Jsp.anonymousLogin%>" class="alert-link">login</a> per procedere all'acquisto.
                 </div>
                 <% }%>
-
             </li>
 			</div>
+			<br/><br/>
         </ul>
     </body>
 </html>

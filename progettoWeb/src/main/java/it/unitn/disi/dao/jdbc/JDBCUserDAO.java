@@ -184,6 +184,22 @@ public class JDBCUserDAO extends JDBCDAO<User, Integer> implements UserDAO {
 	}
 
 	@Override
+	public boolean setNewPassword(int userID, String nuovaPassword) throws DAOException {
+		try (PreparedStatement ps = CON.prepareStatement("UPDATE public.users SET password = ? WHERE id = ?;")) {
+			ps.setString(1, nuovaPassword);
+			ps.setInt(2, userID);
+			int ris = ps.executeUpdate();
+			if (ris == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("errore SQLException in query setNewPassword", ex);
+		}
+	}
+
+	@Override
 	public boolean setNewUserHash(int userID, String userHash) throws DAOException {
 		try (PreparedStatement ps = CON.prepareStatement("UPDATE public.users SET user_hash = ? WHERE id = ?;")) {
 			ps.setString(1, userHash);
