@@ -879,6 +879,9 @@ tr#carreloo td a img {
 #tazza{
     width: 100%;
 }
+td#noope{
+    display:none;
+}
 @media (min-width: 800px){
 	#carreloo {
 	display: block;
@@ -890,4 +893,11 @@ tr#carreloo td a img {
 #tazza{
     width: 50%;
 }
+td#noope{
+    display:block;
+}
+}
+
+tr#formaggio td {
+    padding: 5px;
 }
