@@ -14,6 +14,7 @@ public class Order {
 	private boolean spedizione;
 	private boolean concluso;
 	private Timestamp datetimeConcluso;
+	private String address;
 
 	private ArrayList<OrderProduct> orderProducts;
 	private User user;
@@ -23,7 +24,7 @@ public class Order {
 		orderProducts = new ArrayList<>();
 	}
 
-	public Order(int id, int idUser, int idShop, Timestamp datetimePurchase, boolean spedizione, boolean concluso, Timestamp datetimeConcluso) {
+	public Order(int id, int idUser, int idShop, Timestamp datetimePurchase, boolean spedizione, boolean concluso, Timestamp datetimeConcluso, String address) {
 		this.id = id;
 		this.idUser = idUser;
 		this.idShop = idShop;
@@ -31,6 +32,7 @@ public class Order {
 		this.spedizione = spedizione;
 		this.concluso = concluso;
 		this.datetimeConcluso = datetimeConcluso;
+		this.address = address;
 		orderProducts = new ArrayList<>();
 	}
 
@@ -180,6 +182,20 @@ public class Order {
 	 */
 	public void setDatetimeConcluso(Timestamp datetimeConcluso) {
 		this.datetimeConcluso = datetimeConcluso;
+	}
+
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	// </editor-fold>
 

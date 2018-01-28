@@ -42,12 +42,23 @@
 			<li>
                 <p class="totale">Totale: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%></p>
 			</li>
+			
+			
+			
             <li style="margin-bottom: 60px; display: table; margin-left: auto; margin-right: auto;">
 
                 <% User user = (User) Model.Session.getAttribute(request, Model.Session.user); %>
                 <% if (user != null) {%>
                 
                 <form method="post" action="<%=MyPaths.Servlet.Pubbliche.buyCart%>">
+					<ul style="padding:10px;" id="campiCarta">
+						<li style="font-size: 25px;">
+							Indirizzo di spedizione
+						</li>
+						<li>
+							<textarea required="true" style="width: 100%; height: auto;" rows="4" cols="40" name="indirizzo_di_spedizione" type="text"></textarea>
+						</li>
+					</ul>
 				<%--<% if(cart.getTotalPriceSpedizione()>0.0f) { %>--%>
 					<ul style="padding:10px;" id="campiCarta">
 						<li style="font-size: 25px;">

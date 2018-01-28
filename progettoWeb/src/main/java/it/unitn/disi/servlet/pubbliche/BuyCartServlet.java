@@ -28,11 +28,13 @@ public class BuyCartServlet extends MyServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String address = Model.Parameter.get(request, "indirizzo_di_spedizione");
+		System.err.println("address: " + address);
 		try {
 			User user = Model.Session.getUserLogged(request);
 			try {
 				HttpSession session = request.getSession();
-				if (CartController.buyCart(session, user, shopProductDAO, orderDAO)) {
+				if (CartController.buyCart(session, user, shopProductDAO, orderDAO, address)) {
 					Model.Messages.setBoolean(request, "acquistoOk");
 					redirect(response, MyPaths.Jsp.userOrders);
 				} else {

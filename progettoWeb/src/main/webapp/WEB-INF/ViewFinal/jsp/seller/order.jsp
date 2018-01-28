@@ -58,6 +58,7 @@
 					Non ancora spedito
 					<br/>
 					
+					Indirizzo di spedizione: <%=o.getAddress()%><br/>
 					<li style="display: flex">
 						<form action="<%=MyPaths.Servlet.Pubbliche.concludiOrder%>" method="POST">
 							<input type="hidden" name="id_order" value="<%=o.getId()%>" />

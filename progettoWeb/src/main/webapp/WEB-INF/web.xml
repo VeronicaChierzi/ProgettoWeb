@@ -947,7 +947,9 @@
         <servlet-class>it.unitn.disi.servlet.startup.LoadLocationContainerServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| FILTERS ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+	<!-- |||||||||||||||||||||||||||||||||| FILTERS ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	<!--
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>it.unitn.disi.filters.AuthenticationFilter</filter-class>
@@ -956,7 +958,53 @@
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/user/*</url-pattern>
     </filter-mapping>
-    <!-- |||||||||||||||||||||||||||||||||| ERROR PAGES |!!!!!!!!!!!|||||||||||||||||||||||||||||||||||||||||||||||||| -->
+	-->
+
+    <filter>
+        <filter-name>AuthenticationUserFilter</filter-name>
+        <filter-class>it.unitn.disi.filters.AuthenticationUserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationUserFilter</filter-name>
+        <url-pattern>/Profile</url-pattern>
+        <url-pattern>/OrderUser</url-pattern>
+        <url-pattern>/OrdersUser</url-pattern>
+        <url-pattern>/SegnalazioneUser</url-pattern>
+        <url-pattern>/SegnalazioniUser</url-pattern>
+        <url-pattern>/SegnalazioniOpenUser</url-pattern>
+        <url-pattern>/RegistrationSellerLog</url-pattern>
+        <url-pattern>/Payment</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthenticationUserSellerFilter</filter-name>
+        <filter-class>it.unitn.disi.filters.AuthenticationUserSellerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationUserSellerFilter</filter-name>
+        <url-pattern>/MySeller</url-pattern>
+        <url-pattern>/MyShop</url-pattern>
+        <url-pattern>/OrderSeller</url-pattern>
+        <url-pattern>/OrdersSeller</url-pattern>
+        <url-pattern>/OrdersShop</url-pattern>
+        <url-pattern>/SegnalazioneSeller</url-pattern>
+        <url-pattern>/SegnalazioniSeller</url-pattern>
+        <url-pattern>/SegnalazioniOpenSeller</url-pattern>
+        <url-pattern>/SellProduct</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthenticationUserAdminFilter</filter-name>
+        <filter-class>it.unitn.disi.filters.AuthenticationUserAdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationUserAdminFilter</filter-name>
+        <url-pattern>/SegnalazioneAdmin</url-pattern>
+        <url-pattern>/SegnalazioniAdmin</url-pattern>
+        <url-pattern>/SegnalazioniOpenAdmin</url-pattern>
+    </filter-mapping>
+
+	<!-- |||||||||||||||||||||||||||||||||| ERROR PAGES |!!!!!!!!!!!|||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/ViewFinal/jsp/errorPages/error404.jsp</location>
