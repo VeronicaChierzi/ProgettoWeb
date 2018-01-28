@@ -63,7 +63,7 @@ public class CartController {
 				return o;
 			}
 		}
-		Order o = new Order(-1, cart.getIdUser(), idShop, null, true, false, null);
+		Order o = new Order(-1, cart.getIdUser(), idShop, null, true, false, null, "");
 		cart.getOrders().add(o);
 		return o;
 	}
@@ -79,10 +79,11 @@ public class CartController {
 		return op;
 	}
 
-	public static boolean buyCart(HttpSession session, User user, ShopProductDAO shopProductDAO, OrderDAO orderDAO) throws DAOException {
+	public static boolean buyCart(HttpSession session, User user, ShopProductDAO shopProductDAO, OrderDAO orderDAO, String address) throws DAOException {
 		if (MyUtils.debugCartController) {
 			System.err.println("Inizio buyCart. L'acquisto dei prodotti nel carrello sta per essere effettuato");
 		}
+		addAddressToOrders(session, address);
 		if (checkCart(session, user, shopProductDAO)) {
 			if (orderDAO.buyCart(CartController.getOrCreateCart(session))) {
 				if (MyUtils.debugCartController) {
@@ -97,6 +98,13 @@ public class CartController {
 		} else {
 			System.err.println("Fine buyCart. Impossibile effettuare l'acquisto. Problema in checkCart.");
 			return false;
+		}
+	}
+	
+	private static void addAddressToOrders(HttpSession session, String address){
+		Cart cart = getOrCreateCart(session);
+		for(Order o : cart.getOrders()){
+			o.setAddress(address);
 		}
 	}
 
