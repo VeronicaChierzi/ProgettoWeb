@@ -118,14 +118,14 @@
 				<% num_ci++; %>
 				<% }%>
 
-				<!-- AGGIUNTI DA MARCO -->
+				<%--
 				<% if(cart.getTotalPriceSpedizione()>0.0f) { %>
 					Totale spedizione: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPriceSpedizione())%><br/><br/>
 				<% } %>
 				<% if(cart.getTotalPriceRitiro()>0.0f) { %>
 					Totale ritiro: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPriceRitiro())%><br/><br/>
 				<% } %>
-				
+				--%>
 				
 				Totale: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%><br/><br/>
 

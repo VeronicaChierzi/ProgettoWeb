@@ -17,8 +17,8 @@ import javax.servlet.ServletException;
 public class JDBCShopDAO extends JDBCDAO<Shop, Integer> implements ShopDAO {
 
     private static final Class classe = Shop.class;
-    private static final String[] nomiColonne = new String[]{"id", "id_owner", "latitude", "longitude", "address", "id_comune", "orario"};
-    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, double.class, double.class, String.class, int.class, String.class};
+    private static final String[] nomiColonne = new String[]{"id", "id_owner", "latitude", "longitude", "address", "id_comune", "orario", "ritiro_in_negozio"};
+    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, double.class, double.class, String.class, int.class, String.class, boolean.class};
 
     private UserSellerDAO userSellerDAO;
     private ComuneDAO comuneDAO;
@@ -135,7 +135,8 @@ public class JDBCShopDAO extends JDBCDAO<Shop, Integer> implements ShopDAO {
                                 rs.getDouble("longitude"),
                                 rs.getString("address"),
                                 rs.getInt("id_comune"),
-                                rs.getString("orario")
+                                rs.getString("orario"),
+								rs.getBoolean("ritiro_in_negozio")
                         );
                         shops.add(shop);
                     }
@@ -163,4 +164,19 @@ public class JDBCShopDAO extends JDBCDAO<Shop, Integer> implements ShopDAO {
         }
     }
 
+	@Override
+	public boolean changeRitiroInNegozio(int idShop, boolean ritiroInNegozio) throws DAOException {
+        try (PreparedStatement ps = CON.prepareStatement("UPDATE public.shops SET ritiro_in_negozio=? WHERE id=?;")) {
+            ps.setBoolean(1, ritiroInNegozio);
+            ps.setInt(2, idShop);
+            int ris = ps.executeUpdate();
+            if (ris == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("errore SQLException in query changeRitiroInNegozio", ex);
+        }
+	}
 }

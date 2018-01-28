@@ -10,20 +10,13 @@ public class Shop {
     private double longitude;
     private String address;
     private int idComune;
-    private String orario;
-
-    public String getOrario() {
-        return orario;
-    }
-
-    public void setOrario(String orario) {
-        this.orario = orario;
-    }
+	private String orario;
+	private boolean ritiroInNegozio;
 
     private UserSeller userSeller;
     private Comune comune;
 
-    public Shop(int id, int idOwner, double latitude, double longitude, String address, int idComune, String orario) {
+    public Shop(int id, int idOwner, double latitude, double longitude, String address, int idComune, String orario, boolean ritiroInNegozio) {
         this.id = id;
         this.idOwner = idOwner;
         this.latitude = latitude;
@@ -31,6 +24,7 @@ public class Shop {
         this.address = address;
         this.idComune = idComune;
         this.orario = orario;
+		this.ritiroInNegozio = ritiroInNegozio;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Getters e Setters">
@@ -145,6 +139,33 @@ public class Shop {
     public void setComune(Comune comune) {
         this.comune = comune;
     }
+	/**
+	 * @return the orario
+	 */
+	public String getOrario() {
+		return orario;
+	}
+
+	/**
+	 * @param orario the orario to set
+	 */
+	public void setOrario(String orario) {
+		this.orario = orario;
+	}
+
+	/**
+	 * @return the ritiroInNegozio
+	 */
+	public boolean isRitiroInNegozio() {
+		return ritiroInNegozio;
+	}
+
+	/**
+	 * @param ritiroInNegozio the ritiroInNegozio to set
+	 */
+	public void setRitiroInNegozio(boolean ritiroInNegozio) {
+		this.ritiroInNegozio = ritiroInNegozio;
+	}
     // </editor-fold>
 
 }

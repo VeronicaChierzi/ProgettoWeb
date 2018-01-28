@@ -40,7 +40,7 @@
             <% if (orders == null || orders.length == 0) { %>
             <li style="margin-left: 10px; font-size: 30px;">
                 Non hai ancora effettuato ordini<br/></li>
-                <% } else { %>
+            <% } else { %>
                 <% int num_o = 0; %>
                 <% for (Order o : orders) {%>
             <li style="margin-left: 10px; font-size: 30px;">
@@ -59,6 +59,40 @@
                 <% }%>
             </li>
             <li style="margin-left: 10px;">Data d'acquisto: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimePurchase())%></li>
+            <li style="margin-left: 10px;">
+				<% if (o.isSpedizione()) { %>
+					Spedizione
+				<% } else { %>
+					Ritiro in Negozio
+				<% } %>
+			</li>
+			
+			<% if (o.isSpedizione()) { %>
+            <li style="margin-left: 10px;">
+				Stato spedizione:
+				<% if (o.isConcluso()) { %>
+					Spedito
+				<% } else { %>
+					Non ancora spedito
+				<% } %>
+			</li>
+				<% if (o.isConcluso()) { %>
+		            <li style="margin-left: 10px;">Data spedizione: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
+				<% } %>
+			<% } else { %>
+            <li style="margin-left: 10px;">
+				Stato:
+				<% if (o.isConcluso()) { %>
+					Ritirato
+				<% } else { %>
+					Non ancora ritirato
+				<% } %>
+			</li>
+				<% if (o.isConcluso()) { %>
+		            <li style="margin-left: 10px;">Data ritiro: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
+				<% } %>
+			<% } %>
+			
             <li style="margin-left: 10px; font-size: 23px" class="price">Totale: &euro; <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
             <li style="border-bottom-width: 1px;
                 border-bottom-color: black;

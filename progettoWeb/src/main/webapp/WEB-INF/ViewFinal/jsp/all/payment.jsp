@@ -25,6 +25,7 @@
             </li>
 
 			
+			<%--
 			<% if(cart.getTotalPriceSpedizione()>0.0f) { %>
 			<li>
                 <p class="totale">Totale prodotti spediti: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPriceSpedizione())%></p>
@@ -36,6 +37,7 @@
                 <p class="totale">Totale prodotti da pagare e ritirare in negozio: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPriceRitiro())%></p>
 			</li>
 			<% } %>
+			--%>
 
 			<li>
                 <p class="totale">Totale: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%></p>
@@ -46,7 +48,7 @@
                 <% if (user != null) {%>
                 
                 <form method="post" action="<%=MyPaths.Servlet.Pubbliche.buyCart%>">
-				<% if(cart.getTotalPriceSpedizione()>0.0f) { %>
+				<%--<% if(cart.getTotalPriceSpedizione()>0.0f) { %>--%>
 					<ul style="padding:10px;" id="campiCarta">
 						<li style="font-size: 25px;">
 							Dati carta di credito
@@ -65,11 +67,13 @@
 							<input style="margin-top: 20px;" class="btn btn-primary" type="submit" value="compra" />
 						</li>
 					</ul>
+				<%--
 				<% } else { %>
 						<li id="bottone">
 							<input style="margin-top: 20px;" class="btn btn-primary" type="submit" value="Conferma e ritira in negozio" />
 						</li>
 				<% } %>
+				--%>
                 </form>
 			</li>
 			<li>

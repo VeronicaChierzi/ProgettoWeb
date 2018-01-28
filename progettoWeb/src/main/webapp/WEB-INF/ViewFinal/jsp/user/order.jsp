@@ -1,4 +1,5 @@
 <%-- Scheda dettagliata di un ordine effettuato --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="it.unitn.disi.entities.UserSeller"%>
 <%@page import="it.unitn.disi.entities.Shop"%>
@@ -44,7 +45,41 @@
 							<% }%>
 						</li>
 						<li>Data di acquisto: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimePurchase())%></li>
-						<li>Prezzo totale ordine: <%=o.getTotalPrice()%></li>
+            <li style="margin-left: 10px;">
+				<% if (o.isSpedizione()) { %>
+					Spedizione
+				<% } else { %>
+					Ritiro in Negozio
+				<% } %>
+			</li>
+			
+			<% if (o.isSpedizione()) { %>
+            <li style="margin-left: 10px;">
+				Stato spedizione:
+				<% if (o.isConcluso()) { %>
+					Spedito
+				<% } else { %>
+					Non ancora spedito
+				<% } %>
+			</li>
+				<% if (o.isConcluso()) { %>
+		            <li style="margin-left: 10px;">Data spedizione: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
+				<% } %>
+			<% } else { %>
+            <li style="margin-left: 10px;">
+				Stato:
+				<% if (o.isConcluso()) { %>
+					Ritirato
+				<% } else { %>
+					Non ancora ritirato
+				<% } %>
+			</li>
+				<% if (o.isConcluso()) { %>
+		            <li style="margin-left: 10px;">Data ritiro: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
+				<% } %>
+			<% } %>
+
+					<li>Prezzo totale ordine: &euro; <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
 					</ul>
 					<ul>
 						<% int num_op = 0; %>

@@ -63,7 +63,7 @@ public class CartController {
 				return o;
 			}
 		}
-		Order o = new Order(-1, cart.getIdUser(), idShop, null, true, null, false, null);
+		Order o = new Order(-1, cart.getIdUser(), idShop, null, true, false, null);
 		cart.getOrders().add(o);
 		return o;
 	}

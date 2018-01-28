@@ -12,7 +12,6 @@ public class Order {
 	private int idShop;
 	private Timestamp datetimePurchase;
 	private boolean spedizione;
-	private Timestamp datetimeSpedizione;
 	private boolean concluso;
 	private Timestamp datetimeConcluso;
 
@@ -24,13 +23,12 @@ public class Order {
 		orderProducts = new ArrayList<>();
 	}
 
-	public Order(int id, int idUser, int idShop, Timestamp datetimePurchase, boolean spedizione, Timestamp datetimeSpedizione, boolean concluso, Timestamp datetimeConcluso) {
+	public Order(int id, int idUser, int idShop, Timestamp datetimePurchase, boolean spedizione, boolean concluso, Timestamp datetimeConcluso) {
 		this.id = id;
 		this.idUser = idUser;
 		this.idShop = idShop;
 		this.datetimePurchase = datetimePurchase;
 		this.spedizione = spedizione;
-		this.datetimeSpedizione = datetimeSpedizione;
 		this.concluso = concluso;
 		this.datetimeConcluso = datetimeConcluso;
 		orderProducts = new ArrayList<>();
@@ -154,20 +152,6 @@ public class Order {
 	 */
 	public void setSpedizione(boolean spedizione) {
 		this.spedizione = spedizione;
-	}
-
-	/**
-	 * @return the datetimeSpedizione
-	 */
-	public Timestamp getDatetimeSpedizione() {
-		return datetimeSpedizione;
-	}
-
-	/**
-	 * @param datetimeSpedizione the datetimeSpedizione to set
-	 */
-	public void setDatetimeSpedizione(Timestamp datetimeSpedizione) {
-		this.datetimeSpedizione = datetimeSpedizione;
 	}
 
 	/**

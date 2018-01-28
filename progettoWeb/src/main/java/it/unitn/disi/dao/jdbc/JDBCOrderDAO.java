@@ -20,8 +20,8 @@ import javax.servlet.ServletException;
 public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 
     private static final Class classe = Order.class;
-    private static final String[] nomiColonne = new String[]{"id", "id_user", "id_shop", "datetime_purchase", "spedizione", "datetime_spedizione", "concluso", "datetime_concluso"};
-    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, Timestamp.class, boolean.class, Timestamp.class, boolean.class, Timestamp.class};
+    private static final String[] nomiColonne = new String[]{"id", "id_user", "id_shop", "datetime_purchase", "spedizione", "concluso", "datetime_concluso"};
+    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, Timestamp.class, boolean.class, boolean.class, Timestamp.class};
 
     private OrderProductDAO orderProductDAO;
     private UserDAO userDAO;
@@ -194,15 +194,14 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 		}
          */
         //id order e datetime_purchase sono generati dal database
-        String query = "INSERT INTO orders(id_user, id_shop, datetime_purchase, spedizione, datetime_spedizione, concluso, datetime_concluso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO orders(id_user, id_shop, datetime_purchase, spedizione, concluso, datetime_concluso) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = CON.prepareStatement(query)) {
             ps.setInt(1, order.getIdUser());
             ps.setInt(2, order.getIdShop());
             ps.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             ps.setBoolean(4, order.isSpedizione());
-            ps.setTimestamp(5, null);
-            ps.setBoolean(6, order.isConcluso());
-            ps.setTimestamp(7, null);
+            ps.setBoolean(5, order.isConcluso());
+            ps.setTimestamp(6, null);
 
             int result = -1; //quantità di righe modificate dalla query insert
             try {
@@ -314,6 +313,30 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
             setPointers(o, true, false, true);
         }
         return orders;
+    }
+
+    //spedisce il prodotto o segna l'avvenuto ritiro in negozio
+    @Override
+    public boolean concludiOrder(int idOrder, int idShop) throws DAOException {
+        String query = "UPDATE orders SET concluso = ? , datetime_concluso = ? WHERE id = ? AND id_shop = ?;";
+        try (PreparedStatement ps = CON.prepareStatement(query)) {
+            ps.setBoolean(1, true);
+			ps.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+			ps.setInt(3, idOrder);
+			ps.setInt(4, idShop);
+
+            int result = -1;
+            try {
+                result = ps.executeUpdate();
+            } catch (SQLException ex) {
+                //System.err.println("Impossibile eseguire query: " + ex.getMessage());
+                throw new DAOException("Errore SQLException esecuzione query concludiOrder: " + ex.getMessage());
+            }
+            boolean b = (result > 0); //se ha modificato almeno 1 riga, restituisce true
+            return b;
+        } catch (SQLException ex) {
+            throw new DAOException("Errore SQLExcpetion in concludiOrder: " + ex.getMessage());
+        }
     }
 
 }
