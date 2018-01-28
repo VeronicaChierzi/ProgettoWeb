@@ -70,6 +70,7 @@ public class MyPaths {
 		public static String allPaginaDiDecisione;
 		public static String allProduct;
 		public static String allProductList;
+		public static String allShopsProduct;
 		public static String allShop;
 		public static String allSeller;
 		public static String anonymousForgottenPassword;
@@ -119,6 +120,7 @@ public class MyPaths {
 			allPaginaDiDecisione = p + "PaginaDiDecisione";
 			allProduct = p + "Product";
 			allProductList = p + "ProductList";
+			allShopsProduct = p + "ShopsProduct";
 			allSeller = p + "Seller";
 			allShop = p + "Shop";
 			anonymousForgottenPassword = p + "ForgottenPassword";
@@ -227,6 +229,7 @@ public class MyPaths {
 			public static final String allGetProductList = p + "GetProductListServlet";
 			public static final String allGetSeller = p + "GetSellerServlet";
 			public static final String allGetShop = p + "GetShopServlet";
+			public static final String allGetShopsProduct = p + "GetShopsProductServlet";
 			public static final String sellerGetMySeller = p + "GetMyShopServlet";
 			public static final String sellerGetMyShop = p + "GetMyShopServlet";
 			public static final String sellerGetOrder = p + "GetOrderSellerServlet";

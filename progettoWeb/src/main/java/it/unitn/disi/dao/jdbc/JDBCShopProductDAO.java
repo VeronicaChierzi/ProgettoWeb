@@ -63,7 +63,18 @@ public class JDBCShopProductDAO extends JDBCDAO<ShopProduct, Integer> implements
 		}
 		return sp;
 	}
-	
+
+	@Override
+	public ShopProduct getShopProductByProduct(int idProduct, int idShop, Product product) throws DAOException {
+		String query = "SELECT DISTINCT ON (id_product) * FROM shops_products WHERE id_product=? AND id_shop=? AND (quantity > 0) ORDER BY id_product, price";
+		Object[] parametriQuery = new Object[]{idProduct, idShop};
+		ShopProduct sp = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		if (sp != null) {
+			sp.setProduct(product);
+			sp.setShop(shopDAO.getShop(sp.getIdShop(), true, true));
+		}
+		return sp;
+	}	
 	
 	@Override
 	public ShopProduct[] getShopsProductsByIdProduct(int idProduct, boolean loadProduct, boolean loadShop) throws DAOException {
@@ -75,6 +86,20 @@ public class JDBCShopProductDAO extends JDBCDAO<ShopProduct, Integer> implements
 		}
 		return shopProducts;
 	}
+
+	@Override
+	public ShopProduct[] getShopsProductsByIdProduct(int idProduct) throws DAOException {
+		String query = "SELECT * FROM shops_products WHERE id_product=? ORDER BY price";
+		Object[] parametriQuery = new Object[]{idProduct};
+		ShopProduct[] shopProducts = DAOFunctions.getMany(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		Product p = productDAO.getProduct(idProduct, false, true, false);
+		for (ShopProduct sp : shopProducts) {
+			sp.setProduct(p);
+			sp.setShop(shopDAO.getShop(sp.getIdShop(), true, true));
+		}
+		return shopProducts;
+	}
+
 	
 	@Override
 	public ShopProduct[] getShopsProductsByIdShop(int idShop, boolean loadProduct, boolean loadShop) throws DAOException {

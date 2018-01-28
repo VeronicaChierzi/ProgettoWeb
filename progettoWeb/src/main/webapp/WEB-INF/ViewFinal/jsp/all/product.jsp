@@ -78,6 +78,8 @@
                         </tr>
 					</table>
                     <br/>
+					<a href="<%=MyPaths.Jsp.allShopsProduct%>?id=<%=product.getId()%>">Altri venditori</a>
+					<br/>
                     <% } %>
 
                     <br/>

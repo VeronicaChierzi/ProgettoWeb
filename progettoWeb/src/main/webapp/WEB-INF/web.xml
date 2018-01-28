@@ -74,6 +74,10 @@
         <jsp-file>/WEB-INF/ViewFinal/jsp/all/product.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>ShopsProduct</servlet-name>
+        <jsp-file>/WEB-INF/ViewFinal/jsp/all/shopsProduct.jsp</jsp-file>
+    </servlet>
+    <servlet>
         <servlet-name>ProductList</servlet-name>
         <jsp-file>/WEB-INF/ViewFinal/jsp/all/productList.jsp</jsp-file>
     </servlet>
@@ -209,6 +213,10 @@
         <url-pattern>/Product</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ShopsProduct</servlet-name>
+        <url-pattern>/ShopsProduct</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
         <servlet-name>ProductList</servlet-name>
         <url-pattern>/ProductList</url-pattern>
     </servlet-mapping>
@@ -837,6 +845,10 @@
         <servlet-name>GetSegnalazioniOpenUserServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioniOpenUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetShopsProductServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.privatee.GetShopsProductServlet</servlet-class>
+    </servlet>
 
 	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
@@ -919,6 +931,11 @@
         <servlet-name>GetSegnalazioniOpenUserServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetSegnalazioniOpenUserServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetShopsProductServlet</servlet-name>
+        <url-pattern>/WEB-INF/servlet/GetShopsProductServlet</url-pattern>
+    </servlet-mapping>
+	
     <!-- |||||||||||||||||||||||||||||||||| STARTUP SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>LoadCategoryContainerServlet</servlet-name>

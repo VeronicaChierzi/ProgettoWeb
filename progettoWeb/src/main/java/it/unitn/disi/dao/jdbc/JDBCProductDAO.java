@@ -47,6 +47,20 @@ public class JDBCProductDAO extends JDBCDAO<Product, Integer> implements Product
     }
 
     @Override
+    public Product getProduct(int id, int idShop) throws DAOException {
+		String query = "SELECT * FROM products WHERE id = ?";
+		Object[] parametriQuery = new Object[]{id};
+		Product p = DAOFunctions.getOne(query, parametriQuery, classe, nomiColonne, constructorParameterTypes, CON);
+		if(idShop==-1){
+			p.setShopProduct(shopProductDAO.getMinShopProduct(p.getId(), p));
+		} else {
+			p.setShopProduct(shopProductDAO.getShopProductByProduct(p.getId(), idShop, p));
+		}
+		p.setImage(imageDAO.getProductImage(p.getId()));
+		return p;
+    }
+
+	@Override
     public Product getProduct(int id, boolean loadMinShopProduct, boolean loadImage, boolean loadReview) throws DAOException {
         String query = "SELECT * FROM products WHERE id = ?";
         Object[] parametriQuery = new Object[]{id};

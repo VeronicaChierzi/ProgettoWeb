@@ -12,6 +12,10 @@ public interface ShopProductDAO extends DAO<ShopProduct, Integer> {
 	
 	public ShopProduct[] getShopsProductsByIdProduct(int idProduct, boolean loadProduct, boolean loadShop) throws DAOException;
 
+	public ShopProduct[] getShopsProductsByIdProduct(int idProduct) throws DAOException;
+
 	public ShopProduct[] getShopsProductsByIdShop(int idShop, boolean loadProduct, boolean loadShop) throws DAOException;
+
+	public ShopProduct getShopProductByProduct(int idProduct, int idShop, Product product) throws DAOException;
 
 }
