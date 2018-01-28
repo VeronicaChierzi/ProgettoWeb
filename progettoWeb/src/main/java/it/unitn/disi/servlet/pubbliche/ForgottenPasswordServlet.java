@@ -67,6 +67,7 @@ public class ForgottenPasswordServlet extends MyServlet {
 						System.out.println(e.getMessage());
 					}
 					//System.err.println("La password è stata cambiata");
+                                        Model.Messages.setBoolean(request, "passwordCambiata");
 					redirect(response, MyPaths.Jsp.anonymousLogin);
 				} else {
 					Model.Messages.setBoolean(request, "forgottenPassword-emailNonValida");
