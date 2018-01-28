@@ -51,8 +51,9 @@
 							UserSeller us = s.getUserSeller();
 							Image image = p.getImage(); %>
 				<div>
-					<table style="border-spacing: 10px; padding-bottom: 20px;"><tr>
-							<td style="padding: 20px; white-space: nowrap; width: 30%;">
+					<table style="border-spacing: 10px; padding-bottom: 20px;">
+                                            <tr id="carreloo">
+							<td style="padding: 20px; white-space: nowrap; width: 40%;">
 
 								<% if (image != null) {%>
 								<a href="<%=MyPaths.Jsp.allProduct%>?id=<%=p.getId()%>">
@@ -89,7 +90,7 @@
 											<input type="hidden" name="id_shop" value="<%=sp.getIdShop()%>" />
 										</form>
 									</li>
-									<li style="display: flex">Spedizione:
+									<li style="display: flex; margin-top: 10px;">Spedizione:
 										<form name="form_spedizione_<%=num_ci%>" action="<%=MyPaths.Servlet.Pubbliche.changeProductSpedizioneCartServlet%>" method="POST">
 											<select name="spedizione" autocomplete="off" onchange="document.form_spedizione_<%=num_ci%>.submit()" style="padding: 2px; margin-left: 10px">
 												<option value="true" <% if (ci.isSpedito()) { %> selected <% }%>>Spedizione</option>
