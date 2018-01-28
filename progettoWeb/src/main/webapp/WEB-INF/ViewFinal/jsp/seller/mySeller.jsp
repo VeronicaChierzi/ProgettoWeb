@@ -44,6 +44,7 @@
                         <tr>
                             <td>
                                 <p><%=a.getAddress()%>, <%=a.getComune().getName()%><br/>
+									<%--
 									<form name="form_negozio_spedizione_<%=a.getId()%>" action="<%=MyPaths.Servlet.Pubbliche.changeShopRitiroInNegozioServlet%>" method="POST">
 										<select name="ritiro_in_negozio" autocomplete="off" onchange="document.form_negozio_spedizione_<%=a.getId()%>.submit()" style="padding: 2px; margin-left: 10px">
 											<option value="true" <% if (a.isRitiroInNegozio()) { %> selected <% }%>>Ritiro in negozio e spedizione online</option>
@@ -51,6 +52,7 @@
 										</select>
 										<input type="hidden" name="id_shop" value="<%=a.getId()%>" />
 									</form>
+									--%>
 								</p>
                             </td>
 							<form action="<%=MyPaths.Servlet.Pubbliche.changeShopParams%>" method="post">

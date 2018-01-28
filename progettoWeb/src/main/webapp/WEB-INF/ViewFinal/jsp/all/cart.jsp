@@ -93,7 +93,9 @@
 										<form name="form_spedizione_<%=num_ci%>" action="<%=MyPaths.Servlet.Pubbliche.changeProductSpedizioneCartServlet%>" method="POST">
 											<select name="spedizione" autocomplete="off" onchange="document.form_spedizione_<%=num_ci%>.submit()" style="padding: 2px; margin-left: 10px">
 												<option value="true" <% if (ci.isSpedito()) { %> selected <% }%>>Spedizione</option>
-												<option value="false" <% if (!ci.isSpedito()) { %> selected <% }%>>Ritiro in negozio</option>
+												<% if(ci.getShopProduct().getShop().isRitiroInNegozio()) { %>
+													<option value="false" <% if (!ci.isSpedito()) { %> selected <% }%>>Ritiro in negozio</option>
+												<% } %>
 											</select>
 											<input type="hidden" name="id_product" value="<%=sp.getIdProduct()%>" />
 											<input type="hidden" name="id_shop" value="<%=sp.getIdShop()%>" />
