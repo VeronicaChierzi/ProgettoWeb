@@ -829,16 +829,23 @@ span#divertita div#sparire{
 }
 tr#tabord td{
 	text-align: center;
-	display: inline-table;
-
-	
+	display: inline-table;	
 }
 tr#tabord td div#argg{
 	margin-bottom: 5px;
 }
 tr#tabord td#altroes{
 	margin:10px;
+        padding: 10px
 }
+
+@media (min-width: 900px){
+    tr#tabord td{
+	text-align: center;
+	display: table-cell;	
+}
+}
+
 #aprisegnalazione button{
 	margin-left: auto;
 	margin-right: auto;
@@ -860,4 +867,27 @@ tr#tabord td#altroes{
 
 div#puzzette h5{
 	font-size: 16px;
+}
+
+#carreloo {
+	display: grid;
+}
+tr#carreloo td a img {
+	width: 300%;
+        height: auto;
+}
+#tazza{
+    width: 100%;
+}
+@media (min-width: 800px){
+	#carreloo {
+	display: block;
+}
+tr#carreloo td a img {
+	width: 100%;
+        height: auto;
+}
+#tazza{
+    width: 50%;
+}
 }

@@ -36,9 +36,9 @@
                     <h1 class="paddingLeftTop"><%=StringUtils.formatForWeb(product.getName())%></h1>
                     <% Image image = product.getImage(); %>
                     <table style="border-spacing: 10px;">
-						<tr>
+						<tr id="carreloo">
                             <% if (image != null) {%>
-                            <td style="white-space: nowrap; width: auto;">
+                            <td style="white-space: nowrap; width: 40%; padding: 20px;">
                                 <a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>">
                                     <img src="<%=image.getPath()%>" class="prodotto" alt="<%=image.getAlt()%>">
                                 </a>
