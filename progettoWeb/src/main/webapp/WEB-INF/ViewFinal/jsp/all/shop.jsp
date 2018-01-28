@@ -25,6 +25,11 @@
 					<h1 class="paddingTop"><%= s.getUserSeller().getName()%></h1>
 					<h5>di <%= u.getLastName()%> <%= u.getFirstName()%></h5>
 					<span ><%= s.getAddress()%>, <%= s.getComune().getName()%></span><br>
+					<% if(s.isRitiroInNegozio()) {%>
+						<span>Accetta sia ritiro in negozio che spedizioni online</span><br>
+					<% } else { %>
+						<span>Vende soltanto tramite spedizioni online</span><br>
+					<% } %>
 					
 					<span style="margin-bottom: 10px">Questo negozio ha avuto <%=neg%> valutazioni negative.</span>
 

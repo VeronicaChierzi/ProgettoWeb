@@ -634,6 +634,10 @@
         <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeProductQuantityCartServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ChangeProductSpedizioneCartServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeProductSpedizioneCartServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DeleteProductCartServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.DeleteProductCartServlet</servlet-class>
     </servlet>
@@ -669,7 +673,16 @@
         <servlet-name>ForgottenPasswordServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.ForgottenPasswordServlet</servlet-class>
     </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+    <servlet>
+        <servlet-name>ConcludiOrderServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ConcludiOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeShopRitiroInNegozioServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeShopRitiroInNegozioServlet</servlet-class>
+    </servlet>
+
+	<!-- |||||||||||||||||||||||||||||||||| PUBLIC SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>AddReviewServlet</servlet-name>
         <url-pattern>/AddReviewServlet</url-pattern>
@@ -693,6 +706,10 @@
     <servlet-mapping>
         <servlet-name>ChangeProductQuantityCartServlet</servlet-name>
         <url-pattern>/ChangeProductQuantityCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeProductSpedizioneCartServlet</servlet-name>
+        <url-pattern>/ChangeProductSpedizioneCartServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteProductCartServlet</servlet-name>
@@ -730,6 +747,15 @@
         <servlet-name>ForgottenPasswordServlet</servlet-name>
         <url-pattern>/ForgottenPasswordServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConcludiOrderServlet</servlet-name>
+        <url-pattern>/ConcludiOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeShopRitiroInNegozioServlet</servlet-name>
+        <url-pattern>/ChangeShopRitiroInNegozioServlet</url-pattern>
+    </servlet-mapping>
+
     <!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>GetProductServlet</servlet-name>
@@ -811,7 +837,8 @@
         <servlet-name>GetSegnalazioniOpenUserServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.privatee.GetSegnalazioniOpenUserServlet</servlet-class>
     </servlet>
-    <!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+	<!-- |||||||||||||||||||||||||||||||||| PRIVATE SERVLET MAPPING ||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet-mapping>
         <servlet-name>GetMyShopServlet</servlet-name>
         <url-pattern>/WEB-INF/servlet/GetMyShopServlet</url-pattern>
@@ -987,7 +1014,8 @@
         <servlet-name>GeneraVenditaPuntiVenditaServlet</servlet-name>
         <url-pattern>/debug/GeneraVenditaPuntiVenditaServlet</url-pattern>
     </servlet-mapping>
-    <!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+	<!-- |||||||||||||||||||||||||||||||||| OLD SERVLET |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
     <servlet>
         <servlet-name>NotificationServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.NotificationServlet</servlet-class>

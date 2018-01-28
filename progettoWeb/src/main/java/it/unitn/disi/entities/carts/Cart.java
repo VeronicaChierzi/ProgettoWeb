@@ -15,6 +15,26 @@ public class Cart {
 		orders = new ArrayList<>();
 	}
 
+	public float getTotalPriceRitiro() {
+		float totalPrice = 0.0f;
+		for (Order o : orders) {
+			if(!o.isSpedizione()){
+				totalPrice += o.getTotalPrice();
+			}
+		}
+		return totalPrice;
+	}
+
+	public float getTotalPriceSpedizione() {
+		float totalPrice = 0.0f;
+		for (Order o : orders) {
+			if(o.isSpedizione()){
+				totalPrice += o.getTotalPrice();
+			}
+		}
+		return totalPrice;
+	}
+
 	public float getTotalPrice() {
 		float totalPrice = 0.0f;
 		for (Order o : orders) {

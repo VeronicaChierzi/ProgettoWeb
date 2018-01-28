@@ -11,9 +11,11 @@ public interface ShopDAO extends DAO<Shop, Integer> {
 	public Shop[] getShops() throws DAOException;
 
 	public List<Shop> getAllShopsThatSellsAProduct(int prodId) throws DAOException;
-        
-        public Shop[] getShopsByUserSeller(int idUser) throws DAOException;
-        
-        public boolean changeOrarioShop(int idShop, String orario) throws DAOException;
+
+	public Shop[] getShopsByUserSeller(int idUser) throws DAOException;
+
+	public boolean changeOrarioShop(int idShop, String orario) throws DAOException;
+
+	public boolean changeRitiroInNegozio(int idShop, boolean ritiroInNegozio) throws DAOException;
 
 }
