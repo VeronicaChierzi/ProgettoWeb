@@ -634,6 +634,10 @@
         <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeProductQuantityCartServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ChangeProductSpedizioneCartServlet</servlet-name>
+        <servlet-class>it.unitn.disi.servlet.pubbliche.ChangeProductSpedizioneCartServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DeleteProductCartServlet</servlet-name>
         <servlet-class>it.unitn.disi.servlet.pubbliche.DeleteProductCartServlet</servlet-class>
     </servlet>
@@ -693,6 +697,10 @@
     <servlet-mapping>
         <servlet-name>ChangeProductQuantityCartServlet</servlet-name>
         <url-pattern>/ChangeProductQuantityCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeProductSpedizioneCartServlet</servlet-name>
+        <url-pattern>/ChangeProductSpedizioneCartServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteProductCartServlet</servlet-name>

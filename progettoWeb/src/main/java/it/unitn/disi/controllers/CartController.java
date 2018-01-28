@@ -63,7 +63,7 @@ public class CartController {
 				return o;
 			}
 		}
-		Order o = new Order(-1, cart.getIdUser(), idShop, null);
+		Order o = new Order(-1, cart.getIdUser(), idShop, null, true, null, false, null);
 		cart.getOrders().add(o);
 		return o;
 	}
@@ -303,13 +303,31 @@ public class CartController {
 			for (OrderProduct op : o.getOrderProducts()) {
 				aggiornaOrderProduct(op, o, shopProductDAO);
 				ShopProduct sp = shopProductDAO.getShopProduct(op.getIdProduct(), o.getIdShop(), true, true);
-				CartItem ci = new CartItem(op.getQuantity(), sp);
+				CartItem ci = new CartItem(op.getQuantity(), sp, o.isSpedizione());
 				tempList.add(ci);
 			}
 		}
 		CartItem[] cartItems = new CartItem[tempList.size()];
 		cartItems = (CartItem[]) tempList.toArray(cartItems);
 		cart.setCartItems(cartItems);
+	}
+
+	//modifica la spedizione/ritiro in negozio di un prodotto (e del suo ordine) nel carrello
+	public static void changeSpedizione(HttpSession session, ShopProduct sp, boolean spedizione) {
+		if (MyUtils.debugCartController) {
+			System.err.println("Inizio changeSpedizione. La spedizione/ritiro dell'oggetto sta per essere modificata. sp: " + sp + ", spedizione:" + spedizione);
+		}
+		Cart cart = getOrCreateCart(session);
+		Order o = cercaOrder(cart, sp.getIdShop());
+		OrderProduct op = cercaOrderProduct(o, sp.getIdProduct());
+		//if(sp.isSpedizione()){
+		o.setSpedizione(spedizione);
+		//} else {
+		//o.setSpedizione(false);
+		//}
+		if (MyUtils.debugCartController) {
+			System.err.println("Fine changeSpedizione. La spedizione/ritiro dell'oggetto è stata modificata");
+		}
 	}
 
 }

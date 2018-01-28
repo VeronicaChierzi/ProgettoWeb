@@ -29,7 +29,7 @@ public class Model {
             return s;
         }
 
-        public static int getInt(HttpServletRequest request, String parameterName) {
+		public static int getInt(HttpServletRequest request, String parameterName) {
             int num = Integer.parseInt(request.getParameter(parameterName));
             return num;
         }
@@ -37,6 +37,20 @@ public class Model {
         public static float getFloat(HttpServletRequest request, String parameterName) {
             float num = Float.parseFloat(request.getParameter(parameterName));
             return num;
+        }
+
+        public static boolean getBoolean(HttpServletRequest request, String parameterName) {
+			String s = request.getParameter(parameterName);
+			boolean b;
+			if(s.equals("true")){
+				b = true;
+			} else if(s.equals("false")){
+				b = false;
+			} else {
+				System.err.println("Warning: il parametro passato non è nè true, nè false. Il valore assegnato automaticamente sarà false");
+				b = false;
+			}
+            return b;
         }
         // </editor-fold>
     }

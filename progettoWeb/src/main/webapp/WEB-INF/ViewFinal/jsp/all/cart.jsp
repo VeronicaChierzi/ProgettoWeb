@@ -49,7 +49,7 @@
 							Product p = sp.getProduct();
 							Shop s = sp.getShop();
 							UserSeller us = s.getUserSeller();
-								Image image = p.getImage(); %>
+							Image image = p.getImage(); %>
 				<div>
 					<table style="border-spacing: 10px; padding-bottom: 20px;"><tr>
 							<td style="padding: 20px; white-space: nowrap; width: 30%;">
@@ -89,6 +89,16 @@
 											<input type="hidden" name="id_shop" value="<%=sp.getIdShop()%>" />
 										</form>
 									</li>
+									<li style="display: flex">Spedizione:
+										<form name="form_spedizione_<%=num_ci%>" action="<%=MyPaths.Servlet.Pubbliche.changeProductSpedizioneCartServlet%>" method="POST">
+											<select name="spedizione" autocomplete="off" onchange="document.form_spedizione_<%=num_ci%>.submit()" style="padding: 2px; margin-left: 10px">
+												<option value="true" <% if (ci.isSpedito()) { %> selected <% }%>>Spedizione</option>
+												<option value="false" <% if (!ci.isSpedito()) { %> selected <% }%>>Ritiro in negozio</option>
+											</select>
+											<input type="hidden" name="id_product" value="<%=sp.getIdProduct()%>" />
+											<input type="hidden" name="id_shop" value="<%=sp.getIdShop()%>" />
+										</form>
+									</li>
 									<li style="display: flex;"><h2>Totale: &euro; <%=new DecimalFormat("#.##").format(ci.getTotalPrice())%></h2>
 										<form action="<%=MyPaths.Servlet.Pubbliche.deleteProductCartServlet%>" style="padding-left: 20px; margin-top: 20px;" method="POST">
 											<input type="hidden" name="id_product" value="<%=sp.getIdProduct()%>" />
@@ -108,6 +118,15 @@
 				<% num_ci++; %>
 				<% }%>
 
+				<!-- AGGIUNTI DA MARCO -->
+				<% if(cart.getTotalPriceSpedizione()>0.0f) { %>
+					Totale spedizione: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPriceSpedizione())%><br/><br/>
+				<% } %>
+				<% if(cart.getTotalPriceRitiro()>0.0f) { %>
+					Totale ritiro: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPriceRitiro())%><br/><br/>
+				<% } %>
+				
+				
 				Totale: &euro; <%=new DecimalFormat("#.##").format(cart.getTotalPrice())%><br/><br/>
 
 				<% User user = (User) Model.Session.getAttribute(request, Model.Session.user); %>

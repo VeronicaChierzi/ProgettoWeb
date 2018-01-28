@@ -20,8 +20,8 @@ import javax.servlet.ServletException;
 public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 
     private static final Class classe = Order.class;
-    private static final String[] nomiColonne = new String[]{"id", "id_user", "id_shop", "datetime_purchase"};
-    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, Timestamp.class};
+    private static final String[] nomiColonne = new String[]{"id", "id_user", "id_shop", "datetime_purchase", "spedizione", "datetime_spedizione", "concluso", "datetime_concluso"};
+    private static final Class[] constructorParameterTypes = new Class[]{int.class, int.class, int.class, Timestamp.class, boolean.class, Timestamp.class, boolean.class, Timestamp.class};
 
     private OrderProductDAO orderProductDAO;
     private UserDAO userDAO;
@@ -194,11 +194,15 @@ public class JDBCOrderDAO extends JDBCDAO<Order, Integer> implements OrderDAO {
 		}
          */
         //id order e datetime_purchase sono generati dal database
-        String query = "INSERT INTO orders(id_user, id_shop, datetime_purchase) VALUES (?, ?, ?)";
+        String query = "INSERT INTO orders(id_user, id_shop, datetime_purchase, spedizione, datetime_spedizione, concluso, datetime_concluso) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = CON.prepareStatement(query)) {
             ps.setInt(1, order.getIdUser());
             ps.setInt(2, order.getIdShop());
             ps.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+            ps.setBoolean(4, order.isSpedizione());
+            ps.setTimestamp(5, null);
+            ps.setBoolean(6, order.isConcluso());
+            ps.setTimestamp(7, null);
 
             int result = -1; //quantità di righe modificate dalla query insert
             try {

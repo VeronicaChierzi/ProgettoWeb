@@ -6,10 +6,12 @@ public class CartItem {
 
 	private int quantity;
 	private ShopProduct shopProduct;
+	private boolean spedito;
 
-	public CartItem(int quantity, ShopProduct shopProduct) {
+	public CartItem(int quantity, ShopProduct shopProduct, boolean spedito) {
 		this.quantity = quantity;
 		this.shopProduct = shopProduct;
+		this.spedito = spedito;
 	}
 
 	public float getTotalPrice() {
@@ -47,6 +49,20 @@ public class CartItem {
 	 */
 	public void setShopProduct(ShopProduct shopProduct) {
 		this.shopProduct = shopProduct;
+	}
+
+	/**
+	 * @return the spedito
+	 */
+	public boolean isSpedito() {
+		return spedito;
+	}
+
+	/**
+	 * @param spedito the spedito to set
+	 */
+	public void setSpedito(boolean spedito) {
+		this.spedito = spedito;
 	}
 	// </editor-fold>
 

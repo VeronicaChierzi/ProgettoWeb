@@ -11,6 +11,10 @@ public class Order {
 	private int idUser;
 	private int idShop;
 	private Timestamp datetimePurchase;
+	private boolean spedizione;
+	private Timestamp datetimeSpedizione;
+	private boolean concluso;
+	private Timestamp datetimeConcluso;
 
 	private ArrayList<OrderProduct> orderProducts;
 	private User user;
@@ -20,11 +24,15 @@ public class Order {
 		orderProducts = new ArrayList<>();
 	}
 
-	public Order(int id, int idUser, int idShop, Timestamp datetimePurchase) {
+	public Order(int id, int idUser, int idShop, Timestamp datetimePurchase, boolean spedizione, Timestamp datetimeSpedizione, boolean concluso, Timestamp datetimeConcluso) {
 		this.id = id;
 		this.idUser = idUser;
 		this.idShop = idShop;
 		this.datetimePurchase = datetimePurchase;
+		this.spedizione = spedizione;
+		this.datetimeSpedizione = datetimeSpedizione;
+		this.concluso = concluso;
+		this.datetimeConcluso = datetimeConcluso;
 		orderProducts = new ArrayList<>();
 	}
 
@@ -133,6 +141,61 @@ public class Order {
 	 */
 	public void setShop(Shop shop) {
 		this.shop = shop;
+	}
+	/**
+	 * @return the spedizione
+	 */
+	public boolean isSpedizione() {
+		return spedizione;
+	}
+
+	/**
+	 * @param spedizione the spedizione to set
+	 */
+	public void setSpedizione(boolean spedizione) {
+		this.spedizione = spedizione;
+	}
+
+	/**
+	 * @return the datetimeSpedizione
+	 */
+	public Timestamp getDatetimeSpedizione() {
+		return datetimeSpedizione;
+	}
+
+	/**
+	 * @param datetimeSpedizione the datetimeSpedizione to set
+	 */
+	public void setDatetimeSpedizione(Timestamp datetimeSpedizione) {
+		this.datetimeSpedizione = datetimeSpedizione;
+	}
+
+	/**
+	 * @return the concluso
+	 */
+	public boolean isConcluso() {
+		return concluso;
+	}
+
+	/**
+	 * @param concluso the concluso to set
+	 */
+	public void setConcluso(boolean concluso) {
+		this.concluso = concluso;
+	}
+
+	/**
+	 * @return the datetimeConcluso
+	 */
+	public Timestamp getDatetimeConcluso() {
+		return datetimeConcluso;
+	}
+
+	/**
+	 * @param datetimeConcluso the datetimeConcluso to set
+	 */
+	public void setDatetimeConcluso(Timestamp datetimeConcluso) {
+		this.datetimeConcluso = datetimeConcluso;
 	}
 	// </editor-fold>
 
