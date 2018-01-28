@@ -37,7 +37,7 @@
                     <table style="border-spacing: 10px;">
 						<tr>
                             <% if (image != null) {%>
-                            <td style="white-space: nowrap; width: auto;">
+                            <td id="noope" style="white-space: nowrap; width: auto;">
                                 <a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>">
                                     <img src="<%=image.getPath()%>" class="prodotto" alt="<%=image.getAlt()%>">
                                 </a>
@@ -47,20 +47,20 @@
                             Immagine non trovata<br/>
                             <% }%>
 
-						<td style="padding: 20px; width: 70%">
+						<td style="width: 70%">
                             
 							<table style="border-collapse: separate; border-spacing: 10px;">
 								<tr>
 									<th style="text-align: center;">Venditore</th>
-									<th style="text-align: center;">Prezzo</th>
+									<th style="text-align: center;     width: 70px;">Prezzo</th>
 									<th style="text-align: center;">Quantità</th>
 									<th style="text-align: center;">Spedizione</th>
 								</tr>
 							<% for(ShopProduct sp : shopsProduct){ %>
-							<tr>
+							<tr id="formaggio">
 								<td>
 									<a href="<%=MyPaths.Jsp.allProduct%>?id=<%=product.getId()%>&id_shop=<%=sp.getIdShop()%>">
-									Acquista da <%=sp.getShop().getUserSeller().getName()%> di <%=sp.getShop().getComune().getName()%>
+									<%=sp.getShop().getUserSeller().getName()%> di <%=sp.getShop().getComune().getName()%>
 									</a>
 								</td>
 								<td>&euro; <%=new DecimalFormat("#.##").format(sp.getPrice())%></td>
