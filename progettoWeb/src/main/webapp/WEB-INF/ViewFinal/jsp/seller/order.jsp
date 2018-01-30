@@ -23,7 +23,7 @@
         <ul id="paginazione">
             <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
 
-            <li>
+            <li class="container" style="margin-top: 20px;">
                 <% if (o == null) { %>
                 <div style="margin-left: 10px; font-size: 30px;">Ordine non trovato</div><br/>
                 <% } else {%>
@@ -41,61 +41,61 @@
                             <% }%>
                         </li>
                         <li>Data di acquisto: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimePurchase())%></li>
-            <li style="margin-left: 10px;">
-				<% if (o.isSpedizione()) { %>
-					Spedizione
-				<% } else { %>
-					Ritiro in Negozio
-				<% } %>
-			</li>
-			
-			<% if (o.isSpedizione()) { %>
-            <li style="margin-left: 10px;">
-				Stato spedizione:
-				<% if (o.isConcluso()) { %>
-					Spedito
-				<% } else { %>
-					Non ancora spedito
-					<br/>
-					
-					Indirizzo di spedizione: <%=o.getAddress()%><br/>
-					<li style="display: flex">
-						<form action="<%=MyPaths.Servlet.Pubbliche.concludiOrder%>" method="POST">
-							<input type="hidden" name="id_order" value="<%=o.getId()%>" />
-							<input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
-							<input type="submit" class="btn btn-danger btn-primary" value="Spedisci"/>
-						</form>
-					</li>
+                        <li>
+                            <% if (o.isSpedizione()) { %>
+                            Spedizione
+                            <% } else { %>
+                            Ritiro in Negozio
+                            <% } %>
+                        </li>
 
-				<% } %>
-			</li>
-				<% if (o.isConcluso()) { %>
-		            <li style="margin-left: 10px;">Data spedizione: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
-				<% } %>
-			<% } else { %>
-            <li style="margin-left: 10px;">
-				Stato:
-				<% if (o.isConcluso()) { %>
-					Ritirato
-				<% } else { %>
-					Non ancora ritirato<br/>
-					
-					<li style="display: flex">
-						<form action="<%=MyPaths.Servlet.Pubbliche.concludiOrder%>" method="POST">
-							<input type="hidden" name="id_order" value="<%=o.getId()%>" />
-							<input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
-							<input type="submit" class="btn btn-danger btn-primary" value="Ritirato"/>
-						</form>
-					</li>
+                        <% if (o.isSpedizione()) { %>
+                        <li>
+                            Stato spedizione:
+                            <% if (o.isConcluso()) { %>
+                            Spedito
+                            <% } else {%>
+                            Non ancora spedito
+                            <br/>
 
-				<% } %>
-			</li>
-				<% if (o.isConcluso()) { %>
-		            <li style="margin-left: 10px;">Data ritiro: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
-				<% } %>
-			<% } %>
+                            Indirizzo di spedizione: <%=o.getAddress()%><br/>
+                        <li style="display: flex; margin-top: 10px;">
+                            <form action="<%=MyPaths.Servlet.Pubbliche.concludiOrder%>" method="POST">
+                                <input type="hidden" name="id_order" value="<%=o.getId()%>" />
+                                <input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
+                                <input type="submit" class="btn btn-danger btn-primary" value="Spedisci"/>
+                            </form>
+                        </li>
 
-					<li>Prezzo totale ordine: &euro; <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
+                        <% } %>
+                        </li>
+                        <% if (o.isConcluso()) {%>
+                        <li>Data spedizione: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
+                            <% } %>
+                            <% } else { %>
+                        <li>
+                            Stato:
+                            <% if (o.isConcluso()) { %>
+                            Ritirato
+                            <% } else {%>
+                            Non ancora ritirato<br/>
+
+                        <li style="display: flex">
+                            <form action="<%=MyPaths.Servlet.Pubbliche.concludiOrder%>" method="POST">
+                                <input type="hidden" name="id_order" value="<%=o.getId()%>" />
+                                <input type="hidden" name="id_shop" value="<%=o.getIdShop()%>" />
+                                <input type="submit" class="btn btn-danger btn-primary" value="Ritirato"/>
+                            </form>
+                        </li>
+
+                        <% } %>
+                        </li>
+                        <% if (o.isConcluso()) {%>
+                        <li style="margin-left: 10px;">Data ritiro: <%=new SimpleDateFormat("dd/MM/yyyy").format(o.getDatetimeConcluso())%></li>
+                            <% } %>
+                            <% }%>
+
+                        <li>Prezzo totale ordine: &euro; <%=new DecimalFormat("#.##").format(o.getTotalPrice())%></li>
                     </ul>
                     <ul>
                         <% int num_op = 0; %>
@@ -133,7 +133,7 @@
                                             <div>&euro; <%=op.getPrice()%></div>
                                         </td>
                                         <td id="altroes"><div id="argg">Quantità</div><%=op.getQuantity()%></td>
-                                        <td id="altroes"><div id="argg">Totale</div>&euro; <%=op.getTotalPrice()%></td>
+                                        <td id="altroes"><div id="argg">Totale</div>&euro; <%=new DecimalFormat("#.##").format(op.getTotalPrice())%></td>
                                     </tr>
                                 </table>
 

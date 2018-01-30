@@ -34,34 +34,33 @@
                     <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span> L'orario non è stato cambiato perchè non sei loggato.</div>
                     <% } %>
 
-                    <table>
+                    <table id="negozietto">
                         <%for (Shop a : b) {%>
-						<tr>
-							<td></td>
-							<td>Orario</td>
-							<td></td>
-						</tr>
                         <tr>
                             <td>
                                 <p><%=a.getAddress()%>, <%=a.getComune().getName()%><br/>
-									<form name="form_negozio_spedizione_<%=a.getId()%>" action="<%=MyPaths.Servlet.Pubbliche.changeShopRitiroInNegozioServlet%>" method="POST">
-										<select name="ritiro_in_negozio" autocomplete="off" onchange="document.form_negozio_spedizione_<%=a.getId()%>.submit()" style="padding: 2px; margin-left: 10px">
-											<option value="true" <% if (a.isRitiroInNegozio()) { %> selected <% }%>>Ritiro in negozio e spedizione online</option>
-											<option value="false" <% if (!a.isRitiroInNegozio()) { %> selected <% }%>>Solo spedizione online</option>
-										</select>
-										<input type="hidden" name="id_shop" value="<%=a.getId()%>" />
-									</form>
-								</p>
+                                <div style="margin-right: 10px;">
+                                    <form name="form_negozio_spedizione_<%=a.getId()%>" action="<%=MyPaths.Servlet.Pubbliche.changeShopRitiroInNegozioServlet%>" method="POST">
+                                        <select name="ritiro_in_negozio" autocomplete="off" onchange="document.form_negozio_spedizione_<%=a.getId()%>.submit()" style="padding: 2px; margin-left: 10px">
+                                            <option value="true" <% if (a.isRitiroInNegozio()) { %> selected <% }%>>Ritiro in negozio e spedizione online</option>
+                                            <option value="false" <% if (!a.isRitiroInNegozio()) { %> selected <% }%>>Solo spedizione online</option>
+                                        </select>
+                                        <input type="hidden" name="id_shop" value="<%=a.getId()%>" />
+                                    </form>
+
+                                </div>
+                                </p>
                             </td>
-							<form action="<%=MyPaths.Servlet.Pubbliche.changeShopParams%>" method="post">
+                        <form action="<%=MyPaths.Servlet.Pubbliche.changeShopParams%>" method="post">
                             <td>
-								<input type="hidden" name="idShop" value="<%=a.getId()%>" />
-								<textarea style="width: 100%; height: auto;" rows="4" cols="40" name="orarioShop" type="text"><%= (a.getOrario() != null ? a.getOrario() : "")%></textarea>
+                            <label for="ora">Orario</label>
+                                <input type="hidden" name="idShop" value="<%=a.getId()%>" />
+                                <textarea id="ora" style="width: 100%; height: auto;" rows="4" cols="40" name="orarioShop" type="text"><%= (a.getOrario() != null ? a.getOrario() : "")%></textarea>
                             </td>
-							<td>
-								<button style="margin-left:20px;" type="submit" class="btn btn-primary">Salva</button>
+                            <td>
+                                <button style="margin-left:20px;" type="submit" class="btn btn-primary">Salva</button>
                             </td>
-						    </form>
+                        </form>
                         </tr>
 
                         <% }%>
