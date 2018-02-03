@@ -21,9 +21,9 @@
     </head>
     <body class="sfondo">
         <ul id="paginazione">
-            <li>
+           
                 <jsp:include page="<%=MyPaths.Jsp._utilsHeader%>"/>
-            </li>
+            
             <li style="margin-left: 10px; margin-top: 30px; margin-bottom: 30px;">
                 <h1>I tuoi ordini</h1>
 

@@ -51,7 +51,7 @@ public class ForgottenPasswordServlet extends MyServlet {
 					try {
 						msg.setFrom(new InternetAddress("noreply.ksmr@gmail.com"));
 						msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false));
-						msg.setSubject("Richiesta nuova passowrd - KSMR");
+						msg.setSubject("Richiesta nuova password - KSMR");
 						//StringBuffer url = request.getRequestURL();
 						//String uri = request.getRequestURI();
 						//String ctx = request.getContextPath();
